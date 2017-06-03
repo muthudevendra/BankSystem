@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Created by Lakshitha on 01-Jun-17.
+ *
  */
 @Configuration
 @EnableTransactionManagement
