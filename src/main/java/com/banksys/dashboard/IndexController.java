@@ -1,4 +1,4 @@
-package com.banksys;
+package com.banksys.dashboard;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
