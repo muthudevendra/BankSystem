@@ -1,4 +1,4 @@
-package com.banksys.ebank;
+package com.banksys.ebank.presentationlayer;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
