@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/ebank")
-public class EBankIndexController {
+public class IndexController {
     @RequestMapping("/")
     public String test(){
         return "ebank";
