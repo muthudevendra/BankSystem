@@ -1,18 +1,17 @@
-package com.banksys.dashboard;
+package com.banksys.ebank;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 /**
- * Created by Lakshitha on 01-Jun-17.
+ * Created by Lakshitha on 08-Jun-17.
  *
  */
 @Controller
-@RequestMapping("/")
-public class IndexController {
+@RequestMapping("/ebank")
+public class EBankIndexController {
     @RequestMapping("/")
     public String test(){
-        return "test";
+        return "ebank";
     }
 }

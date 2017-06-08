@@ -128,9 +128,9 @@
                 <div class="owl-carousel owl-carousel3">
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img1.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img1.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img1.jpg" class="fancybox-button" title="Project Name #1" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img1.jpg" class="fancybox-button" title="Project Name #1" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -139,9 +139,9 @@
                     </div>
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img2.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img2.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img2.jpg" class="fancybox-button" title="Project Name #2" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img2.jpg" class="fancybox-button" title="Project Name #2" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -150,9 +150,9 @@
                     </div>
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -161,9 +161,9 @@
                     </div>
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -172,9 +172,9 @@
                     </div>
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img5.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img5.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img5.jpg" class="fancybox-button" title="Project Name #5" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img5.jpg" class="fancybox-button" title="Project Name #5" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -183,9 +183,9 @@
                     </div>
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img6.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img6.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img6.jpg" class="fancybox-button" title="Project Name #6" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img6.jpg" class="fancybox-button" title="Project Name #6" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -194,9 +194,9 @@
                     </div>
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -205,9 +205,9 @@
                     </div>
                     <div class="recent-work-item">
                         <em>
-                            <img src="assets/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/layout/assets/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
                             <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="assets/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            <a href="${pageContext.request.contextPath}/layout/assets/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
                         </em>
                         <a class="recent-work-description" href="javascript:;">
                             <strong>Amazing Project</strong>
@@ -232,8 +232,8 @@
                 <div class="tab-content">
                     <div class="tab-pane row fade in active" id="tab-1">
                         <div class="col-md-3 col-sm-3">
-                            <a href="assets/temp/photos/img7.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
-                                <img class="img-responsive" src="assets/pages/img/photos/img7.jpg" alt="">
+                            <a href="${pageContext.request.contextPath}/layout/assets/temp/photos/img7.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
+                                <img class="img-responsive" src="${pageContext.request.contextPath}/layout/assets/pages/img/photos/img7.jpg" alt="">
                             </a>
                         </div>
                         <div class="col-md-9 col-sm-9">
@@ -246,8 +246,8 @@
                             <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia..</p>
                         </div>
                         <div class="col-md-3 col-sm-3">
-                            <a href="assets/temp/photos/img10.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
-                                <img class="img-responsive" src="assets/pages/img/photos/img10.jpg" alt="">
+                            <a href="${pageContext.request.contextPath}/layout/assets/temp/photos/img10.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
+                                <img class="img-responsive" src="${pageContext.request.contextPath}/layout/assets/pages/img/photos/img10.jpg" alt="">
                             </a>
                         </div>
                     </div>
