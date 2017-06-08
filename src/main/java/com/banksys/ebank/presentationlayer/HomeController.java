@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@RequestMapping("/ebank")
-public class EBankIndexController {
+@RequestMapping("/ebank/home")
+public class HomeController {
     @RequestMapping("/")
     public String test(){
         return "ebank";

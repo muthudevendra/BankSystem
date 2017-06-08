@@ -19,7 +19,7 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="ebank">E-Bank</a></li>
+                    <li><a href="ebank/home/">E-Bank</a></li>
                     <li><a href="login.html">Log In</a></li>
                     <li><a href="registerpage.html">Registration</a></li>
                 </ul>

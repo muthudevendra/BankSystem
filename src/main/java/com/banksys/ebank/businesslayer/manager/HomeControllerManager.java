@@ -3,9 +3,9 @@ package com.banksys.ebank.businesslayer.manager;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by lakshithar on 6/8/2017.
+ * Created by Lakshitha on 08-Jun-17.
  *
  */
 @Component
-public interface TransferControllerManager {
+public interface HomeControllerManager {
 }
