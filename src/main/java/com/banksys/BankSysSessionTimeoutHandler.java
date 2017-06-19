@@ -14,6 +14,7 @@ import java.io.IOException;
  */
 @Service
 public class BankSysSessionTimeoutHandler implements InvalidSessionStrategy {
+
     @Override
     public void onInvalidSessionDetected(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException, ServletException {
 

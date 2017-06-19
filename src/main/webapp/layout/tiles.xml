@@ -16,9 +16,9 @@
     <definition name="login" template="/ebank/login.jsp">
     </definition>
     <definition name="ebank" extends="ebank_base">
-        <put-attribute name="body" value="/dashboard/test.jsp" />
+        <put-attribute name="body" value="/dashboard/dashboard.jsp" />
     </definition>
-    <definition name="test" extends="base">
-        <put-attribute name="body" value="/dashboard/test.jsp" />
+    <definition name="dashboard" extends="base">
+        <put-attribute name="body" value="/dashboard/dashboard.jsp" />
     </definition>
 </tiles-definitions>

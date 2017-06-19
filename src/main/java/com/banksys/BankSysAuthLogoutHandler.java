@@ -15,6 +15,7 @@ import java.io.IOException;
  */
 @Service
 public class BankSysAuthLogoutHandler implements LogoutSuccessHandler {
+
     @Override
     public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
 
