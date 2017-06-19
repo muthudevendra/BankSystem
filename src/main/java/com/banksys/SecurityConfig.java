@@ -20,7 +20,6 @@ import javax.sql.DataSource;
 
 /**
  * Created by lakshithar on 6/18/2017.
- *
  */
 @Configuration
 @EnableWebSecurity
@@ -35,15 +34,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private BankSysSessionTimeoutHandler bankSysSessionTimeoutHandler;
     @Autowired
     private DataSource dataSource;
+//    private final BankSysAuthLogoutHandler bankSysAuthLogoutHandler;
+//    private final BankSysAuthSuccessHandler bankSysAuthSuccessHandler;
+//    private final BankSysSessionTimeoutHandler bankSysSessionTimeoutHandler;
+//    private final DataSource dataSource;
+//
+//    @Autowired
+//    public SecurityConfig(BankSysAuthLogoutHandler bankSysAuthLogoutHandler, BankSysAuthSuccessHandler bankSysAuthSuccessHandler,
+//                          BankSysSessionTimeoutHandler bankSysSessionTimeoutHandler, DataSource dataSource) {
+//        this.bankSysAuthLogoutHandler = bankSysAuthLogoutHandler;
+//        this.bankSysAuthSuccessHandler = bankSysAuthSuccessHandler;
+//        this.bankSysSessionTimeoutHandler = bankSysSessionTimeoutHandler;
+//        this.dataSource = dataSource;
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/layout/assets/**").permitAll()
+                .antMatchers("/*").permitAll()
                 .anyRequest().authenticated()
                 .and().requestCache().requestCache(new NullRequestCache()).and()
-                .formLogin().loginPage("/login").failureForwardUrl("/login?Incorrect Credentials")
+                .formLogin().loginPage("/login").failureForwardUrl("/login")
                 .usernameParameter("username").passwordParameter("password").successHandler(bankSysAuthSuccessHandler)
                 .and().rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("my-remember-me").tokenValiditySeconds(86400)
                 .and()
@@ -71,7 +84,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        Context ctx = new InitialContext();
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("SELECT username, password, enabled FROM user WHERE upper(username)=upper(?)")
 //                .passwordEncoder(new ShaPasswordEncoder(256))

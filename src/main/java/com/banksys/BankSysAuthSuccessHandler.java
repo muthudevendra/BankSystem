@@ -16,7 +16,7 @@ import java.io.IOException;
 @Service
 public class BankSysAuthSuccessHandler implements AuthenticationSuccessHandler {
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        response.sendRedirect("/");
     }
 }

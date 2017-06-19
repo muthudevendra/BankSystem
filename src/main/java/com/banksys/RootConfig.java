@@ -16,9 +16,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"com.banksys"},
-        excludeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
+@ComponentScan(basePackages = {"com.banksys"})
 public class RootConfig {
     @Bean
     public DataSource dataSource() {
@@ -26,7 +24,7 @@ public class RootConfig {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost/BankSys");
         dataSource.setUsername("root");
-        dataSource.setPassword("123");
+        dataSource.setPassword("");
         return dataSource;
     }
 }
