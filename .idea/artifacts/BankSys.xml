@@ -21,8 +21,11 @@
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-servlet:1.0.6" />
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-servlet:3.0.5" />
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-template:3.0.5" />
-          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.6" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.6" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.10" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.24" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.13.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.11.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.1.0.RELEASE" />
@@ -36,15 +39,9 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.10" />
-          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.24" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
-          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.13.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.11.3.RELEASE" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:6.0.6" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="BankSys/web/Web" />
-      <element id="javaee-facet-resources" facet="BankSys/web/Web" />
       <element id="javaee-facet-resources" facet="BankSys/web/Web" />
       <element id="javaee-facet-resources" facet="BankSys/web/Web" />
       <element id="javaee-facet-resources" facet="BankSys/web/Web" />
