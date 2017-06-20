@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*").permitAll()
                 .anyRequest().authenticated()
                 .and().requestCache().requestCache(new NullRequestCache()).and()
-                .formLogin().loginPage("/login").failureForwardUrl("/asdasds")
+                .formLogin().loginPage("/login").failureForwardUrl("/login")
                 .usernameParameter("username").passwordParameter("password").successHandler(bankSysAuthSuccessHandler)
                 .and().rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("my-remember-me").tokenValiditySeconds(86400)
                 .and()
@@ -75,8 +75,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery(
                         "SELECT USERNAME, PASSWORD, TRUE FROM USER WHERE USERNAME=?")
+                .passwordEncoder(new ShaPasswordEncoder(1))
                 .authoritiesByUsernameQuery(
-                        "select username, user_type_id from user where username=?");
+                        "SELECT USERNAME AS username, AUTHORITY_NAME AS authority " +
+                                "FROM USER U, " +
+                                "USER_TYPE UT, " +
+                                "USER_TYPE_AUTHORITY UA, " +
+                                "AUTHORITY A " +
+                                "WHERE U.USER_TYPE_ID = UT.USER_TYPE_ID " +
+                                "AND UA.USER_TYPE_ID = UT.USER_TYPE_ID " +
+                                "AND UA.AUTHORITY_ID = A.AUTHORITY_ID " +
+                                "AND U.USERNAME=?");
     }
 }
 
