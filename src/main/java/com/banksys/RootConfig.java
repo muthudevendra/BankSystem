@@ -22,7 +22,7 @@ public class RootConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost/BankSys");
+        dataSource.setUrl("jdbc:mysql://localhost/banksys");
         dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;

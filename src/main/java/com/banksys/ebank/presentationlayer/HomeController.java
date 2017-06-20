@@ -2,6 +2,7 @@ package com.banksys.ebank.presentationlayer;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/ebank/home")
 public class HomeController {
-    @RequestMapping("/")
-    public String test(){
+    @GetMapping
+    public String getPage(){
         return "ebank";
     }
 }

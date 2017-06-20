@@ -68,32 +68,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl().disable();
     }
 
-    @Bean
-    public HttpSessionEventPublisher httpSessionEventPublisher() {
-        return new HttpSessionEventPublisher();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username, password, enabled FROM user WHERE upper(username)=upper(?)");
-//                .passwordEncoder(new ShaPasswordEncoder(256))
-//                .passwordEncoder(new ShaPasswordEncoder(1))
-//                .authoritiesByUsernameQuery("SELECT\n" +
-//                        "                        u.USERNAME AS username,\n" +
-//                        "                        a.AUTHORITY AS authority\n" +
-//                        "                    FROM\n" +
-//                        "                        USERS u,\n" +
-//                        "                        USER_GROUPS ug,\n" +
-//                        "                        GROUP_AUTHORITIES ga,\n" +
-//                        "                        AUTHORITIES a\n" +
-//                        "                    WHERE\n" +
-//                        "                        upper(u.USERNAME) = upper(?) AND\n" +
-//                        "                        u.USER_SEQ = ug.USER_SEQ AND\n" +
-//                        "                        ug.GROUP_SEQ = ga.GROUP_SEQ AND\n" +
-//                        "                        ga.AUTHORITY_SEQ = a.AUTHORITY_SEQ AND\n" +
-//                        "                        ug.STATUS=1");
-
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth)
+            throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery(
+                        "SELECT USERNAME, PASSWORD, TRUE FROM USER WHERE USERNAME=?")
+                .authoritiesByUsernameQuery(
+                        "select username, user_type_id from user where username=?");
     }
 }
 
