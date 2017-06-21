@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * Created by lakshithar on 6/20/2017.
+ *
  */
 @Entity
 @Table(name = "user_type_authority")

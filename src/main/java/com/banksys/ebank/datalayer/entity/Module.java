@@ -9,6 +9,7 @@ import java.util.Objects;
 
 /**
  * Created by lakshithar on 6/20/2017.
+ *
  */
 @Entity
 public class Module {

@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/layout/assets/**").permitAll()
                 .antMatchers("/*").permitAll()
+                .antMatchers("/admin").hasAuthority("Admin@Admin_VIEW")
                 .anyRequest().authenticated()
                 .and().requestCache().requestCache(new NullRequestCache()).and()
                 .formLogin().loginPage("/login").failureForwardUrl("/login")

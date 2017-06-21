@@ -1,9 +1,12 @@
 package com.banksys;
 
+import com.banksys.util.DateAuditingProvider;
+import com.banksys.util.UsernameAuditorAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.auditing.DateTimeProvider;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -29,6 +32,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/accessDenied").setViewName("accessDenied");
     }
 
     @Bean
@@ -42,5 +46,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ViewResolver viewResolver() {
         return new TilesViewResolver();
+    }
+
+    @Bean
+    AuditorAware<String> auditorProvider() {
+        return new UsernameAuditorAware();
+    }
+
+    @Bean
+    DateTimeProvider dateTimeProvider() {
+        return new DateAuditingProvider();
     }
 }
