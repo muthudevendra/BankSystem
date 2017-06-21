@@ -7,6 +7,7 @@
         <class>com.banksys.ebank.datalayer.entity.User</class>
         <class>com.banksys.ebank.datalayer.entity.UserType</class>
         <class>com.banksys.ebank.datalayer.entity.UserTypeAuthority</class>
+        <class>com.banksys.ebank.datalayer.entity.UserLoginAudit</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/banksys"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>

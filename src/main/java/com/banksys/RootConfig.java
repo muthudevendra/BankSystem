@@ -3,12 +3,17 @@ package com.banksys;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * Created by Lakshitha on 01-Jun-17.
@@ -17,6 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.banksys"})
+@EnableJpaRepositories("com.banksys.ebank.datalayer.service")
 public class RootConfig {
     @Bean
     public DataSource dataSource() {
@@ -26,5 +32,39 @@ public class RootConfig {
         dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        localContainerEntityManagerFactoryBean.setDataSource(dataSource());
+        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+        localContainerEntityManagerFactoryBean.setJpaProperties(hibernateProperties());
+        localContainerEntityManagerFactoryBean.setPackagesToScan("com.banksys.ebank.datalayer.entity");
+        return localContainerEntityManagerFactoryBean;
+    }
+
+    @Bean
+    public Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.show_sql", true);
+        return properties;
+    }
+
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter() {
+        HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+        adapter.setDatabase(Database.MYSQL);
+        adapter.setShowSql(true);
+        adapter.setGenerateDdl(true);
+        adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+        return adapter;
+    }
+
+    @Bean
+    public JpaTransactionManager transactionManager() {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        return transactionManager;
     }
 }
