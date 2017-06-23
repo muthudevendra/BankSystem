@@ -23,6 +23,8 @@
     <!--Home-->
     <definition name="login" template="/ebank/login.jsp">
     </definition>
+    <definition name="accessDenied" template="accessDenied.jsp">
+    </definition>
     <definition name="ebank" extends="ebank_base">
         <put-attribute name="body" value="/dashboard/home.jsp" />
     </definition>

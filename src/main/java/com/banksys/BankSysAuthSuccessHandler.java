@@ -35,6 +35,6 @@ public class BankSysAuthSuccessHandler implements AuthenticationSuccessHandler {
         userLoginAudit.setRemoteAddress(request.getRemoteAddr());
         this.userLoginAuditService.save(userLoginAudit);
         request.getSession().setMaxInactiveInterval(SESSION_TIMEOUT_IN_SECONDS);
-        response.sendRedirect("/ebank/home");
+        response.sendRedirect("/ebank");
     }
 }

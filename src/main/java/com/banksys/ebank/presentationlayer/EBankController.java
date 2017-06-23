@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/ebank")
 public class EBankController {
     @GetMapping
-    @PreAuthorize("hasAuthority('EBank@EBank_VIEW')")
+    @PreAuthorize("hasAuthority('ebank@ebank_VIEW')")
     public String getPage(){
         return "ebank";
     }

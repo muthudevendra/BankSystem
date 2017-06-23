@@ -22,7 +22,7 @@ public class ModuleController {
     }
 
     @RequestMapping(value = "/saveModule", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('Module@ModuleManagement_CREATE')")
+    @PreAuthorize("hasRole('module@moduleManagement_CREATE')")
     @ResponseBody
     public Module saveGeneralInformation(@ModelAttribute Module module,
                                          HttpServletRequest request, Principal principal) {
