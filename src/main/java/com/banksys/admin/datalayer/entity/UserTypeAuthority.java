@@ -1,9 +1,6 @@
-package com.banksys.ebank.datalayer.entity;
+package com.banksys.admin.datalayer.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -12,10 +9,11 @@ import java.util.Objects;
  *
  */
 @Entity
-public class Authority {
+@Table(name = "user_type_authority")
+public class UserTypeAuthority {
+    private Integer userTypeAuthorityId;
+    private Integer userTypeId;
     private Integer authorityId;
-    private String authorityName;
-    private Integer moduleId;
     private Integer status;
     private String createdBy;
     private Date createdDate;
@@ -23,6 +21,26 @@ public class Authority {
     private Date lastModifiedDate;
 
     @Id
+    @Column(name = "USER_TYPE_AUTHORITY_ID")
+    public Integer getUserTypeAuthorityId() {
+        return userTypeAuthorityId;
+    }
+
+    public void setUserTypeAuthorityId(Integer userTypeAuthorityId) {
+        this.userTypeAuthorityId = userTypeAuthorityId;
+    }
+
+    @Basic
+    @Column(name = "USER_TYPE_ID")
+    public Integer getUserTypeId() {
+        return userTypeId;
+    }
+
+    public void setUserTypeId(Integer userTypeId) {
+        this.userTypeId = userTypeId;
+    }
+
+    @Basic
     @Column(name = "AUTHORITY_ID")
     public Integer getAuthorityId() {
         return authorityId;
@@ -30,26 +48,6 @@ public class Authority {
 
     public void setAuthorityId(Integer authorityId) {
         this.authorityId = authorityId;
-    }
-
-    @Basic
-    @Column(name = "AUTHORITY_NAME")
-    public String getAuthorityName() {
-        return authorityName;
-    }
-
-    public void setAuthorityName(String authorityName) {
-        this.authorityName = authorityName;
-    }
-
-    @Basic
-    @Column(name = "MODULE_ID")
-    public Integer getModuleId() {
-        return moduleId;
-    }
-
-    public void setModuleId(Integer moduleId) {
-        this.moduleId = moduleId;
     }
 
     @Basic
@@ -106,15 +104,19 @@ public class Authority {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Authority authority = (Authority) o;
-        return Objects.equals(authorityId, authority.authorityId) &&
-                Objects.equals(authorityName, authority.authorityName) &&
-                Objects.equals(moduleId, authority.moduleId) &&
-                Objects.equals(status, authority.status);
+        UserTypeAuthority that = (UserTypeAuthority) o;
+        return Objects.equals(userTypeAuthorityId, that.userTypeAuthorityId) &&
+                Objects.equals(userTypeId, that.userTypeId) &&
+                Objects.equals(authorityId, that.authorityId) &&
+                Objects.equals(status, that.status) &&
+                Objects.equals(createdBy, that.createdBy) &&
+                Objects.equals(createdDate, that.createdDate) &&
+                Objects.equals(lastModifiedBy, that.lastModifiedBy) &&
+                Objects.equals(lastModifiedDate, that.lastModifiedDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(authorityId, authorityName, moduleId, status);
+        return Objects.hash(userTypeAuthorityId, userTypeId, authorityId, status, createdBy, createdDate, lastModifiedBy, lastModifiedDate);
     }
 }

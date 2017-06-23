@@ -1,4 +1,4 @@
-package com.banksys.ebank.datalayer.service;
+package com.banksys.admin.datalayer.service;
 
 import org.springframework.stereotype.Repository;
 
@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface TransferService {
+public interface PaymentService {
 }

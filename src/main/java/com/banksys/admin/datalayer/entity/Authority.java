@@ -1,6 +1,9 @@
-package com.banksys.ebank.datalayer.entity;
+package com.banksys.admin.datalayer.entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -9,11 +12,10 @@ import java.util.Objects;
  *
  */
 @Entity
-@Table(name = "user_type")
-public class UserType {
-    private Integer userTypeId;
-    private Integer userType;
-    private String description;
+public class Authority {
+    private Integer authorityId;
+    private String authorityName;
+    private Integer moduleId;
     private Integer status;
     private String createdBy;
     private Date createdDate;
@@ -21,33 +23,33 @@ public class UserType {
     private Date lastModifiedDate;
 
     @Id
-    @Column(name = "USER_TYPE_ID")
-    public Integer getUserTypeId() {
-        return userTypeId;
+    @Column(name = "AUTHORITY_ID")
+    public Integer getAuthorityId() {
+        return authorityId;
     }
 
-    public void setUserTypeId(Integer userTypeId) {
-        this.userTypeId = userTypeId;
-    }
-
-    @Basic
-    @Column(name = "USER_TYPE")
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
+    public void setAuthorityId(Integer authorityId) {
+        this.authorityId = authorityId;
     }
 
     @Basic
-    @Column(name = "DESCRIPTION")
-    public String getDescription() {
-        return description;
+    @Column(name = "AUTHORITY_NAME")
+    public String getAuthorityName() {
+        return authorityName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAuthorityName(String authorityName) {
+        this.authorityName = authorityName;
+    }
+
+    @Basic
+    @Column(name = "MODULE_ID")
+    public Integer getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(Integer moduleId) {
+        this.moduleId = moduleId;
     }
 
     @Basic
@@ -104,19 +106,15 @@ public class UserType {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserType userType1 = (UserType) o;
-        return Objects.equals(userTypeId, userType1.userTypeId) &&
-                Objects.equals(userType, userType1.userType) &&
-                Objects.equals(description, userType1.description) &&
-                Objects.equals(status, userType1.status) &&
-                Objects.equals(createdBy, userType1.createdBy) &&
-                Objects.equals(createdDate, userType1.createdDate) &&
-                Objects.equals(lastModifiedBy, userType1.lastModifiedBy) &&
-                Objects.equals(lastModifiedDate, userType1.lastModifiedDate);
+        Authority authority = (Authority) o;
+        return Objects.equals(authorityId, authority.authorityId) &&
+                Objects.equals(authorityName, authority.authorityName) &&
+                Objects.equals(moduleId, authority.moduleId) &&
+                Objects.equals(status, authority.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userTypeId, userType, description, status, createdBy, createdDate, lastModifiedBy, lastModifiedDate);
+        return Objects.hash(authorityId, authorityName, moduleId, status);
     }
 }

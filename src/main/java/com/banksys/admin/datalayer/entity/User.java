@@ -1,4 +1,4 @@
-package com.banksys.ebank.datalayer.entity;
+package com.banksys.admin.datalayer.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

@@ -3,6 +3,7 @@ package com.banksys;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -22,7 +23,8 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.banksys"})
-@EnableJpaRepositories("com.banksys.ebank.datalayer.service")
+@EnableJpaRepositories
+@EnableJpaAuditing(dateTimeProviderRef = "dateTimeProvider", auditorAwareRef = "auditorProvider")
 public class RootConfig {
     @Bean
     public DataSource dataSource() {
@@ -40,7 +42,7 @@ public class RootConfig {
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
         localContainerEntityManagerFactoryBean.setJpaProperties(hibernateProperties());
-        localContainerEntityManagerFactoryBean.setPackagesToScan("com.banksys.ebank.datalayer.entity");
+        localContainerEntityManagerFactoryBean.setPackagesToScan("com.banksys.admin.datalayer.entity");
         return localContainerEntityManagerFactoryBean;
     }
 

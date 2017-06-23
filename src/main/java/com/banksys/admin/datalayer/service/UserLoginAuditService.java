@@ -1,6 +1,6 @@
-package com.banksys.ebank.datalayer.service;
+package com.banksys.admin.datalayer.service;
 
-import com.banksys.ebank.datalayer.entity.UserLoginAudit;
+import com.banksys.admin.datalayer.entity.UserLoginAudit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

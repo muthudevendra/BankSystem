@@ -8,7 +8,7 @@
 <%@ include file="/layout/include.jsp"%>
 <div class="panel panel-default">
     <div class="panel-body">
-        <form action="moduleManagement/saveModule" method="post">
+        <form role="form" action="moduleManagement/saveModule" method="post">
             <div class="form-group col-md-6">
                 <label for="moduleName">Module Name</label>
                 <input type="text" name="moduleName" class="form-control" id="moduleName">
@@ -17,6 +17,7 @@
                 <label for="description">Description</label>
                 <input type="text" name="description" class="form-control" id="description">
             </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button type="submit" class="btn btn-default"
                     <sec:authorize
                             access="!hasAuthority('module@moduleManagement_CREATE')">

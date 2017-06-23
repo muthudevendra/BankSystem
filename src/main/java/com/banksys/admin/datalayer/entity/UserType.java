@@ -1,9 +1,6 @@
-package com.banksys.ebank.datalayer.entity;
+package com.banksys.admin.datalayer.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -12,9 +9,10 @@ import java.util.Objects;
  *
  */
 @Entity
-public class Module {
-    private Integer moduleId;
-    private String moduleName;
+@Table(name = "user_type")
+public class UserType {
+    private Integer userTypeId;
+    private Integer userType;
     private String description;
     private Integer status;
     private String createdBy;
@@ -23,23 +21,23 @@ public class Module {
     private Date lastModifiedDate;
 
     @Id
-    @Column(name = "MODULE_ID")
-    public Integer getModuleId() {
-        return moduleId;
+    @Column(name = "USER_TYPE_ID")
+    public Integer getUserTypeId() {
+        return userTypeId;
     }
 
-    public void setModuleId(Integer moduleId) {
-        this.moduleId = moduleId;
+    public void setUserTypeId(Integer userTypeId) {
+        this.userTypeId = userTypeId;
     }
 
     @Basic
-    @Column(name = "MODULE_NAME")
-    public String getModuleName() {
-        return moduleName;
+    @Column(name = "USER_TYPE")
+    public Integer getUserType() {
+        return userType;
     }
 
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
+    public void setUserType(Integer userType) {
+        this.userType = userType;
     }
 
     @Basic
@@ -106,19 +104,19 @@ public class Module {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Module module = (Module) o;
-        return Objects.equals(moduleId, module.moduleId) &&
-                Objects.equals(moduleName, module.moduleName) &&
-                Objects.equals(description, module.description) &&
-                Objects.equals(status, module.status) &&
-                Objects.equals(createdBy, module.createdBy) &&
-                Objects.equals(createdDate, module.createdDate) &&
-                Objects.equals(lastModifiedBy, module.lastModifiedBy) &&
-                Objects.equals(lastModifiedDate, module.lastModifiedDate);
+        UserType userType1 = (UserType) o;
+        return Objects.equals(userTypeId, userType1.userTypeId) &&
+                Objects.equals(userType, userType1.userType) &&
+                Objects.equals(description, userType1.description) &&
+                Objects.equals(status, userType1.status) &&
+                Objects.equals(createdBy, userType1.createdBy) &&
+                Objects.equals(createdDate, userType1.createdDate) &&
+                Objects.equals(lastModifiedBy, userType1.lastModifiedBy) &&
+                Objects.equals(lastModifiedDate, userType1.lastModifiedDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(moduleId, moduleName, description, status, createdBy, createdDate, lastModifiedBy, lastModifiedDate);
+        return Objects.hash(userTypeId, userType, description, status, createdBy, createdDate, lastModifiedBy, lastModifiedDate);
     }
 }

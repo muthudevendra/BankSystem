@@ -1,7 +1,7 @@
 package com.banksys;
 
-import com.banksys.ebank.datalayer.entity.UserLoginAudit;
-import com.banksys.ebank.datalayer.service.UserLoginAuditService;
+import com.banksys.admin.datalayer.entity.UserLoginAudit;
+import com.banksys.admin.datalayer.service.UserLoginAuditService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
