@@ -14,8 +14,8 @@
         <!-- BEGIN NAVIGATION -->
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
-                <li class="active">
-                    <a href="eBankingNav.html">Home</a>
+                <li>
+                    <a href="#"><i class="fa fa-home"></i></a>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
@@ -35,15 +35,16 @@
                     <ul class="dropdown-menu">
                         <li><a href="#">Own Account</a></li>
                         <li><a href="#">Third-Party Transfer</a></li>
+                        <li><a href="#">Scheduled Transfer</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                         Bill Payments
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Pay Bills</a></li>
-                        <li><a href="#">Share Tradings</a></li>
+                        <li class="active"><a href="#">Pay Bills</a></li>
+                        <li><a href="#">Payment History</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
