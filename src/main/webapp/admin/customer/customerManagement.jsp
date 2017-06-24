@@ -177,20 +177,43 @@
                 </div>
                 <br/>
                 <div class="row form-group">
-                    <h5>
-                        <div class="col-md-1 col-md-offset-1">
-                            <span class="label label-info">Created Date <span class="badge badge-pill badge-default"> Created Date </span></span>
+                    <hr/>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="modifiedBy">Last Modified By</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="modifiedBy">Lakshitha</label>
+                            </div>
                         </div>
-                        <div class="col-md-1 col-md-offset-2">
-                            <span class="label label-info">Created By <span class="badge badge-pill badge-default"> Lakshitha </span></span>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="modifiedDate">Last Modified Date</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="modifiedDate">2017/06/26</label>
+                            </div>
                         </div>
-                        <div class="col-md-1 col-md-offset-2">
-                            <span class="label label-info">Last Modified Date <span class="badge badge-pill badge-default"> Date </span></span>
+                    </div>
+                    <div class="col-md-5 col-sm-offset-2">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="createdBy">Created By</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="createdBy">Lakshitha</label>
+                            </div>
                         </div>
-                        <div class="col-md-1 col-md-offset-2">
-                            <span class="label label-info">Last Modified By <span class="badge badge-pill badge-default"> Lakshitha </span></span>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="createdDate">Created Date</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="createdDate">2017/06/24</label>
+                            </div>
                         </div>
-                    </h5>
+                    </div>
                 </div>
                 <br/>
 

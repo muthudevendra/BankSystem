@@ -1,28 +1,40 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lakshithar
-  Date: 6/21/2017
-  Time: 12:08 PM
+  User: Muthu Devendra
+  Date: 6/24/2017
+  Time: 8:54 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp"%>
-<script type="text/javascript" src="../script/moduleManagement.js"></script>
-<div class="panel panel-default">
+<br/>
+<div class="panel">
     <div class="panel-body">
         <div class="col-lg-8 col-lg-offset-2">
             <div id="legend">
                 <legend>Authority Management</legend>
             </div>
             <br>
-            <form role="form" action="moduleManagement/saveModule" method="post">
+            <form role="form">
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
-                        <label for="moduleName">Module Name</label>
+                        <label for="authorityName">Authority Name</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="moduleName" class="form-control" id="moduleName">
+                        <input type="text" name="authorityName" class="form-control" id="authorityName">
                     </div>
                 </div>
+
+                <div class="row form-group">
+                    <div class="col-lg-3 col-md-offset-2">
+                        <label for="module">Module</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <select class="form-control" id="module">
+                            <option>Select Module</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="description">Description</label>
@@ -31,6 +43,7 @@
                         <input type="text" name="description" class="form-control" id="description">
                     </div>
                 </div>
+                <br/>
 
                 <div class="row form-group">
                     <hr/>
@@ -74,24 +87,19 @@
 
                 <br/>
 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row">
                     <div class="col-md-1 col-md-offset-8">
-                        <button type="submit" class="btn btn-default col-md-offset-10"
-                                <sec:authorize
-                                        access="!hasAuthority('admin@moduleManagement_CREATE')">
-                                    disabled="disabled"
-                                </sec:authorize>>Save</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                     </div>
                     <div class="col-md-1">
                         <button type="submit" class="btn btn-default">Update</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default">Delete</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
+
