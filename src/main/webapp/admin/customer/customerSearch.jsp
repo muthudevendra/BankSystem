@@ -20,7 +20,7 @@
         </div>
 
         <div class="content-page col-md-9 col-md-offset-1">
-            <form role="form">
+            <form action="customerSearch/searchCustomers" role="form">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
@@ -83,15 +83,22 @@
                 <thead>
                     <tr>
                         <th>NIC</th>
-                        <th>Passport ID</th>
+                        <th>Passport No</th>
                         <th>Full Name</th>
                         <th>Gender</th>
                         <th>Address</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    </tr>
+                    <c:forEach items="${customerList}" var="customer">
+                        <tr>
+                            <td>${customer.nic}</td>
+                            <td>${customer.passportNo}</td>
+                            <td>${customer.fullName}</td>
+                            <td>${customer.gender}</td>
+                            <td>${customer.addressBook.addressLine1}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

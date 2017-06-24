@@ -42,6 +42,9 @@
     <definition name="customerManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/customer/customerManagement.jsp"/>
     </definition>
+    <definition name="customerSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/customer/customerSearch.jsp"/>
+    </definition>
 
 
     <!--Ebank-->

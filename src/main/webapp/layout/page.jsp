@@ -43,6 +43,9 @@
 
     <script src="${pageContext.request.contextPath}/layout/assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/layout/assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+
+    <script src="${pageContext.request.contextPath}/layout/assets/plugins/operations.js" type="text/javascript"></script>
+
 </head>
 <body>
     <div id="header">

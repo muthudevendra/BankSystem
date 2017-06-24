@@ -22,6 +22,7 @@
 
         <div class="content-page col-md-9">
             <form role="form" action="customerManagement/saveCustomer" method="post">
+                <input type="hidden" name="customerId" id="customerId" value="${customer.customerId eq null ? '' : customer.customerId}">
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="nic">NIC Number</label>
@@ -176,7 +177,8 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row form-group">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <div class="row form-group updateOperation" style="display: none">
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
@@ -217,15 +219,14 @@
                 </div>
                 <br/>
 
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row">
-                    <div class="col-md-1 col-md-offset-8">
+                    <div class="col-md-1 col-md-offset-8 createOperation">
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 updateOperation" style="display: none">
                         <button type="submit" class="btn btn-default">Update</button>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 updateOperation" style="display: none">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
                 </div>

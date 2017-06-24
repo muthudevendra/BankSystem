@@ -19,7 +19,7 @@ import java.util.Objects;
 @Table(name = "address_book")
 @EntityListeners(AuditingEntityListener.class)
 public class AddressBook {
-    private int addressBookId;
+    private Integer addressBookId;
     private String addressLine1;
     private String addressLine2;
     private String addressLine3;
@@ -28,7 +28,7 @@ public class AddressBook {
     private String telephone;
     private String mobile;
     private String email;
-    private int status;
+    private Integer status;
     private String createdBy;
     private Date createdDate;
     private String lastModifiedBy;
@@ -37,11 +37,11 @@ public class AddressBook {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ADDRESS_BOOK_ID")
-    public int getAddressBookId() {
+    public Integer getAddressBookId() {
         return addressBookId;
     }
 
-    public void setAddressBookId(int addressBookId) {
+    public void setAddressBookId(Integer addressBookId) {
         this.addressBookId = addressBookId;
     }
 
@@ -127,11 +127,11 @@ public class AddressBook {
 
     @Basic
     @Column(name = "STATUS")
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

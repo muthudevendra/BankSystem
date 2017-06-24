@@ -5,5 +5,9 @@
 $(function () {
     $('.navUrl').removeClass('active')
     $('#customerManagement').addClass('active');
-    $( ".datepicker" ).datepicker();
+    $(".datepicker").datepicker();
+    var customerId = $('#customerId').val();
+    if(customerId != ''){
+        transformToUpdate();
+    }
 });

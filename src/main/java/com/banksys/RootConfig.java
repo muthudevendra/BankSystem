@@ -50,6 +50,7 @@ public class RootConfig {
     public Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", true);
+        properties.put("hibernate.enable_lazy_load_no_trans", true);
         return properties;
     }
 

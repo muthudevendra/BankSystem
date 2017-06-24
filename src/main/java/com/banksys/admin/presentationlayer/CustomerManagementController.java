@@ -1,6 +1,7 @@
 package com.banksys.admin.presentationlayer;
 
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
+import com.banksys.common.ResponseObject;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.util.enums.Gender;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -38,6 +39,14 @@ public class CustomerManagementController {
     public String saveCustomer(@ModelAttribute Customer customer, Model model){
         this.customerManagementControllerManager.saveCustomer(customer);
         model.addAttribute("customer", customer);
+        return "customerManagement";
+    }
+
+    @RequestMapping(value = "/deleteCustomer", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('admin@customerManagement_DELETE')")
+    public String deleteCustomer(@RequestParam("customerId") Integer customerId, Model model){
+        this.customerManagementControllerManager.deleteCustomer(customerId);
+        model.addAttribute("customer", new Customer());
         return "customerManagement";
     }
 

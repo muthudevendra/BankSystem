@@ -16,14 +16,14 @@ import java.util.Date;
 @Entity
 @Table(name = "account_type")
 public class AccountType {
-    private int accountTypeId;
+    private Integer accountTypeId;
     private String accountTypeName;
     private String description;
     private Double minDeposit;
     private Integer minAge;
     private Integer maxAge;
     private Double annualCost;
-    private int status;
+    private Integer status;
     private Date createdDate;
     private String createdBy;
     private Date lastModifiedDate;
@@ -32,11 +32,11 @@ public class AccountType {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ACCOUNT_TYPE_ID")
-    public int getAccountTypeId() {
+    public Integer getAccountTypeId() {
         return accountTypeId;
     }
 
-    public void setAccountTypeId(int accountTypeId) {
+    public void setAccountTypeId(Integer accountTypeId) {
         this.accountTypeId = accountTypeId;
     }
 
@@ -102,11 +102,11 @@ public class AccountType {
 
     @Basic
     @Column(name = "STATUS")
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

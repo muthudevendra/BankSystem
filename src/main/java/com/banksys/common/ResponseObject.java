@@ -18,6 +18,9 @@ public class ResponseObject implements Serializable {
         this.status = status;
     }
 
+    public ResponseObject() {
+    }
+
     public Object getObject() {
         return object;
     }

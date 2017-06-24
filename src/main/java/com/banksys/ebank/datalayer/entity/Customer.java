@@ -19,7 +19,7 @@ import java.util.Objects;
 @Table(name = "customer")
 @EntityListeners(AuditingEntityListener.class)
 public class Customer {
-    private int customerId;
+    private Integer customerId;
     private String nic;
     private Date nicIssueDate;
     private String passportNo;
@@ -27,14 +27,14 @@ public class Customer {
     private String firstName;
     private String middleName;
     private String lastName;
-    private int addressBookId;
-    private int userId;
+    private Integer addressBookId;
+    private Integer userId;
     private Date dateOfBirth;
-    private int gender;
+    private Integer gender;
     private Double monthlyIncome;
     private String occupation;
     private Byte incomeTaxPayStatus;
-    private int status;
+    private Integer status;
     private Date createdDate;
     private String createdBy;
     private Date lastModifiedDate;
@@ -45,11 +45,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "CUSTOMER_ID")
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -125,21 +125,21 @@ public class Customer {
 
     @Basic
     @Column(name = "ADDRESS_BOOK_ID", insertable = false, updatable = false)
-    public int getAddressBookId() {
+    public Integer getAddressBookId() {
         return addressBookId;
     }
 
-    public void setAddressBookId(int addressBookId) {
+    public void setAddressBookId(Integer addressBookId) {
         this.addressBookId = addressBookId;
     }
 
     @Basic
     @Column(name = "USER_ID")
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -155,11 +155,11 @@ public class Customer {
 
     @Basic
     @Column(name = "GENDER")
-    public int getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
@@ -195,11 +195,11 @@ public class Customer {
 
     @Basic
     @Column(name = "STATUS")
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

@@ -15,13 +15,13 @@ import java.util.Date;
  */
 @Entity
 public class Account {
-    private int accountId;
-    private int accountTypeId;
-    private int interestCalMethod;
+    private Integer accountId;
+    private Integer accountTypeId;
+    private Integer interestCalMethod;
     private byte mobileBankAvailability;
     private byte onlineBankAvailability;
-    private int passbookAvailability;
-    private int status;
+    private Integer passbookAvailability;
+    private Integer status;
     private String createdBy;
     private Date createdDate;
     private String lastModifiedBy;
@@ -30,31 +30,31 @@ public class Account {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ACCOUNT_ID")
-    public int getAccountId() {
+    public Integer getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(Integer accountId) {
         this.accountId = accountId;
     }
 
     @Basic
     @Column(name = "ACCOUNT_TYPE_ID")
-    public int getAccountTypeId() {
+    public Integer getAccountTypeId() {
         return accountTypeId;
     }
 
-    public void setAccountTypeId(int accountTypeId) {
+    public void setAccountTypeId(Integer accountTypeId) {
         this.accountTypeId = accountTypeId;
     }
 
     @Basic
     @Column(name = "INTEREST_CAL_METHOD")
-    public int getInterestCalMethod() {
+    public Integer getInterestCalMethod() {
         return interestCalMethod;
     }
 
-    public void setInterestCalMethod(int interestCalMethod) {
+    public void setInterestCalMethod(Integer interestCalMethod) {
         this.interestCalMethod = interestCalMethod;
     }
 
@@ -80,21 +80,21 @@ public class Account {
 
     @Basic
     @Column(name = "PASSBOOK_AVAILABILITY")
-    public int getPassbookAvailability() {
+    public Integer getPassbookAvailability() {
         return passbookAvailability;
     }
 
-    public void setPassbookAvailability(int passbookAvailability) {
+    public void setPassbookAvailability(Integer passbookAvailability) {
         this.passbookAvailability = passbookAvailability;
     }
 
     @Basic
     @Column(name = "STATUS")
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

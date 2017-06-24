@@ -30,4 +30,22 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
         responseObject.setMessage("Customer Saved Successfully");
         return responseObject;
     }
+
+    @Override
+    public ResponseObject deleteCustomer(Integer customerId) {
+        Customer dbCustomer = this.customerService.findOne(customerId);
+        ResponseObject responseObject = new ResponseObject();
+        if(dbCustomer == null){
+            responseObject.setStatus(false);
+            responseObject.setMessage("Customer already deleted");
+        }
+        else{
+            dbCustomer.setStatus(MasterDataStatus.DELETED.getStatusSeq());
+            dbCustomer = this.customerService.save(dbCustomer);
+            responseObject.setStatus(true);
+            responseObject.setMessage("Customer Deleted Successfully");
+            responseObject.setObject(dbCustomer);
+        }
+        return responseObject;
+    }
 }

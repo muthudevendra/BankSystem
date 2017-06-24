@@ -16,13 +16,13 @@ import java.util.Date;
 @Entity
 @Table(name = "customer_account")
 public class CustomerAccount {
-    private int customerAccountId;
-    private int accountId;
+    private Integer customerAccountId;
+    private Integer accountId;
     private Date startDate;
     private Date endDate;
     private double availableBalance;
-    private int customerId;
-    private int status;
+    private Integer customerId;
+    private Integer status;
     private String createdBy;
     private Date createdDate;
     private String lastModifiedBy;
@@ -31,21 +31,21 @@ public class CustomerAccount {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "CUSTOMER_ACCOUNT_ID")
-    public int getCustomerAccountId() {
+    public Integer getCustomerAccountId() {
         return customerAccountId;
     }
 
-    public void setCustomerAccountId(int customerAccountId) {
+    public void setCustomerAccountId(Integer customerAccountId) {
         this.customerAccountId = customerAccountId;
     }
 
     @Basic
     @Column(name = "ACCOUNT_ID")
-    public int getAccountId() {
+    public Integer getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(Integer accountId) {
         this.accountId = accountId;
     }
 
@@ -81,21 +81,21 @@ public class CustomerAccount {
 
     @Basic
     @Column(name = "CUSTOMER_ID")
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
     @Basic
     @Column(name = "STATUS")
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
