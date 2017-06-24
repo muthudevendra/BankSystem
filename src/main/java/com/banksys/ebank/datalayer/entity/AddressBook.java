@@ -5,9 +5,11 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -15,6 +17,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "address_book")
+@EntityListeners(AuditingEntityListener.class)
 public class AddressBook {
     private int addressBookId;
     private String addressLine1;
@@ -24,6 +27,7 @@ public class AddressBook {
     private String country;
     private String telephone;
     private String mobile;
+    private String email;
     private int status;
     private String createdBy;
     private Date createdDate;
@@ -112,6 +116,16 @@ public class AddressBook {
     }
 
     @Basic
+    @Column(name = "EMAIL")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Basic
     @Column(name = "STATUS")
     public int getStatus() {
         return status;
@@ -171,43 +185,21 @@ public class AddressBook {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         AddressBook that = (AddressBook) o;
-
-        if (addressBookId != that.addressBookId) return false;
-        if (status != that.status) return false;
-        if (addressLine1 != null ? !addressLine1.equals(that.addressLine1) : that.addressLine1 != null) return false;
-        if (addressLine2 != null ? !addressLine2.equals(that.addressLine2) : that.addressLine2 != null) return false;
-        if (addressLine3 != null ? !addressLine3.equals(that.addressLine3) : that.addressLine3 != null) return false;
-        if (city != null ? !city.equals(that.city) : that.city != null) return false;
-        if (country != null ? !country.equals(that.country) : that.country != null) return false;
-        if (telephone != null ? !telephone.equals(that.telephone) : that.telephone != null) return false;
-        if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
-        if (createdBy != null ? !createdBy.equals(that.createdBy) : that.createdBy != null) return false;
-        if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (lastModifiedBy != null ? !lastModifiedBy.equals(that.lastModifiedBy) : that.lastModifiedBy != null)
-            return false;
-        if (lastModifiedDate != null ? !lastModifiedDate.equals(that.lastModifiedDate) : that.lastModifiedDate != null)
-            return false;
-
-        return true;
+        return addressBookId == that.addressBookId &&
+                status == that.status &&
+                Objects.equals(addressLine1, that.addressLine1) &&
+                Objects.equals(addressLine2, that.addressLine2) &&
+                Objects.equals(addressLine3, that.addressLine3) &&
+                Objects.equals(city, that.city) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(telephone, that.telephone) &&
+                Objects.equals(mobile, that.mobile) &&
+                Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        int result = addressBookId;
-        result = 31 * result + (addressLine1 != null ? addressLine1.hashCode() : 0);
-        result = 31 * result + (addressLine2 != null ? addressLine2.hashCode() : 0);
-        result = 31 * result + (addressLine3 != null ? addressLine3.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
-        result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
-        result = 31 * result + status;
-        result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
-        result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (lastModifiedBy != null ? lastModifiedBy.hashCode() : 0);
-        result = 31 * result + (lastModifiedDate != null ? lastModifiedDate.hashCode() : 0);
-        return result;
+        return Objects.hash(addressBookId, addressLine1, addressLine2, addressLine3, city, country, telephone, mobile, email, status);
     }
 }

@@ -5,15 +5,19 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
  *
  */
 @Entity
+@Table(name = "customer")
+@EntityListeners(AuditingEntityListener.class)
 public class Customer {
     private int customerId;
     private String nic;
@@ -120,7 +124,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "ADDRESS_BOOK_ID")
+    @Column(name = "ADDRESS_BOOK_ID", insertable = false, updatable = false)
     public int getAddressBookId() {
         return addressBookId;
     }
@@ -245,7 +249,7 @@ public class Customer {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ADDRESS_BOOK_ID")
     public AddressBook getAddressBook() {
         return addressBook;
@@ -259,62 +263,28 @@ public class Customer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Customer customer = (Customer) o;
-
-        if (customerId != customer.customerId) return false;
-        if (addressBookId != customer.addressBookId) return false;
-        if (userId != customer.userId) return false;
-        if (gender != customer.gender) return false;
-        if (status != customer.status) return false;
-        if (nic != null ? !nic.equals(customer.nic) : customer.nic != null) return false;
-        if (nicIssueDate != null ? !nicIssueDate.equals(customer.nicIssueDate) : customer.nicIssueDate != null)
-            return false;
-        if (passportNo != null ? !passportNo.equals(customer.passportNo) : customer.passportNo != null) return false;
-        if (fullName != null ? !fullName.equals(customer.fullName) : customer.fullName != null) return false;
-        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
-        if (middleName != null ? !middleName.equals(customer.middleName) : customer.middleName != null) return false;
-        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
-        if (dateOfBirth != null ? !dateOfBirth.equals(customer.dateOfBirth) : customer.dateOfBirth != null)
-            return false;
-        if (monthlyIncome != null ? !monthlyIncome.equals(customer.monthlyIncome) : customer.monthlyIncome != null)
-            return false;
-        if (occupation != null ? !occupation.equals(customer.occupation) : customer.occupation != null) return false;
-        if (incomeTaxPayStatus != null ? !incomeTaxPayStatus.equals(customer.incomeTaxPayStatus) : customer.incomeTaxPayStatus != null)
-            return false;
-        if (createdDate != null ? !createdDate.equals(customer.createdDate) : customer.createdDate != null)
-            return false;
-        if (createdBy != null ? !createdBy.equals(customer.createdBy) : customer.createdBy != null) return false;
-        if (lastModifiedDate != null ? !lastModifiedDate.equals(customer.lastModifiedDate) : customer.lastModifiedDate != null)
-            return false;
-        if (lastModifiedBy != null ? !lastModifiedBy.equals(customer.lastModifiedBy) : customer.lastModifiedBy != null)
-            return false;
-
-        return true;
+        return customerId == customer.customerId &&
+                addressBookId == customer.addressBookId &&
+                userId == customer.userId &&
+                gender == customer.gender &&
+                status == customer.status &&
+                Objects.equals(nic, customer.nic) &&
+                Objects.equals(nicIssueDate, customer.nicIssueDate) &&
+                Objects.equals(passportNo, customer.passportNo) &&
+                Objects.equals(fullName, customer.fullName) &&
+                Objects.equals(firstName, customer.firstName) &&
+                Objects.equals(middleName, customer.middleName) &&
+                Objects.equals(lastName, customer.lastName) &&
+                Objects.equals(dateOfBirth, customer.dateOfBirth) &&
+                Objects.equals(monthlyIncome, customer.monthlyIncome) &&
+                Objects.equals(occupation, customer.occupation) &&
+                Objects.equals(incomeTaxPayStatus, customer.incomeTaxPayStatus) &&
+                Objects.equals(addressBook, customer.addressBook);
     }
 
     @Override
     public int hashCode() {
-        int result = customerId;
-        result = 31 * result + (nic != null ? nic.hashCode() : 0);
-        result = 31 * result + (nicIssueDate != null ? nicIssueDate.hashCode() : 0);
-        result = 31 * result + (passportNo != null ? passportNo.hashCode() : 0);
-        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + addressBookId;
-        result = 31 * result + userId;
-        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
-        result = 31 * result + gender;
-        result = 31 * result + (monthlyIncome != null ? monthlyIncome.hashCode() : 0);
-        result = 31 * result + (occupation != null ? occupation.hashCode() : 0);
-        result = 31 * result + (incomeTaxPayStatus != null ? incomeTaxPayStatus.hashCode() : 0);
-        result = 31 * result + status;
-        result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
-        result = 31 * result + (lastModifiedDate != null ? lastModifiedDate.hashCode() : 0);
-        result = 31 * result + (lastModifiedBy != null ? lastModifiedBy.hashCode() : 0);
-        return result;
+        return Objects.hash(customerId, nic, nicIssueDate, passportNo, fullName, firstName, middleName, lastName, addressBookId, userId, dateOfBirth, gender, monthlyIncome, occupation, incomeTaxPayStatus, status, addressBook);
     }
 }

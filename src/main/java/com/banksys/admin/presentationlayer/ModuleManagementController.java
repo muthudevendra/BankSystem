@@ -28,12 +28,13 @@ public class ModuleManagementController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('admin@moduleManagement_VIEW')")
     public String getPage(){
         return "moduleManagement";
     }
 
     @RequestMapping(value = "/saveModule", method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('module@moduleManagement_CREATE')")
+    @PreAuthorize("hasAuthority('admin@moduleManagement_CREATE')")
     @ResponseBody
     public ResponseObject saveModule(@ModelAttribute Module module,
                                      HttpServletRequest request, Principal principal) {

@@ -20,7 +20,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button type="submit" class="btn btn-default"
                     <sec:authorize
-                            access="!hasAuthority('module@moduleManagement_CREATE')">
+                            access="!hasAuthority('admin@moduleManagement_CREATE')">
                         disabled="disabled"
                     </sec:authorize>>Submit</button>
         </form>
