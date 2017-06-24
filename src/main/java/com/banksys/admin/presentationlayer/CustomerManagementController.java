@@ -1,10 +1,9 @@
 package com.banksys.admin.presentationlayer;
 
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
-import com.banksys.common.ResponseObject;
 import com.banksys.ebank.datalayer.entity.Customer;
+import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.enums.Gender;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -20,10 +19,13 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerManagementController {
 
     private final CustomerManagementControllerManager customerManagementControllerManager;
+    private final CustomerService customerService;
 
     @Autowired
-    public CustomerManagementController(CustomerManagementControllerManager customerManagementControllerManager) {
+    public CustomerManagementController(CustomerManagementControllerManager customerManagementControllerManager,
+                                        CustomerService customerService) {
         this.customerManagementControllerManager = customerManagementControllerManager;
+        this.customerService = customerService;
     }
 
     @GetMapping
@@ -31,6 +33,13 @@ public class CustomerManagementController {
     public String getPage(Model model){
         model = this.getPageData(model);
         model.addAttribute("customer", new Customer());
+        return "customerManagement";
+    }
+
+    @RequestMapping(params = "customerId", method = RequestMethod.GET)
+    public String loadPage(@RequestParam("customerId") Integer customerId, Model model){
+        model = this.getPageData(model);
+        model.addAttribute("customer", this.customerService.findOne(customerId));
         return "customerManagement";
     }
 

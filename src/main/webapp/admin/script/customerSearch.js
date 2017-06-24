@@ -6,6 +6,6 @@ $(function () {
     $('#customerSearch').addClass('active');
 });
 
-function load_customer() {
-    
+function load_customer(customerId) {
+    window.open('#/admin/customer/customerManagement?customerId=' + customerId, '_blank');
 }
