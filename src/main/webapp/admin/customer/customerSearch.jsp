@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp"%>
-<script type="text/javascript" src="../script/customerSearch.js"></script>
+<script type="text/javascript" src="/admin/script/customerSearch.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -79,7 +79,7 @@
             <br/>
         </div>
 
-        <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
+        <div class="col-md-9 col-md-offset-2">
             <table class="table datatable">
                 <thead>
                     <tr>

@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp"%>
-<script type="text/javascript" src="../script/customerManagement.js"></script>
+<script type="text/javascript" src="/admin/script/customerManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -186,7 +186,7 @@
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedBy">Lakshitha</label>
+                                <label id="modifiedBy">${customer.lastModifiedBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -194,7 +194,7 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedDate">2017/06/26</label>
+                                <label id="modifiedDate"><fmt:formatDate value="${customer.lastModifiedDate}" pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdBy">Lakshitha</label>
+                                <label id="createdBy">${customer.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -212,7 +212,7 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">2017/06/24</label>
+                                <label id="createdDate"><fmt:formatDate value="${customer.createdDate}" pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
                     </div>

@@ -37,7 +37,7 @@
 
     <!--Admin-->
     <definition name="moduleManagement" extends="admin_base">
-        <put-attribute name="body" value="/admin/module/moduleManagement.jsp"/>
+        <put-attribute name="body" value="/admin/config/moduleManagement.jsp"/>
     </definition>
     <definition name="customerManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/customer/customerManagement.jsp"/>
