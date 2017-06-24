@@ -45,6 +45,7 @@
     <script src="${pageContext.request.contextPath}/layout/assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
 
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/operations.js" type="text/javascript"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.js"></script>
 
 </head>
 <body>

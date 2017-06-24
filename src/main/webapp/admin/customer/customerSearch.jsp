@@ -80,7 +80,7 @@
         </div>
 
         <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
                     <tr>
                         <th>NIC</th>

@@ -4,6 +4,7 @@
 $(function () {
     $('.navUrl').removeClass('active')
     $('#customerSearch').addClass('active');
+    $('.datatable').DataTable();
 });
 
 function load_customer(customerId) {
