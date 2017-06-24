@@ -92,14 +92,11 @@
                         <label>Gender</label>
                     </div>
                     <div class="col-lg-3">
-                        <div class="radio radio-info radio-inline">
-                            <input type="radio" id="female" value="1" name="gender" checked="">
-                            <label for="female">Female</label>
-                        </div>
-                        <div class="radio radio-info radio-inline">
-                            <input type="radio" id="male" value="0" name="gender">
-                            <label for="male">Male </label>
-                        </div>
+                        <select class="form-control" id="gender">
+                            <option>Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -179,8 +176,36 @@
                     </div>
                 </div>
                 <br/>
+                <div class="row form-group">
+                    <h5>
+                        <div class="col-md-1 col-md-offset-1">
+                            <span class="label label-info">Created Date <span class="badge badge-pill badge-default"> Created Date </span></span>
+                        </div>
+                        <div class="col-md-1 col-md-offset-2">
+                            <span class="label label-info">Created By <span class="badge badge-pill badge-default"> Lakshitha </span></span>
+                        </div>
+                        <div class="col-md-1 col-md-offset-2">
+                            <span class="label label-info">Last Modified Date <span class="badge badge-pill badge-default"> Date </span></span>
+                        </div>
+                        <div class="col-md-1 col-md-offset-2">
+                            <span class="label label-info">Last Modified By <span class="badge badge-pill badge-default"> Lakshitha </span></span>
+                        </div>
+                    </h5>
+                </div>
+                <br/>
+
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                <button type="submit" class="btn btn-success col-md-offset-10">Submit</button>
+                <div class="row">
+                    <div class="col-md-1 col-md-offset-8">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-default">Update</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
