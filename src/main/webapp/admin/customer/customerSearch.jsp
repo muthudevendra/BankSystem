@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp"%>
+<script type="text/javascript" src="../script/customerSearch.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -91,7 +92,7 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${customerList}" var="customer">
-                        <tr>
+                        <tr onclick="load_customer(${customer.customerId})">
                             <td>${customer.nic}</td>
                             <td>${customer.passportNo}</td>
                             <td>${customer.fullName}</td>

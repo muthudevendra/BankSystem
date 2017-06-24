@@ -5,3 +5,7 @@ $(function () {
     $('.navUrl').removeClass('active')
     $('#customerSearch').addClass('active');
 });
+
+function load_customer() {
+    
+}
