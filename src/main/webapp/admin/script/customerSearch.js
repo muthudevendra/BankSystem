@@ -4,9 +4,10 @@
 $(function () {
     $('.navUrl').removeClass('active')
     $('#customerSearch').addClass('active');
-    $('.datatable').DataTable();
 });
 
 function load_customer(customerId) {
+    alert('abc');
     window.open('#/admin/customer/customerManagement?customerId=' + customerId, '_blank');
+    $('.datatable').DataTable();
 }

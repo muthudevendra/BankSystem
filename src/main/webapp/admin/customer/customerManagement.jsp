@@ -21,7 +21,7 @@
         </div>
 
         <div class="content-page col-md-9">
-            <form role="form" action="customerManagement/saveCustomer" method="post">
+            <form role="form" action="/admin/customer/customerManagement/saveCustomer" method="post">
                 <input type="hidden" name="customerId" id="customerId" value="${customer.customerId eq null ? '' : customer.customerId}">
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">

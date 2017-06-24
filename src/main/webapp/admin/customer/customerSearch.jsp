@@ -21,7 +21,7 @@
         </div>
 
         <div class="content-page col-md-9 col-md-offset-1">
-            <form action="customerSearch/searchCustomers" role="form">
+            <form action="/admin/customer/customerSearch/searchCustomers" role="form">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
