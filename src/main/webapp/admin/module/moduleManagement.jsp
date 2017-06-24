@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp"%>
+<script type="text/javascript" src="../script/moduleManagement.js"></script>
 <div class="panel panel-default">
     <div class="panel-body">
         <form role="form" action="moduleManagement/saveModule" method="post">

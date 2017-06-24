@@ -4,6 +4,5 @@
 
 $(function () {
     $('.navUrl').removeClass('active')
-    $('#customerManagement').addClass('active');
-    $( ".datepicker" ).datepicker();
+    $('#moduleManagement').addClass('active');
 });
