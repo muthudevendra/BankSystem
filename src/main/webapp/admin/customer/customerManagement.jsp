@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp"%>
-
+<script type="text/javascript" src="../script/customerManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -33,7 +33,9 @@
                         <label for="nicIssueDate">Issue Date</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="nicIssueDate" <fmt:formatDate value="${customer.nicIssueDate}" pattern="yyyy-MM-dd" /> class="form-control" id="nicIssueDate">
+                        <input type="text" name="nicIssueDate"
+                        <fmt:formatDate value="${customer.nicIssueDate}" pattern="yyyy-MM-dd" />
+                               class="form-control datepicker" id="nicIssueDate">
                     </div>
                 </div>
 
