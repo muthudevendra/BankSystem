@@ -42,7 +42,7 @@ public class RootConfig {
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
         localContainerEntityManagerFactoryBean.setJpaProperties(hibernateProperties());
-        localContainerEntityManagerFactoryBean.setPackagesToScan("com.banksys.admin.datalayer.entity");
+        localContainerEntityManagerFactoryBean.setPackagesToScan("com.banksys.admin.datalayer.entity", "com.banksys.ebank.datalayer.entity");
         return localContainerEntityManagerFactoryBean;
     }
 

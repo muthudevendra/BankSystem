@@ -22,8 +22,8 @@
                         My Account
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Account Inquery</a></li>
-                        <li><a href="#">Account Statement</a></li>
+                        <li><a href="/ebank/account/accountInquiry">Account Inquery</a></li>
+                        <li><a href="/ebank/account/accountStatement">Account Statement</a></li>
                         <li><a href="#">Transaction History</a></li>
                         <li><a href="#">Shedule Payments</a></li>
                     </ul>
@@ -43,7 +43,7 @@
                         Bill Payments
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="#">Pay Bills</a></li>
+                        <li class="active"><a href="/ebank/payment/billPayment">Pay Bills</a></li>
                         <li><a href="#">Payment History</a></li>
                     </ul>
                 </li>

@@ -17,7 +17,7 @@ import java.security.Principal;
  */
 
 @Controller
-@RequestMapping("/admin/module/moduleManagement")
+@RequestMapping("/admin/config/moduleManagement")
 public class ModuleManagementController {
 
     private final ModuleManagementControllerManager moduleManagementControllerManager;

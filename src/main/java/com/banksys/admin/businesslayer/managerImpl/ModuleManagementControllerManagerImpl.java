@@ -28,7 +28,7 @@ public class ModuleManagementControllerManagerImpl implements ModuleManagementCo
         module.setStatus(MasterDataStatus.OPEN.getStatusSeq());
         module = this.moduleService.save(module);
         ResponseObject responseObject = new ResponseObject(module, true);
-        responseObject.setMessage("Module Save Successfully");
+        responseObject.setMessage("Module Saved Successfully");
         return responseObject;
     }
 }

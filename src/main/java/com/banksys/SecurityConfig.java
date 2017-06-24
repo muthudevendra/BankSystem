@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin").hasAuthority("Admin@Admin_VIEW")
                 .anyRequest().authenticated()
                 .and().requestCache().requestCache(new NullRequestCache()).and()
-                .formLogin().loginPage("/login").failureForwardUrl("/login")
+                .formLogin().loginPage("/login").failureForwardUrl("/login?error")
                 .usernameParameter("username").passwordParameter("password").successHandler(bankSysAuthSuccessHandler)
                 .and().rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("my-remember-me").tokenValiditySeconds(86400)
                 .and()

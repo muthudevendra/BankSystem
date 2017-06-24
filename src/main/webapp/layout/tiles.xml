@@ -17,7 +17,7 @@
     <definition name="admin_base" template="/layout/page.jsp">
         <put-attribute name="header" value="/layout/header.jsp" />
         <put-attribute name="navigation" value="/admin/navigation.jsp" />
-        <put-attribute name="footer" value="/layout/footer.jsp" />
+        <put-attribute name="footer" value="" />
     </definition>
 
     <!--Home-->
@@ -38,5 +38,20 @@
     <!--Admin-->
     <definition name="moduleManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/module/moduleManagement.jsp"/>
+    </definition>
+    <definition name="customerManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/customer/customerManagement.jsp"/>
+    </definition>
+
+
+    <!--Ebank-->
+    <definition name="accountInquiry" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/account/accountInquiry.jsp"/>
+    </definition>
+    <definition name="accountStatement" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/account/accountStatement.jsp"/>
+    </definition>
+    <definition name="billPayment" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/payment/billPayment.jsp"/>
     </definition>
 </tiles-definitions>
