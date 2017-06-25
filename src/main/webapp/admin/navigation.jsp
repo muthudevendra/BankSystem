@@ -11,6 +11,7 @@
             <li class="navUrl" id="moduleManagement"><a href="/admin/config/moduleManagement">Module</a></li>
             <li class="navUrl" id="customerManagement"><a href="/admin/customer/customerManagement">Customer</a></li>
             <li class="navUrl" id="customerSearch"><a href="/admin/customer/customerSearch">Search</a></li>
+            <li calss="navUrl" id="authorityManagement" ><a href="/admin/customer/authorityManagement">Authority</a></li>
             <li class="navUrl"><a href="#">Account</a></li>
             <li class="navUrl"><a href="#">Account Type</a></li>
         </ul>
