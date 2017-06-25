@@ -46,7 +46,7 @@
         <put-attribute name="body" value="/admin/customer/customerSearch.jsp"/>
     </definition>
     <definition name="authorityManagement" extends="admin_base">
-        <put-attribute name="body" value="/admin/config/authorityManagement.jsp"/>
+        <put-attribute name="body" value="/admin/authority/authorityManagement.jsp"/>
     </definition>
 
 
