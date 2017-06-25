@@ -27,10 +27,10 @@
 
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
-                        <label for="module">Module</label>
+                        <label for="moduleId">Module</label>
                     </div>
                     <div class="col-lg-6">
-                        <select class="form-control" id="moduleId">
+                        <select name="moduleId" class="form-control" id="moduleId">
                             <c:forEach items="${moduleList}" var="module">
                                 <option value="${module.moduleId}">${module.moduleName}</option>
                             </c:forEach>

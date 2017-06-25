@@ -8,7 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -28,6 +28,7 @@ public class Authority {
     private Date lastModifiedDate;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "AUTHORITY_ID")
     public Integer getAuthorityId() {
         return authorityId;
