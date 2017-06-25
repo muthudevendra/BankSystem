@@ -5,19 +5,22 @@ import com.banksys.admin.datalayer.entity.Authority;
 import com.banksys.admin.datalayer.service.AuthorityService;
 import com.banksys.common.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.ws.ServiceMode;
 
 /**
  * Created by Oshada on 6/25/2017.
+ *
  */
 @Service
-public class AuthorityManagementControllerManagermpl implements AuthorityManagementControllerManager {
+public class AuthorityManagementControllerManagerImpl implements AuthorityManagementControllerManager {
 
     private final AuthorityService authorityService;
 
-    public AuthorityManagementControllerManagermpl(AuthorityService authorityService) {
+    @Autowired
+    public AuthorityManagementControllerManagerImpl(AuthorityService authorityService) {
         this.authorityService = authorityService;
     }
 
