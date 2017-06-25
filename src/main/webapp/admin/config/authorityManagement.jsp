@@ -6,10 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
-<br/>
-<div class="panel">
-    <div class="panel-body">
-        <div class="col-lg-8 col-lg-offset-2">
+<script type="text/javascript" src="../script/authorityManagement.js"></script>
+<div class="main">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#">Admin</a></li>
+            <li class="active">Authority</li>
+        </ul>
+
+        <div class="col-lg-8 col-lg-offset-1">
             <div id="legend">
                 <legend>Authority Management</legend>
             </div>

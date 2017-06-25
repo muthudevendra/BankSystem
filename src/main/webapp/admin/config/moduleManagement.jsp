@@ -7,11 +7,15 @@
 --%>
 <%@ include file="/layout/include.jsp"%>
 <script type="text/javascript" src="../script/moduleManagement.js"></script>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="col-lg-8 col-lg-offset-2">
+<div class="main">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#">Admin</a></li>
+            <li class="active">Module</li>
+        </ul>
+        <div class="col-lg-8 col-lg-offset-1">
             <div id="legend">
-                <legend>Authority Management</legend>
+                <legend>Module Management</legend>
             </div>
             <br>
             <form role="form" action="moduleManagement/saveModule" method="post">
@@ -76,8 +80,8 @@
 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row">
-                    <div class="col-md-1 col-md-offset-8">
-                        <button type="submit" class="btn btn-default col-md-offset-10"
+                    <div class="col-md-1 col-md-offset-6">
+                        <button type="submit" class="btn btn-default col-md-offset-9"
                                 <sec:authorize
                                         access="!hasAuthority('admin@moduleManagement_CREATE')">
                                     disabled="disabled"
