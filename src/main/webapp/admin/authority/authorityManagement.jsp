@@ -6,28 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
-<script type="text/javascript" src="../script/authorityManagement.js"></script>
-<div class="main">
-    <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="#">Admin</a></li>
-            <li class="active">Authority</li>
-        </ul>
-
-        <div class="col-lg-8 col-lg-offset-1">
+<br/>
+<div class="panel">
+    <div class="panel-body">
+        <div class="col-lg-8 col-lg-offset-2">
             <div id="legend">
                 <legend>Authority Management</legend>
             </div>
             <br>
             <form role="form"  action="/admin/customer/authorityManagement/saveAuthority" method="post">
-                <input type="hidden" name="authorityId" id="authorityId" value="${authority.authorityId eq null ? '' : authority.authorityId}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="authorityName">Authority Name</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="authorityName" class="form-control" id="authorityName" value="${authority.authorityName}">
+                        <input type="text" name="authorityName" class="form-control" id="authorityName">
                     </div>
                 </div>
 
@@ -49,12 +43,12 @@
                         <label for="description">Description</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="description" class="form-control" id="description" value="${authority.}">
+                        <input type="text" name="description" class="form-control" id="description">
                     </div>
                 </div>
                 <br/>
 
-                <div class="row form-group updateOperation" style="display: none" >
+                <div class="row form-group">
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
@@ -62,7 +56,7 @@
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedBy">${authority.lastModifiedBy}</label>
+                                <label id="modifiedBy">${module.lastModifiedBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -70,7 +64,7 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedDate">${authority.lastModifiedDate}</label>
+                                <label id="modifiedDate">${module.lastModifiedDate}</label>
                             </div>
                         </div>
                     </div>
@@ -80,7 +74,7 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdBy">${authority.createdBy}</label>
+                                <label id="createdBy">${module.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -88,7 +82,7 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">${authority.createdDate}</label>
+                                <label id="createdDate">${module.createdDate}</label>
                             </div>
                         </div>
                     </div>
@@ -101,14 +95,13 @@
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>
+                        <button type="submit" class="btn btn-default">Update</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-danger updateOperation" style="display: none">Delete</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
