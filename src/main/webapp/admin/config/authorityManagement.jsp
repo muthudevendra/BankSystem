@@ -5,7 +5,7 @@
   Time: 8:54 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="/layout/include.jsp"%>
+<%@ include file="/layout/include.jsp" %>
 <br/>
 <div class="panel">
     <div class="panel-body">
@@ -14,7 +14,8 @@
                 <legend>Authority Management</legend>
             </div>
             <br>
-            <form role="form">
+            <form role="form"  action="/admin/customer/authorityManagement/saveAuthority" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="authorityName">Authority Name</label>
@@ -29,8 +30,10 @@
                         <label for="module">Module</label>
                     </div>
                     <div class="col-lg-6">
-                        <select class="form-control" id="module">
-                            <option>Select Module</option>
+                        <select class="form-control" id="moduleId">
+                            <c:forEach items="${moduleList}" var="module">
+                                <option value="${module.moduleId}">${module.moduleName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -53,7 +56,7 @@
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedBy">Lakshitha</label>
+                                <label id="modifiedBy">${module.lastModifiedBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -61,7 +64,7 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedDate">2017/06/26</label>
+                                <label id="modifiedDate">${module.lastModifiedDate}</label>
                             </div>
                         </div>
                     </div>
@@ -71,7 +74,7 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdBy">Lakshitha</label>
+                                <label id="createdBy">${module.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -79,7 +82,7 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">2017/06/24</label>
+                                <label id="createdDate">${module.createdDate}</label>
                             </div>
                         </div>
                     </div>

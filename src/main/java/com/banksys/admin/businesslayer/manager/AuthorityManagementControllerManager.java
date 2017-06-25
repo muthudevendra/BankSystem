@@ -10,4 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface AuthorityManagementControllerManager {
     ResponseObject saveAuthority(Authority authority);
+
+
 }
