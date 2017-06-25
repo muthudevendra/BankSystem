@@ -1,18 +1,12 @@
 package com.banksys.admin.presentationlayer;
 
-import com.banksys.admin.businesslayer.manager.AuthorityManagementControllerManager;
-import com.banksys.admin.businesslayer.managerImpl.AuthorityManagementControllerManagermpl;
 import com.banksys.admin.datalayer.entity.Authority;
-import com.banksys.admin.datalayer.service.AuthorityService;
 import com.banksys.admin.datalayer.service.ModuleService;
 import com.banksys.util.enums.Gender;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by Oshada on 6/25/2017.
@@ -50,6 +44,7 @@ public class AuthorityManagementController {
         System.out.println(">>>>>>>>>>>>>>>>>>>>>");
         System.out.println();
         return "authorityManagement";
+
     }
 
 
