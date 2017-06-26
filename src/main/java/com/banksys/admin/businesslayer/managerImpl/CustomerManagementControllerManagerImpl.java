@@ -45,6 +45,7 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
             }
             customer = this.customerService.save(customer);
             responseObject = new ResponseObject("Customer updated Successfully", true);
+            responseObject.setObject(customer);
         }
         return responseObject;
     }

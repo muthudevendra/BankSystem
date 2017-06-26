@@ -5,9 +5,11 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -15,6 +17,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "account_type")
+@EntityListeners(AuditingEntityListener.class)
 public class AccountType {
     private Integer accountTypeId;
     private String accountTypeName;
@@ -156,47 +159,23 @@ public class AccountType {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         AccountType that = (AccountType) o;
-
-        if (accountTypeId != that.accountTypeId) return false;
-        if (status != that.status) return false;
-        if (accountTypeName != null ? !accountTypeName.equals(that.accountTypeName) : that.accountTypeName != null)
-            return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (minDeposit != null ? !minDeposit.equals(that.minDeposit) : that.minDeposit != null) return false;
-        if (minAge != null ? !minAge.equals(that.minAge) : that.minAge != null) return false;
-        if (maxAge != null ? !maxAge.equals(that.maxAge) : that.maxAge != null) return false;
-        if (annualCost != null ? !annualCost.equals(that.annualCost) : that.annualCost != null) return false;
-        if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (createdBy != null ? !createdBy.equals(that.createdBy) : that.createdBy != null) return false;
-        if (lastModifiedDate != null ? !lastModifiedDate.equals(that.lastModifiedDate) : that.lastModifiedDate != null)
-            return false;
-        if (lastModifiedBy != null ? !lastModifiedBy.equals(that.lastModifiedBy) : that.lastModifiedBy != null)
-            return false;
-
-        return true;
+        return Objects.equals(accountTypeId, that.accountTypeId) &&
+                Objects.equals(accountTypeName, that.accountTypeName) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(minDeposit, that.minDeposit) &&
+                Objects.equals(minAge, that.minAge) &&
+                Objects.equals(maxAge, that.maxAge) &&
+                Objects.equals(annualCost, that.annualCost) &&
+                Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = accountTypeId;
-        result = 31 * result + (accountTypeName != null ? accountTypeName.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (minDeposit != null ? minDeposit.hashCode() : 0);
-        result = 31 * result + (minAge != null ? minAge.hashCode() : 0);
-        result = 31 * result + (maxAge != null ? maxAge.hashCode() : 0);
-        result = 31 * result + (annualCost != null ? annualCost.hashCode() : 0);
-        result = 31 * result + status;
-        result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
-        result = 31 * result + (lastModifiedDate != null ? lastModifiedDate.hashCode() : 0);
-        result = 31 * result + (lastModifiedBy != null ? lastModifiedBy.hashCode() : 0);
-        return result;
+        return Objects.hash(accountTypeId, accountTypeName, description, minDeposit, minAge, maxAge, annualCost, status);
     }
 }
