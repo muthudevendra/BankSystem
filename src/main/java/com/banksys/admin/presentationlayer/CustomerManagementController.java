@@ -43,6 +43,7 @@ public class CustomerManagementController {
     }
 
     @RequestMapping(params = "customerId", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('admin@customerManagement_VIEW')")
     public String loadPage(@RequestParam("customerId") Integer customerId, Model model){
         model = this.getPageData(model);
         model.addAttribute("customer", this.customerService.findOne(customerId));
@@ -59,7 +60,7 @@ public class CustomerManagementController {
     }
 
     @RequestMapping(value = "/updateCustomer", method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('admin@customerManagement_CREATE')")
+    @PreAuthorize("hasAuthority('admin@customerManagement_UPDATE')")
     public String updateCustomer(@ModelAttribute Customer customer, Model model){
         this.customerManagementControllerManager.updateCustomer(customer);
         model = getPageData(model);

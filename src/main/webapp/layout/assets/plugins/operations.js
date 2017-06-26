@@ -4,7 +4,6 @@
  */
 
 function transform_form(form_id, url) {
-    alert($('#'+form_id));
     $('#'+form_id).attr('action', url);
 }
 

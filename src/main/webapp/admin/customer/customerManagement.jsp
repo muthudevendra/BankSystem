@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
-<script type="text/javascript" src="/admin/script/customerManagement.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/customerManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -189,9 +189,9 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="updateOperation">
+                    <div class="updateOperation" style="display: none">
                         <div class="col-lg-2 col-md-offset-2">
-                            <label for="occupation">Status</label>
+                            <label for="status">Status</label>
                         </div>
                         <div class="col-lg-3">
                             <select name="status" class="form-control" id="status">
