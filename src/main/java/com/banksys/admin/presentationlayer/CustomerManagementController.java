@@ -51,6 +51,14 @@ public class CustomerManagementController {
         return "customerManagement";
     }
 
+    @RequestMapping(value = "/updateCustomer", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('admin@customerManagement_CREATE')")
+    public String updateCustomer(@ModelAttribute Customer customer, Model model){
+        this.customerManagementControllerManager.updateCustomer(customer);
+        model.addAttribute("customer", customer);
+        return "customerManagement";
+    }
+
     @RequestMapping(value = "/deleteCustomer", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@customerManagement_DELETE')")
     public String deleteCustomer(@RequestParam("customerId") Integer customerId, Model model){

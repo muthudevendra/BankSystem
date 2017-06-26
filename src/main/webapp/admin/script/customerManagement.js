@@ -8,6 +8,7 @@ $(function () {
     $(".datepicker").datepicker();
     var customerId = $('#customerId').val();
     if(customerId != ''){
+        transform_form('customerForm', '/admin/customer/customerManagement/updateCustomer')
         transformToUpdate();
     }
 });

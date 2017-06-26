@@ -32,6 +32,21 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
     }
 
     @Override
+    public ResponseObject updateCustomer(Customer customer) {
+        Customer dbCustomer = this.customerService.findOne(customer.getCustomerId());
+        ResponseObject responseObject = new ResponseObject();
+        responseObject.setObject(customer);
+        if(dbCustomer.equals(customer)){
+            responseObject = new ResponseObject("No changes found", false);
+        }
+        else{
+            customer = this.customerService.save(customer);
+            responseObject = new ResponseObject("Customer saved Successfully", false);
+        }
+        return responseObject;
+    }
+
+    @Override
     public ResponseObject deleteCustomer(Integer customerId) {
         Customer dbCustomer = this.customerService.findOne(customerId);
         ResponseObject responseObject = new ResponseObject();

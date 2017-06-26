@@ -21,8 +21,9 @@
         </div>
 
         <div class="content-page col-md-9">
-            <form role="form" action="/admin/customer/customerManagement/saveCustomer" method="post">
+            <form role="form" action="/admin/customer/customerManagement/saveCustomer" id="customerForm" method="post">
                 <input type="hidden" name="customerId" id="customerId" value="${customer.customerId eq null ? '' : customer.customerId}">
+                <input type="hidden" name="status" id="status" value="${customer.status}">
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="nic">NIC Number</label>

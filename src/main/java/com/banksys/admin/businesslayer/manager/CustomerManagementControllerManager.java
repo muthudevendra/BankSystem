@@ -12,5 +12,7 @@ import org.springframework.stereotype.Component;
 public interface CustomerManagementControllerManager {
     ResponseObject saveCustomer(Customer customer);
 
+    ResponseObject updateCustomer(Customer customer);
+
     ResponseObject deleteCustomer(Integer customerId);
 }
