@@ -6,6 +6,7 @@
 $(function () {
     var authorityId = $('#authorityId').val();
     if (authorityId != '') {
+        transform_form('authorityForm', '/admin/customer/authorityManagement/updateAuthority')
         transformToUpdate();
     }
 });

@@ -15,15 +15,18 @@
                 <legend>Authority Management</legend>
             </div>
             <br>
-            <form role="form"  action="/admin/customer/authorityManagement/saveAuthority" method="post">
-                <input type="hidden" name="authorityId" id="authorityId" value="${authority.authorityId eq null ? '' : authority.authorityId}">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            <form role="form" action="/admin/customer/authorityManagement/saveAuthority" id="authorityForm"
+                  method="post">
+                <input type="hidden" name="authorityId" id="authorityId"
+                       value="${authority.authorityId eq null ? '' : authority.authorityId}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="authorityName">Authority Name</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="authorityName" class="form-control" id="authorityName" value="${authority.authorityName}">
+                        <input type="text" name="authorityName" class="form-control" id="authorityName"
+                               value="${authority.authorityName}">
                     </div>
                 </div>
 
@@ -34,7 +37,8 @@
                     <div class="col-lg-6">
                         <select name="moduleId" class="form-control" id="moduleId">
                             <c:forEach items="${moduleList}" var="module">
-                                <option value="${module.moduleId}">${module.moduleName}</option>
+                                <option ${module.moduleId eq authority.moduleId ? 'selected' : ''}
+                                        value="${module.moduleId}">${module.moduleName}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -44,10 +48,29 @@
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="description">Description</label>
                     </div>
+
                     <div class="col-lg-6">
                         <input type="text" name="description" class="form-control" id="description">
                     </div>
                 </div>
+                <div class="row form-group ">
+                    <div class="updateOperation" style="display: none">
+                        <div class="col-lg-3 col-md-offset-2">
+                            <label for="authority">Status</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <select name="status" class="form-control" id="status">
+                                <c:forEach items="${statusList}" var="status">
+                                    <option ${status.statusSeq eq authority.status ? 'selected' : ''}
+                                            value="${status.statusSeq}">
+                                            ${status.status}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <br/>
 
                 <div class="row form-group updateOperation" style="display: none">
@@ -97,11 +120,11 @@
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>
+                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update
+                        </button>
                     </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-danger updateOperation" style="display: none">Delete</button>
-                    </div>
+
+
                 </div>
             </form>
         </div>
