@@ -45,7 +45,6 @@ public class AuthorityManagementController {
         this.authorityManagementControllerManager.saveAuthority(authority);
         model = this.getPageData(model);
         model.addAttribute("authority", authority);
-
         return "authorityManagement";
     }
 

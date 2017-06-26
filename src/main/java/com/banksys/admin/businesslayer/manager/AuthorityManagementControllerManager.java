@@ -6,12 +6,13 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by Oshada on 6/25/2017.
+ *
  */
 @Component
 public interface AuthorityManagementControllerManager {
     ResponseObject saveAuthority(Authority authority);
 
-    ResponseObject deleteAuthority(Integer authorityId);
-
     ResponseObject updateAuthority(Authority authority);
+
+    ResponseObject deleteAuthority(Integer authorityId);
 }

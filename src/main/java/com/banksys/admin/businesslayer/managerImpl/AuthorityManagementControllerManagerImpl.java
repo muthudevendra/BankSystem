@@ -12,6 +12,7 @@ import javax.xml.ws.ServiceMode;
 
 /**
  * Created by Oshada on 6/25/2017.
+ *
  */
 @Service
 public class AuthorityManagementControllerManagerImpl implements AuthorityManagementControllerManager {

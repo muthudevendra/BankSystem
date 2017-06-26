@@ -58,7 +58,7 @@
                 <div class="row form-group ">
                     <div class="updateOperation" style="display: none">
                         <div class="col-lg-3 col-md-offset-2">
-                            <label for="authority">Status</label>
+                            <label for="status">Status</label>
                         </div>
                         <div class="col-lg-3">
                             <select name="status" class="form-control" id="status">
@@ -109,7 +109,7 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">${module.createdDate}</label>
+                                <label id="createdDate">${authority.createdDate}</label>
                             </div>
                         </div>
                     </div>
@@ -124,9 +124,6 @@
                     <div class="col-md-1">
                         <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>
                     </div>
-
-
-
                 </div>
             </form>
         </div>
