@@ -26,7 +26,7 @@
     <definition name="accessDenied" template="/layout/accessDenied.jsp">
     </definition>
     <definition name="ebank" extends="ebank_base">
-        <put-attribute name="body" value="/dashboard/home.jsp" />
+        <put-attribute name="body" value="/ebank/dashboard.jsp" />
     </definition>
     <definition name="dashboard" extends="base">
         <put-attribute name="body" value="/dashboard/home.jsp" />
@@ -48,7 +48,12 @@
     <definition name="authorityManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/authority/authorityManagement.jsp"/>
     </definition>
-
+    <definition name="accountTypeManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/account/accountTypeManagement.jsp"/>
+    </definition>
+    <definition name="accountManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/account/accountManagement.jsp"/>
+    </definition>
 
 
     <!--Ebank-->
