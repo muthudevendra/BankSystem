@@ -14,13 +14,13 @@
             <li class="active">New Cutsomer</li>
         </ul>
 
-        <div class="col-lg-8 col-lg-offset-1">
-            <div>
-                <legend>Customer Details</legend>
-            </div>
-        </div>
-
         <div class="content-page col-md-9">
+            <div class="col-lg-offset-1">
+                <div>
+                    <legend>Customer Details</legend>
+                </div>
+            </div>
+
             <form role="form" action="/admin/customer/customerManagement/saveCustomer" id="customerForm" method="post">
                 <input type="hidden" name="customerId" id="customerId" value="${customer.customerId eq null ? '' : customer.customerId}">
                 <input type="hidden" name="addressBook.addressBookId" id="addressBookId" value="${customer.addressBook.addressBookId}">
@@ -216,7 +216,7 @@
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
@@ -224,7 +224,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">

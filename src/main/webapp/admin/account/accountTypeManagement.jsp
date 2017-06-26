@@ -14,27 +14,26 @@
             <li class="active">Account Type</li>
         </ul>
 
-        <div class="col-lg-8 col-lg-offset-1">
-            <div>
-                <legend>Account Type</legend>
-            </div>
-        </div>
-
         <div class="content-page col-md-9">
+            <div class="col-lg-offset-1">
+                <div>
+                    <legend>Account Type</legend>
+                </div>
+            </div>
             <form role="form">
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-2">
                         <label for="accounttype">Account Name</label>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         <input type="text" name="accounttype" class="form-control" id="accounttype">
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-2">
                         <label for="description">Description</label>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         <input type="text" name="description" class="form-control" id="description">
                     </div>
                 </div>
@@ -69,7 +68,7 @@
                 </div>
                 <hr style="width:75%">
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-2">
                         <label for="status">Status</label>
                     </div>
                     <div class="col-lg-3">
@@ -86,7 +85,7 @@
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
@@ -94,7 +93,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">

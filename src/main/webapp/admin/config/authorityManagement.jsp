@@ -7,26 +7,29 @@
 --%>
 <%@ include file="/layout/include.jsp" %>
 <script type="text/javascript" src="/admin/script/authorityManagement.js"></script>
-<br/>
-<div class="panel">
-    <div class="panel-body">
-        <div class="col-lg-8 col-lg-offset-2">
-            <div id="legend">
-                <legend>Authority Management</legend>
+<div class="main">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="#">Admin</a></li>
+            <li class="active">Authority</li>
+        </ul>
+
+        <div class="content-page col-md-9">
+            <div class="col-lg-offset-1">
+                <div>
+                    <legend>Authority Management</legend>
+                </div>
             </div>
-            <br>
-            <form role="form" action="/admin/customer/authorityManagement/saveAuthority" id="authorityForm"
-                  method="post">
-                <input type="hidden" name="authorityId" id="authorityId"
-                       value="${authority.authorityId eq null ? '' : authority.authorityId}">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <form role="form"  action="/admin/customer/authorityManagement/saveAuthority" method="post">
+                <input type="hidden" name="authorityId" id="authorityId" value="${authority.authorityId eq null ? '' : authority.authorityId}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="authorityName">Authority Name</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="authorityName" class="form-control" id="authorityName"
-                               value="${authority.authorityName}">
+                        <input type="text" name="authorityName" class="form-control" id="authorityName" value="${authority.authorityName}">
                     </div>
                 </div>
 
@@ -48,7 +51,6 @@
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="description">Description</label>
                     </div>
-
                     <div class="col-lg-6">
                         <input type="text" name="description" class="form-control" id="description">
                     </div>
@@ -77,7 +79,7 @@
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
@@ -85,7 +87,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
@@ -120,9 +122,9 @@
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update
-                        </button>
+                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>
                     </div>
+
 
 
                 </div>
