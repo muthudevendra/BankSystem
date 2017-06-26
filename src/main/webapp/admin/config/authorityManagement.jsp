@@ -119,7 +119,7 @@
 
                 <div class="row">
                     <div class="col-md-1 col-md-offset-8">
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success createOperation">Save</button>
                     </div>
                     <div class="col-md-1">
                         <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>

@@ -54,7 +54,6 @@ public class AuthorityManagementController {
         this.authorityManagementControllerManager.updateAuthority(authority);
         model = this.getPageData(model);
         model.addAttribute("authority", authority);
-        System.out.println(">>><<");
         return "authorityManagement";
     }
 
