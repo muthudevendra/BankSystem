@@ -13,11 +13,13 @@
             <li><a href="#">Admin</a></li>
             <li class="active">Module</li>
         </ul>
-        <div class="col-lg-8 col-lg-offset-1">
-            <div id="legend">
-                <legend>Module Management</legend>
+
+        <div class="content-page col-md-9">
+            <div class="col-lg-offset-1">
+                <div>
+                    <legend>Account Type</legend>
+                </div>
             </div>
-            <br>
             <form role="form" action="moduleManagement/saveModule" method="post">
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
@@ -40,7 +42,7 @@
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
@@ -48,7 +50,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
