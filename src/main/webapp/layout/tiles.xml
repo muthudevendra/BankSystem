@@ -61,4 +61,19 @@
     <definition name="billPayment" extends="ebank_base">
         <put-attribute name="body" value="/ebank/payment/billPayment.jsp"/>
     </definition>
+    <definition name="paymentHistory" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/payment/paymentHistory.jsp"/>
+    </definition>
+    <definition name="schedulePayment" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/payment/schedulePayments.jsp"/>
+    </definition>
+    <definition name="ownAccount" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/ownAccount.jsp"/>
+    </definition>
+    <definition name="thirdpartyTransfer" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/thirdpartyTransfer.jsp"/>
+    </definition>
+    <definition name="scheduleTransfer" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/scheduleTransfer.jsp"/>
+    </definition>
 </tiles-definitions>

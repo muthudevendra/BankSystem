@@ -8,9 +8,9 @@
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
-            <li><a href="#">Transfer From Own Account</a></li>
-            <li class="active"><a href="#">Third Party Transfer</a></li>
-            <li><a href="#">Scheduled Transaction</a></li>
+            <li><a href="/ebank/transfer/ownAcount">Transfer From Own Account</a></li>
+            <li class="active"><a href="/ebank/transfer/thirdpartyTransfer">Third Party Transfer</a></li>
+            <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transaction</a></li>
         </ul>
     </div>
 </div>

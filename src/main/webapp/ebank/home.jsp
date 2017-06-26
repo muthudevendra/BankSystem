@@ -18,37 +18,36 @@
                     <a href="#"><i class="fa fa-home"></i></a>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         My Account
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/ebank/account/accountInquiry">Account Inquery</a></li>
-                        <li><a href="#">Account Statement</a></li>
-                        <li><a href="#">Transaction History</a></li>
-                        <li><a href="#">Shedule Payments</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown active">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        Fund Transfer
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="active"><a href="#">Own Account</a></li>
-                        <li><a href="#">Third-Party Transfer</a></li>
-                        <li><a href="#">Scheduled Transfer</a></li>
+                        <li><a href="/ebank/account/accountStatement">Account Statement</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
+                        Fund Transfer
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/ebank/transfer/ownAcount">Own Account</a></li>
+                        <li><a href="/ebank/transfer/thirdpartyTransfer">Third-Party Transfer</a></li>
+                        <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transfer</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         Bill Payments
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/ebank/payment/billPayment">Pay Bills</a></li>
-                        <li><a href="#">Payment History</a></li>
+                        <li><a href="/ebank/payment/schedulePayment">Schedule Payment</a></li>
+                        <li><a href="/ebank/payment/paymentHistory">Payment History</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         Request
                     </a>
                     <ul class="dropdown-menu">
@@ -57,7 +56,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         My Profile
                     </a>
                     <ul class="dropdown-menu">

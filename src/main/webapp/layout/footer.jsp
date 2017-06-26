@@ -5,7 +5,7 @@
   Time: 11:45 AM
   To change this template use File | Settings | File Templates.
 --%>
-<div class="footer">
+<div class="footer-light">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-4 padding-top-10">

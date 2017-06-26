@@ -8,9 +8,9 @@
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
-            <li class="active"><a href="#">Transfer From Own Account</a></li>
-            <li><a href="#">Third-Party Transfer</a></li>
-            <li><a href="#">Scheduled Transfer</a></li>
+            <li class="active"><a href="/ebank/transfer/ownAcount">Transfer From Own Account</a></li>
+            <li><a href="/ebank/transfer/thirdpartyTransfer">Third-Party Transfer</a></li>
+            <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transfer</a></li>
         </ul>
     </div>
 </div>
@@ -18,7 +18,7 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="edashboard.html">E-Banking</a></li>
+            <li><a href="#">E-Banking</a></li>
             <li>Fund Transfer</li>
             <li class="active">Transfer</li>
         </ul>
@@ -34,7 +34,7 @@
                 <br/>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="fromAccount">Sending Account </label>
+                        <label class="control-label" for="fromAccount">From Account </label>
                     </div>
                     <div class="col-md-5">
                         <select class="form-control" id="fromAccount">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="toAccount">Receiving Account </label>
+                        <label class="control-label" for="toAccount">To Account </label>
                     </div>
                     <div class="col-md-5">
                         <select class="form-control" id="toAccount">
@@ -57,11 +57,21 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-2 col-md-offset-2">
-                        <label class="control-label">Amount  </label>
+                        <label class="control-label" for="amount">Amount  </label>
                     </div>
                     <div class="col-sm-5">
                         <div class="input-group">
-                            <span class="input-group-addon">Rs</span><input type="text" class="form-control">
+                            <span class="input-group-addon">Rs</span><input type="text" class="form-control" id="amount">
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2 col-md-offset-2">
+                        <label class="control-label" for="description">Description  </label>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <textarea name="description" id="description" cols="30" rows="5"></textarea>
                         </div>
                     </div>
                 </div>
