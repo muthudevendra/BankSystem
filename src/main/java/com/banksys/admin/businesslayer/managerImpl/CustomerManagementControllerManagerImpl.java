@@ -40,8 +40,11 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
             responseObject = new ResponseObject("No changes found", false);
         }
         else{
+            if(customer.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())){
+                customer.getAddressBook().setStatus(MasterDataStatus.DELETED.getStatusSeq());
+            }
             customer = this.customerService.save(customer);
-            responseObject = new ResponseObject("Customer saved Successfully", false);
+            responseObject = new ResponseObject("Customer updated Successfully", true);
         }
         return responseObject;
     }

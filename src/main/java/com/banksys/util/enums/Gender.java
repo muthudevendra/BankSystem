@@ -5,8 +5,8 @@ package com.banksys.util.enums;
  *
  */
 public enum Gender {
-    MALE(0, "Deleted"),
-    FEMALE(1, "Open");
+    MALE(0, "Male"),
+    FEMALE(1, "Female");
 
     private final Integer genderSeq;
     private final String gender;

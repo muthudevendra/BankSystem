@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="content-page col-md-9 col-md-offset-1">
+        <div class="content-page col-md-12 col-md-offset-1">
             <form action="/admin/customer/customerSearch/searchCustomers" role="form">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -79,7 +79,7 @@
             <br/>
         </div>
 
-        <div class="col-md-9 col-md-offset-2">
+        <div class="col-md-12 col-md-offset-1">
             <table class="table datatable">
                 <thead>
                     <tr>

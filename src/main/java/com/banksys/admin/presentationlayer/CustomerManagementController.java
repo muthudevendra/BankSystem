@@ -4,11 +4,17 @@ import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManag
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.enums.Gender;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -47,6 +53,7 @@ public class CustomerManagementController {
     @PreAuthorize("hasAuthority('admin@customerManagement_CREATE')")
     public String saveCustomer(@ModelAttribute Customer customer, Model model){
         this.customerManagementControllerManager.saveCustomer(customer);
+        model = getPageData(model);
         model.addAttribute("customer", customer);
         return "customerManagement";
     }
@@ -55,6 +62,7 @@ public class CustomerManagementController {
     @PreAuthorize("hasAuthority('admin@customerManagement_CREATE')")
     public String updateCustomer(@ModelAttribute Customer customer, Model model){
         this.customerManagementControllerManager.updateCustomer(customer);
+        model = getPageData(model);
         model.addAttribute("customer", customer);
         return "customerManagement";
     }
@@ -69,6 +77,13 @@ public class CustomerManagementController {
 
     private Model getPageData(Model model){
         model.addAttribute("genderList", Gender.values());
+        model.addAttribute("statusList", MasterDataStatus.values());
         return model;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 }

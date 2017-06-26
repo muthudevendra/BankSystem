@@ -134,7 +134,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "USER_ID")
+    @Column(name = "USER_ID", updatable = false)
     public Integer getUserId() {
         return userId;
     }

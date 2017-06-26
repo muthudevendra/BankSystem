@@ -5,7 +5,9 @@
 $(function () {
     $('.navUrl').removeClass('active')
     $('#customerManagement').addClass('active');
-    $(".datepicker").datepicker();
+    $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd'
+    });
     var customerId = $('#customerId').val();
     if(customerId != ''){
         transform_form('customerForm', '/admin/customer/customerManagement/updateCustomer')
