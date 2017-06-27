@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <form role="form"  action="/admin/customer/authorityManagement/saveAuthority" method="post">
+            <form role="form"  action="/admin/customer/authorityManagement/saveAuthority" id="authorityForm" method="post">
                 <input type="hidden" name="authorityId" id="authorityId" value="${authority.authorityId eq null ? '' : authority.authorityId}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row form-group">
