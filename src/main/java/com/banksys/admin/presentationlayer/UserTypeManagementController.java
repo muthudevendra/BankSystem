@@ -5,5 +5,4 @@ package com.banksys.admin.presentationlayer;
  */
 public class UserTypeManagementController {
 
-
 }
