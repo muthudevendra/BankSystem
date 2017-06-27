@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
-<script type="text/javascript" src="/admin/script/accountManagement.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/accountManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -19,15 +19,18 @@
                     <legend>Account Details</legend>
                 </div>
             </div>
-            <form role="form">
+            <form action="/admin/account/accountManagement/saveAccount" method="post" role="form">
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="accountType">Account Type</label>
                     </div>
                     <div class="col-lg-3">
-                        <select class="form-control" id="accountType">
-                            <option>Select</option>
-                            <option>Savings Account</option>
+                        <select name="accountTypeId" class="form-control" id="accountType">
+                            <c:forEach items="${accountTypeList}" var="accountType">
+                                <option ${accountType.accountTypeId eq account.accountTypeId ? 'selected' : ''} value="${accountType.accountTypeId}">
+                                        ${accountType.accountTypeName}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -37,13 +40,17 @@
                         <label for="interestMethod">Interest Method</label>
                     </div>
                     <div class="col-lg-3">
-                        <select class="form-control" id="interestMethod">
-                            <option>Select</option>
-                            <option>Annually</option>
+                        <select name="status" class="form-control" id="interestMethod">
+                            <c:forEach items="${interestMethodList}" var="interestMethod">
+                                <option ${interestMethod.interestMethodSeq eq account.interestCalMethod ? 'selected' : ''}
+                                        value="${interestMethod.interestMethodSeq}">
+                                        ${interestMethod.interestMethod}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
-                <hr style="width:75%" />
+                <hr style="width:75%"/>
 
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
@@ -66,7 +73,7 @@
                     </div>
                 </div>
 
-                <hr style="width:75%" />
+                <hr style="width:75%"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-lg-offset-2">
                         <label for="status">Status</label>
@@ -80,16 +87,14 @@
                     </div>
                 </div>
                 <br>
-            </form>
-            <br/>
+                <br/>
 
-            <div class="col-lg-offset-1">
-                <div>
-                    <legend>Customer Account Details</legend>
+                <div class="col-lg-offset-1">
+                    <div>
+                        <legend>Customer Account Details</legend>
+                    </div>
                 </div>
-            </div>
 
-            <form role="form">
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="customer">Customer ID</label>
@@ -110,7 +115,7 @@
                         </select>
                     </div>
                 </div>
-                <hr style="width:75%" />
+                <hr style="width:75%"/>
 
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
@@ -148,50 +153,47 @@
                         </select>
                     </div>
                 </div>
-            </form>
-
-            <div class="row form-group">
-                <hr/>
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="modifiedBy">Last Modified By</label>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <div class="row form-group">
+                    <hr/>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="modifiedBy">Last Modified By</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="modifiedBy">Lakshitha</label>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label id="modifiedBy">Lakshitha</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="modifiedDate">Last Modified Date</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="modifiedDate">2017/06/26</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="modifiedDate">Last Modified Date</label>
+                    <div class="col-md-5 col-sm-offset-2">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="createdBy">Created By</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="createdBy">Lakshitha</label>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label id="modifiedDate">2017/06/26</label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="createdDate">Created Date</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label id="createdDate">2017/06/24</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5 col-sm-offset-2">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="createdBy">Created By</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label id="createdBy">Lakshitha</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="createdDate">Created Date</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label id="createdDate">2017/06/24</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br/>
-
-            <form>
+                <br/>
                 <div class="row">
                     <div class="col-md-1 col-md-offset-8">
                         <button type="submit" class="btn btn-success">Save</button>
@@ -204,7 +206,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

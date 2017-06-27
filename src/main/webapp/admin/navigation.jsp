@@ -42,7 +42,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="navUrl"><a href="/admin/account/accountManagement">Account</a></li>
+                        <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
                         <li class="navUrl"><a href="/admin/account/accountTypeManagement">Account Type</a></li>
                     </ul>
                 </div>

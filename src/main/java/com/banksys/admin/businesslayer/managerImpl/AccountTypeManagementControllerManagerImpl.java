@@ -42,7 +42,7 @@ public class AccountTypeManagementControllerManagerImpl implements AccountTypeMa
         }
         else{
             accountType = this.accountTypeService.save(accountType);
-            responseObject = new ResponseObject("Customer updated Successfully", true);
+            responseObject = new ResponseObject("Account updated Successfully", true);
         }
         return responseObject;
     }

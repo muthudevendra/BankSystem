@@ -5,28 +5,33 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
  *
  */
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "customer_account")
 public class CustomerAccount {
     private Integer customerAccountId;
     private Integer accountId;
     private Date startDate;
     private Date endDate;
-    private double availableBalance;
+    private Double availableBalance;
     private Integer customerId;
     private Integer status;
     private String createdBy;
     private Date createdDate;
     private String lastModifiedBy;
     private Date lastModifiedDate;
+
+    private Account account;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -40,7 +45,7 @@ public class CustomerAccount {
     }
 
     @Basic
-    @Column(name = "ACCOUNT_ID")
+    @Column(name = "ACCOUNT_ID", insertable = false, updatable = false)
     public Integer getAccountId() {
         return accountId;
     }
@@ -71,11 +76,11 @@ public class CustomerAccount {
 
     @Basic
     @Column(name = "AVAILABLE_BALANCE")
-    public double getAvailableBalance() {
+    public Double getAvailableBalance() {
         return availableBalance;
     }
 
-    public void setAvailableBalance(double availableBalance) {
+    public void setAvailableBalance(Double availableBalance) {
         this.availableBalance = availableBalance;
     }
 
@@ -145,46 +150,37 @@ public class CustomerAccount {
         this.lastModifiedDate = lastModifiedDate;
     }
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ACCOUNT_ID")
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         CustomerAccount that = (CustomerAccount) o;
-
-        if (customerAccountId != that.customerAccountId) return false;
-        if (accountId != that.accountId) return false;
-        if (Double.compare(that.availableBalance, availableBalance) != 0) return false;
-        if (customerId != that.customerId) return false;
-        if (status != that.status) return false;
-        if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
-        if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
-        if (createdBy != null ? !createdBy.equals(that.createdBy) : that.createdBy != null) return false;
-        if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
-        if (lastModifiedBy != null ? !lastModifiedBy.equals(that.lastModifiedBy) : that.lastModifiedBy != null)
-            return false;
-        if (lastModifiedDate != null ? !lastModifiedDate.equals(that.lastModifiedDate) : that.lastModifiedDate != null)
-            return false;
-
-        return true;
+        return Objects.equals(customerAccountId, that.customerAccountId) &&
+                Objects.equals(accountId, that.accountId) &&
+                Objects.equals(startDate, that.startDate) &&
+                Objects.equals(endDate, that.endDate) &&
+                Objects.equals(availableBalance, that.availableBalance) &&
+                Objects.equals(customerId, that.customerId) &&
+                Objects.equals(status, that.status) &&
+                Objects.equals(createdBy, that.createdBy) &&
+                Objects.equals(createdDate, that.createdDate) &&
+                Objects.equals(lastModifiedBy, that.lastModifiedBy) &&
+                Objects.equals(lastModifiedDate, that.lastModifiedDate) &&
+                Objects.equals(account, that.account);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = customerAccountId;
-        result = 31 * result + accountId;
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        temp = Double.doubleToLongBits(availableBalance);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + customerId;
-        result = 31 * result + status;
-        result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
-        result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (lastModifiedBy != null ? lastModifiedBy.hashCode() : 0);
-        result = 31 * result + (lastModifiedDate != null ? lastModifiedDate.hashCode() : 0);
-        return result;
+        return Objects.hash(customerAccountId, accountId, startDate, endDate, availableBalance, customerId, status, account);
     }
 }

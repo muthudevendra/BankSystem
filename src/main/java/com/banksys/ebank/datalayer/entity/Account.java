@@ -18,8 +18,8 @@ public class Account {
     private Integer accountId;
     private Integer accountTypeId;
     private Integer interestCalMethod;
-    private byte mobileBankAvailability;
-    private byte onlineBankAvailability;
+    private Integer mobileBankAvailability;
+    private Integer onlineBankAvailability;
     private Integer passbookAvailability;
     private Integer status;
     private String createdBy;
@@ -60,21 +60,21 @@ public class Account {
 
     @Basic
     @Column(name = "MOBILE_BANK_AVAILABILITY")
-    public byte getMobileBankAvailability() {
+    public Integer getMobileBankAvailability() {
         return mobileBankAvailability;
     }
 
-    public void setMobileBankAvailability(byte mobileBankAvailability) {
+    public void setMobileBankAvailability(Integer mobileBankAvailability) {
         this.mobileBankAvailability = mobileBankAvailability;
     }
 
     @Basic
     @Column(name = "ONLINE_BANK_AVAILABILITY")
-    public byte getOnlineBankAvailability() {
+    public Integer getOnlineBankAvailability() {
         return onlineBankAvailability;
     }
 
-    public void setOnlineBankAvailability(byte onlineBankAvailability) {
+    public void setOnlineBankAvailability(Integer onlineBankAvailability) {
         this.onlineBankAvailability = onlineBankAvailability;
     }
 
