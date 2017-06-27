@@ -2,10 +2,11 @@ package com.banksys.util.enums;
 
 /**
  * Created by Oshada on 6/27/2017.
+ *
  */
 public enum AccountStatus {
-    ACTIVE(0,"active"),
-    INACTIVE( 1,"inactive");
+    ACTIVE(0,"Active"),
+    INACTIVE( 1,"Inactive");
 
     private final Integer statusSeq;
     private final String status;
@@ -17,5 +18,9 @@ public enum AccountStatus {
 
     public Integer getStatusSeq() {
         return statusSeq;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }
