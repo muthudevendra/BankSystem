@@ -25,7 +25,7 @@
                         <label for="accountType">Account Type</label>
                     </div>
                     <div class="col-lg-3">
-                        <select name="accountTypeId" class="form-control" id="accountType">
+                        <select name="accountTypeId" class="form-control" id="${customerAccount.account.accountTypeId}">
                             <c:forEach items="${accountTypeList}" var="accountType">
                                 <option ${accountType.accountTypeId eq account.accountTypeId ? 'selected' : ''} value="${accountType.accountTypeId}">
                                         ${accountType.accountTypeName}
@@ -40,7 +40,7 @@
                         <label for="interestMethod">Interest Method</label>
                     </div>
                     <div class="col-lg-3">
-                        <select name="status" class="form-control" id="interestMethod">
+                        <select name="status" class="form-control" id="${customerAccount.account.interestCalMethod}">
                             <c:forEach items="${interestMethodList}" var="interestMethod">
                                 <option ${interestMethod.interestMethodSeq eq account.interestCalMethod ? 'selected' : ''}
                                         value="${interestMethod.interestMethodSeq}">
@@ -57,7 +57,7 @@
                         <label for="mobileBank">Mobile Bank</label>
                     </div>
                     <div class="col-lg-1" style="border-right: solid 1px;">
-                        <input type="checkbox" name="mobileBank" id="mobileBank">
+                        <input type="checkbox" name="mobileBank" id="mobileBank" >
                     </div>
                     <div class="col-md-2">
                         <label for="onlineBank">Online Bank</label>
@@ -79,10 +79,12 @@
                         <label for="status">Status</label>
                     </div>
                     <div class="col-lg-3">
-                        <select class="form-control" id="status">
-                            <option>Select</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
+                        <select name="accountTypeId" class="form-control" id="status">
+                            <c:forEach items="${accountStatusList}" var="accountStatus">
+                                <option ${accountStatus.accountstatusSeq eq account.status ? 'selected' : ''} value="${accountStatus.accountstatusSeq}">
+                                        ${accountStatus.accountstatus }
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -100,21 +102,18 @@
                         <label for="customer">Customer ID</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="customer" class="form-control" id="customer">
+                        <select name="accountTypeId" class="form-control" id="customerId">
+                            <c:forEach items="${customerList}" var="customer">
+                                <option  value="${customer.customerId}">
+                                        ${customer.fullName }
+                                </option>
+                            </c:forEach>
+                        </select>
+
                     </div>
                 </div>
 
-                <div class="row form-group">
-                    <div class="col-lg-3 col-md-offset-2">
-                        <label for="customerAccountType">Account Type</label>
-                    </div>
-                    <div class="col-lg-3">
-                        <select class="form-control" id="customerAccountType">
-                            <option>Select</option>
-                            <option>Savings Account</option>
-                        </select>
-                    </div>
-                </div>
+
                 <hr style="width:75%"/>
 
                 <div class="row form-group">
@@ -122,13 +121,13 @@
                         <label for="startDate">Start Date</label>
                     </div>
                     <div class="col-lg-2">
-                        <input type="text" name="startDate" class="form-control" id="startDate">
+                        <input type="text" name="startDate" class="form-control" id="startDate" value="${customerAccount.startDate}">
                     </div>
                     <div class="col-lg-2">
                         <label for="endDate">End Date</label>
                     </div>
                     <div class="col-lg-2">
-                        <input type="text" name="endDate" class="form-control" id="endDate">
+                        <input type="text" name="endDate" class="form-control" id="endDate" value="${customerAccount.endDate}">
                     </div>
                 </div>
 
@@ -137,7 +136,7 @@
                         <label for="availableBalance">Available Balance</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="availableBalance" class="form-control" id="availableBalance">
+                        <input type="text" name="availableBalance" class="form-control" id="availableBalance" value="${customerAccount.availableBalance}">
                     </div>
                 </div>
 
@@ -146,11 +145,14 @@
                         <label for="customerstatus">Status</label>
                     </div>
                     <div class="col-lg-3">
-                        <select class="form-control" id="customerstatus">
-                            <option>Select</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
+                        <select name="accountTypeId" class="form-control" id="${customerAccount.status}">
+                            <c:forEach items="${customerStatusList}" var="status">
+                                <option  value="${status.customerstatusSeq}">
+                                        ${status.customerstatus }
+                                </option>
+                            </c:forEach>
                         </select>
+
                     </div>
                 </div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

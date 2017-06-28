@@ -7,15 +7,19 @@ public enum AccountStatus {
     ACTIVE(0,"active"),
     INACTIVE( 1,"inactive");
 
-    private final Integer statusSeq;
-    private final String status;
+    private final Integer AccountstatusSeq;
+    private final String Accountstatus;
 
-    AccountStatus(Integer statusSeq, String status) {
-        this.statusSeq = statusSeq;
-        this.status = status;
+    AccountStatus(Integer accountstatusSeq, String accountstatus) {
+        AccountstatusSeq = accountstatusSeq;
+        Accountstatus = accountstatus;
     }
 
-    public Integer getStatusSeq() {
-        return statusSeq;
+    public Integer getAccountstatusSeq() {
+        return AccountstatusSeq;
+    }
+
+    public String getAccountstatus() {
+        return Accountstatus;
     }
 }

@@ -8,6 +8,8 @@ public enum MasterDataStatus {
     DELETED(0, "Deleted"),
     OPEN(1, "Open");
 
+
+
     private final Integer statusSeq;
     private final String status;
 
