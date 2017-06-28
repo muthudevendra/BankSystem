@@ -1,19 +1,19 @@
 package com.banksys.ebank.datalayer.entity;
 
+import com.banksys.util.enums.Currency;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.*;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Date;
 import java.util.Objects;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
- *
  */
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -21,11 +21,14 @@ import java.util.Objects;
 public class CustomerAccount {
     private Integer customerAccountId;
     private Integer accountId;
+    private String accountNo;
     private Date startDate;
     private Date endDate;
     private Double availableBalance;
+    private Integer currencyId;
     private Integer customerId;
     private Integer status;
+    private Integer version;
     private String createdBy;
     private Date createdDate;
     private String lastModifiedBy;
@@ -34,8 +37,10 @@ public class CustomerAccount {
     private Account account;
     private Customer customer;
 
+    private String currencyDescription;
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CUSTOMER_ACCOUNT_ID")
     public Integer getCustomerAccountId() {
         return customerAccountId;
@@ -53,6 +58,16 @@ public class CustomerAccount {
 
     public void setAccountId(Integer accountId) {
         this.accountId = accountId;
+    }
+
+    @Basic
+    @Column(name = "ACCOUNT_NO")
+    public String getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
     }
 
     @Basic
@@ -86,6 +101,19 @@ public class CustomerAccount {
     }
 
     @Basic
+    @Column(name = "CURRENCY_ID")
+    public Integer getCurrencyId() {
+        return currencyId;
+    }
+
+    public void setCurrencyId(Integer currencyId) {
+        this.currencyId = currencyId;
+        if (currencyId != null) {
+            this.setCurrencyDescription(Currency.findOne(currencyId).getCurrency());
+        }
+    }
+
+    @Basic
     @Column(name = "CUSTOMER_ID")
     public Integer getCustomerId() {
         return customerId;
@@ -103,6 +131,16 @@ public class CustomerAccount {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Version
+    @Column(name = "VERSION")
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     @Basic
@@ -169,6 +207,15 @@ public class CustomerAccount {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    @Transient
+    public String getCurrencyDescription() {
+        return currencyDescription;
+    }
+
+    public void setCurrencyDescription(String currencyDescription) {
+        this.currencyDescription = currencyDescription;
     }
 
     @Override

@@ -22,7 +22,7 @@
             <li class="active">Inquiry</li>
         </ul>
 
-        <div class="col-md-8 col-md-offset-1 table-striped table-responsive">
+        <div class="col-md-12 col-md-offset-1 table-striped table-responsive">
             <table class="table">
                 <thead>
                 <tr>
@@ -36,10 +36,11 @@
                 <tbody>
                 <c:forEach items="${customerAccountList}" var="customerAccount">
                     <td>${customerAccount.account.accountType.accountTypeName}</td>
-                    <%--<td>${customerAccount.acc}</td>--%>
-                    <td>${customerAccount.startDate}</td>
-                    <td></td>
-                    <td>${customerAccount.availableBalance}</td>
+                    <td>${customerAccount.accountNo}</td>
+                    <td><fmt:formatDate value="${customerAccount.startDate}"
+                                        pattern="dd-MM-yyyy"/></td>
+                    <td>${customerAccount.currencyDescription}</td>
+                    <td align="right">${customerAccount.availableBalance}</td>
                 </c:forEach>
                 <tr>
                 </tr>

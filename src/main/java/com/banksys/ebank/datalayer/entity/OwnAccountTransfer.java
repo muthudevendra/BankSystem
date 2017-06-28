@@ -28,6 +28,9 @@ public class OwnAccountTransfer {
     private Date lastModifiedDate;
     private String lastModifiedBy;
 
+    private CustomerAccount fromAccount;
+    private CustomerAccount toAccount;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "OWN_ACCOUNT_TRANSFER_ID")
@@ -133,6 +136,26 @@ public class OwnAccountTransfer {
 
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "FROM_ACCOUNT_ID", insertable = false, updatable = false)
+    public CustomerAccount getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(CustomerAccount fromAccount) {
+        this.fromAccount = fromAccount;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "TO_ACCOUNT_ID", insertable = false, updatable = false)
+    public CustomerAccount getToAccount() {
+        return toAccount;
+    }
+
+    public void setToAccount(CustomerAccount toAccount) {
+        this.toAccount = toAccount;
     }
 
     @Override
