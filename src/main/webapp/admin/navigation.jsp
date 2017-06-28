@@ -28,6 +28,8 @@
                                 <ul class="nav nav-list">
                                     <li class="navUrl" id="moduleManagement"><a href="/admin/config/moduleManagement">Module</a></li>
                                     <li class="navUrl" id="authorityManagement" ><a href="/admin/customer/authorityManagement">Authority</a></li>
+                                    <li class="navUrl" id="userType"><a href="/admin/config/userTypeManagement">User Type</a></li>
+                                    <li class="navUrl" id="userTypeAuthority"><a href="/admin/config/userTypeAuthorityManagement">User Type Authority</a></li>
                                 </ul>
                             </div>
                         </li>

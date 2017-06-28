@@ -2,50 +2,53 @@
   Created by IntelliJ IDEA.
   User: Muthu Devendra
   Date: 6/28/2017
-  Time: 8:48 AM
+  Time: 9:31 AM
   To change this template use File | Settings | File Templates.
 --%>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="#">Admin</a></li>
-            <li class="active">User Type</li>
+            <li class="active">User Authority</li>
         </ul>
         <div class="col-lg-8 col-lg-offset-1">
-            <div id="legend">
-                <legend>User Type</legend>
+            <div>
+                <legend>User Authority</legend>
             </div>
         </div>
         <div class="content-page col-md-9">
             <form role="form">
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
-                        <label for="userType">User Type</label>
+                        <label for="usertype">User Type</label>
                     </div>
-                    <div class="col-lg-7">
-                        <input type="text" name="userType" class="form-control" id="userType">
+                    <div class="col-lg-8">
+                        <select class="form-control" id="usertype">
+                            <option>Select</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
-                        <label for="description">Description</label>
+                        <label for="authoritytype">Authority Type</label>
                     </div>
-                    <div class="col-lg-7">
-                        <input type="text" name="description" class="form-control" id="description">
+                    <div class="col-lg-8">
+                        <select class="form-control" id="authoritytype">
+                            <option>Select</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="status">Status</label>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-8">
                         <select class="form-control" id="status">
                             <option>Select</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
                         </select>
                     </div>
                 </div>
+                <br/>
                 <div class="row form-group">
                     <hr/>
                     <div class="col-md-5">

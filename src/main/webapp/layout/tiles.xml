@@ -57,7 +57,9 @@
     <definition name="userTypeManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/userTypeManagement.jsp"/>
     </definition>
-
+    <definition name="userTypeAuthorityManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userTypeAuthorityManagement.jsp"/>
+    </definition>
 
     <!--Ebank-->
     <definition name="accountInquiry" extends="ebank_base">
@@ -83,5 +85,8 @@
     </definition>
     <definition name="scheduleTransfer" extends="ebank_base">
         <put-attribute name="body" value="/ebank/transfer/scheduleTransfer.jsp"/>
+    </definition>
+    <definition name="loginHistory" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/profile/loginHistory.jsp"/>
     </definition>
 </tiles-definitions>

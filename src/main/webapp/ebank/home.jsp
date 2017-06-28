@@ -61,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Change Password</a></li>
-                        <li><a href="#">Login History</a></li>
+                        <li><a href="/ebank/profile/loginHistory">Login History</a></li>
                         <li><a href="#">Change Personal Details</a></li>
                         <li><a href="#">Message to the bank</a></li>
                     </ul>
