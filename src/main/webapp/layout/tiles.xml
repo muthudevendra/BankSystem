@@ -55,7 +55,7 @@
         <put-attribute name="body" value="/admin/account/customerAccountManagement.jsp"/>
     </definition>
     <definition name="userTypeManagement" extends="admin_base">
-        <put-attribute name="body" value="/admin/userType/userTypeManagement.jsp"/>
+        <put-attribute name="body" value="/admin/config/userTypeManagement.jsp"/>
     </definition>
 
 
@@ -76,7 +76,7 @@
         <put-attribute name="body" value="/ebank/payment/schedulePayments.jsp"/>
     </definition>
     <definition name="ownAccount" extends="ebank_base">
-        <put-attribute name="body" value="/ebank/transfer/ownAccount.jsp"/>
+        <put-attribute name="body" value="/ebank/transfer/ownAccountTransfer.jsp"/>
     </definition>
     <definition name="thirdpartyTransfer" extends="ebank_base">
         <put-attribute name="body" value="/ebank/transfer/thirdpartyTransfer.jsp"/>

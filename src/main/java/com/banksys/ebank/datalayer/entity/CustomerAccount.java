@@ -32,6 +32,7 @@ public class CustomerAccount {
     private Date lastModifiedDate;
 
     private Account account;
+    private Customer customer;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -158,6 +159,16 @@ public class CustomerAccount {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "CUSTOMER_ID", insertable = false, updatable = false)
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override

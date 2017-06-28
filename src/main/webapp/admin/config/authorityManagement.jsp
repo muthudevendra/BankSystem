@@ -46,15 +46,6 @@
                         </select>
                     </div>
                 </div>
-
-                <div class="row form-group">
-                    <div class="col-lg-3 col-md-offset-2">
-                        <label for="description">Description</label>
-                    </div>
-                    <div class="col-lg-6">
-                        <input type="text" name="description" class="form-control" id="description">
-                    </div>
-                </div>
                 <div class="row form-group ">
                     <div class="updateOperation" style="display: none">
                         <div class="col-lg-3 col-md-offset-2">
@@ -91,7 +82,8 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedDate">${authority.lastModifiedDate}</label>
+                                <label id="modifiedDate"><fmt:formatDate value="${authority.lastModifiedDate}"
+                                                                         pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
                     </div>
@@ -109,7 +101,8 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">${authority.createdDate}</label>
+                                <label id="createdDate"><fmt:formatDate value="${authority.createdDate}"
+                                                                        pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
                     </div>
@@ -119,7 +112,11 @@
 
                 <div class="row">
                     <div class="col-md-1 col-md-offset-8">
-                        <button type="submit" class="btn btn-success createOperation">Save</button>
+                        <button type="submit" class="btn btn-success createOperation"
+                                <sec:authorize
+                                        access="!hasAuthority('admin@customerManagement_CREATE')">
+                                    disabled="disabled"
+                                </sec:authorize>>Save</button>
                     </div>
                     <div class="col-md-1">
                         <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>

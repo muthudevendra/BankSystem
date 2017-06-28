@@ -27,7 +27,6 @@ public class Authority {
     private String lastModifiedBy;
     private Date lastModifiedDate;
 
-
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "AUTHORITY_ID")

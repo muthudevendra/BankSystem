@@ -1,8 +1,11 @@
 package com.banksys.admin.businesslayer.managerImpl;
 
 import com.banksys.admin.businesslayer.manager.CustomerSearchControllerManager;
+import com.banksys.admin.datalayer.entity.auxilary.CustomerAux;
 import com.banksys.ebank.datalayer.entity.Customer;
+import com.banksys.ebank.datalayer.entity.QCustomer;
 import com.banksys.ebank.datalayer.service.CustomerService;
+import com.querydsl.core.BooleanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +26,18 @@ public class CustomerSearchControllerManagerImpl implements CustomerSearchContro
     }
 
     @Override
-    public List<Customer> findCustomers() {
-        return this.customerService.findAll();
+    public List<Customer> findCustomers(CustomerAux customerAux) {
+        QCustomer customer = QCustomer.customer;
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+        if(customerAux.getNic() != null && !customerAux.getNic().isEmpty()){
+            booleanBuilder.and(customer.nic.eq(customerAux.getNic()));
+        }
+        if(customerAux.getPassportNo() != null && !customerAux.getPassportNo().isEmpty()){
+            booleanBuilder.and(customer.passportNo.eq(customerAux.getPassportNo()));
+        }
+        if(customerAux.getLastName() != null && !customerAux.getLastName().isEmpty()){
+            booleanBuilder.and(customer.lastName.eq(customerAux.getLastName()));
+        }
+        return (List<Customer>)this.customerService.findAll(booleanBuilder);
     }
 }

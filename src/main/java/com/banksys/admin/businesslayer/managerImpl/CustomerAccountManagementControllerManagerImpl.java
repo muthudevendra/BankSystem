@@ -27,6 +27,7 @@ public class CustomerAccountManagementControllerManagerImpl implements CustomerA
     @Override
     public ResponseObject saveCustomerAccount(CustomerAccount customerAccount) {
         customerAccount.setStatus(MasterDataStatus.OPEN.getStatusSeq());
+        customerAccount.getAccount().setStatus(MasterDataStatus.OPEN.getStatusSeq());
         this.customerAccountService.save(customerAccount);
         ResponseObject responseObject = new ResponseObject(customerAccount, true);
         responseObject.setMessage("Customer Account Saved Successfully");

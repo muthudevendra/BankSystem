@@ -4,7 +4,7 @@
   Date: 6/20/2017
   Time: 9:07 PM
   To change this template use File | Settings | File Templates.
---%>
+--%><%@ include file="/layout/include.jsp" %>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -37,8 +37,13 @@
                         <label class="control-label" for="fromAccount">From Account </label>
                     </div>
                     <div class="col-md-5">
-                        <select class="form-control" id="fromAccount">
-                            <option>select account</option>
+                        <select name="fromAccountId" class="form-control" id="fromAccount">
+                            <c:forEach items="${customerAccountList}" var="customerAccount">
+                                <option ${customerAccount.customerAccountId eq ownAccountTransfer.customerAccountId ? 'selected' : ''}
+                                        value="${customerAccount.customerAccountId}">
+                                        ${customerAccount.customerAccountId}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -50,8 +55,13 @@
                         <label class="control-label" for="toAccount">To Account </label>
                     </div>
                     <div class="col-md-5">
-                        <select class="form-control" id="toAccount">
-                            <option>select account</option>
+                        <select name="toAccountId" class="form-control" id="toAccount">
+                            <c:forEach items="${customerAccountList}" var="customerAccount">
+                                <option ${customerAccount.customerAccountId eq ownAccountTransfer.customerAccountId ? 'selected' : ''}
+                                        value="${customerAccount.customerAccountId}">
+                                        ${customerAccount.customerAccountId}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -61,7 +71,8 @@
                     </div>
                     <div class="col-sm-5">
                         <div class="input-group">
-                            <span class="input-group-addon">Rs</span><input type="text" class="form-control" id="amount">
+                            <span class="input-group-addon">Rs</span>
+                            <input name="amount" value="${ownAccountTransfer.amount}" type="text" class="form-control" id="amount">
                         </div>
                     </div>
                 </div>

@@ -90,10 +90,11 @@
                                 </sec:authorize>>Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default">Update</button>
-                    </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-default">Delete</button>
+                        <button type="submit" class="btn btn-default"
+                                <sec:authorize
+                                        access="!hasAuthority('admin@moduleManagement_UPDATE')">
+                                    disabled="disabled"
+                                </sec:authorize>>Update</button>
                     </div>
                 </div>
 

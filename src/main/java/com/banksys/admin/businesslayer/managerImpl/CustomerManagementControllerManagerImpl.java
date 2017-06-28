@@ -1,12 +1,16 @@
 package com.banksys.admin.businesslayer.managerImpl;
 
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
+import com.banksys.admin.datalayer.entity.User;
 import com.banksys.common.ResponseObject;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.enums.MasterDataStatus;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -25,6 +29,7 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
     @Override
     public ResponseObject saveCustomer(Customer customer) {
         customer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
+        customer.setUser(this.getDefaultUser());
         this.customerService.save(customer);
         ResponseObject responseObject = new ResponseObject(customer, true);
         responseObject.setMessage("Customer Saved Successfully");
@@ -66,5 +71,14 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
             responseObject.setObject(dbCustomer);
         }
         return responseObject;
+    }
+
+    private User getDefaultUser(){
+        User user = new User();
+        user.setUsername("newUser");
+        user.setPassword(DigestUtils.sha1Hex(UUID.randomUUID().toString())); //Mail UUID
+        user.setEnabled(0);
+        user.setUserTypeId(1);
+        return user;
     }
 }

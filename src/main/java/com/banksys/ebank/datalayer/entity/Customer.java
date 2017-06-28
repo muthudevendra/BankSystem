@@ -1,5 +1,6 @@
 package com.banksys.ebank.datalayer.entity;
 
+import com.banksys.admin.datalayer.entity.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -41,6 +42,7 @@ public class Customer {
     private String lastModifiedBy;
 
     private AddressBook addressBook;
+    private User user;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -134,7 +136,7 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "USER_ID", updatable = false)
+    @Column(name = "USER_ID", insertable = false, updatable = false)
     public Integer getUserId() {
         return userId;
     }
@@ -257,6 +259,16 @@ public class Customer {
 
     public void setAddressBook(AddressBook addressBook) {
         this.addressBook = addressBook;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID", updatable = false)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

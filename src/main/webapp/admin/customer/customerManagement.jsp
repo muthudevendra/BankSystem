@@ -257,10 +257,18 @@
 
                 <div class="row">
                     <div class="col-md-1 col-md-offset-8 createOperation">
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success"
+                                <sec:authorize
+                                        access="!hasAuthority('admin@customerManagement_CREATE')">
+                                    disabled="disabled"
+                                </sec:authorize>>Save</button>
                     </div>
                     <div class="col-md-1 updateOperation" style="display: none">
-                        <button type="submit" class="btn btn-default">Update</button>
+                        <button type="submit" class="btn btn-default"
+                                <sec:authorize
+                                        access="!hasAuthority('admin@customerManagement_UPDATE')">
+                                    disabled="disabled"
+                                </sec:authorize>>Update</button>
                     </div>
                 </div>
             </form>

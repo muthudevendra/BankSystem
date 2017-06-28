@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
  *
  */
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Account {
     private Integer accountId;
     private Integer accountTypeId;
@@ -26,6 +28,8 @@ public class Account {
     private Date createdDate;
     private String lastModifiedBy;
     private Date lastModifiedDate;
+
+    private AccountType accountType;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -144,6 +148,15 @@ public class Account {
         this.lastModifiedDate = lastModifiedDate;
     }
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ACCOUNT_TYPE_ID", insertable = false, updatable = false)
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
 
     @Override
     public boolean equals(Object o) {
