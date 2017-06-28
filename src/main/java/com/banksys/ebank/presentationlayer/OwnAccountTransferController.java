@@ -38,6 +38,7 @@ public class OwnAccountTransferController {
     @GetMapping
     @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
     public String getPage(Model model, HttpServletRequest request){
+        model = this.getPageData(model, request);
         model.addAttribute("ownAccountTransfer", new OwnAccountTransfer());
         return "ownAccount";
     }

@@ -138,7 +138,7 @@ public class OwnAccountTransfer {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FROM_ACCOUNT_ID", insertable = false, updatable = false)
     public CustomerAccount getFromAccount() {
         return fromAccount;
@@ -148,7 +148,7 @@ public class OwnAccountTransfer {
         this.fromAccount = fromAccount;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TO_ACCOUNT_ID", insertable = false, updatable = false)
     public CustomerAccount getToAccount() {
         return toAccount;

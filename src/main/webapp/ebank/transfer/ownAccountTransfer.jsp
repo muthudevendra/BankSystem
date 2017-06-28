@@ -39,9 +39,8 @@
                     <div class="col-md-5">
                         <select name="fromAccountId" class="form-control" id="fromAccount">
                             <c:forEach items="${customerAccountList}" var="customerAccount">
-                                <option ${customerAccount.customerAccountId eq ownAccountTransfer.customerAccountId ? 'selected' : ''}
-                                        value="${customerAccount.customerAccountId}">
-                                        ${customerAccount.customerAccountId}
+                                <option value="${customerAccount.customerAccountId}">
+                                        ${customerAccount.accountNo}
                                 </option>
                             </c:forEach>
                         </select>
@@ -57,9 +56,8 @@
                     <div class="col-md-5">
                         <select name="toAccountId" class="form-control" id="toAccount">
                             <c:forEach items="${customerAccountList}" var="customerAccount">
-                                <option ${customerAccount.customerAccountId eq ownAccountTransfer.customerAccountId ? 'selected' : ''}
-                                        value="${customerAccount.customerAccountId}">
-                                        ${customerAccount.customerAccountId}
+                                <option value="${customerAccount.customerAccountId}">
+                                        ${customerAccount.accountNo}
                                 </option>
                             </c:forEach>
                         </select>

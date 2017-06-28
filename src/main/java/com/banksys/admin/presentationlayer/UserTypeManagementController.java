@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by Oshada on 6/27/2017.
+ *
  */
 @Controller
 @RequestMapping("/admin/config/userTypeManagement")
