@@ -1,7 +1,13 @@
 package com.banksys.admin.datalayer.entity;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -9,6 +15,7 @@ import java.util.Objects;
  *
  */
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "user_type_authority")
 public class UserTypeAuthority {
     private Integer userTypeAuthorityId;
@@ -21,6 +28,7 @@ public class UserTypeAuthority {
     private Date lastModifiedDate;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "USER_TYPE_AUTHORITY_ID")
     public Integer getUserTypeAuthorityId() {
         return userTypeAuthorityId;
@@ -61,7 +69,8 @@ public class UserTypeAuthority {
     }
 
     @Basic
-    @Column(name = "CREATED_BY")
+    @CreatedBy
+    @Column(name = "CREATED_BY" ,nullable = false, updatable = false)
     public String getCreatedBy() {
         return createdBy;
     }
@@ -71,7 +80,8 @@ public class UserTypeAuthority {
     }
 
     @Basic
-    @Column(name = "CREATED_DATE")
+    @CreatedDate
+    @Column(name = "CREATED_DATE" ,nullable = false, updatable = false)
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -81,7 +91,8 @@ public class UserTypeAuthority {
     }
 
     @Basic
-    @Column(name = "LAST_MODIFIED_BY")
+    @LastModifiedBy
+    @Column(name = "LAST_MODIFIED_BY" ,nullable = false)
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -91,7 +102,8 @@ public class UserTypeAuthority {
     }
 
     @Basic
-    @Column(name = "LAST_MODIFIED_DATE")
+    @LastModifiedDate
+    @Column(name = "LAST_MODIFIED_DATE" ,nullable = false)
     public Date getLastModifiedDate() {
         return lastModifiedDate;
     }

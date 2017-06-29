@@ -5,6 +5,8 @@
   Time: 9:31 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp"%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/userTypeAuthorityManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,14 +19,21 @@
             </div>
         </div>
         <div class="content-page col-md-9">
-            <form role="form">
+            <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post" id="userTypeAuthorityform">
+                <input type="hidden" name="userTypeAuthorityId" value="${userTypeAuthority.userTypeAuthorityId eq null ? '' : userTypeAuthority.userTypeAuthorityId}" id="userTypeId"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="usertype">User Type</label>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-control" id="usertype">
-                            <option>Select</option>
+                        <select name="userTypeId" class="form-control" id="userTypeId">
+                            <c:forEach items="${userTypeList}" var="userType">
+                                <option ${userType.userTypeId eq userTypeAuthority.userTypeId ? 'selected' : ''}
+                                        value="${userType.userTypeId}">
+                                        ${userType.description}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -33,8 +42,13 @@
                         <label for="authoritytype">Authority Type</label>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-control" id="authoritytype">
-                            <option>Select</option>
+                        <select name="authorityId" class="form-control" id="authorityId">
+                            <c:forEach items="${authorityList}" var="authority">
+                                <option ${authority.authorityId eq userTypeAuthority.authorityId ? 'selected' : ''}
+                                        value="${authority.authorityId}">
+                                        ${authority.authorityName}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -42,9 +56,14 @@
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="status">Status</label>
                     </div>
-                    <div class="col-lg-8">
-                        <select class="form-control" id="status">
-                            <option>Select</option>
+                    <div class="col-lg-3">
+                        <select name="status" class="form-control" id="status">
+                            <c:forEach items="${statusList}" var="status">
+                                <option ${status.statusSeq eq userTypeAuthority.status ? 'selected' : ''}
+                                        value="${status.statusSeq}">
+                                        ${status.status}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -57,7 +76,7 @@
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedBy">Lakshitha</label>
+                                <label id="modifiedBy">${userTypeAuthority.lastModifiedBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -65,7 +84,7 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedDate">2017/06/26</label>
+                                <label id="modifiedDate">${userTypeAuthority.lastModifiedDate}</label>
                             </div>
                         </div>
                     </div>
@@ -75,7 +94,7 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdBy">Lakshitha</label>
+                                <label id="createdBy">${userTypeAuthority.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -83,7 +102,7 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">2017/06/24</label>
+                                <label id="createdDate">${userTypeAuthority.createdDate}</label>
                             </div>
                         </div>
                     </div>
