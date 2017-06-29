@@ -39,6 +39,9 @@
     <definition name="moduleManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/moduleManagement.jsp"/>
     </definition>
+    <definition name="moduleSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/moduleSearch.jsp"/>
+    </definition>
     <definition name="customerManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/customer/customerManagement.jsp"/>
     </definition>
@@ -47,6 +50,9 @@
     </definition>
     <definition name="authorityManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/authorityManagement.jsp"/>
+    </definition>
+    <definition name="authoritySearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/authoritySearch.jsp"/>
     </definition>
     <definition name="accountTypeManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/account/accountTypeManagement.jsp"/>
@@ -88,5 +94,8 @@
     </definition>
     <definition name="loginHistory" extends="ebank_base">
         <put-attribute name="body" value="/ebank/profile/loginHistory.jsp"/>
+    </definition>
+    <definition name="changePassword" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/profile/changePassword.jsp"/>
     </definition>
 </tiles-definitions>

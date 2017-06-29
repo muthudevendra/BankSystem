@@ -44,6 +44,17 @@
                                 </ul>
                             </div>
                         </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#search" data-parent="#sidenav" class="collapsed">
+                                Search<span class="caret pull-right"></span>
+                            </a>
+                            <div class="collapse" id="search">
+                                <ul class="nav nav-list">
+                                    <li class="navUrl" id="moduleSearch"><a href="/admin/config/moduleSearch">Module Search</a></li>
+                                    <li class="navUrl" id="authoritySearch"><a href="/admin/config/authoritySearch">Authority Search</a></li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
                         <li class="navUrl"><a href="/admin/account/accountTypeManagement">Account Type</a></li>
                     </ul>

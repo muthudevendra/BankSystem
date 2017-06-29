@@ -7,11 +7,10 @@
 --%>
 <div class="header">
     <div class="container">
-        <a class="site-logo" href="#"><img src="${pageContext.request.contextPath}/layout/assets/corporate/img/logos/logo.png" alt="Metronic FrontEnd"></a>
-
+        <a class="site-logo" href="#"><img
+                src="${pageContext.request.contextPath}/layout/assets/corporate/img/logos/logo.png"
+                alt="Metronic FrontEnd"></a>
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-        <!-- BEGIN NAVIGATION -->
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
                 <li>
@@ -60,13 +59,10 @@
                         My Profile
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Change Password</a></li>
+                        <li><a href="/ebank/profile/changePassword">Change Password</a></li>
                         <li><a href="/ebank/profile/loginHistory">Login History</a></li>
-                        <li><a href="#">Change Personal Details</a></li>
-                        <li><a href="#">Message to the bank</a></li>
                     </ul>
                 </li>
-                <!-- BEGIN TOP SEARCH -->
                 <li class="menu-search">
                     <span class="sep"></span>
                     <i class="fa fa-search search-btn"></i>
@@ -81,9 +77,7 @@
                         </form>
                     </div>
                 </li>
-                <!-- END TOP SEARCH -->
             </ul>
         </div>
-        <!-- END NAVIGATION -->
     </div>
 </div>

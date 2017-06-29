@@ -8,10 +8,8 @@
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
-            <li class="active"><a href="#">Login History</a></li>
-            <li><a href="#">Change Password</a></li>
-            <li><a href="#">Change Details</a></li>
-            <li><a href="#">Message to Bank</a></li>
+            <li class="active"><a href="/ebank/profile/loginHistory">Login History</a></li>
+            <li><a href="/ebank/profile/changePassword">Change Password</a></li>
         </ul>
     </div>
 </div>
