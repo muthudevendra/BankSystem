@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/userTypeManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -18,8 +19,9 @@
             </div>
         </div>
         <div class="content-page col-md-9">
-            <form role="form" method="post" action="/admin/config/userTypeManagement/saveUserTypeManagement">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            <form role="form" method="post" id="userTypeform"action="/admin/config/userTypeManagement/saveUserTypeManagement">
+                <input type="hidden" name="userTypeId" value="${userType.userTypeId eq null ? '' : userType.userTypeId}" id="userTypeId"/>
+
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="userType">User Type</label>
@@ -40,7 +42,7 @@
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="status">Status</label>
                     </div>
-
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <div class="col-lg-3">
                             <select name="status" class="form-control" id="status">
                                 <c:forEach items="${statusList}" var="status">
