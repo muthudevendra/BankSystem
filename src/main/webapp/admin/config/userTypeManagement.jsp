@@ -5,6 +5,7 @@
   Time: 8:48 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp" %>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,13 +18,14 @@
             </div>
         </div>
         <div class="content-page col-md-9">
-            <form role="form">
+            <form role="form" method="post" action="/admin/config/userTypeManagement/saveUserTypeManagement">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="userType">User Type</label>
                     </div>
                     <div class="col-lg-7">
-                        <input type="text" name="userType" class="form-control" id="userType">
+                        <input type="text" name="userType" class="form-control" id="userType" value="${userType.userType}">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -31,20 +33,24 @@
                         <label for="description">Description</label>
                     </div>
                     <div class="col-lg-7">
-                        <input type="text" name="description" class="form-control" id="description">
+                        <input type="text" name="description" class="form-control" id="description" value="${userType.description}">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="status">Status</label>
                     </div>
-                    <div class="col-lg-7">
-                        <select class="form-control" id="status">
-                            <option>Select</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
-                        </select>
-                    </div>
+
+                        <div class="col-lg-3">
+                            <select name="status" class="form-control" id="status">
+                                <c:forEach items="${statusList}" var="status">
+                                    <option ${status.statusSeq eq userType.status ? 'selected' : ''}
+                                            value="${status.statusSeq}">
+                                            ${status.status}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
                 </div>
                 <div class="row form-group">
                     <hr/>
@@ -54,7 +60,7 @@
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedBy">Lakshitha</label>
+                                <label id="modifiedBy">${userType.lastModifiedBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -62,7 +68,7 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedDate">2017/06/26</label>
+                                <label id="modifiedDate">${userType.lastModifiedDate}</label>
                             </div>
                         </div>
                     </div>
@@ -72,7 +78,7 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdBy">Lakshitha</label>
+                                <label id="createdBy">${userType.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -80,7 +86,7 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">2017/06/24</label>
+                                <label id="createdDate">${userType.createdDate}</label>
                             </div>
                         </div>
                     </div>
