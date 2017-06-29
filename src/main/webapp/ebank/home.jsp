@@ -31,7 +31,7 @@
                         Fund Transfer
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/ebank/transfer/ownAcount">Own Account</a></li>
+                        <li><a href="/ebank/transfer/ownAccount">Own Account</a></li>
                         <li><a href="/ebank/transfer/thirdpartyTransfer">Third-Party Transfer</a></li>
                         <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transfer</a></li>
                     </ul>

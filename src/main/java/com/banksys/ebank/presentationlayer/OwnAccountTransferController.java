@@ -22,7 +22,7 @@ import static com.banksys.ebank.datalayer.entity.QCustomerAccount.customerAccoun
  *
  */
 @Controller
-@RequestMapping("/ebank/transfer/ownAcount")
+@RequestMapping("/ebank/transfer/ownAccount")
 public class OwnAccountTransferController {
 
     private final OwnAccountTransferControllerManager ownAccountTransferControllerManager;
@@ -43,7 +43,7 @@ public class OwnAccountTransferController {
         return "ownAccount";
     }
 
-    @RequestMapping(value = "/transfer", method = RequestMethod.POST)
+    @RequestMapping(value = "/doTransfer", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_TRANSFER')")
     public String transfer(@ModelAttribute OwnAccountTransfer ownAccountTransfer, Model model, HttpServletRequest request) {
         this.ownAccountTransferControllerManager.transfer(ownAccountTransfer);

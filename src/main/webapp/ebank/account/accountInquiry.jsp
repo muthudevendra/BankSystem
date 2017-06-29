@@ -35,12 +35,14 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${customerAccountList}" var="customerAccount">
-                    <td>${customerAccount.account.accountType.accountTypeName}</td>
-                    <td>${customerAccount.accountNo}</td>
-                    <td><fmt:formatDate value="${customerAccount.startDate}"
-                                        pattern="dd-MM-yyyy"/></td>
-                    <td>${customerAccount.currencyDescription}</td>
-                    <td align="right">${customerAccount.availableBalance}</td>
+                    <tr>
+                        <td>${customerAccount.account.accountType.accountTypeName}</td>
+                        <td>${customerAccount.accountNo}</td>
+                        <td><fmt:formatDate value="${customerAccount.startDate}"
+                                            pattern="dd-MM-yyyy"/></td>
+                        <td>${customerAccount.currencyDescription}</td>
+                        <td align="right">${customerAccount.availableBalance}</td>
+                    </tr>
                 </c:forEach>
                 <tr>
                 </tr>

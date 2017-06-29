@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp"%>
-<script type="text/javascript" src="../script/moduleManagement.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/moduleManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -20,7 +20,8 @@
                     <legend>Account Type</legend>
                 </div>
             </div>
-            <form role="form" action="moduleManagement/saveModule" method="post">
+            <form role="form" action="/admin/config/moduleManagement/saveModule" id="moduleForm" method="post">
+                <input type="hidden" name="moduleId" value="${module.moduleId eq null ? '' : module.moduleId}" id="moduleId"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-2">
                         <label for="moduleName">Module Name</label>
@@ -38,7 +39,7 @@
                     </div>
                 </div>
 
-                <div class="row form-group">
+                <div class="row form-group updateOperation" style="display: none;">
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
@@ -46,7 +47,7 @@
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedBy">Lakshitha</label>
+                                <label id="modifiedBy">${module.lastModifiedBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -54,7 +55,8 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="modifiedDate">2017/06/26</label>
+                                <label id="modifiedDate"><fmt:formatDate value="${module.lastModifiedDate}"
+                                                                         pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
                     </div>
@@ -64,7 +66,7 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdBy">Lakshitha</label>
+                                <label id="createdBy">${module.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -72,7 +74,8 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
-                                <label id="createdDate">2017/06/24</label>
+                                <label id="createdDate"><fmt:formatDate value="${module.createdDate}"
+                                                                        pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
                     </div>
@@ -83,21 +86,20 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row">
                     <div class="col-md-1 col-md-offset-6">
-                        <button type="submit" class="btn btn-default col-md-offset-9"
+                        <button type="submit" class="btn btn-default col-md-offset-9 createOperation"
                                 <sec:authorize
                                         access="!hasAuthority('admin@moduleManagement_CREATE')">
                                     disabled="disabled"
                                 </sec:authorize>>Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default"
+                        <button type="submit" class="btn btn-default updateOperation" style="display: none"
                                 <sec:authorize
                                         access="!hasAuthority('admin@moduleManagement_UPDATE')">
                                     disabled="disabled"
                                 </sec:authorize>>Update</button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>

@@ -11,3 +11,15 @@ function transformToUpdate() {
     $('.updateOperation').show();
     $('.createOperation').hide();
 }
+
+function form_validate(formId) {
+    var result = true;
+    $('#' + formId).validator('validate');
+    $('#' + formId + ' .form-group').each(function () {
+        if ($(this).hasClass('has-error')) {
+            result = false;
+            return false;
+        }
+    });
+    return result;
+}
