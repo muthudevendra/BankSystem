@@ -54,7 +54,7 @@
                             </select>
                         </div>
                 </div>
-                <div class="row form-group">
+                <div class="row form-group updateOperation" style="display: none">
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
@@ -96,14 +96,14 @@
                 <br/>
                 <div class="row">
                     <div class="col-md-1 col-md-offset-8">
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success createOperation">Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default">Update</button>
+                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>
                     </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </div>
+                    <%--<div class="col-md-1">--%>
+                        <%--<button type="submit" class="btn btn-danger">Delete</button>--%>
+                    <%--</div>--%>
                 </div>
             </form>
         </div>
