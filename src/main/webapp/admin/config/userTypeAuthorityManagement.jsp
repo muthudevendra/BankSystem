@@ -20,7 +20,7 @@
         </div>
         <div class="content-page col-md-9">
             <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post" id="userTypeAuthorityform">
-                <input type="hidden" name="userTypeAuthorityId" value="${userTypeAuthority.userTypeAuthorityId eq null ? '' : userTypeAuthority.userTypeAuthorityId}" id="userTypeId"/>
+                <input type="hidden" name="userTypeAuthorityId" value="${userTypeAuthority.userTypeAuthorityId eq null ? '' : userTypeAuthority.userTypeAuthorityId}" id="userTypeAuthorityId"/>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row form-group">
                     <div class="col-lg-2 col-md-offset-2">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row form-group">
+                <div class="row form-group updateOperation" style="display: none">
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
@@ -110,14 +110,14 @@
                 <br/>
                 <div class="row">
                     <div class="col-md-1 col-md-offset-8">
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success createOperation">Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default">Update</button>
+                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>
                     </div>
-                    <div class="col-md-1">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </div>
+                    <%--<div class="col-md-1">--%>
+                        <%--<button type="submit" class="btn btn-danger">Delete</button>--%>
+                    <%--</div>--%>
                 </div>
             </form>
         </div>
