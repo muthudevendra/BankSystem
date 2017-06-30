@@ -49,7 +49,7 @@ public class OwnAccountTransferController {
         this.ownAccountTransferControllerManager.transfer(ownAccountTransfer);
         model = getPageData(model, request);
         model.addAttribute("ownAccountTransfer", ownAccountTransfer);
-        return "customerAccountManagement";
+        return "ownAccount";
     }
 
     private Model getPageData(Model model, HttpServletRequest request) {

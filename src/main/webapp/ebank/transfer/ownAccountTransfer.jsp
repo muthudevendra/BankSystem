@@ -10,7 +10,7 @@
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
-            <li class="active"><a href="/ebank/transfer/ownAcount">Transfer From Own Account</a></li>
+            <li class="active"><a href="/ebank/transfer/ownAccount">Transfer From Own Account</a></li>
             <li><a href="/ebank/transfer/thirdpartyTransfer">Third-Party Transfer</a></li>
             <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transfer</a></li>
         </ul>

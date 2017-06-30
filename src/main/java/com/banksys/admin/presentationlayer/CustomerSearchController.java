@@ -29,8 +29,8 @@ public class CustomerSearchController {
     }
 
     @RequestMapping(value = "/searchCustomers", method = RequestMethod.POST)
-    public String findCustomers(@ModelAttribute CustomerAux customerAux, Model modle){
-        modle.addAttribute("customerList", this.customerSearchControllerManager.findCustomers(customerAux));
+    public String findCustomers(@ModelAttribute CustomerAux customerAux, Model model){
+        model.addAttribute("customerList", this.customerSearchControllerManager.findCustomers(customerAux));
         return "customerSearch";
     }
 }

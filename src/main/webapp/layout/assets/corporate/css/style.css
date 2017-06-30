@@ -3108,7 +3108,6 @@ Styler Panel
     .sidebar-nav .navbar li a {
         padding-top: 12px;
         padding-bottom: 12px;
-        text-transform: lowercase;
     }
 }
 

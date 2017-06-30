@@ -5,6 +5,8 @@
   Time: 12:22 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/accountStatement.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -29,20 +31,21 @@
         </div>
 
         <div class="content-page col-md-8 col-md-offset-2">
-            <form action="#">
+            <form action="/ebank/account/accountStatement/searchCustomerAccount">
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="input-group">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <label class="control-label" for="accounttype">Account Type</label>
+                                    <label class="control-label" for="accountType">Account Type</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <select class="form-control" id="accounttype">
-                                        <option>select type</option>
-                                        <option>Saving's account</option>
-                                        <option>Current Account</option>
-                                        <option></option>
+                                    <select name="accountTypeId" class="form-control" id="accountType">
+                                        <c:forEach items="${accountTypeList}" var="accountType">
+                                            <option value="${accountType.accountTypeId}">
+                                                    ${accountType.accountTypeName}
+                                            </option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
@@ -52,10 +55,16 @@
                         <div class="input-group">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <label class="control-label col-sm-2" for="accountnumber">Account Number</label>
+                                    <label class="control-label col-sm-2" for="customerAccountId">Account Number</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" id="accountnumber">
+                                    <select required name="customerAccountId" class="form-control" id="customerAccountId">
+                                        <c:forEach items="${customerAccountList}" var="customerAccount">
+                                            <option value="${customerAccount.customerAccountId}">
+                                                    ${customerAccount.accountNo}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +79,7 @@
         </div>
         <br>
         <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
                 <tr>
                     <th>Date</th>
@@ -82,8 +91,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                </tr>
+                <c:forEach items="${accountTransactionList}" var="accountTransaction">
+                    <tr ${accountTransaction.depositAmount eq null ?
+                    'style="background-color: palegoldenrod"' : 'style="background-color: palegreen"'}>
+                        <td><fmt:formatDate value="${accountTransaction.transferDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        <td>${accountTransaction.description}</td>
+                        <td>${accountTransaction.transferTypeDescription}</td>
+                        <td align="right">${accountTransaction.withdrawAmount}</td>
+                        <td align="right">${accountTransaction.depositAmount}</td>
+                        <td align="right">${accountTransaction.availableBalance}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

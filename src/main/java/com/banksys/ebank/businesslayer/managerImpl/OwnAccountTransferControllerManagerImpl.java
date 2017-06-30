@@ -6,6 +6,7 @@ import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.ebank.datalayer.service.OwnAccountTransferService;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,6 +46,9 @@ public class OwnAccountTransferControllerManagerImpl implements OwnAccountTransf
         dbFromAccount.setAvailableBalance(availableBalance - ownAccountTransfer.getAmount());
         dbToAccount.setAvailableBalance(dbToAccount.getAvailableBalance() + ownAccountTransfer.getAmount());
         ownAccountTransfer.setTransferDate(new Date());
+        ownAccountTransfer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
+        ownAccountTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
+
         this.ownAccountTransferService.save(ownAccountTransfer);
         ResponseObject responseObject = new ResponseObject("Transfer Successful", true);
         responseObject.setObject(ownAccountTransfer);

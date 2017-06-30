@@ -30,6 +30,8 @@
                                     <li class="navUrl" id="authorityManagement" ><a href="/admin/customer/authorityManagement">Authority</a></li>
                                     <li class="navUrl" id="userType"><a href="/admin/config/userTypeManagement">User Type</a></li>
                                     <li class="navUrl" id="userTypeAuthority"><a href="/admin/config/userTypeAuthorityManagement">User Type Authority</a></li>
+                                    <li class="navUrl" id="moduleSearch"><a href="/admin/config/moduleSearch">Module Search</a></li>
+                                    <li class="navUrl" id="authoritySearch"><a href="/admin/config/authoritySearch">Authority Search</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -41,17 +43,6 @@
                                 <ul class="nav nav-list">
                                     <li class="navUrl" id="customerManagement"><a href="/admin/customer/customerManagement">New Customer</a></li>
                                     <li class="navUrl" id="customerSearch"><a href="/admin/customer/customerSearch">Search</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="collapse" data-target="#search" data-parent="#sidenav" class="collapsed">
-                                Search<span class="caret pull-right"></span>
-                            </a>
-                            <div class="collapse" id="search">
-                                <ul class="nav nav-list">
-                                    <li class="navUrl" id="moduleSearch"><a href="/admin/config/moduleSearch">Module Search</a></li>
-                                    <li class="navUrl" id="authoritySearch"><a href="/admin/config/authoritySearch">Authority Search</a></li>
                                 </ul>
                             </div>
                         </li>
