@@ -5,6 +5,8 @@
   Time: 7:52 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp"%>
+<script type="text/javascript" src="/admin/script/moduleSearch.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,7 +19,7 @@
             </div>
         </div>
         <div class="col-md-9 col-md-offset-1 table-striped table-responsive">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
                     <tr>
                         <th>Module ID</th>
@@ -30,8 +32,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    </tr>
+                    <c:forEach items="${modelList}" var="modul">
+                        <tr onclick="load_module(${modul.moduleId})">
+                            <td>${modul.moduleId}</td>
+                            <td>${modul.moduleName}</td>
+                            <td>${modul.description}</td>
+                            <td>${modul.createdDate}</td>
+                            <td>${modul.createdBy}</td>
+                            <td>${modul.lastModifiedDate}</td>
+                            <td>${modul.lastModifiedBy}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

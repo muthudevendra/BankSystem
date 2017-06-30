@@ -27,7 +27,7 @@
                         <label for="moduleName">Module Name</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="moduleName" class="form-control" id="moduleName">
+                        <input type="text" name="moduleName" class="form-control" id="moduleName" value="${module.moduleName}">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -35,7 +35,7 @@
                         <label for="description">Description</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="description" class="form-control" id="description">
+                        <input type="text" name="description" class="form-control" id="description" value="${module.description}">
                     </div>
                 </div>
 
