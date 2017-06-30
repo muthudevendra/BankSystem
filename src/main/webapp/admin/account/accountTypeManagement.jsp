@@ -14,17 +14,15 @@
             <li class="active">Account Type</li>
         </ul>
 
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="content-page col-lg-10">
             <div>
-                <legend>Account Type</legend>
+                <legend>Account Type Management</legend>
             </div>
-        </div>
-
-        <div class="content-page col-md-9">
-            <form action="/admin/account/accountTypeManagement/saveAccountType" role="form" method="post" id="accountTypeForm">
+            <form action="/admin/account/accountTypeManagement/saveAccountType" role="form" method="post"
+                  id="accountTypeForm">
                 <input type="hidden" name="accountTypeId" value="${accountType.accountTypeId}" id="accountTypeId"/>
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="accounttype">Account Name</label>
                     </div>
                     <div class="col-lg-8">
@@ -34,7 +32,7 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="description">Description</label>
                     </div>
                     <div class="col-lg-8">
@@ -45,7 +43,7 @@
                 </div>
                 <hr style="width:75%">
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="minDeposit">Minimum Deposit</label>
                     </div>
                     <div class="col-lg-3">
@@ -63,7 +61,7 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="minAge">Minimum Age</label>
                     </div>
                     <div class="col-lg-3">
@@ -82,13 +80,14 @@
                 </div>
                 <hr style="width:75%">
                 <div class="row form-group updateOperation" style="display: none">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="status">Status</label>
                     </div>
                     <div class="col-lg-3">
                         <select name="status" class="form-control" id="status">
                             <c:forEach items="${statusList}" var="status">
-                                <option ${status.statusSeq eq accountType.status ? 'selected' : ''} value="${status.statusSeq}">
+                                <option ${status.statusSeq eq accountType.status ? 'selected' : ''}
+                                        value="${status.statusSeq}">
                                         ${status.status}
                                 </option>
                             </c:forEach>
@@ -117,10 +116,8 @@
                                                                          pattern="dd-MM-yyyy"/></label></label>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-5 col-sm-offset-2">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
@@ -128,7 +125,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
@@ -140,19 +137,21 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-md-1 col-md-offset-8 createOperation">
+                    <div class="pull-right createOperation">
                         <button type="submit" class="btn btn-success"
                                 <sec:authorize
                                         access="!hasAuthority('admin@accountTypeManagement_CREATE')">
                                     disabled="disabled"
-                                </sec:authorize>>Save</button>
+                                </sec:authorize>>Save
+                        </button>
                     </div>
-                    <div class="col-md-1 updateOperation" style="display: none">
+                    <div class="pull-right updateOperation" style="display: none">
                         <button type="submit" class="btn btn-default"
                                 <sec:authorize
                                         access="!hasAuthority('admin@accountTypeManagement_UPDATE')">
                                     disabled="disabled"
-                                </sec:authorize>>Update</button>
+                                </sec:authorize>>Update
+                        </button>
                     </div>
                 </div>
             </form>

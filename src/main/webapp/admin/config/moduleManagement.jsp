@@ -14,27 +14,25 @@
             <li class="active">Module</li>
         </ul>
 
-        <div class="content-page col-md-9">
-            <div class="col-lg-offset-1">
-                <div>
-                    <legend>Account Type</legend>
-                </div>
+        <div class="content-page col-md-10">
+            <div>
+                <legend>Module Management</legend>
             </div>
             <form role="form" action="/admin/config/moduleManagement/saveModule" id="moduleForm" method="post">
                 <input type="hidden" name="moduleId" value="${module.moduleId eq null ? '' : module.moduleId}" id="moduleId"/>
                 <div class="row form-group">
-                    <div class="col-lg-3 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="moduleName">Module Name</label>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <input type="text" name="moduleName" class="form-control" id="moduleName" value="${module.moduleName}">
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-3 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="description">Description</label>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <input type="text" name="description" class="form-control" id="description" value="${module.description}">
                     </div>
                 </div>
@@ -59,10 +57,8 @@
                                                                          pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-5 col-sm-offset-2">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-6">
@@ -70,7 +66,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-6">
@@ -85,14 +81,14 @@
 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row">
-                    <div class="col-md-1 col-md-offset-6">
-                        <button type="submit" class="btn btn-default col-md-offset-9 createOperation"
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success createOperation"
                                 <sec:authorize
                                         access="!hasAuthority('admin@moduleManagement_CREATE')">
                                     disabled="disabled"
                                 </sec:authorize>>Save</button>
                     </div>
-                    <div class="col-md-1">
+                    <div class="pull-right">
                         <button type="submit" class="btn btn-default updateOperation" style="display: none"
                                 <sec:authorize
                                         access="!hasAuthority('admin@moduleManagement_UPDATE')">
