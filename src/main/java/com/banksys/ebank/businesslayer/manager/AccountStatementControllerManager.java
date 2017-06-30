@@ -11,5 +11,5 @@ import java.util.List;
  */
 @Component
 public interface AccountStatementControllerManager {
-    List<AccountTransferAux> findAllTransfers(Integer customerAccountId);
+    List<AccountTransferAux> findAllTransactions(Integer customerAccountId);
 }

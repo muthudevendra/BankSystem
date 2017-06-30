@@ -26,6 +26,7 @@ public class ThirdPartyTransfer {
     private String description;
     private Date transferDate;
     private Integer status;
+    private Integer transferStatus;
     private String receiverName;
     private String bank;
     private String branch;
@@ -100,12 +101,22 @@ public class ThirdPartyTransfer {
 
     @Basic
     @Column(name = "STATUS")
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Basic
+    @Column(name = "TRANSFER_STATUS")
+    public Integer getTransferStatus() {
+        return transferStatus;
+    }
+
+    public void setTransferStatus(Integer transferStatus) {
+        this.transferStatus = transferStatus;
     }
 
     @Basic
@@ -193,6 +204,7 @@ public class ThirdPartyTransfer {
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FROM_ACCOUNT_ID", insertable = false, updatable = false)
     public CustomerAccount getFromAccount() {

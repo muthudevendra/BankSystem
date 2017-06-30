@@ -14,6 +14,7 @@ import java.util.Objects;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
+ *
  */
 @Entity
 @EntityListeners(AuditingEntityListener.class)

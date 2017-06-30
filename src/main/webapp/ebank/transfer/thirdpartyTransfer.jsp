@@ -8,7 +8,7 @@
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <%@ include file="/layout/include.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/ownAccountTransfer.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/thirdPartyTransfer.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -27,14 +27,15 @@
         </ul>
 
         <div class="content-page col-md-9">
-            <form role="form">
+            <form action="/ebank/transfer/thirdPartyTransfer/doTransfer" role="form" method="post">
                 <br/>
                 <div class="row form-group">
                     <div class="col-sm-2 col-md-offset-1">
                         <label class="control-label" for="fromAccount">Select Account </label>
                     </div>
                     <div class="col-md-6">
-                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control" id="fromAccount">
+                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control"
+                                id="fromAccount">
                             <c:forEach items="${customerAccountList}" var="customerAccount">
                                 <option value="${customerAccount.customerAccountId}">
                                         ${customerAccount.accountNo}
@@ -47,34 +48,31 @@
                     <div class="col-md-2 col-md-offset-3">
                         <p class="control-label">Available Balance</p>
                     </div>
-                    <div class="col-md-3">
-                        <p class="control-label">Balance</p>
-                    </div>
                 </div>
-            </form>
-
-            <div class="col-lg-8 col-lg-offset-1">
-                <div>
-                    <legend>Transfer Details</legend>
-                </div>
-            </div>
-
-            <form role="form">
-                <div class="row form-group">
-                    <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="receiverName">Name </label>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="text" class="form-control" id="receiverName">
+                <div class="col-lg-8 col-lg-offset-1">
+                    <div>
+                        <legend>Transfer Details</legend>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="bank">Bank  </label>
+                        <label class="control-label" for="receiverName">Receiver's Name </label>
                     </div>
                     <div class="col-md-5">
-                        <select class="form-control" id="bank">
-                            <option>Select a Bank</option>
+                        <input required name="receiverName" type="text" class="form-control" id="receiverName">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-2 col-md-offset-2">
+                        <label class="control-label" for="bank">Bank </label>
+                    </div>
+                    <div class="col-md-5">
+                        <select name="bank" required name="fromAccountId" class="form-control" id="bank">
+                            <c:forEach items="${bankList}" var="bank">
+                                <option value="${bank.bankId}">
+                                        ${bank.bankName}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -83,45 +81,47 @@
                         <label class="control-label" for="branch">Branch </label>
                     </div>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" id="branch">
+                        <input name="branch" required type="text" class="form-control" id="branch">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="accountNumber">Account Number </label>
+                        <label class="control-label" for="accountNumber">Receiver's AC Number </label>
                     </div>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" id="accountNumber">
+                        <input name="accountNo" required type="text" class="form-control" id="accountNumber">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="reAccountNumber">Re-Enter Account Number  </label>
+                        <label class="control-label" for="reAccountNumber">Re-Enter Account Number </label>
                     </div>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" id="reAccountNumber">
+                        <input required type="text" class="form-control" id="reAccountNumber">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="amount">Amount  </label>
+                        <label class="control-label" for="amount">Amount </label>
                     </div>
                     <div class="col-md-5">
                         <div class="input-group">
-                            <span class="input-group-addon">Rs</span><input type="text" class="form-control" id="amount">
+                            <span class="input-group-addon">LKR</span>
+                            <input name="amount" required type="text" class="form-control" id="amount"/>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="date">Date  </label>
+                        <label class="control-label" for="date">Date </label>
                     </div>
                     <div class="col-md-5">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="date">
+                            <input name="transferDate" required type="text" class="form-control datepicker" id="date">
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row form-group">
                     <div class="col-md-3 col-md-offset-7">
                         <span class="input-group-btn">

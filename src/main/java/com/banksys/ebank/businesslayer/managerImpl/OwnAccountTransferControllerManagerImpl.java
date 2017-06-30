@@ -32,26 +32,31 @@ public class OwnAccountTransferControllerManagerImpl implements OwnAccountTransf
     @Override
     @Transactional
     public ResponseObject transfer(OwnAccountTransfer ownAccountTransfer) {
+        ResponseObject responseObject;
         CustomerAccount dbFromAccount = this.customerAccountService.findOne(ownAccountTransfer.getFromAccountId());
         CustomerAccount dbToAccount = this.customerAccountService.findOne(ownAccountTransfer.getToAccountId());
 
         Double availableBalance = dbFromAccount.getAvailableBalance();
-        Double minAccountAmount = dbToAccount.getAccount().getAccountType().getMinDeposit();
+        Double minAccountAmount = dbFromAccount.getAccount().getAccountType().getMinDeposit();
         if(ownAccountTransfer.getAmount() > (availableBalance + minAccountAmount)){
-            throw new RuntimeException("Cannot Overdraw");
+            responseObject = new ResponseObject("Cannot overdraw", false);
+            responseObject.setObject(ownAccountTransfer);
         }
-        if(ownAccountTransfer.getFromAccountId().equals(ownAccountTransfer.getToAccountId())){
-            throw new RuntimeException("Same from/to Account");
+        else if(ownAccountTransfer.getFromAccountId().equals(ownAccountTransfer.getToAccountId())){
+            responseObject = new ResponseObject("Same from/account", false);
+            responseObject.setObject(ownAccountTransfer);
         }
-        dbFromAccount.setAvailableBalance(availableBalance - ownAccountTransfer.getAmount());
-        dbToAccount.setAvailableBalance(dbToAccount.getAvailableBalance() + ownAccountTransfer.getAmount());
-        ownAccountTransfer.setTransferDate(new Date());
-        ownAccountTransfer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
-        ownAccountTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
+        else {
+            dbFromAccount.setAvailableBalance(availableBalance - ownAccountTransfer.getAmount());
+            dbToAccount.setAvailableBalance(dbToAccount.getAvailableBalance() + ownAccountTransfer.getAmount());
+            ownAccountTransfer.setTransferDate(new Date());
+            ownAccountTransfer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
+            ownAccountTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
 
-        this.ownAccountTransferService.save(ownAccountTransfer);
-        ResponseObject responseObject = new ResponseObject("Transfer Successful", true);
-        responseObject.setObject(ownAccountTransfer);
+            this.ownAccountTransferService.save(ownAccountTransfer);
+            responseObject = new ResponseObject("Transfer Successful", true);
+            responseObject.setObject(ownAccountTransfer);
+        }
         return responseObject;
     }
 }

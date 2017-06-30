@@ -45,7 +45,7 @@ public class AccountStatementController {
     public String findCustomers(@RequestParam("customerAccountId") Integer customerAccountId,
                                 Model model, HttpServletRequest request){
         model = this.getData(model, request);
-        model.addAttribute("accountTransactionList", this.accountStatementControllerManager.findAllTransfers(customerAccountId));
+        model.addAttribute("accountTransactionList", this.accountStatementControllerManager.findAllTransactions(customerAccountId));
         return "accountStatement";
     }
 
