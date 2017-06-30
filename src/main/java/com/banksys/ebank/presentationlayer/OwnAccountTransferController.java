@@ -1,6 +1,7 @@
 package com.banksys.ebank.presentationlayer;
 
 import com.banksys.ebank.businesslayer.manager.OwnAccountTransferControllerManager;
+import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.util.enums.MasterDataStatus;
@@ -8,14 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-
-import static com.banksys.ebank.datalayer.entity.QCustomerAccount.customerAccount;
 
 /**
  * Created by Muthu Devendra on 6/26/2017.
@@ -50,6 +46,22 @@ public class OwnAccountTransferController {
         model = getPageData(model, request);
         model.addAttribute("ownAccountTransfer", ownAccountTransfer);
         return "ownAccount";
+    }
+
+    @RequestMapping(value = "/findAccountBalance", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
+    @ResponseBody
+    public Double findAccountBalance(@RequestParam("customerAccountId") Integer customerAccountId) {
+        CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
+        return customerAccount.getAvailableBalance();
+    }
+
+    @RequestMapping(value = "/findCurrency", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
+    @ResponseBody
+    public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
+        CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
+        return customerAccount.getCurrencyDescription();
     }
 
     private Model getPageData(Model model, HttpServletRequest request) {

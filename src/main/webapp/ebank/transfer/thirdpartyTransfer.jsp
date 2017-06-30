@@ -5,11 +5,15 @@
   Time: 3:12 PM
   To change this template use File | Settings | File Templates.
 --%>
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/ownAccountTransfer.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
-            <li><a href="/ebank/transfer/ownAcount">Transfer From Own Account</a></li>
-            <li class="active"><a href="/ebank/transfer/thirdpartyTransfer">Third Party Transfer</a></li>
+            <li><a href="/ebank/transfer/ownAccount">Transfer From Own Account</a></li>
+            <li class="active"><a href="/ebank/transfer/thirdPartyTransfer">Third Party Transfer</a></li>
             <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transaction</a></li>
         </ul>
     </div>
@@ -27,19 +31,15 @@
                 <br/>
                 <div class="row form-group">
                     <div class="col-sm-2 col-md-offset-1">
-                        <label class="control-label" for="account">Select Account </label>
+                        <label class="control-label" for="fromAccount">Select Account </label>
                     </div>
                     <div class="col-md-6">
-                        <select class="form-control" id="account">
-                            <option>select account</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-1">
-                        <label class="control-label" for="currency">Currency </label>
-                    </div>
-                    <div class="col-md-2">
-                        <select class="form-control" id="currency">
-                            <option>--</option>
+                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control" id="fromAccount">
+                            <c:forEach items="${customerAccountList}" var="customerAccount">
+                                <option value="${customerAccount.customerAccountId}">
+                                        ${customerAccount.accountNo}
+                                </option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>

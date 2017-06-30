@@ -24,13 +24,13 @@
             <li class="active">Statement</li>
         </ul>
 
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="col-lg-8">
             <div id="legend">
                 <legend>Account Summary</legend>
             </div>
         </div>
 
-        <div class="content-page col-md-8 col-md-offset-2">
+        <div class="content-page col-md-8 col-md-offset-1">
             <form action="/ebank/account/accountStatement/searchCustomerAccount">
                 <div class="row">
                     <div class="col-lg-5">
@@ -40,7 +40,7 @@
                                     <label class="control-label" for="accountType">Account Type</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <select name="accountTypeId" class="form-control" id="accountType">
+                                    <select class="form-control" id="accountType">
                                         <c:forEach items="${accountTypeList}" var="accountType">
                                             <option value="${accountType.accountTypeId}">
                                                     ${accountType.accountTypeName}
@@ -78,7 +78,7 @@
             </form>
         </div>
         <br>
-        <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
+        <div class="col-md-10 col-md-offset-1 table-striped table-responsive">
             <table class="table datatable">
                 <thead>
                 <tr>

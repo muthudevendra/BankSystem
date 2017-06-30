@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -162,39 +163,19 @@ public class Account {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Account account = (Account) o;
-
-        if (accountId != account.accountId) return false;
-        if (accountTypeId != account.accountTypeId) return false;
-        if (interestCalMethod != account.interestCalMethod) return false;
-        if (mobileBankAvailability != account.mobileBankAvailability) return false;
-        if (onlineBankAvailability != account.onlineBankAvailability) return false;
-        if (passbookAvailability != account.passbookAvailability) return false;
-        if (status != account.status) return false;
-        if (createdBy != null ? !createdBy.equals(account.createdBy) : account.createdBy != null) return false;
-        if (createdDate != null ? !createdDate.equals(account.createdDate) : account.createdDate != null) return false;
-        if (lastModifiedBy != null ? !lastModifiedBy.equals(account.lastModifiedBy) : account.lastModifiedBy != null)
-            return false;
-        if (lastModifiedDate != null ? !lastModifiedDate.equals(account.lastModifiedDate) : account.lastModifiedDate != null)
-            return false;
-
-        return true;
+        return Objects.equals(accountId, account.accountId) &&
+                Objects.equals(accountTypeId, account.accountTypeId) &&
+                Objects.equals(interestCalMethod, account.interestCalMethod) &&
+                Objects.equals(mobileBankAvailability, account.mobileBankAvailability) &&
+                Objects.equals(onlineBankAvailability, account.onlineBankAvailability) &&
+                Objects.equals(passbookAvailability, account.passbookAvailability) &&
+                Objects.equals(status, account.status) &&
+                Objects.equals(accountType, account.accountType);
     }
 
     @Override
     public int hashCode() {
-        int result = accountId;
-        result = 31 * result + accountTypeId;
-        result = 31 * result + interestCalMethod;
-        result = 31 * result + (int) mobileBankAvailability;
-        result = 31 * result + (int) onlineBankAvailability;
-        result = 31 * result + passbookAvailability;
-        result = 31 * result + status;
-        result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
-        result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
-        result = 31 * result + (lastModifiedBy != null ? lastModifiedBy.hashCode() : 0);
-        result = 31 * result + (lastModifiedDate != null ? lastModifiedDate.hashCode() : 0);
-        return result;
+        return Objects.hash(accountId, accountTypeId, interestCalMethod, mobileBankAvailability, onlineBankAvailability, passbookAvailability, status, accountType);
     }
 }

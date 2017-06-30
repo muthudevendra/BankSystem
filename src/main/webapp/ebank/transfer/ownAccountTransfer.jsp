@@ -5,13 +5,15 @@
   Time: 9:07 PM
   To change this template use File | Settings | File Templates.
 --%>
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <%@ include file="/layout/include.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/ownAccountTransfer.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
             <li class="active"><a href="/ebank/transfer/ownAccount">Transfer From Own Account</a></li>
-            <li><a href="/ebank/transfer/thirdpartyTransfer">Third-Party Transfer</a></li>
+            <li><a href="/ebank/transfer/thirdPartyTransfer">Third-Party Transfer</a></li>
             <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transfer</a></li>
         </ul>
     </div>
@@ -39,7 +41,7 @@
                         <label class="control-label" for="fromAccount">From Account </label>
                     </div>
                     <div class="col-md-5">
-                        <select required name="fromAccountId" class="form-control" id="fromAccount">
+                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control" id="fromAccount">
                             <c:forEach items="${customerAccountList}" var="customerAccount">
                                 <option value="${customerAccount.customerAccountId}">
                                         ${customerAccount.accountNo}
@@ -48,7 +50,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <p class="align-left">Amount in Hand </p>
+                        <p id="amountInHand" class="align-left"></p>
                     </div>
                 </div>
                 <div class="row form-group">
