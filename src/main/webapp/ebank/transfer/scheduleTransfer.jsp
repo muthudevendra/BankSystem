@@ -5,6 +5,10 @@
   Time: 11:03 AM
   To change this template use File | Settings | File Templates.
 --%>
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/ownAccountTransfer.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -41,16 +45,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="input-group-btn text-right"><button class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Discard Transaction"><i class="fa fa-minus"></i></button></span></td>
-                </tr>
+                <c:forEach items="${scheduledTransferList}" var="transaction">
+                    <tr>
+                        <td>${transaction.fromAccount.accountNo}</td>
+                        <td>${transaction.accountNo}</td>
+                        <td>${transaction.description}</td>
+                        <td>${transaction.amount}</td>
+                        <td><fmt:formatDate value="${transaction.createdDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        <td><fmt:formatDate value="${transaction.transferDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                        <td>${transaction.statusDescription}</td>
+                        <td><span class="input-group-btn text-right"><button class="btn btn-default btn-xs"
+                                                                             data-toggle="tooltip" data-placement="top"
+                                                                             title="Discard Transaction"><i
+                                class="fa fa-minus"></i></button></span></td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

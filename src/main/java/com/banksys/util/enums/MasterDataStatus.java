@@ -1,5 +1,7 @@
 package com.banksys.util.enums;
 
+import java.util.Arrays;
+
 /**
  * Created by lakshithar on 6/21/2017.
  *
@@ -22,5 +24,12 @@ public enum MasterDataStatus {
 
     public String getStatus() {
         return status;
+    }
+
+    public static MasterDataStatus findOne(Integer statusSeq){
+        return Arrays.stream(MasterDataStatus.values())
+                .filter(i -> i.getStatusSeq().equals(statusSeq))
+                .findFirst()
+                .orElse(null);
     }
 }

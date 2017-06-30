@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.domain.AuditorAware;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
  */
 @Configuration
 @EnableWebMvc
+@EnableScheduling
 @ComponentScan("com.banksys")
 public class WebConfig extends WebMvcConfigurerAdapter {
 

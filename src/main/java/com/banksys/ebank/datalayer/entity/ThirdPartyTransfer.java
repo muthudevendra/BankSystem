@@ -1,5 +1,6 @@
 package com.banksys.ebank.datalayer.entity;
 
+import com.banksys.util.enums.MasterDataStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -37,6 +38,8 @@ public class ThirdPartyTransfer {
     private Date lastModifiedDate;
 
     private CustomerAccount fromAccount;
+
+    private String statusDescription;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -107,6 +110,9 @@ public class ThirdPartyTransfer {
 
     public void setStatus(Integer status) {
         this.status = status;
+        if(status != null){
+            this.setStatusDescription(MasterDataStatus.findOne(status).getStatus());
+        }
     }
 
     @Basic
@@ -213,6 +219,15 @@ public class ThirdPartyTransfer {
 
     public void setFromAccount(CustomerAccount fromAccount) {
         this.fromAccount = fromAccount;
+    }
+
+    @Transient
+    public String getStatusDescription() {
+        return statusDescription;
+    }
+
+    public void setStatusDescription(String statusDescription) {
+        this.statusDescription = statusDescription;
     }
 
     @Override
