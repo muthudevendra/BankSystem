@@ -36,6 +36,19 @@
                             </div>
                         </li>
                         <li>
+                            <a href="#" data-toggle="collapse" data-target="#account" data-parent="#sidenav" class="collapsed">
+                                Account<span class="caret pull-right"></span>
+                            </a>
+                            <div class="collapse" id="account">
+                                <ul class="nav nav-list">
+                                    <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
+                                    <li class="navUrl"><a href="/admin/account/accountTypeManagement">Account Type</a></li>
+                                    <li class="navUrl"><a href="#">Account Search</a></li>
+                                    <li class="navUrl"><a href="#">Account Type Search</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
                             <a href="#" data-toggle="collapse" data-target="#config" data-parent="#sidenav" class="collapsed">
                                 Customer<span class="caret pull-right"></span>
                             </a>
@@ -46,8 +59,6 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
-                        <li class="navUrl"><a href="/admin/account/accountTypeManagement">Account Type</a></li>
                     </ul>
                 </div>
             </div>

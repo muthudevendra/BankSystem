@@ -5,26 +5,28 @@
   Time: 9:31 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="/layout/include.jsp"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/userTypeAuthorityManagement.js"></script>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/admin/script/userTypeAuthorityManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="#">Admin</a></li>
             <li class="active">User Authority</li>
         </ul>
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="content-page col-lg-10">
             <div>
-                <legend>User Authority</legend>
+                <legend>User Authority Management</legend>
             </div>
-        </div>
-        <div class="content-page col-md-9">
-            <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post" id="userTypeAuthorityform">
-                <input type="hidden" name="userTypeAuthorityId" value="${userTypeAuthority.userTypeAuthorityId eq null ? '' : userTypeAuthority.userTypeAuthorityId}" id="userTypeAuthorityId"/>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post"
+                  id="userTypeAuthorityform">
+                <input type="hidden" name="userTypeAuthorityId"
+                       value="${userTypeAuthority.userTypeAuthorityId eq null ? '' : userTypeAuthority.userTypeAuthorityId}"
+                       id="userTypeAuthorityId"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
-                        <label for="usertype">User Type</label>
+                    <div class="col-lg-3 col-md-offset-1">
+                        <label for="userTypeId">User Type</label>
                     </div>
                     <div class="col-lg-8">
                         <select name="userTypeId" class="form-control" id="userTypeId">
@@ -38,8 +40,8 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
-                        <label for="authoritytype">Authority Type</label>
+                    <div class="col-lg-3 col-md-offset-1">
+                        <label for="authorityId">Authority Type</label>
                     </div>
                     <div class="col-lg-8">
                         <select name="authorityId" class="form-control" id="authorityId">
@@ -53,10 +55,10 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="col-lg-2 col-md-offset-2">
+                    <div class="col-lg-3 col-md-offset-1">
                         <label for="status">Status</label>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-8">
                         <select name="status" class="form-control" id="status">
                             <c:forEach items="${statusList}" var="status">
                                 <option ${status.statusSeq eq userTypeAuthority.status ? 'selected' : ''}
@@ -87,8 +89,6 @@
                                 <label id="modifiedDate">${userTypeAuthority.lastModifiedDate}</label>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-5 col-sm-offset-2">
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="createdBy">Created By</label>
@@ -113,10 +113,11 @@
                         <button type="submit" class="btn btn-success createOperation">Save</button>
                     </div>
                     <div class="col-md-1">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update</button>
+                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update
+                        </button>
                     </div>
                     <%--<div class="col-md-1">--%>
-                        <%--<button type="submit" class="btn btn-danger">Delete</button>--%>
+                    <%--<button type="submit" class="btn btn-danger">Delete</button>--%>
                     <%--</div>--%>
                 </div>
             </form>
