@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.banksys.ebank.datalayer.entity.auxilary.AccountTransferAux;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -76,6 +77,7 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
             AccountTransferAux accountTransferAux = this.getInitializedBillPayment(billPayment);
             accountTransferAuxList.add(accountTransferAux);
         }
+        accountTransferAuxList.sort(Comparator.comparing(AccountTransferAux::getTransferDate));
         return accountTransferAuxList;
     }
 

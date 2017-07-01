@@ -69,7 +69,7 @@
             <div class="content-form-page">
                 <div class="row">
                     <div class="col-md-7 col-sm-7">
-                        <form action="/login" method="post" class="form-horizontal form-without-legend" role="form">
+                        <form action="/login" method="post" class="form-horizontal form-without-legend">
                             <div class="form-group">
                                 <label for="email" class="col-lg-4 control-label">Username <span class="require">*</span></label>
                                 <div class="col-lg-8">

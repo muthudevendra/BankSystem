@@ -37,9 +37,9 @@
                             <td>${modul.moduleId}</td>
                             <td>${modul.moduleName}</td>
                             <td>${modul.description}</td>
-                            <td><fmt:formatDate value="${modul.createdDate}" pattern="dd-MM-yyyy"/> </td>
+                            <td><fmt:formatDate value="${modul.createdDate}" pattern="dd-MM-yyyy HH:ss"/> </td>
                             <td>${modul.createdBy}</td>
-                            <td><fmt:formatDate value="${modul.lastModifiedDate}" pattern="dd-MM-yyyy"/></td>
+                            <td><fmt:formatDate value="${modul.lastModifiedDate}" pattern="dd-MM-yyyy HH:ss"/></td>
                             <td>${modul.lastModifiedBy}</td>
                         </tr>
                     </c:forEach>

@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .requestCache().requestCache(new NullRequestCache()).and()
-                .formLogin().loginPage("/login").failureForwardUrl("/login?error=true")
+                .formLogin().loginPage("/login")
                 .usernameParameter("username").passwordParameter("password").successHandler(bankSysAuthSuccessHandler)
                 .and().rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("my-remember-me").tokenValiditySeconds(86400)
                 .and()

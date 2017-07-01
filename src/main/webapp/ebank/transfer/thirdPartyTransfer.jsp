@@ -28,16 +28,16 @@
         </ul>
 
         <div class="content-page col-md-9">
-            <form action="/ebank/transfer/thirdPartyTransfer/doTransfer" role="form" method="post">
+            <form action="/ebank/transfer/thirdPartyTransfer/doTransfer" id="thirdPartyTransferForm" role="form" method="post">
                 <br/>
                 <div class="row form-group">
                     <div class="col-sm-2 col-md-offset-1">
                         <label class="control-label" for="fromAccount">Select Account </label>
                     </div>
                     <div class="col-md-6">
-                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control"
-                                id="fromAccount">
+                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control" id="fromAccount">
                             <c:forEach items="${customerAccountList}" var="customerAccount">
+                                <option></option>
                                 <option value="${customerAccount.customerAccountId}">
                                         ${customerAccount.accountNo}
                                 </option>
@@ -70,6 +70,7 @@
                     <div class="col-md-5">
                         <select name="bank" required name="fromAccountId" class="form-control" id="bank">
                             <c:forEach items="${bankList}" var="bank">
+                                <option></option>
                                 <option value="${bank.bankId}">
                                         ${bank.bankName}
                                 </option>
@@ -126,7 +127,7 @@
                 <div class="row form-group">
                     <div class="col-md-3 col-md-offset-7">
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">Transfer</button>
+                            <button onclick="form_validate('thirdPartyTransferForm')" class="btn btn-primary" type="submit">Transfer</button>
                         </span>
                     </div>
                 </div>

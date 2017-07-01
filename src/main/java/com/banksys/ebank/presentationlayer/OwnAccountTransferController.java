@@ -4,6 +4,7 @@ import com.banksys.ebank.businesslayer.manager.OwnAccountTransferControllerManag
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,10 +43,10 @@ public class OwnAccountTransferController {
     @RequestMapping(value = "/doTransfer", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_TRANSFER')")
     public String transfer(@ModelAttribute OwnAccountTransfer ownAccountTransfer, Model model, HttpServletRequest request) {
-        this.ownAccountTransferControllerManager.transfer(ownAccountTransfer);
+        ResponseObject responseObject = this.ownAccountTransferControllerManager.transfer(ownAccountTransfer);
         model = getPageData(model, request);
-        model.addAttribute("ownAccountTransfer", ownAccountTransfer);
-        return "ownAccount";
+        model.addAttribute("ownAccountTransfer", responseObject.getObject());
+        return "ownAccountTransferConfirmation";
     }
 
     @RequestMapping(value = "/findAccountBalance", method = RequestMethod.GET)
