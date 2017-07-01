@@ -47,15 +47,6 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
-                        Request
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Checkbook Request</a></li>
-                        <li><a href="#">Loan Request</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         My Profile
                     </a>
                     <ul class="dropdown-menu">

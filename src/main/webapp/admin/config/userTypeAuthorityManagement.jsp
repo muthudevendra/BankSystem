@@ -96,7 +96,8 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-7">
-                                <label id="createdBy">${userTypeAuthority.createdBy}</label>
+                                <label id="createdBy"><fmt:formatDate value="${userTypeAuthority.createdBy}"
+                                                                      pattern="dd-MM-yyyy HH:mm:ss"/></label>
                             </div>
                         </div>
                         <div class="row">
@@ -104,7 +105,8 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-7">
-                                <label id="createdDate">${userTypeAuthority.createdDate}</label>
+                                <label id="createdDate"><fmt:formatDate value="${userTypeAuthority.createdDate}"
+                                                                        pattern="dd-MM-yyyy HH:mm:ss"/></label>
                             </div>
                         </div>
                     </div>
@@ -112,7 +114,9 @@
                 <br/>
                 <div class="row">
                     <div class="pull-right">
-                        <button onclick="form_validate('userTypeAuthorityform')" type="submit" class="btn btn-success createOperation">Save</button>
+                        <button onclick="form_validate('userTypeAuthorityform')" type="submit"
+                                class="btn btn-success createOperation">Save
+                        </button>
                     </div>
                     <div class="pull-right">
                         <button type="submit" class="btn btn-default updateOperation" style="display: none">Update

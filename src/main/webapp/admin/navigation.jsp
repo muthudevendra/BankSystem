@@ -21,18 +21,35 @@
                 <div class="navbar-collapse collapse sidebar-navbar-collapse">
                     <ul class="nav navbar-nav" id="sidenav">
                         <li>
-                            <a href="#" data-toggle="collapse" data-target="#customer" data-parent="#sidenav01" class="collapsed">
-                                Configuration <span class="caret pull-right"></span>
+                            <a href="#" data-toggle="collapse" data-target="#module" data-parent="#sidenav01" class="collapsed">
+                                Module <span class="caret pull-right"></span>
                             </a>
-                            <div class="collapse" id="customer">
+                            <div class="collapse" id="module">
                                 <ul class="nav nav-list">
                                     <li class="navUrl" id="moduleManagement"><a href="/admin/config/moduleManagement">Module</a></li>
+                                    <li class="navUrl" id="moduleSearch"><a href="/admin/config/moduleSearch">Module Search</a></li>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#authority" data-parent="#sidenav01" class="collapsed">
+                                Authority <span class="caret pull-right"></span>
+                            </a>
+                            <div class="collapse" id="authority">
+                                <ul class="nav nav-list">
                                     <li class="navUrl" id="authorityManagement" ><a href="/admin/customer/authorityManagement">Authority</a></li>
+                                    <li class="navUrl" id="authoritySearch"><a href="/admin/config/authoritySearch">Authority Search</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#user" data-parent="#sidenav01" class="collapsed">
+                                User <span class="caret pull-right"></span>
+                            </a>
+                            <div class="collapse" id="user">
+                                <ul class="nav nav-list">
                                     <li class="navUrl" id="newUser"><a href="/admin/config/userManagement">New User</a></li>
                                     <li class="navUrl" id="userType"><a href="/admin/config/userTypeManagement">User Type</a></li>
                                     <li class="navUrl" id="userTypeAuthority"><a href="/admin/config/userTypeAuthorityManagement">User Type Authority</a></li>
-                                    <li class="navUrl" id="moduleSearch"><a href="/admin/config/moduleSearch">Module Search</a></li>
-                                    <li class="navUrl" id="authoritySearch"><a href="/admin/config/authoritySearch">Authority Search</a></li>
                                     <li class="navUrl" id="userTypeSearch"><a href="/admin/config/userTypeSearch">User Type Search</a></li>
                                 </ul>
                             </div>

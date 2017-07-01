@@ -70,7 +70,8 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-7">
-                                <label id="modifiedDate">${userType.lastModifiedDate}</label>
+                                <label id="modifiedDate"><fmt:formatDate value="${userType.lastModifiedDate}"
+                                                                         pattern="dd-MM-yyyy HH:mm:ss"/></label>
                             </div>
                         </div>
                         <div class="row">
@@ -86,7 +87,8 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-7">
-                                <label id="createdDate">${userType.createdDate}</label>
+                                <label id="createdDate"><fmt:formatDate value="${userType.createdDate}"
+                                                                        pattern="dd-MM-yyyy HH:mm:ss"/></label>
                             </div>
                         </div>
                     </div>

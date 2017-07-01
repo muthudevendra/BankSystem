@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-7">
                                 <label id="modifiedDate"><fmt:formatDate value="${module.lastModifiedDate}"
-                                                                         pattern="dd-MM-yyyy"/></label>
+                                                                         pattern="dd-MM-yyyy HH:mm:ss"/></label>
                             </div>
                         </div>
                         <div class="row">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="col-md-7">
                                 <label id="createdDate"><fmt:formatDate value="${module.createdDate}"
-                                                                        pattern="dd-MM-yyyy"/></label>
+                                                                        pattern="dd-MM-yyyy HH:mm:ss"/></label>
                             </div>
                         </div>
                     </div>
