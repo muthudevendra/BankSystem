@@ -1,8 +1,22 @@
 package com.banksys.ebank.presentationlayer;
 
+import com.banksys.ebank.businesslayer.manager.BillPaymentControllerManager;
+import com.banksys.ebank.datalayer.entity.BillPayment;
+import com.banksys.ebank.datalayer.entity.CustomerAccount;
+import com.banksys.ebank.datalayer.service.CustomerAccountService;
+import com.banksys.util.enums.MasterDataStatus;
+import com.banksys.util.enums.PaymentType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -11,8 +25,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/ebank/payment/billPayment")
 public class BillPaymentController {
+
+    private final CustomerAccountService customerAccountService;
+    private final BillPaymentControllerManager billPaymentControllerManager;
+
+    @Autowired
+    public BillPaymentController(CustomerAccountService customerAccountService,
+                                 BillPaymentControllerManager billPaymentControllerManager) {
+        this.customerAccountService = customerAccountService;
+        this.billPaymentControllerManager = billPaymentControllerManager;
+    }
+
     @GetMapping
-    public String getPage(){
+    public String getPage(Model model, HttpServletRequest request){
+        model = this.getData(model, request);
+        model.addAttribute("billPayment", new BillPayment());
         return "billPayment";
+    }
+
+    @RequestMapping(value = "/doPay", method = RequestMethod.POST)
+    public String doTransfer(@ModelAttribute BillPayment billPayment, Model model, HttpServletRequest request){
+        this.billPaymentControllerManager.doPay(billPayment);
+        model = this.getData(model, request);
+        return "billPayment";
+    }
+
+    @RequestMapping(value = "/findAccountBalance", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
+    @ResponseBody
+    public Double findAccountBalance(@RequestParam("customerAccountId") Integer customerAccountId) {
+        CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
+        return customerAccount.getAvailableBalance();
+    }
+
+    @RequestMapping(value = "/findCurrency", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
+    @ResponseBody
+    public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
+        CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
+        return customerAccount.getCurrencyDescription();
+    }
+
+    private Model getData(Model model, HttpServletRequest request){
+        Integer userId = (Integer)request.getSession().getAttribute("userId");
+        if(userId == null){
+            throw new RuntimeException("User not found");
+        }
+        model.addAttribute("customerAccountList", this.customerAccountService.findByCustomerUserIdAndStatusNot(userId, MasterDataStatus.DELETED.getStatusSeq()));
+        model.addAttribute("paymentTypeList", PaymentType.values());
+        return model;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 }

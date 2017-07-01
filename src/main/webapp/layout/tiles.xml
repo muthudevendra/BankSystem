@@ -99,7 +99,7 @@
         <put-attribute name="body" value="/ebank/transfer/ownAccountTransfer.jsp"/>
     </definition>
     <definition name="thirdPartyTransfer" extends="ebank_base">
-        <put-attribute name="body" value="/ebank/transfer/thirdpartyTransfer.jsp"/>
+        <put-attribute name="body" value="/ebank/transfer/thirdPartyTransfer.jsp"/>
     </definition>
     <definition name="scheduleTransfer" extends="ebank_base">
         <put-attribute name="body" value="/ebank/transfer/scheduleTransfer.jsp"/>

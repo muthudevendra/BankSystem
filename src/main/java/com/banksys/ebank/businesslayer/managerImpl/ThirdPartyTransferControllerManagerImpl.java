@@ -46,7 +46,6 @@ public class ThirdPartyTransferControllerManagerImpl implements ThirdPartyTransf
         }
         else{
             thirdPartyTransfer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
-            thirdPartyTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
 
             Date today = java.sql.Date.valueOf(LocalDate.now());
 
@@ -56,6 +55,7 @@ public class ThirdPartyTransferControllerManagerImpl implements ThirdPartyTransf
             else {
                 if (thirdPartyTransfer.getTransferDate().equals(today)) {
                     dbFromAccount.setAvailableBalance(availableBalance - thirdPartyTransfer.getAmount());
+                    thirdPartyTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
                     thirdPartyTransfer.setTransferStatus(TransferStatus.SENT.getTransferStatusSeq());
                     responseObject = new ResponseObject("Transfer Successful", true);
                 } else {
