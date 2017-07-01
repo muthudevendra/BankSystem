@@ -4,6 +4,7 @@ import com.banksys.ebank.businesslayer.manager.PaymentHistoryControllerManager;
 import com.banksys.ebank.datalayer.service.BillPaymentService;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class PaymentHistoryController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ebank@paymentHistory_VIEW')")
     public String getPage(Model model, HttpServletRequest request, Principal principal){
         model.addAttribute("paymentHistoryList", this.paymentHistoryControllerManager.findPaymentHistory(request, principal));
         return "paymentHistory";

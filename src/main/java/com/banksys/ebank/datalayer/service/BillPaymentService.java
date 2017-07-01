@@ -13,4 +13,6 @@ import java.util.List;
 @Repository
 public interface BillPaymentService extends JpaRepository<BillPayment, Integer> {
     List<BillPayment> findByFromAccountIdInAndTransferStatusAndStatusNot(List<Integer> customerAccountIds, Integer transferStatus, Integer status);
+
+    List<BillPayment> findByFromAccountIdAndTransferStatusAndStatusNot(Integer customerAccountId, Integer transferStatus, Integer status);
 }

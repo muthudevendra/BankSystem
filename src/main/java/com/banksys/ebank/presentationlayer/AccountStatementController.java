@@ -5,6 +5,7 @@ import com.banksys.ebank.datalayer.service.AccountTypeService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,12 +37,14 @@ public class AccountStatementController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ebank@accountInquiry_VIEW')")
     public String getPage(Model model, HttpServletRequest request){
         model = this.getData(model, request);
         return "accountStatement";
     }
 
     @RequestMapping(value = "/searchCustomerAccount", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@accountInquiry_VIEW')")
     public String findCustomers(@RequestParam("customerAccountId") Integer customerAccountId,
                                 Model model, HttpServletRequest request){
         model = this.getData(model, request);

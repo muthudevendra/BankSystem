@@ -1,9 +1,10 @@
 package com.banksys.ebank.businesslayer.managerImpl;
 
 import com.banksys.ebank.businesslayer.manager.AccountStatementControllerManager;
-import com.banksys.ebank.datalayer.entity.Account;
+import com.banksys.ebank.datalayer.entity.BillPayment;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;
 import com.banksys.ebank.datalayer.entity.ThirdPartyTransfer;
+import com.banksys.ebank.datalayer.service.BillPaymentService;
 import com.banksys.ebank.datalayer.service.OwnAccountTransferService;
 import com.banksys.ebank.datalayer.service.ThirdPartyTransferService;
 import com.banksys.util.enums.MasterDataStatus;
@@ -19,18 +20,22 @@ import java.util.List;
 
 /**
  * Created by lakshithar on 6/29/2017.
+ *
  */
 @Service
 public class AccountStatementControllerManagerImpl implements AccountStatementControllerManager {
 
     private final OwnAccountTransferService ownAccountTransferService;
     private final ThirdPartyTransferService thirdPartyTransferService;
+    private final BillPaymentService billPaymentService;
 
     @Autowired
     public AccountStatementControllerManagerImpl(OwnAccountTransferService ownAccountTransferService,
-                                                 ThirdPartyTransferService thirdPartyTransferService) {
+                                                 ThirdPartyTransferService thirdPartyTransferService,
+                                                 BillPaymentService billPaymentService) {
         this.ownAccountTransferService = ownAccountTransferService;
         this.thirdPartyTransferService = thirdPartyTransferService;
+        this.billPaymentService = billPaymentService;
     }
 
     public List<AccountTransferAux> findAllTransactions(Integer customerAccountId) {
@@ -41,6 +46,11 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
                 customerAccountId, MasterDataStatus.DELETED.getStatusSeq()
         );
         List<ThirdPartyTransfer> thirdPartyTransferList = this.thirdPartyTransferService.findByFromAccountIdAndTransferStatusAndStatusNot(
+                customerAccountId,
+                TransferStatus.SENT.getTransferStatusSeq(),
+                MasterDataStatus.DELETED.getStatusSeq()
+        );
+        List<BillPayment> billPaymentList = this.billPaymentService.findByFromAccountIdAndTransferStatusAndStatusNot(
                 customerAccountId,
                 TransferStatus.SENT.getTransferStatusSeq(),
                 MasterDataStatus.DELETED.getStatusSeq()
@@ -62,6 +72,10 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
             AccountTransferAux accountTransferAux = this.getInitializedThirdPartyAccountTransfer(thirdPartyTransfer);
             accountTransferAuxList.add(accountTransferAux);
         }
+        for (BillPayment billPayment : billPaymentList){
+            AccountTransferAux accountTransferAux = this.getInitializedBillPayment(billPayment);
+            accountTransferAuxList.add(accountTransferAux);
+        }
         return accountTransferAuxList;
     }
 
@@ -80,6 +94,16 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
         accountTransferAux.setDescription(thirdPartyTransfer.getDescription());
         accountTransferAux.setWithdrawAmount(thirdPartyTransfer.getAmount());
         accountTransferAux.setTransferType(TransferType.THIRD_PARTY.getTransferTypeSeq());
+        return accountTransferAux;
+    }
+
+    private AccountTransferAux getInitializedBillPayment(BillPayment billPayment){
+        AccountTransferAux accountTransferAux = new AccountTransferAux();
+        accountTransferAux.setTransferDate(billPayment.getPaymentDate());
+        accountTransferAux.setAvailableBalance(billPayment.getAccountBalance());
+        accountTransferAux.setDescription(billPayment.getPaymentTypeDescription());
+        accountTransferAux.setWithdrawAmount(billPayment.getAmount());
+        accountTransferAux.setTransferType(TransferType.PAYMENT.getTransferTypeSeq());
         return accountTransferAux;
     }
 }

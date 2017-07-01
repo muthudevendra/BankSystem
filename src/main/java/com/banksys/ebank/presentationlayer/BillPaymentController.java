@@ -37,6 +37,7 @@ public class BillPaymentController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ebank@billPayment_VIEW')")
     public String getPage(Model model, HttpServletRequest request){
         model = this.getData(model, request);
         model.addAttribute("billPayment", new BillPayment());
@@ -44,6 +45,7 @@ public class BillPaymentController {
     }
 
     @RequestMapping(value = "/doPay", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('ebank@billPayment_PAY')")
     public String doTransfer(@ModelAttribute BillPayment billPayment, Model model, HttpServletRequest request){
         this.billPaymentControllerManager.doPay(billPayment);
         model = this.getData(model, request);
@@ -51,7 +53,7 @@ public class BillPaymentController {
     }
 
     @RequestMapping(value = "/findAccountBalance", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
+    @PreAuthorize("hasAuthority('ebank@billPayment_VIEW')")
     @ResponseBody
     public Double findAccountBalance(@RequestParam("customerAccountId") Integer customerAccountId) {
         CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
@@ -59,7 +61,7 @@ public class BillPaymentController {
     }
 
     @RequestMapping(value = "/findCurrency", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
+    @PreAuthorize("hasAuthority('ebank@billPayment_VIEW')")
     @ResponseBody
     public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
         CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);

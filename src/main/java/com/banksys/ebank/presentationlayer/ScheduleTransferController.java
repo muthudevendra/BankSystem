@@ -5,6 +5,7 @@ import com.banksys.util.enums.MasterDataStatus;
 import com.banksys.util.enums.TransferStatus;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class ScheduleTransferController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ebank@scheduleTransfer_VIEW')")
     public String getPage(Model model, HttpServletRequest request){
         Integer userId = (Integer)request.getSession().getAttribute("userId");
         if(userId == null){

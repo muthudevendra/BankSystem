@@ -2,6 +2,7 @@ package com.banksys.ebank.presentationlayer;
 
 import com.banksys.admin.datalayer.service.UserLoginAuditService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class LoginHistoryController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ebank@loginHistory_VIEW')")
     public String getPage(Model model, Principal principal){
         model.addAttribute("userLoginHistoryList", this.userLoginAuditService.findByUsername(principal.getName()));
         return "loginHistory";

@@ -9,7 +9,8 @@ import java.util.Arrays;
 public enum TransferType {
     OWN(0, "Own Account"),
     THIRD_PARTY(1, "Third Party Account"),
-    SCHEDULED(2, "Scheduled");
+    SCHEDULED(2, "Scheduled"),
+    PAYMENT(3, "Payment");
 
     private Integer transferTypeSeq;
     private String transferType;
