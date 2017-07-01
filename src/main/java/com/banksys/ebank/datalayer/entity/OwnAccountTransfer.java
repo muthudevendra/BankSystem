@@ -23,7 +23,8 @@ public class OwnAccountTransfer {
     private Integer fromAccountId;
     private Integer toAccountId;
     private Double amount;
-    private Double accountBalance;
+    private Double fromAccountBalance;
+    private Double toAccountBalance;
     private String description;
     private Date transferDate;
     private Integer status;
@@ -77,13 +78,23 @@ public class OwnAccountTransfer {
     }
 
     @Basic
-    @Column(name = "ACCOUNT_BALANCE")
-    public Double getAccountBalance() {
-        return accountBalance;
+    @Column(name = "FROM_ACCOUNT_BALANCE")
+    public Double getFromAccountBalance() {
+        return fromAccountBalance;
     }
 
-    public void setAccountBalance(Double accountBalance) {
-        this.accountBalance = accountBalance;
+    public void setFromAccountBalance(Double fromAccountBalance) {
+        this.fromAccountBalance = fromAccountBalance;
+    }
+
+    @Basic
+    @Column(name = "TO_ACCOUNT_BALANCE")
+    public Double getToAccountBalance() {
+        return toAccountBalance;
+    }
+
+    public void setToAccountBalance(Double toAccountBalance) {
+        this.toAccountBalance = toAccountBalance;
     }
 
     @Basic

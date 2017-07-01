@@ -1,6 +1,7 @@
 package com.banksys.ebank.presentationlayer;
 
 import com.banksys.ebank.businesslayer.manager.ThirdPartyTransferControllerManager;
+import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.ThirdPartyTransfer;
 import com.banksys.ebank.datalayer.service.BankService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
@@ -52,6 +53,22 @@ public class ThirdPartyTransferController {
         model = getPageData(model, request);
         model.addAttribute("thirdPartyAccountTransfer", thirdPartyTransfer);
         return "thirdPartyTransfer";
+    }
+
+    @RequestMapping(value = "/findAccountBalance", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@thirdPartyAccountTransfer_VIEW')")
+    @ResponseBody
+    public Double findAccountBalance(@RequestParam("customerAccountId") Integer customerAccountId) {
+        CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
+        return customerAccount.getAvailableBalance();
+    }
+
+    @RequestMapping(value = "/findCurrency", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@thirdPartyAccountTransfer_VIEW')")
+    @ResponseBody
+    public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
+        CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
+        return customerAccount.getCurrencyDescription();
     }
 
     private Model getPageData(Model model, HttpServletRequest request) {

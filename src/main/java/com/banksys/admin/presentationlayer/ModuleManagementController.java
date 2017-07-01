@@ -46,9 +46,10 @@ public class ModuleManagementController {
 
     @RequestMapping(value = "/saveModule", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@moduleManagement_CREATE')")
-    @ResponseBody
-    public ResponseObject saveModule(@ModelAttribute Module module,
-                                     HttpServletRequest request, Principal principal) {
-        return this.moduleManagementControllerManager.saveModule(module, request);
+    public String saveModule(@ModelAttribute Module module,
+                                     HttpServletRequest request, Model model) {
+        this.moduleManagementControllerManager.saveModule(module, request);
+        model.addAttribute("module", module);
+        return "moduleManagement";
     }
 }

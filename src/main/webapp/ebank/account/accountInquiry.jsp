@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${customerAccountList}" var="customerAccount">
-                    <tr>
+                    <tr onclick="load_account_statement(${customerAccount.customerAccountId})">
                         <td>${customerAccount.account.accountType.accountTypeName}</td>
                         <td>${customerAccount.accountNo}</td>
                         <td><fmt:formatDate value="${customerAccount.startDate}"

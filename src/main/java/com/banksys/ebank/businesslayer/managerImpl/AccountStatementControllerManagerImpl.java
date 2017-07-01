@@ -19,7 +19,6 @@ import java.util.List;
 
 /**
  * Created by lakshithar on 6/29/2017.
- *
  */
 @Service
 public class AccountStatementControllerManagerImpl implements AccountStatementControllerManager {
@@ -34,7 +33,7 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
         this.thirdPartyTransferService = thirdPartyTransferService;
     }
 
-    public List<AccountTransferAux> findAllTransactions(Integer customerAccountId){
+    public List<AccountTransferAux> findAllTransactions(Integer customerAccountId) {
         List<OwnAccountTransfer> ownAccountTransferWithdraws = this.ownAccountTransferService.findByFromAccountIdAndStatusNot(
                 customerAccountId, MasterDataStatus.DELETED.getStatusSeq()
         );
@@ -47,27 +46,26 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
                 MasterDataStatus.DELETED.getStatusSeq()
         );
         List<AccountTransferAux> accountTransferAuxList = new ArrayList<>();
-        for (OwnAccountTransfer ownAccountTransferWithdraw: ownAccountTransferWithdraws) {
+        for (OwnAccountTransfer ownAccountTransferWithdraw : ownAccountTransferWithdraws) {
             AccountTransferAux accountTransferAux = this.getInitializedOwnAccountTransfer(ownAccountTransferWithdraw);
             accountTransferAux.setWithdrawAmount(ownAccountTransferWithdraw.getAmount());
-            accountTransferAux.setAvailableBalance(ownAccountTransferWithdraw.getAccountBalance());
+            accountTransferAux.setAvailableBalance(ownAccountTransferWithdraw.getFromAccountBalance());
             accountTransferAuxList.add(accountTransferAux);
         }
-        for(OwnAccountTransfer ownAccountTransferDeposit: ownAccountTransferDeposits){
+        for (OwnAccountTransfer ownAccountTransferDeposit : ownAccountTransferDeposits) {
             AccountTransferAux accountTransferAux = this.getInitializedOwnAccountTransfer(ownAccountTransferDeposit);
             accountTransferAux.setDepositAmount(ownAccountTransferDeposit.getAmount());
-            accountTransferAux.setAvailableBalance(ownAccountTransferDeposit.getAccountBalance() +
-                    (ownAccountTransferDeposit.getAmount() * 2));
+            accountTransferAux.setAvailableBalance(ownAccountTransferDeposit.getToAccountBalance());
             accountTransferAuxList.add(accountTransferAux);
         }
-        for(ThirdPartyTransfer thirdPartyTransfer : thirdPartyTransferList){
+        for (ThirdPartyTransfer thirdPartyTransfer : thirdPartyTransferList) {
             AccountTransferAux accountTransferAux = this.getInitializedThirdPartyAccountTransfer(thirdPartyTransfer);
             accountTransferAuxList.add(accountTransferAux);
         }
         return accountTransferAuxList;
     }
 
-    private AccountTransferAux getInitializedOwnAccountTransfer(OwnAccountTransfer ownAccountTransfer){
+    private AccountTransferAux getInitializedOwnAccountTransfer(OwnAccountTransfer ownAccountTransfer) {
         AccountTransferAux accountTransferAux = new AccountTransferAux();
         accountTransferAux.setTransferDate(ownAccountTransfer.getTransferDate());
         accountTransferAux.setDescription(ownAccountTransfer.getDescription());
@@ -75,7 +73,7 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
         return accountTransferAux;
     }
 
-    private AccountTransferAux getInitializedThirdPartyAccountTransfer(ThirdPartyTransfer thirdPartyTransfer){
+    private AccountTransferAux getInitializedThirdPartyAccountTransfer(ThirdPartyTransfer thirdPartyTransfer) {
         AccountTransferAux accountTransferAux = new AccountTransferAux();
         accountTransferAux.setTransferDate(thirdPartyTransfer.getTransferDate());
         accountTransferAux.setAvailableBalance(thirdPartyTransfer.getAccountBalance());

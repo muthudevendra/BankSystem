@@ -46,7 +46,7 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-3">
-                        <p class="control-label">Available Balance</p>
+                        <p id="amountInHand" class="align-left"></p>
                     </div>
                 </div>
                 <div class="col-lg-8 col-lg-offset-1">

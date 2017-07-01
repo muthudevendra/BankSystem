@@ -51,7 +51,8 @@ public class OwnAccountTransferControllerManagerImpl implements OwnAccountTransf
             dbToAccount.setAvailableBalance(dbToAccount.getAvailableBalance() + ownAccountTransfer.getAmount());
             ownAccountTransfer.setTransferDate(new Date());
             ownAccountTransfer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
-            ownAccountTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
+            ownAccountTransfer.setFromAccountBalance(dbFromAccount.getAvailableBalance());
+            ownAccountTransfer.setToAccountBalance(dbToAccount.getAvailableBalance());
 
             this.ownAccountTransferService.save(ownAccountTransfer);
             responseObject = new ResponseObject("Transfer Successful", true);

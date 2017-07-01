@@ -36,32 +36,15 @@
                     <div class="col-lg-5">
                         <div class="input-group">
                             <div class="row">
-                                <div class="col-md-5">
-                                    <label class="control-label" for="accountType">Account Type</label>
-                                </div>
-                                <div class="col-md-7">
-                                    <select class="form-control" id="accountType">
-                                        <c:forEach items="${accountTypeList}" var="accountType">
-                                            <option value="${accountType.accountTypeId}">
-                                                    ${accountType.accountTypeName}
-                                            </option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="input-group">
-                            <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-3">
                                     <label class="control-label col-sm-2" for="customerAccountId">Account Number</label>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-9">
                                     <select required name="customerAccountId" class="form-control" id="customerAccountId">
-                                        <c:forEach items="${customerAccountList}" var="customerAccount">
-                                            <option value="${customerAccount.customerAccountId}">
-                                                    ${customerAccount.accountNo}
+                                        <c:forEach items="${customerAccountList}" var="account">
+                                            <option ${account.customerAccountId eq customerAccount.customerAccountId ? 'selected' : ''}
+                                                    value="${account.customerAccountId}">
+                                                    ${account.accountNo}
                                             </option>
                                         </c:forEach>
                                     </select>

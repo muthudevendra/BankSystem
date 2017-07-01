@@ -45,6 +45,7 @@ public class AccountStatementController {
     public String findCustomers(@RequestParam("customerAccountId") Integer customerAccountId,
                                 Model model, HttpServletRequest request){
         model = this.getData(model, request);
+        model.addAttribute("customerAccount", this.customerAccountService.findOne(customerAccountId));
         model.addAttribute("accountTransactionList", this.accountStatementControllerManager.findAllTransactions(customerAccountId));
         return "accountStatement";
     }
@@ -55,8 +56,6 @@ public class AccountStatementController {
             throw new RuntimeException("User not found");
         }
         model.addAttribute("customerAccountList", this.customerAccountService.findByCustomerUserIdAndStatusNot(userId, MasterDataStatus.DELETED.getStatusSeq()));
-        model.addAttribute("accountTypeList", this.accountTypeService.findByStatusNot(
-                MasterDataStatus.DELETED.getStatusSeq()));
         return model;
     }
 }
