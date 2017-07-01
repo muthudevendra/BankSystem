@@ -9,6 +9,7 @@
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <%@ include file="/layout/include.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/thirdPartyTransfer.js"></script>
+
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
