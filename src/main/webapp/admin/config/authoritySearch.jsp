@@ -17,8 +17,8 @@
             <div>
                 <legend>Authority Search</legend>
             </div>
-            <div class="table-striped table-responsive">
-                <table class="table datatable">
+            <div class="col-md-12">
+                <table class="table datatable table-responsive">
                     <thead>
                         <tr>
                             <th>Authority ID</th>

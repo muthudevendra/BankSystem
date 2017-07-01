@@ -17,8 +17,9 @@
             <div>
                 <legend>Module Search</legend>
             </div>
+            <br>
             <div class="col-md-12">
-                <table class="table datatable table-hover table-responsive">
+                <table class="table datatable table-responsive">
                     <thead>
                     <tr>
                         <th>Module ID</th>

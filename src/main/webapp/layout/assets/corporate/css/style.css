@@ -3132,3 +3132,8 @@ Styler Panel
         margin-top: 8px;
     }
 }
+
+.table{
+	font-size: small;
+	cursor: hand;
+}

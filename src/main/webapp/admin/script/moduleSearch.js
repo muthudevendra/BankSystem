@@ -6,9 +6,10 @@ $(function () {
     $('#moduleSearch').addClass('active');
     $('.datatable').dataTable( {
         order: [[ 3, "desc" ]],
-        dom: "B<'row'<'col-sm-3'l><'col-sm-4 col-sm-offset-5'f>><'row'<'col-sm-12'tr>><br><'row'<'col-sm-5'i><'col-sm-4 col-sm-offset-3'p>>",
+        dom: "B<'row'<'pull-left'l><'pull-right'f>><'row'<'col-sm-12'tr>><br><'row'<'pull-left'i><'pull-right'p>>",
+        language: { search: "_INPUT_", searchPlaceholder: "Search"}
         }
-     );
+    );
 });
 
 function load_module(moduleId) {

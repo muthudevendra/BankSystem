@@ -5,7 +5,7 @@
   Time: 5:20 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="/layout/include.jsp"%>
+<%@ include file="/layout/include.jsp" %>
 <script type="text/javascript" src="/admin/script/customerSearch.js"></script>
 <div class="main">
     <div class="container">
@@ -14,11 +14,9 @@
             <li class="active">Search Customer</li>
         </ul>
 
-        <div class="content-page col-md-9">
-            <div class="col-lg-offset-1">
-                <div>
-                    <legend>Registered Customers</legend>
-                </div>
+        <div class="content-page col-md-10">
+            <div>
+                <legend>Registered Customers</legend>
             </div>
             <form action="/admin/customer/customerSearch/searchCustomers" method="post" role="form">
                 <div class="panel panel-default col-md-offset-2">
@@ -70,7 +68,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div class="col-md-1 col-md-offset-5">
                                 <span class="input-group-btn">
                                     <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
@@ -80,12 +78,10 @@
                     </div>
                 </div>
             </form>
-            <br/>
-        </div>
 
-        <div class="col-md-9 col-md-offset-2">
-            <table class="table datatable">
-                <thead>
+            <div class="col-md-12">
+                <table class="table datatable table-responsive">
+                    <thead>
                     <tr>
                         <th>NIC</th>
                         <th>Passport No</th>
@@ -93,8 +89,8 @@
                         <th>Gender</th>
                         <th>Address</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <c:forEach items="${customerList}" var="customer">
                         <tr onclick="load_customer(${customer.customerId})">
                             <td>${customer.nic}</td>
@@ -104,8 +100,9 @@
                             <td>${customer.addressBook.addressLine1}</td>
                         </tr>
                     </c:forEach>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
