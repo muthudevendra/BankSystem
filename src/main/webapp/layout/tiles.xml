@@ -60,6 +60,9 @@
     <definition name="customerAccountManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/account/customerAccountManagement.jsp"/>
     </definition>
+    <definition name="userManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userManagement.jsp"/>
+    </definition>
     <definition name="userTypeManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/userTypeManagement.jsp"/>
     </definition>
