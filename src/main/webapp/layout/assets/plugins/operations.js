@@ -32,6 +32,21 @@ function form_validate(formId) {
     return result;
 }
 
+function display_messages() {
+    var message = $('#message').val();
+    var status = $('#status').val();
+    if(message != '' && message != null && message != 'undefined'){
+        var type;
+        if(status == 'true') {
+            type = 'success';
+        }
+        else{
+            type = 'error';
+        }
+        noty({text: message, layout: 'topCenter', type: type});
+    }
+}
+
 function load_object_data(url, type, data) {
     var responseObject = null;
     $.ajax({

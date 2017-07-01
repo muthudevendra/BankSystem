@@ -4,12 +4,12 @@
  */
 
 $(function () {
-    $('.navUrl').removeClass('active')
+    $('.navUrl').removeClass('active');
     $('#moduleManagement').addClass('active');
-
     var moduleId = $('#moduleId').val();
     if (moduleId != '') {
-        transform_form('moduleForm', '/admin/config/moduleManagement/updateModule')
+        transform_form('moduleForm', '/admin/config/moduleManagement/updateModule');
         transformToUpdate();
+        display_messages();
     }
 });

@@ -3,6 +3,7 @@ package com.banksys.admin.presentationlayer;
 import com.banksys.admin.businesslayer.manager.ModuleManagementControllerManager;
 import com.banksys.admin.datalayer.entity.Module;
 import com.banksys.admin.datalayer.service.ModuleService;
+import com.banksys.util.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -46,8 +47,15 @@ public class ModuleManagementController {
     @PreAuthorize("hasAuthority('admin@moduleManagement_CREATE')")
     public String saveModule(@ModelAttribute Module module,
                                      HttpServletRequest request, Model model) {
-        this.moduleManagementControllerManager.saveModule(module, request);
-        model.addAttribute("module", module);
+        ResponseObject responseObject = this.moduleManagementControllerManager.saveModule(module, request);
+        this.getResponseData(responseObject, model);
         return "moduleManagement";
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("module", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
+        return model;
     }
 }

@@ -20,6 +20,8 @@
             </div>
             <form role="form" action="/admin/config/moduleManagement/saveModule" id="moduleForm" method="post">
                 <input type="hidden" name="moduleId" value="${module.moduleId eq null ? '' : module.moduleId}" id="moduleId"/>
+                <input type="hidden" name="message" value="${message}" id="message"/>
+                <input type="hidden" name="status" value="${status}" id="status" />
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="moduleName">Module Name</label>
