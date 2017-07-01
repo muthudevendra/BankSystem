@@ -27,15 +27,14 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final BankSysAuthLogoutHandler bankSysAuthLogoutHandler;
     private final BankSysAuthSuccessHandler bankSysAuthSuccessHandler;
-    private final BankSysSessionTimeoutHandler bankSysSessionTimeoutHandler;
     private final DataSource dataSource;
 
     @Autowired
-    public SecurityConfig(BankSysAuthLogoutHandler bankSysAuthLogoutHandler, BankSysAuthSuccessHandler bankSysAuthSuccessHandler,
-                          BankSysSessionTimeoutHandler bankSysSessionTimeoutHandler, DataSource dataSource) {
+    public SecurityConfig(BankSysAuthLogoutHandler bankSysAuthLogoutHandler,
+                          BankSysAuthSuccessHandler bankSysAuthSuccessHandler,
+                          DataSource dataSource) {
         this.bankSysAuthLogoutHandler = bankSysAuthLogoutHandler;
         this.bankSysAuthSuccessHandler = bankSysAuthSuccessHandler;
-        this.bankSysSessionTimeoutHandler = bankSysSessionTimeoutHandler;
         this.dataSource = dataSource;
     }
 
@@ -45,13 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/layout/assets/**").permitAll()
                 .antMatchers("/*").permitAll()
-//                .antMatchers("/admin").hasAuthority("Admin@Admin_VIEW")
-                .antMatchers("/admin/**").permitAll()   //Remove in prod
+                .antMatchers("/admin").hasAuthority("Admin@Admin_VIEW")
                 .anyRequest().authenticated()
-                .and().requestCache().requestCache(new NullRequestCache()).and()
+                .and()
+                .requestCache().requestCache(new NullRequestCache()).and()
                 .formLogin().loginPage("/login").failureForwardUrl("/login?error")
                 .usernameParameter("username").passwordParameter("password").successHandler(bankSysAuthSuccessHandler)
-//                .and().rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("my-remember-me").tokenValiditySeconds(86400)
+                .and().rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("my-remember-me").tokenValiditySeconds(86400)
                 .and()
                 .logout().invalidateHttpSession(true).deleteCookies("JSESSIONID")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -60,12 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()
-                .csrf()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                .sessionFixation().migrateSession()
-                .invalidSessionUrl("/login?Invalid Session")
-                .invalidSessionStrategy(bankSysSessionTimeoutHandler);
+                .csrf();
 
         http.headers().cacheControl().disable();
     }

@@ -1,16 +1,14 @@
 package com.banksys.admin.businesslayer.managerImpl;
 
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
+import com.banksys.admin.businesslayer.manager.UserManagementManager;
 import com.banksys.admin.datalayer.entity.User;
 import com.banksys.common.ResponseObject;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.enums.MasterDataStatus;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -20,16 +18,21 @@ import java.util.UUID;
 public class CustomerManagementControllerManagerImpl implements CustomerManagementControllerManager {
 
     private final CustomerService customerService;
+    private final UserManagementManager userManagementManager;
 
     @Autowired
-    public CustomerManagementControllerManagerImpl(CustomerService customerService) {
+    public CustomerManagementControllerManagerImpl(CustomerService customerService,
+                                                   UserManagementManager userManagementManager) {
         this.customerService = customerService;
+        this.userManagementManager = userManagementManager;
     }
 
     @Override
     public ResponseObject saveCustomer(Customer customer) {
         customer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
-        customer.setUser(this.getDefaultUser());
+        customer.getAddressBook().setStatus(MasterDataStatus.OPEN.getStatusSeq());
+        User defaultUser = this.userManagementManager.getDefaultUser(customer.getFirstName());
+        customer.setUser(defaultUser);
         this.customerService.save(customer);
         ResponseObject responseObject = new ResponseObject(customer, true);
         responseObject.setMessage("Customer Saved Successfully");
@@ -71,14 +74,5 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
             responseObject.setObject(dbCustomer);
         }
         return responseObject;
-    }
-
-    private User getDefaultUser(){
-        User user = new User();
-        user.setUsername("newUser");
-        user.setPassword(DigestUtils.sha1Hex(UUID.randomUUID().toString())); //Mail UUID
-        user.setEnabled(0);
-        user.setUserTypeId(1);
-        return user;
     }
 }

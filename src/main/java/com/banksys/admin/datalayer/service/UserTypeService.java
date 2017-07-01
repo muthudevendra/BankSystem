@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Created by Oshada on 6/29/2017.
+ *
  */
 @Repository
-public interface UserTypeService  extends JpaRepository<UserType,Integer>{
+public interface UserTypeService extends JpaRepository<UserType, Integer> {
+    UserType findByUserType(String userType);
 }

@@ -1,10 +1,14 @@
 package com.banksys.admin.datalayer.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -12,6 +16,7 @@ import java.util.Objects;
  *
  */
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class User {
     private Integer userId;
     private String username;
@@ -24,6 +29,7 @@ public class User {
     private Date lastModifiedDate;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "USER_ID")
     public Integer getUserId() {
         return userId;
@@ -74,7 +80,8 @@ public class User {
     }
 
     @Basic
-    @Column(name = "CREATED_BY")
+    @CreatedBy
+    @Column(name = "CREATED_BY", nullable = false, length = 50, updatable = false)
     public String getCreatedBy() {
         return createdBy;
     }
@@ -84,17 +91,20 @@ public class User {
     }
 
     @Basic
-    @Column(name = "CREATED_DATE")
-    public Date getCreatedDate() {
+    @CreatedDate
+    @Column(name = "CREATED_DATE", nullable = false, updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
+    public java.util.Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(java.util.Date createdDate) {
         this.createdDate = createdDate;
     }
 
     @Basic
-    @Column(name = "LAST_MODIFIED_BY")
+    @LastModifiedBy
+    @Column(name = "LAST_MODIFIED_BY", nullable = false, length = 50)
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -104,12 +114,14 @@ public class User {
     }
 
     @Basic
-    @Column(name = "LAST_MODIFIED_DATE")
-    public Date getLastModifiedDate() {
+    @LastModifiedDate
+    @Column(name = "LAST_MODIFIED_DATE", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
+    public java.util.Date getLastModifiedDate() {
         return lastModifiedDate;
     }
 
-    public void setLastModifiedDate(Date lastModifiedDate) {
+    public void setLastModifiedDate(java.util.Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 

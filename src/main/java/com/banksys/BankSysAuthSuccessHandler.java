@@ -2,8 +2,10 @@ package com.banksys;
 
 import com.banksys.admin.datalayer.entity.User;
 import com.banksys.admin.datalayer.entity.UserLoginAudit;
+import com.banksys.admin.datalayer.entity.UserType;
 import com.banksys.admin.datalayer.service.UserLoginAuditService;
 import com.banksys.admin.datalayer.service.UserService;
+import com.banksys.admin.datalayer.service.UserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -24,11 +26,15 @@ public class BankSysAuthSuccessHandler implements AuthenticationSuccessHandler {
     private final Integer SESSION_TIMEOUT_IN_SECONDS = 60 * 30 * 10;
     private final UserLoginAuditService userLoginAuditService;
     private final UserService userService;
+    private final UserTypeService userTypeService;
 
     @Autowired
-    public BankSysAuthSuccessHandler(UserLoginAuditService userLoginAuditService, UserService userService) {
+    public BankSysAuthSuccessHandler(UserLoginAuditService userLoginAuditService,
+                                     UserService userService,
+                                     UserTypeService userTypeService) {
         this.userLoginAuditService = userLoginAuditService;
         this.userService = userService;
+        this.userTypeService = userTypeService;
     }
 
     @Override
@@ -42,6 +48,13 @@ public class BankSysAuthSuccessHandler implements AuthenticationSuccessHandler {
 
         User user = this.userService.findByUsername(authentication.getName());
         request.getSession().setAttribute("userId", user.getUserId());
-        response.sendRedirect("/ebank");
+
+        UserType userType = this.userTypeService.findByUserType("Admin");
+        if(userType != null && user.getUserTypeId().equals(userType.getUserTypeId())){
+            response.sendRedirect("/admin");
+        }
+        else {
+            response.sendRedirect("/ebank");
+        }
     }
 }
