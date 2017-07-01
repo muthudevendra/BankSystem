@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by Oshada on 6/29/2017.
+ *
  */
 @Service
 public class UserTypeAuthorityManagementControllerManagerImpl implements UserTypeAuthorityManagementControllerManager {
+
     private final UserTypeAuthorityService userTypeAuthorityService;
 
     @Autowired

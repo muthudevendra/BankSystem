@@ -3,7 +3,6 @@ package com.banksys.admin.businesslayer.managerImpl;
 import com.banksys.admin.businesslayer.manager.ModuleManagementControllerManager;
 import com.banksys.admin.datalayer.entity.Module;
 import com.banksys.admin.datalayer.service.ModuleService;
-import com.banksys.ebank.datalayer.entity.AccountType;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class ModuleManagementControllerManagerImpl implements ModuleManagementCo
     @Override
     public ResponseObject updateModule(Module module) {
         Module dbModule = this.moduleService.findOne(module.getModuleId());
-        ResponseObject responseObject = new ResponseObject();
+        ResponseObject responseObject;
         if(dbModule.equals(module)){
             responseObject = new ResponseObject("No changes found", false);
         }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by Oshada on 6/29/2017.
+ *
  */
 @Service
 public class UserTypeManagementControllerManagerImpl implements UserTypeManagementControllerManager {
@@ -33,7 +34,7 @@ public class UserTypeManagementControllerManagerImpl implements UserTypeManageme
     @Override
     public ResponseObject updateUserTypeManagement(UserType userType) {
         UserType dbUserType = this.userTypeService.findOne(userType.getUserTypeId());
-        ResponseObject responseObject = new ResponseObject();
+        ResponseObject responseObject;
         if (dbUserType.equals(userType)) {
             responseObject = new ResponseObject("No changes found", false);
         } else {

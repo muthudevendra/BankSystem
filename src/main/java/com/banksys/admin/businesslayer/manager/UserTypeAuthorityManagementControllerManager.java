@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by Oshada on 6/29/2017.
+ *
  */
 @Component
 public interface UserTypeAuthorityManagementControllerManager {

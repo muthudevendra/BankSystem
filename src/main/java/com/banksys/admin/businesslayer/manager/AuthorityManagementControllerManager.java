@@ -13,6 +13,4 @@ public interface AuthorityManagementControllerManager {
     ResponseObject saveAuthority(Authority authority);
 
     ResponseObject updateAuthority(Authority authority);
-
-    ResponseObject deleteAuthority(Integer authorityId);
 }

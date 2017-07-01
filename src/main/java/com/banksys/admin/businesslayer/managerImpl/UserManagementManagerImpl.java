@@ -47,7 +47,7 @@ public class UserManagementManagerImpl implements UserManagementManager {
         }
     }
 
-    public String SHA1(String word) {
+    private String SHA1(String word) {
         try {
             MessageDigest md;
             md = MessageDigest.getInstance("SHA-1");

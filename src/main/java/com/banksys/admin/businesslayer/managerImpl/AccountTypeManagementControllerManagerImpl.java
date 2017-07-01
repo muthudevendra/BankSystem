@@ -34,8 +34,7 @@ public class AccountTypeManagementControllerManagerImpl implements AccountTypeMa
     @Override
     public ResponseObject updateAccountType(AccountType accountType) {
         AccountType dbAccountType = this.accountTypeService.findOne(accountType.getAccountTypeId());
-        ResponseObject responseObject = new ResponseObject();
-        responseObject.setObject(accountType);
+        ResponseObject responseObject;
         if(dbAccountType.equals(accountType)){
             responseObject = new ResponseObject("No changes found", false);
         }
@@ -43,6 +42,7 @@ public class AccountTypeManagementControllerManagerImpl implements AccountTypeMa
             accountType = this.accountTypeService.save(accountType);
             responseObject = new ResponseObject("Account updated Successfully", true);
         }
+        responseObject.setObject(accountType);
         return responseObject;
     }
 }

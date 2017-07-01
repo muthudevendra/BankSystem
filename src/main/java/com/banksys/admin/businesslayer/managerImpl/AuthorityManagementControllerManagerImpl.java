@@ -34,33 +34,14 @@ public class AuthorityManagementControllerManagerImpl implements AuthorityManage
     @Override
     public ResponseObject updateAuthority(Authority authority) {
         Authority dbAuthority = this.authorityService.findOne(authority.getAuthorityId());
-        ResponseObject responseObject = new ResponseObject();
-        responseObject.setObject(authority);
+        ResponseObject responseObject;
         if (dbAuthority.equals(authority)) {
             responseObject = new ResponseObject("No changes found", false);
         } else {
             authority = this.authorityService.save(authority);
             responseObject = new ResponseObject("Authority updated Suucessfully", true);
         }
-
-        return responseObject;
-    }
-
-    @Override
-    public ResponseObject deleteAuthority(Integer authorityId) {
-        Authority dbAuthority = authorityService.findOne(authorityId);
-        ResponseObject responseObject = new ResponseObject();
-        if (dbAuthority == null) {
-            responseObject.setStatus(false);
-            responseObject.setMessage("Authority already deleted");
-        } else {
-            dbAuthority.setStatus(MasterDataStatus.DELETED.getStatusSeq());
-            dbAuthority = this.authorityService.save(dbAuthority);
-            responseObject.setStatus(true);
-            responseObject.setMessage("Authority Deleted Successfully");
-            responseObject.setObject(dbAuthority);
-        }
-
+        responseObject.setObject(authority);
         return responseObject;
     }
 }

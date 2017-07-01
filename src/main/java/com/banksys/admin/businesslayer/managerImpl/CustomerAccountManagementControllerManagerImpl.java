@@ -53,8 +53,7 @@ public class CustomerAccountManagementControllerManagerImpl implements CustomerA
     @Override
     public ResponseObject updateCustomerAccount(CustomerAccount customerAccount) {
         CustomerAccount dbCustomerAccount = this.customerAccountService.findOne(customerAccount.getCustomerId());
-        ResponseObject responseObject = new ResponseObject();
-        responseObject.setObject(customerAccount);
+        ResponseObject responseObject;
         if(dbCustomerAccount.equals(customerAccount)){
             responseObject = new ResponseObject("No changes found", false);
         }
@@ -62,6 +61,7 @@ public class CustomerAccountManagementControllerManagerImpl implements CustomerA
             customerAccount = this.customerAccountService.save(customerAccount);
             responseObject = new ResponseObject("Customer Account updated Successfully", true);
         }
+        responseObject.setObject(customerAccount);
         return responseObject;
     }
 }
