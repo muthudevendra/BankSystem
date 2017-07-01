@@ -2,6 +2,7 @@ package com.banksys.admin.datalayer.service;
 
 import com.banksys.admin.datalayer.entity.Authority;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,6 +10,6 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface AuthorityService extends JpaRepository<Authority ,Integer> {
+public interface AuthorityService extends JpaRepository<Authority ,Integer> ,QueryDslPredicateExecutor<Authority>{
 
 }

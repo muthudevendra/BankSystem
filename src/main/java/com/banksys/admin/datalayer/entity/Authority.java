@@ -27,6 +27,8 @@ public class Authority {
     private String lastModifiedBy;
     private Date lastModifiedDate;
 
+    private Module module;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "AUTHORITY_ID")
@@ -112,6 +114,16 @@ public class Authority {
 
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "MODULE_ID", insertable = false, updatable = false)
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 
     @Override

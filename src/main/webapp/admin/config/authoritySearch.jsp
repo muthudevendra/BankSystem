@@ -5,6 +5,8 @@
   Time: 7:51 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="/admin/script/authoritySearch.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -16,7 +18,7 @@
                 <legend>Authority Search</legend>
             </div>
             <div class="table-striped table-responsive">
-                <table class="table">
+                <table class="table datatable">
                     <thead>
                         <tr>
                             <th>Authority ID</th>
@@ -27,8 +29,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                    <c:forEach items="${authorityList}" var="authority">
+                        <tr onclick="load_module(${authority.authorityId})">
+                            <td>${authority.authorityId}</td>
+                            <td>${authority.authorityName}</td>
+                            <td>${authority.module.moduleName}</td>
+                            <td>${authority.createdBy}</td>
+                            <td>${authority.lastModifiedBy}</td>
                         </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
