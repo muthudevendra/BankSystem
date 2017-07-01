@@ -9,14 +9,14 @@
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="#">Admin</a></li>
-            <li class="active">User Type Search </li>
+            <li class="active">User Type Search</li>
         </ul>
         <div class="content-page col-lg-10">
             <div>
                 <legend>User Types & Authoritiy Search</legend>
             </div>
-            <div class="table-striped table-responsive">
-                <table class="table">
+            <div class="col-md-12">
+                <table class="table table-striped table-responsive">
                     <thead>
                     <tr>
                         <th>User Type</th>
