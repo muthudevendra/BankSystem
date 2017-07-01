@@ -43,8 +43,8 @@
                                 <ul class="nav nav-list">
                                     <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
                                     <li class="navUrl"><a href="/admin/account/accountTypeManagement">Account Type</a></li>
-                                    <li class="navUrl"><a href="#">Account Search</a></li>
-                                    <li class="navUrl"><a href="#">Account Type Search</a></li>
+                                    <li class="navUrl"><a href="/admin/account/accountSearch">Account Search</a></li>
+                                    <li class="navUrl"><a href="/admin/account/accountTypeSearch">Account Type Search</a></li>
                                 </ul>
                             </div>
                         </li>
