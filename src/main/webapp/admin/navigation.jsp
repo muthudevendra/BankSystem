@@ -33,6 +33,7 @@
                                     <li class="navUrl" id="userTypeAuthority"><a href="/admin/config/userTypeAuthorityManagement">User Type Authority</a></li>
                                     <li class="navUrl" id="moduleSearch"><a href="/admin/config/moduleSearch">Module Search</a></li>
                                     <li class="navUrl" id="authoritySearch"><a href="/admin/config/authoritySearch">Authority Search</a></li>
+                                    <li class="navUrl" id="userTypeSearch"><a href="/admin/config/userTypeSearch">User Type Search</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -42,8 +43,8 @@
                             </a>
                             <div class="collapse" id="account">
                                 <ul class="nav nav-list">
-                                    <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
                                     <li class="navUrl"><a href="/admin/account/accountTypeManagement">Account Type</a></li>
+                                    <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
                                     <li class="navUrl"><a href="/admin/account/accountSearch">Account Search</a></li>
                                     <li class="navUrl"><a href="/admin/account/accountTypeSearch">Account Type Search</a></li>
                                 </ul>

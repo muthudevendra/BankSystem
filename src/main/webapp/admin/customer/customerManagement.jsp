@@ -201,7 +201,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-2 col-md-offset-9">
+                    <div class="col-md-2 col-md-offset-2">
                         <label for="tax">Pay Tax</label>
                     </div>
                     <div class="col-lg-offset-0">

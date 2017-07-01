@@ -16,7 +16,7 @@
         </ul>
         <div class="content-page col-lg-10">
             <div>
-                <legend>User Authority Management</legend>
+                <legend>User Type Authority Management</legend>
             </div>
             <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post"
                   id="userTypeAuthorityform">

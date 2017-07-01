@@ -66,6 +66,9 @@
     <definition name="userTypeManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/userTypeManagement.jsp"/>
     </definition>
+    <definition name="userTypeSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userTypeSearch.jsp"/>
+    </definition>
     <definition name="userTypeAuthorityManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/userTypeAuthorityManagement.jsp"/>
     </definition>
@@ -106,5 +109,11 @@
     </definition>
     <definition name="changePassword" extends="ebank_base">
         <put-attribute name="body" value="/ebank/profile/changePassword.jsp"/>
+    </definition>
+    <definition name="ownAccountTransferConfirmation" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/ownAccountTransferConfirmation.jsp"/>
+    </definition>
+    <definition name="thirdPartyTransferConfirmation" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/thirdPartyTransferConfirmation.jsp"/>
     </definition>
 </tiles-definitions>
