@@ -4,6 +4,7 @@ import com.banksys.admin.businesslayer.manager.UserTypeAuthorityManagementContro
 import com.banksys.admin.datalayer.entity.UserTypeAuthority;
 import com.banksys.admin.datalayer.service.UserTypeAuthorityService;
 import com.banksys.common.ResponseObject;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserTypeAuthorityManagementControllerManagerImpl implements UserTypeAuthorityManagementControllerManager {
     private final UserTypeAuthorityService userTypeAuthorityService;
+
     @Autowired
     public UserTypeAuthorityManagementControllerManagerImpl(UserTypeAuthorityService userTypeAuthorityService) {
         this.userTypeAuthorityService = userTypeAuthorityService;
@@ -20,23 +22,24 @@ public class UserTypeAuthorityManagementControllerManagerImpl implements UserTyp
 
     @Override
     public ResponseObject saveUserTypeAuthority(UserTypeAuthority userTypeAuthority) {
+        userTypeAuthority.setStatus(MasterDataStatus.OPEN.getStatusSeq());
         this.userTypeAuthorityService.save(userTypeAuthority);
-        ResponseObject responseObject=new ResponseObject(userTypeAuthority,true);
+        ResponseObject responseObject = new ResponseObject(userTypeAuthority, true);
         responseObject.setMessage("UserTypeAuthority Saved Successfully");
         return responseObject;
     }
 
     @Override
     public ResponseObject updateUserTypeAuthority(UserTypeAuthority userTypeAuthority) {
-        UserTypeAuthority dbUserTypeAuthority =this.userTypeAuthorityService.findOne(userTypeAuthority.getAuthorityId());
-        ResponseObject responseObject=new ResponseObject();
-        responseObject.setObject(userTypeAuthority);
-        if(dbUserTypeAuthority.equals(userTypeAuthority)){
-            responseObject =new ResponseObject("No change found",false);
-        }else{
-            userTypeAuthority =this.userTypeAuthorityService.save(userTypeAuthority);
-            responseObject=new ResponseObject("User Type Authority Successfully" ,true);
+        UserTypeAuthority dbUserTypeAuthority = this.userTypeAuthorityService.findOne(userTypeAuthority.getAuthorityId());
+        ResponseObject responseObject;
+        if (dbUserTypeAuthority.equals(userTypeAuthority)) {
+            responseObject = new ResponseObject("No change found", false);
+        } else {
+            userTypeAuthority = this.userTypeAuthorityService.save(userTypeAuthority);
+            responseObject = new ResponseObject("User Type Authority Successfully", true);
         }
+        responseObject.setObject(userTypeAuthority);
         return responseObject;
     }
 }

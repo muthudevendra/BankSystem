@@ -4,6 +4,7 @@ import com.banksys.admin.businesslayer.manager.UserTypeManagementControllerManag
 import com.banksys.admin.datalayer.entity.UserType;
 import com.banksys.admin.datalayer.service.UserTypeService;
 import com.banksys.common.ResponseObject;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.security.provider.certpath.OCSPResponse;
@@ -15,6 +16,7 @@ import sun.security.provider.certpath.OCSPResponse;
 public class UserTypeManagementControllerManagerImpl implements UserTypeManagementControllerManager {
 
     private final UserTypeService userTypeService;
+
     @Autowired
     public UserTypeManagementControllerManagerImpl(UserTypeService userTypeService) {
         this.userTypeService = userTypeService;
@@ -22,6 +24,7 @@ public class UserTypeManagementControllerManagerImpl implements UserTypeManageme
 
     @Override
     public ResponseObject saveUserTypeManagement(UserType userType) {
+        userType.setStatus(MasterDataStatus.OPEN.getStatusSeq());
         this.userTypeService.save(userType);
         ResponseObject responseObject = new ResponseObject(userType, true);
         responseObject.setMessage("UserType Saved Successfully");
@@ -30,16 +33,15 @@ public class UserTypeManagementControllerManagerImpl implements UserTypeManageme
 
     @Override
     public ResponseObject updateUserTypeManagement(UserType userType) {
-        UserType dbUserType =this.userTypeService.findOne(userType.getUserTypeId());
-        ResponseObject responseObject=new ResponseObject();
-        responseObject.setObject(userType);
-        if(dbUserType.equals(userType)){
-            responseObject=new ResponseObject("No changes found",false );
-
-        }else{
-            userType =this.userTypeService.save(userType);
-            responseObject =new ResponseObject("UserType updated Successfully",true);
+        UserType dbUserType = this.userTypeService.findOne(userType.getUserTypeId());
+        ResponseObject responseObject = new ResponseObject();
+        if (dbUserType.equals(userType)) {
+            responseObject = new ResponseObject("No changes found", false);
+        } else {
+            userType = this.userTypeService.save(userType);
+            responseObject = new ResponseObject("UserType updated Successfully", true);
         }
+        responseObject.setObject(userType);
         return responseObject;
     }
 }

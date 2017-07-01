@@ -21,7 +21,7 @@
                 <ul class="list-unstyled list-inline pull-right">
                     <li><a href="/ebank">E-Bank</a></li>
                     <li><a href="/login">Log In</a></li>
-                    <li><a href="#">Registration</a></li>
+                    <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->

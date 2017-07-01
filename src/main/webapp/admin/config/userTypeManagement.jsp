@@ -17,8 +17,7 @@
             <div id="legend">
                 <legend>User Type Management</legend>
             </div>
-            <form role="form" method="post" id="userTypeform"
-                  action="/admin/config/userTypeManagement/saveUserTypeManagement">
+            <form role="form" method="post" id="userTypeForm" action="/admin/config/userTypeManagement/saveUserTypeManagement">
                 <input type="hidden" name="userTypeId" value="${userType.userTypeId eq null ? '' : userType.userTypeId}"
                        id="userTypeId"/>
                 <div class="row form-group">
@@ -39,11 +38,11 @@
                                value="${userType.description}">
                     </div>
                 </div>
-                <div class="row form-group">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <div class="row form-group updateOperation" style="display: none">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="status">Status</label>
                     </div>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div class="col-lg-8">
                         <select name="status" class="form-control" id="status">
                             <c:forEach items="${statusList}" var="status">

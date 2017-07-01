@@ -19,7 +19,7 @@ import java.util.Objects;
 @Table(name = "user_type")
 public class UserType {
     private Integer userTypeId;
-    private Integer userType;
+    private String userType;
     private String description;
     private Integer status;
     private String createdBy;
@@ -40,11 +40,11 @@ public class UserType {
 
     @Basic
     @Column(name = "USER_TYPE")
-    public Integer getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(Integer userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 

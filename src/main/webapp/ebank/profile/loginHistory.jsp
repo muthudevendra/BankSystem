@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: lakshithar
@@ -5,6 +6,8 @@
   Time: 9:08 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/loginHistory.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -27,18 +30,26 @@
 
         <br>
         <div class="col-md-9 col-md-offset-1 table-striped table-responsive">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
                 <tr>
-                    <th>Loged In Date</th>
-                    <th>Loged In Time</th>
-                    <th>Loged Out Time</th>
+                    <th>Logged In Date</th>
+                    <th>Logged In Time</th>
+                    <th>Logged Out Date</th>
+                    <th>Logged Out Time</th>
                     <th>Computer IP</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                </tr>
+                <c:forEach items="${userLoginHistoryList}" var="userLoginHistory">
+                    <tr>
+                        <td><fmt:formatDate value="${userLoginHistory.loginDate}" pattern="dd-MM-yyyy"/></td>
+                        <td><fmt:formatDate value="${userLoginHistory.loginDate}" pattern="HH:mm:ss"/></td>
+                        <td><fmt:formatDate value="${userLoginHistory.logoutDate}" pattern="dd-MM-yyyy"/></td>
+                        <td><fmt:formatDate value="${userLoginHistory.logoutDate}" pattern="HH:mm:ss"/></td>
+                        <td>${userLoginHistory.remoteAddress}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

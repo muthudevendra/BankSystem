@@ -13,6 +13,11 @@ public class ResponseObject implements Serializable {
     private String message;
     private Boolean status;
 
+    public ResponseObject(String message, Boolean status){
+        this.message = message;
+        this.status = status;
+    }
+
     public ResponseObject(Object object, Boolean status){
         this.object = object;
         this.status = status;

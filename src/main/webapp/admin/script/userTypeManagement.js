@@ -6,7 +6,7 @@
 $(function () {
     var userTypeId = $('#userTypeId').val();
     if (userTypeId != '') {
-        transform_form('userTypeform', '/admin/config/userTypeManagement/updateUserTypeManagement')
+        transform_form('userTypeForm', '/admin/config/userTypeManagement/updateUserTypeManagement')
         transformToUpdate();
     }
 });
