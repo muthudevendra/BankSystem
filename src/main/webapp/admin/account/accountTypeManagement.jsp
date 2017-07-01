@@ -26,7 +26,7 @@
                         <label for="accounttype">Account Name</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="accountTypeName"
+                        <input required type="text" name="accountTypeName"
                                value="${accountType.accountTypeName}"
                                class="form-control" id="accounttype">
                     </div>
@@ -36,7 +36,7 @@
                         <label for="description">Description</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="description"
+                        <input required type="text" name="description"
                                value="${accountType.description}"
                                class="form-control" id="description">
                     </div>
@@ -47,7 +47,7 @@
                         <label for="minDeposit">Minimum Deposit</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="minDeposit"
+                        <input required type="text" name="minDeposit"
                                value="${accountType.minDeposit}"
                                class="form-control" id="minDeposit">
                     </div>
@@ -55,7 +55,7 @@
                         <label for="annualCost">Annual Cost</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="annualCost"
+                        <input required type="text" name="annualCost"
                                value="${accountType.annualCost}"
                                class="form-control" id="annualCost">
                     </div>
@@ -65,7 +65,7 @@
                         <label for="minAge">Minimum Age</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="minAge"
+                        <input required type="text" name="minAge"
                                value="${accountType.minAge}"
                                class="form-control" id="minAge">
                     </div>
@@ -103,7 +103,7 @@
                             <div class="col-md-5">
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="modifiedBy">${accountType.lastModifiedBy}</label>
                             </div>
                         </div>
@@ -111,24 +111,24 @@
                             <div class="col-md-5">
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="modifiedDate"><fmt:formatDate value="${accountType.lastModifiedDate}"
                                                                          pattern="dd-MM-yyyy"/></label></label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label for="createdBy">Created By</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="createdBy">${accountType.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label for="createdDate">Created Date</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="createdDate"><fmt:formatDate value="${accountType.createdDate}"
                                                                         pattern="dd-MM-yyyy"/></label></label>
                             </div>
@@ -137,22 +137,24 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="pull-right createOperation">
-                        <button type="submit" class="btn btn-success"
-                                <sec:authorize
-                                        access="!hasAuthority('admin@accountTypeManagement_CREATE')">
-                                    disabled="disabled"
-                                </sec:authorize>>Save
-                        </button>
-                    </div>
-                    <div class="pull-right updateOperation" style="display: none">
-                        <button type="submit" class="btn btn-default"
-                                <sec:authorize
-                                        access="!hasAuthority('admin@accountTypeManagement_UPDATE')">
-                                    disabled="disabled"
-                                </sec:authorize>>Update
-                        </button>
-                    </div>
+                    <span class="input-group-btn">
+                        <div class="pull-right createOperation">
+                            <button onclick="form_validate('accountTypeForm')" type="submit" class="btn btn-success"
+                                    <sec:authorize
+                                            access="!hasAuthority('admin@accountTypeManagement_CREATE')">
+                                        disabled="disabled"
+                                    </sec:authorize>>Save
+                            </button>
+                        </div>
+                        <div class="pull-right updateOperation" style="display: none">
+                            <button type="submit" class="btn btn-default"
+                                    <sec:authorize
+                                            access="!hasAuthority('admin@accountTypeManagement_UPDATE')">
+                                        disabled="disabled"
+                                    </sec:authorize>>Update
+                            </button>
+                        </div>
+                    </span>
                 </div>
             </form>
         </div>

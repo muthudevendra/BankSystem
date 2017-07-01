@@ -27,7 +27,7 @@
                         <label for="accountType">Account Type</label>
                     </div>
                     <div class="col-lg-8">
-                        <select name="account.accountTypeId" class="form-control" id="accountType">
+                        <select required name="account.accountTypeId" class="form-control" id="accountType">
                             <c:forEach items="${accountTypeList}" var="accountType">
                                 <option ${accountType.accountTypeId eq customerAccount.account.accountTypeId ? 'selected' : ''}
                                         value="${accountType.accountTypeId}">
@@ -43,7 +43,7 @@
                         <label for="interestMethod">Interest Method</label>
                     </div>
                     <div class="col-lg-8">
-                        <select name="account.interestCalMethod" class="form-control" id="interestMethod">
+                        <select required name="account.interestCalMethod" class="form-control" id="interestMethod">
                             <c:forEach items="${interestMethodList}" var="interestMethod">
                                 <option ${interestMethod.interestMethodSeq eq customerAccount.account.interestCalMethod ? 'selected' : ''}
                                         value="${interestMethod.interestMethodSeq}">
@@ -85,7 +85,7 @@
                         <label for="customerId">Customer</label>
                     </div>
                     <div class="col-lg-8">
-                        <select name="customerId" class="form-control" id="customerId">
+                        <select required name="customerId" class="form-control" id="customerId">
                             <c:forEach items="${customerList}" var="customer">
                                 <option ${customer.customerId eq customerAccount.customerId ? 'selected' : ''}
                                         value="${customer.customerId}">
@@ -103,14 +103,14 @@
                         <label for="startDate">Start Date</label>
                     </div>
                     <div class="col-lg-2">
-                        <input type="text" name="startDate" class="form-control datepicker" id="startDate"
+                        <input required type="text" name="startDate" class="form-control datepicker" id="startDate"
                                value="<fmt:formatDate value="${customerAccount.startDate}" pattern="yyyy-MM-dd"/>"/>
                     </div>
                     <div class="col-lg-2 col-md-offset-2">
                         <label for="endDate">End Date</label>
                     </div>
                     <div class="col-lg-2">
-                        <input type="text" name="endDate" class="form-control datepicker" id="endDate"
+                        <input required type="text" name="endDate" class="form-control datepicker" id="endDate"
                                value="<fmt:formatDate value="${customerAccount.endDate}" pattern="yyyy-MM-dd"/>"/>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                         <label for="availableBalance">Available Balance</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="availableBalance" class="form-control" id="availableBalance"
+                        <input required type="text" name="availableBalance" class="form-control" id="availableBalance"
                                value="${customerAccount.availableBalance}">
                     </div>
                 </div>
@@ -145,35 +145,35 @@
                     <hr/>
                     <div class="col-md-5">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label for="modifiedBy">Last Modified By</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="modifiedBy">${customerAccount.lastModifiedBy}</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="modifiedDate"><fmt:formatDate value="${customerAccount.lastModifiedDate}"
                                                                          pattern="dd-MM-yyyy"/></label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label for="createdBy">Created By</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="createdBy">${customerAccount.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <label for="createdDate">Created Date</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <label id="createdDate"><fmt:formatDate value="${customerAccount.createdDate}"
                                                                         pattern="dd-MM-yyyy"/></label>
                             </div>
@@ -183,7 +183,7 @@
                 <br/>
                 <div class="row">
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-success createOperation"
+                        <button onclick="form_validate('customerAccountForm')" type="submit" class="btn btn-success createOperation"
                                 <sec:authorize
                                         access="!hasAuthority('admin@customerAccountManagement_CREATE')">
                                     disabled="disabled"
