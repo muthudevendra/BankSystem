@@ -116,7 +116,7 @@ public class Authority {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MODULE_ID", insertable = false, updatable = false)
     public Module getModule() {
         return module;

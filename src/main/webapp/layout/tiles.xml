@@ -21,10 +21,9 @@
     </definition>
 
     <!--Home-->
-    <definition name="login" template="/ebank/login.jsp">
-    </definition>
-    <definition name="accessDenied" template="/layout/accessDenied.jsp">
-    </definition>
+    <definition name="login" template="/ebank/login.jsp"/>
+    <definition name="accessDenied" template="/layout/accessDenied.jsp"/>
+    <definition name="error" template="/layout/error.jsp"/>
     <definition name="ebank" extends="ebank_base">
         <put-attribute name="body" value="/ebank/dashboard.jsp"/>
     </definition>
