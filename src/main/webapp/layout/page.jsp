@@ -48,6 +48,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.js"></script>
     <script type="text/css" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.css"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery-validation/validator.min.js"></script>
+
+    <script type='text/javascript' src='${pageContext.request.contextPath}/layout/assets/plugins/noty/jquery.noty.js'></script>
 </head>
 <body>
     <div id="header">

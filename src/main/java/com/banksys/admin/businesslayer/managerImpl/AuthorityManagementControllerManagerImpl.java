@@ -3,12 +3,10 @@ package com.banksys.admin.businesslayer.managerImpl;
 import com.banksys.admin.businesslayer.manager.AuthorityManagementControllerManager;
 import com.banksys.admin.datalayer.entity.Authority;
 import com.banksys.admin.datalayer.service.AuthorityService;
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.xml.ws.ServiceMode;
 
 /**
  * Created by Oshada on 6/25/2017.

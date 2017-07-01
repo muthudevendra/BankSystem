@@ -3,7 +3,7 @@ package com.banksys.admin.businesslayer.managerImpl;
 import com.banksys.admin.businesslayer.manager.UserTypeAuthorityManagementControllerManager;
 import com.banksys.admin.datalayer.entity.UserTypeAuthority;
 import com.banksys.admin.datalayer.service.UserTypeAuthorityService;
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

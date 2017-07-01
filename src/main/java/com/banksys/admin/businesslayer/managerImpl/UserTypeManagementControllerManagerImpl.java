@@ -3,11 +3,10 @@ package com.banksys.admin.businesslayer.managerImpl;
 import com.banksys.admin.businesslayer.manager.UserTypeManagementControllerManager;
 import com.banksys.admin.datalayer.entity.UserType;
 import com.banksys.admin.datalayer.service.UserTypeService;
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.security.provider.certpath.OCSPResponse;
 
 /**
  * Created by Oshada on 6/29/2017.

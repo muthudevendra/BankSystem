@@ -1,8 +1,6 @@
 package com.banksys.admin.businesslayer.manager;
 
-import com.banksys.common.ResponseObject;
-import com.banksys.ebank.datalayer.entity.Account;
-import com.banksys.ebank.datalayer.entity.AccountType;
+import com.banksys.util.ResponseObject;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import org.springframework.stereotype.Component;
 

@@ -3,7 +3,7 @@ package com.banksys.admin.businesslayer.managerImpl;
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
 import com.banksys.admin.businesslayer.manager.UserManagementManager;
 import com.banksys.admin.datalayer.entity.User;
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.enums.MasterDataStatus;

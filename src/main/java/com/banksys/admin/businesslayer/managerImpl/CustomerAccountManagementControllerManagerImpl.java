@@ -3,7 +3,7 @@ package com.banksys.admin.businesslayer.managerImpl;
 import com.banksys.admin.businesslayer.manager.CustomerAccountManagementControllerManager;
 import com.banksys.admin.datalayer.entity.NoGenerator;
 import com.banksys.admin.datalayer.service.NoGeneratorService;
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.util.AccountNoGeneratorUtil;

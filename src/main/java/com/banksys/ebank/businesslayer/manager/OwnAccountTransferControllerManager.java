@@ -1,6 +1,6 @@
 package com.banksys.ebank.businesslayer.manager;
 
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;
 import org.springframework.stereotype.Component;
 

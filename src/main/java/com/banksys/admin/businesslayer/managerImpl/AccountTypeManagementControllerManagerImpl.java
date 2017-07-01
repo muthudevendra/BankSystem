@@ -1,9 +1,8 @@
 package com.banksys.admin.businesslayer.managerImpl;
 
 import com.banksys.admin.businesslayer.manager.AccountTypeManagementControllerManager;
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.ebank.datalayer.entity.AccountType;
-import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.AccountTypeService;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;

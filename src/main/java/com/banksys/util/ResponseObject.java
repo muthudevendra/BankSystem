@@ -1,4 +1,4 @@
-package com.banksys.common;
+package com.banksys.util;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 

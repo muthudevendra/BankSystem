@@ -1,6 +1,6 @@
 package com.banksys.ebank.businesslayer.managerImpl;
 
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.ebank.businesslayer.manager.OwnAccountTransferControllerManager;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;

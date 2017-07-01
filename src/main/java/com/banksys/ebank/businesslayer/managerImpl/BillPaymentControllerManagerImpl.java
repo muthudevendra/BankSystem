@@ -1,6 +1,6 @@
 package com.banksys.ebank.businesslayer.managerImpl;
 
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import com.banksys.ebank.businesslayer.manager.BillPaymentControllerManager;
 import com.banksys.ebank.datalayer.entity.BillPayment;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Transient;
 import java.time.LocalDate;
 import java.util.Date;
 

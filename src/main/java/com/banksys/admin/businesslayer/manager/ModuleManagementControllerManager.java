@@ -1,7 +1,7 @@
 package com.banksys.admin.businesslayer.manager;
 
 import com.banksys.admin.datalayer.entity.Module;
-import com.banksys.common.ResponseObject;
+import com.banksys.util.ResponseObject;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
