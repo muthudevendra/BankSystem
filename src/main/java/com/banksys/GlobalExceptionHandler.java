@@ -16,5 +16,10 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
+//    @ExceptionHandler(RuntimeException.class)
+//    public ModelAndView handleException(RuntimeException t) {
+//        ModelAndView mnv = new ModelAndView("error", "errorMessage", t.getMessage());
+//        System.out.println("Message : " + t.getStackTrace());
+//        return mnv;
+//    }
 }

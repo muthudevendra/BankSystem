@@ -12,5 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Component
 public interface ModuleManagementControllerManager {
-    ResponseObject saveModule(Module module, HttpServletRequest request);
+    ResponseObject saveModule(Module module);
+
+    ResponseObject updateModule(Module module);
 }

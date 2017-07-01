@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-
+    <h1>Error Occurred</h1>
+    <p class="text-center">${errorMessage}</p>
+    <a class="btn btn-info" href="/">GO BACK TO THE HOMEPAGE</a>
 </body>
 </html>

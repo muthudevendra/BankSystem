@@ -4,6 +4,7 @@ import com.banksys.admin.businesslayer.manager.AuthorityManagementControllerMana
 import com.banksys.admin.datalayer.entity.Authority;
 import com.banksys.admin.datalayer.service.AuthorityService;
 import com.banksys.admin.datalayer.service.ModuleService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,7 +43,7 @@ public class AuthorityManagementController {
 
     @RequestMapping(params = "authorityId", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('admin@authorityManagement_VIEW')")
-    public String loadPage(@RequestParam("authorityId") Integer authorityId, Model model){
+    public String loadPage(@RequestParam("authorityId") Integer authorityId, Model model) {
         model = this.getPageData(model);
         model.addAttribute("authority", this.authorityService.findOne(authorityId));
         return "authorityManagement";
@@ -51,24 +52,31 @@ public class AuthorityManagementController {
     @RequestMapping(value = "/saveAuthority", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@authorityManagement_CREATE')")
     public String saveAuthority(@ModelAttribute Authority authority, Model model) {
-        this.authorityManagementControllerManager.saveAuthority(authority);
-        model = this.getPageData(model);
-        model.addAttribute("authority", authority);
+        ResponseObject responseObject = this.authorityManagementControllerManager.saveAuthority(authority);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "authorityManagement";
     }
 
     @RequestMapping(value = "/updateAuthority", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@authorityManagement_UPDATE')")
     public String updateAuthority(@ModelAttribute Authority authority, Model model) {
-        this.authorityManagementControllerManager.updateAuthority(authority);
-        model = this.getPageData(model);
-        model.addAttribute("authority", authority);
+        ResponseObject responseObject = this.authorityManagementControllerManager.updateAuthority(authority);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "authorityManagement";
     }
 
     private Model getPageData(Model model) {
         model.addAttribute("moduleList", this.moduleService.findAll());
         model.addAttribute("statusList", MasterDataStatus.values());
+        return model;
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model) {
+        model.addAttribute("authority", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
         return model;
     }
 }

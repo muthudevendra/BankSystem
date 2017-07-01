@@ -3,6 +3,7 @@ package com.banksys.admin.presentationlayer;
 import com.banksys.admin.businesslayer.manager.UserTypeManagementControllerManager;
 import com.banksys.admin.datalayer.entity.UserType;
 import com.banksys.admin.datalayer.service.UserTypeService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.Gender;
 import com.banksys.util.enums.MasterDataStatus;
 import com.sun.media.sound.ModelDestination;
@@ -16,17 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by Oshada on 6/27/2017.
+ *
  */
 @Controller
 @RequestMapping("/admin/config/userTypeManagement")
 public class UserTypeManagementController {
+
     private final UserTypeManagementControllerManager userTypeManagementControllerManager;
-    private final UserTypeService userTypeService;
 
     @Autowired
-    public UserTypeManagementController(UserTypeManagementControllerManager userTypeManagementControllerManager, UserTypeService userTypeService) {
+    public UserTypeManagementController(UserTypeManagementControllerManager userTypeManagementControllerManager) {
         this.userTypeManagementControllerManager = userTypeManagementControllerManager;
-        this.userTypeService = userTypeService;
     }
 
     @GetMapping
@@ -36,27 +37,31 @@ public class UserTypeManagementController {
         return "userTypeManagement";
     }
 
-
     @RequestMapping(value = "/saveUserTypeManagement", method = RequestMethod.POST)
     public String saveUserTypeManagement(@ModelAttribute UserType userType, Model model) {
-        this.userTypeManagementControllerManager.saveUserTypeManagement(userType);
-        model = this.getPageData(model);
-        model.addAttribute("userType", userType);
+        ResponseObject responseObject = this.userTypeManagementControllerManager.saveUserTypeManagement(userType);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "userTypeManagement";
     }
 
     @RequestMapping(value = "/updateUserTypeManagement", method = RequestMethod.POST)
     public String updateUserTypeManagement(@ModelAttribute UserType userType, Model model) {
-        this.userTypeManagementControllerManager.updateUserTypeManagement(userType);
-        model = getPageData(model);
-        model.addAttribute("userType", userType);
+        ResponseObject responseObject = this.userTypeManagementControllerManager.updateUserTypeManagement(userType);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "userTypeManagement";
-
     }
-
 
     private Model getPageData(Model model) {
         model.addAttribute("statusList", MasterDataStatus.values());
+        return model;
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("userType", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
         return model;
     }
 }

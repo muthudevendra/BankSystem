@@ -3,6 +3,7 @@ package com.banksys.admin.presentationlayer;
 import com.banksys.admin.businesslayer.manager.AccountTypeManagementControllerManager;
 import com.banksys.ebank.datalayer.entity.AccountType;
 import com.banksys.ebank.datalayer.service.AccountTypeService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -47,23 +48,30 @@ public class AccountTypeManagementController {
     @RequestMapping(value = "/saveAccountType", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@accountTypeManagement_CREATE')")
     public String saveAccountType(@ModelAttribute AccountType accountType, Model model){
-        this.accountTypeManagementControllerManager.saveAccountType(accountType);
-        model = getPageData(model);
-        model.addAttribute("accountType", accountType);
+        ResponseObject responseObject = this.accountTypeManagementControllerManager.saveAccountType(accountType);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "accountTypeManagement";
     }
 
     @RequestMapping(value = "/updateAccountType", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@accountTypeManagement_UPDATE')")
     public String updateAccountType(@ModelAttribute AccountType accountType, Model model){
-        this.accountTypeManagementControllerManager.updateAccountType(accountType);
-        model = getPageData(model);
-        model.addAttribute("accountType", accountType);
+        ResponseObject responseObject = this.accountTypeManagementControllerManager.updateAccountType(accountType);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "accountTypeManagement";
     }
 
     private Model getPageData(Model model){
         model.addAttribute("statusList", MasterDataStatus.values());
+        return model;
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("accountType", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
         return model;
     }
 }

@@ -46,8 +46,17 @@ public class ModuleManagementController {
     @RequestMapping(value = "/saveModule", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@moduleManagement_CREATE')")
     public String saveModule(@ModelAttribute Module module,
-                                     HttpServletRequest request, Model model) {
-        ResponseObject responseObject = this.moduleManagementControllerManager.saveModule(module, request);
+                             HttpServletRequest request, Model model) {
+        ResponseObject responseObject = this.moduleManagementControllerManager.saveModule(module);
+        this.getResponseData(responseObject, model);
+        return "moduleManagement";
+    }
+
+    @RequestMapping(value = "/updateModule", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('admin@moduleManagement_UPDATE')")
+    public String updateModule(@ModelAttribute Module module,
+                             HttpServletRequest request, Model model) {
+        ResponseObject responseObject = this.moduleManagementControllerManager.updateModule(module);
         this.getResponseData(responseObject, model);
         return "moduleManagement";
     }

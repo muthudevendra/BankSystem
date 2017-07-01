@@ -3,6 +3,7 @@ package com.banksys.admin.presentationlayer;
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.Gender;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,32 +54,31 @@ public class CustomerManagementController {
     @RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@customerManagement_CREATE')")
     public String saveCustomer(@ModelAttribute Customer customer, Model model){
-        this.customerManagementControllerManager.saveCustomer(customer);
-        model = getPageData(model);
-        model.addAttribute("customer", customer);
+        ResponseObject responseObject = this.customerManagementControllerManager.saveCustomer(customer);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "customerManagement";
     }
 
     @RequestMapping(value = "/updateCustomer", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@customerManagement_UPDATE')")
     public String updateCustomer(@ModelAttribute Customer customer, Model model){
-        this.customerManagementControllerManager.updateCustomer(customer);
+        ResponseObject responseObject = this.customerManagementControllerManager.updateCustomer(customer);
         model = getPageData(model);
-        model.addAttribute("customer", customer);
-        return "customerManagement";
-    }
-
-    @RequestMapping(value = "/deleteCustomer", method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('admin@customerManagement_DELETE')")
-    public String deleteCustomer(@RequestParam("customerId") Integer customerId, Model model){
-        this.customerManagementControllerManager.deleteCustomer(customerId);
-        model.addAttribute("customer", new Customer());
+        this.getResponseData(responseObject, model);
         return "customerManagement";
     }
 
     private Model getPageData(Model model){
         model.addAttribute("genderList", Gender.values());
         model.addAttribute("statusList", MasterDataStatus.values());
+        return model;
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("customer", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
         return model;
     }
 

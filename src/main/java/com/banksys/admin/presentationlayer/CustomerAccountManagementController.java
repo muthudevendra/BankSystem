@@ -5,6 +5,7 @@ import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.service.AccountTypeService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.ebank.datalayer.service.CustomerService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.InterestMethod;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,18 +61,18 @@ public class CustomerAccountManagementController {
     @RequestMapping(value = "/saveCustomerAccount", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@customerAccountManagement_CREATE')")
     public String saveCustomerAccount(@ModelAttribute CustomerAccount customerAccount, Model model) {
-        this.customerAccountManagementControllerManager.saveCustomerAccount(customerAccount);
-        model = getPageData(model);
-        model.addAttribute("customerAccount", customerAccount);
+        ResponseObject responseObject = this.customerAccountManagementControllerManager.saveCustomerAccount(customerAccount);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "customerAccountManagement";
     }
 
     @RequestMapping(value = "/updateCustomerAccount", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@customerAccountManagement_UPDATE')")
     public String updateCustomerAccount(@ModelAttribute CustomerAccount customerAccount, Model model) {
-        this.customerAccountManagementControllerManager.updateCustomerAccount(customerAccount);
-        model = getPageData(model);
-        model.addAttribute("customerAccount", customerAccount);
+        ResponseObject responseObject = this.customerAccountManagementControllerManager.updateCustomerAccount(customerAccount);
+        this.getPageData(model);
+        this.getResponseData(responseObject, model);
         return "customerAccountManagement";
     }
 
@@ -81,6 +82,13 @@ public class CustomerAccountManagementController {
         model.addAttribute("interestMethodList", InterestMethod.values());
         model.addAttribute("customerList", customerService.findAll());
         model.addAttribute("statusList", MasterDataStatus.values());
+        return model;
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("customerAccount", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
         return model;
     }
 
