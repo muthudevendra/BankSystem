@@ -30,6 +30,8 @@
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/style-responsive.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/themes/green.css" rel="stylesheet" id="style-color">
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
 
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/jquery-ui.min.js" type="text/javascript"></script>
@@ -39,14 +41,14 @@
 
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
 
     <script src="${pageContext.request.contextPath}/layout/assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/layout/assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
 
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/operations.js" type="text/javascript"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/css" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.css"></script>
+
+
     <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery-validation/validator.min.js"></script>
 
     <script type='text/javascript' src='${pageContext.request.contextPath}/layout/assets/plugins/noty/jquery.noty.js'></script>
