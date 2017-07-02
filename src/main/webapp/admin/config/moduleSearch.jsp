@@ -19,16 +19,16 @@
             </div>
             <br>
             <div class="col-md-12">
-                <table class="table datatable table-responsive">
+                <table class="table datatable table-hover table-striped table-responsive">
                     <thead>
                     <tr>
                         <th>Module ID</th>
                         <th>Module Name</th>
                         <th>Description</th>
-                        <th>Created Date</th>
                         <th>Created User</th>
-                        <th>Last Modified Date</th>
+                        <th>Created Date</th>
                         <th>Last Modified User</th>
+                        <th>Last Modified Date</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,10 +37,10 @@
                             <td>${modul.moduleId}</td>
                             <td>${modul.moduleName}</td>
                             <td>${modul.description}</td>
-                            <td><fmt:formatDate value="${modul.createdDate}" pattern="dd-MM-yyyy HH:ss"/> </td>
                             <td>${modul.createdBy}</td>
-                            <td><fmt:formatDate value="${modul.lastModifiedDate}" pattern="dd-MM-yyyy HH:ss"/></td>
+                            <td><fmt:formatDate value="${modul.createdDate}" pattern="dd-MM-yyyy HH:ss"/></td>
                             <td>${modul.lastModifiedBy}</td>
+                            <td><fmt:formatDate value="${modul.lastModifiedDate}" pattern="dd-MM-yyyy HH:ss"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>

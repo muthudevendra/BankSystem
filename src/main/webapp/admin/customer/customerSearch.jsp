@@ -66,7 +66,7 @@
             </form>
 
             <div class="col-md-12">
-                <table class="table datatable table-responsive">
+                <table class="table datatable table-striped table-hover table-responsive">
                     <thead>
                     <tr>
                         <th>NIC</th>
@@ -74,6 +74,10 @@
                         <th>Full Name</th>
                         <th>Gender</th>
                         <th>Address</th>
+                        <th>Created User</th>
+                        <th>Created Date</th>
+                        <th>Last Modified User</th>
+                        <th>Last Modified Date</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -84,6 +88,10 @@
                             <td>${customer.fullName}</td>
                             <td>${customer.gender}</td>
                             <td>${customer.addressBook.addressLine1}</td>
+                            <td>${customer.createdBy}</td>
+                            <td><fmt:formatDate value="${customer.createdDate}" pattern="dd-MM-yyyy HH:ss"/></td>
+                            <td>${customer.lastModifiedBy}</td>
+                            <td><fmt:formatDate value="${customer.lastModifiedDate}" pattern="dd-MM-yyyy HH:ss"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>

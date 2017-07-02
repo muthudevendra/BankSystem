@@ -18,13 +18,15 @@
                 <legend>Authority Search</legend>
             </div>
             <div class="col-md-12">
-                <table class="table datatable table-responsive">
+                <table class="table datatable table-hover table-striped table-responsive">
                     <thead>
                         <tr>
                             <th>Authority ID</th>
                             <th>Authority Name</th>
                             <th>Module Name</th>
+                            <th>Created User</th>
                             <th>Created Date</th>
+                            <th>Last Modified User</th>
                             <th>Last Modified Date</th>
                         </tr>
                     </thead>
@@ -35,7 +37,9 @@
                             <td>${authority.authorityName}</td>
                             <td>${authority.module.moduleName}</td>
                             <td>${authority.createdBy}</td>
+                            <td><fmt:formatDate value="${authority.createdDate}" pattern="dd-MM-yyyy HH:ss"/></td>
                             <td>${authority.lastModifiedBy}</td>
+                            <td><fmt:formatDate value="${authority.lastModifiedDate}" pattern="dd-MM-yyyy HH:ss"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>

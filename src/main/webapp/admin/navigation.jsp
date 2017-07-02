@@ -52,6 +52,7 @@
                                     <li class="navUrl" id="userType"><a href="/admin/config/userTypeManagement">User Type</a></li>
                                     <li class="navUrl" id="userTypeAuthority"><a href="/admin/config/userTypeAuthorityManagement">User Type Authority</a></li>
                                     <li class="navUrl" id="userTypeSearch"><a href="/admin/config/userTypeSearch">User Type Search</a></li>
+                                    <li class="navUrl" id="userTypeAuthoritySearch"><a href="/admin/config/userTypeAuthoritySearch">User Authority Search</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -63,8 +64,8 @@
                                 <ul class="nav nav-list">
                                     <li class="navUrl"><a href="/admin/account/accountTypeManagement">Account Type</a></li>
                                     <li class="navUrl"><a href="/admin/account/customerAccountManagement">Account</a></li>
-                                    <li class="navUrl"><a href="/admin/account/accountSearch">Account Search</a></li>
-                                    <li class="navUrl"><a href="/admin/account/accountTypeSearch">Account Type Search</a></li>
+                                    <li class="navUrl" id="accountSearch"><a href="/admin/account/accountSearch">Account Search</a></li>
+                                    <li class="navUrl" id="accountTypeSearch"><a href="/admin/account/accountTypeSearch">Account Type Search</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -75,7 +76,7 @@
                             <div class="collapse" id="config">
                                 <ul class="nav nav-list">
                                     <li class="navUrl" id="customerManagement"><a href="/admin/customer/customerManagement">New Customer</a></li>
-                                    <li class="navUrl" id="customerSearch"><a href="/admin/customer/customerSearch">Search</a></li>
+                                    <li class="navUrl" id="customerSearch"><a href="/admin/customer/customerSearch">Search Customer</a></li>
                                 </ul>
                             </div>
                         </li>

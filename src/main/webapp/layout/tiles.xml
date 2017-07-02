@@ -71,6 +71,9 @@
     <definition name="userTypeAuthorityManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/userTypeAuthorityManagement.jsp"/>
     </definition>
+    <definition name="userTypeAuthoritySearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userTypeAuthoritySearch.jsp"/>
+    </definition>
     <definition name="accountTypeSearch" extends="admin_base">
         <put-attribute name="body" value="/admin/account/accountTypeSearch.jsp"/>
     </definition>

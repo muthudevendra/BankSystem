@@ -13,7 +13,7 @@
         </ul>
         <div class="content-page col-lg-10">
             <div>
-                <legend>Accounts</legend>
+                <legend>Search Account</legend>
             </div>
             <form role="form">
                 <div class="row">
@@ -114,19 +114,19 @@
             </form>
             <br/>
             <div class="col-md-12">
-                <table class="table table-striped table-responsive">
+                <table class="table table-striped table-hover table-responsive">
                     <thead>
                     <tr>
+                        <th>Account ID</th>
                         <th>Account Type</th>
                         <th>Interest Method</th>
                         <th>Mobile Banking</th>
                         <th>Online Banking</th>
                         <th>Passbook</th>
+                        <th>Created User</th>
                         <th>Created Date</th>
-                        <th>Created By</th>
+                        <th>Last Modified User</th>
                         <th>Last Modified Date</th>
-                        <th>Last Modified By</th>
-                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -3,7 +3,13 @@
  */
 
 $(function () {
-    $('.datatable').dataTable();
+    $('.navUrl').removeClass('active');
+    $('#accountTypeSearch').addClass('active');
+    $('.datatable').dataTable({
+        order: [[ 3, "desc" ]],
+        dom: "B<'row'<'pull-left'l><'pull-right'f>><'row'<'col-sm-12'tr>><br><'row'<'pull-left'i><'pull-right'p>>",
+        language: { search: "_INPUT_", searchPlaceholder: "Search"}
+    });
 });
 
 function load_account_type(accountTypeId) {

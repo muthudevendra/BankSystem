@@ -15,10 +15,10 @@
         </ul>
         <div class="content-page col-lg-10">
             <div>
-                <legend>User Types Search</legend>
+                <legend>User Type Search</legend>
             </div>
             <div class="col-md-12">
-                <table class="table table-striped table-responsive datatable">
+                <table class="table datatable table-striped table-hover table-responsive">
                     <thead>
                     <tr>
                         <th>User Type</th>
