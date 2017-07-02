@@ -27,6 +27,9 @@ public class UserTypeAuthority {
     private String lastModifiedBy;
     private Date lastModifiedDate;
 
+    private UserType userType;
+    private Authority authority;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "USER_TYPE_AUTHORITY_ID")
@@ -110,6 +113,26 @@ public class UserTypeAuthority {
 
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_TYPE_ID", insertable = false, updatable = false)
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AUTHORITY_ID", insertable = false, updatable = false)
+    public Authority getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
     }
 
     @Override

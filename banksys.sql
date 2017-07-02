@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2017 at 12:15 PM
+-- Generation Time: Jul 02, 2017 at 06:00 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `LAST_MODIFIED_DATE` date NOT NULL,
   PRIMARY KEY (`ACCOUNT_ID`),
   KEY `FKq9dxl66qvrrtu7rrgchjh5vej` (`ACCOUNT_TYPE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `account`
@@ -50,7 +50,11 @@ CREATE TABLE IF NOT EXISTS `account` (
 
 INSERT INTO `account` (`ACCOUNT_ID`, `ACCOUNT_TYPE_ID`, `INTEREST_CAL_METHOD`, `MOBILE_BANK_AVAILABILITY`, `ONLINE_BANK_AVAILABILITY`, `PASSBOOK_AVAILABILITY`, `STATUS`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
 (2, 1, 0, NULL, NULL, NULL, 1, 'lakiya', '2017-06-28', 'lakiya', '2017-06-28'),
-(4, 1, 1, NULL, 1, NULL, 1, 'lakiya', '2017-06-28', 'lakiya', '2017-06-28');
+(4, 1, 1, NULL, 1, NULL, 1, 'lakiya', '2017-06-28', 'lakiya', '2017-06-28'),
+(9, 1, 1, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(10, 1, 1, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(11, 1, 0, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(12, 1, 0, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
 
 -- --------------------------------------------------------
 
@@ -72,14 +76,15 @@ CREATE TABLE IF NOT EXISTS `account_type` (
   `LAST_MODIFIED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
   PRIMARY KEY (`ACCOUNT_TYPE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `account_type`
 --
 
 INSERT INTO `account_type` (`ACCOUNT_TYPE_ID`, `ACCOUNT_TYPE_NAME`, `DESCRIPTION`, `MIN_DEPOSIT`, `MIN_AGE`, `MAX_AGE`, `ANNUAL_COST`, `STATUS`, `CREATED_DATE`, `CREATED_BY`, `LAST_MODIFIED_DATE`, `LAST_MODIFIED_BY`) VALUES
-(1, 'Savings', 'Normal Savings Account', 500, 18, 70, 150, 1, '2017-06-26', 'lakiya', '2017-06-26', 'lakiya');
+(1, 'Savings', 'Normal Savings Account', 500, 19, 70, 150, 1, '2017-06-26', 'lakiya', '2017-07-02', 'lakiya'),
+(2, 'Test', 'Test', 12, 323, 23, 23, 0, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya');
 
 -- --------------------------------------------------------
 
@@ -110,8 +115,8 @@ CREATE TABLE IF NOT EXISTS `address_book` (
 --
 
 INSERT INTO `address_book` (`ADDRESS_BOOK_ID`, `ADDRESS_LINE1`, `ADDRESS_LINE2`, `ADDRESS_LINE3`, `CITY`, `COUNTRY`, `TELEPHONE`, `MOBILE`, `EMAIL`, `STATUS`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
-(1, '186, Aluthgama', 'Bandaragama', NULL, 'Bandaragama', 'Sri Lanka', '0382290674', '0772250808', 'ranasinghe5@gmail.com', 0, 'lakiya', '2017-06-24', 'lakiya', '2017-06-24'),
-(4, '158', 'Colombo', NULL, 'Colombo', 'Sri Lanka', '0335565555', '0772250828', 'muthumin@gmail.com', 1, 'lakiya', '2017-07-01', 'lakiya', '2017-07-01');
+(1, '186, Aluthgama', 'Bandaragama', NULL, 'Bandaragama', 'Sri Lanka', '0382290674', '0772250808', 'ranasinghe5@gmail.com', 0, 'lakiya', '2017-06-24', 'lakiya', '2017-07-02'),
+(4, '158', 'Colombo', NULL, 'Colombo', 'Sri Lanka', '0335565555', '0772250828', 'muthumin@gmail.com', 1, 'lakiya', '2017-07-01', 'lakiya', '2017-07-02');
 
 -- --------------------------------------------------------
 
@@ -131,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `authority` (
   PRIMARY KEY (`AUTHORITY_ID`),
   UNIQUE KEY `AUTHORITY_NAME` (`AUTHORITY_NAME`),
   KEY `FK14kg8hwua63ec3dqkek2u9li7` (`MODULE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `authority`
@@ -179,7 +184,12 @@ INSERT INTO `authority` (`AUTHORITY_ID`, `AUTHORITY_NAME`, `MODULE_ID`, `STATUS`
 (39, 'admin@userTypeAuthorityManagement_VIEW', 2, 1, 'lakiya', '2017-07-02 16:53:39', 'lakiya', '2017-07-02 16:53:39'),
 (40, 'admin@userTypeAuthorityManagement_CREATE', 2, 1, 'lakiya', '2017-07-02 16:53:48', 'lakiya', '2017-07-02 16:53:48'),
 (41, 'admin@userTypeAuthorityManagement_UPDATE', 2, 1, 'lakiya', '2017-07-02 16:55:20', 'lakiya', '2017-07-02 16:55:20'),
-(42, 'admin@accountTypeSearch_VIEW', 2, 1, 'lakiya', '2017-07-02 17:37:14', 'lakiya', '2017-07-02 17:37:14');
+(42, 'admin@accountTypeSearch_VIEW', 2, 1, 'lakiya', '2017-07-02 17:37:14', 'lakiya', '2017-07-02 17:37:14'),
+(43, 'admin@accountTypeManagement_DELETE', 2, 1, 'lakiya', '2017-07-02 17:52:43', 'lakiya', '2017-07-02 17:52:43'),
+(44, 'admin@customerAccountSearch_VIEW', 2, 1, 'lakiya', '2017-07-02 18:25:02', 'lakiya', '2017-07-02 18:25:02'),
+(45, 'admin@customerAccountManagement_DELETE', 2, 1, 'lakiya', '2017-07-02 20:21:44', 'lakiya', '2017-07-02 20:21:44'),
+(46, 'admin@customerSearch_VIEW', 2, 1, 'lakiya', '2017-07-02 20:45:52', 'lakiya', '2017-07-02 20:45:52'),
+(47, 'admin@userTypeAuthoritySearch_VIEW', 2, 1, 'lakiya', '2017-07-02 23:06:01', 'lakiya', '2017-07-02 23:06:01');
 
 -- --------------------------------------------------------
 
@@ -255,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `GENDER` int(11) NOT NULL,
   `MONTHLY_INCOME` double DEFAULT NULL,
   `OCCUPATION` varchar(200) DEFAULT NULL,
-  `INCOME_TAX_PAY_STATUS` tinyint(1) DEFAULT NULL,
+  `INCOME_TAX_PAY_STATUS` int(1) DEFAULT NULL,
   `STATUS` int(11) NOT NULL,
   `CREATED_DATE` date NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
@@ -270,8 +280,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
 --
 
 INSERT INTO `customer` (`CUSTOMER_ID`, `NIC`, `NIC_ISSUE_DATE`, `PASSPORT_NO`, `FULL_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `LAST_NAME`, `ADDRESS_BOOK_ID`, `USER_ID`, `DATE_OF_BIRTH`, `GENDER`, `MONTHLY_INCOME`, `OCCUPATION`, `INCOME_TAX_PAY_STATUS`, `STATUS`, `CREATED_DATE`, `CREATED_BY`, `LAST_MODIFIED_DATE`, `LAST_MODIFIED_BY`) VALUES
-(1, '933582965V', '2017-10-10', '85454111', 'Lakshitha Ranasinghe', 'Lakshitha', '', 'Ranasinghe', 1, 2, '1994-11-12', 1, 120000, 'Software Engineer', NULL, 1, '2017-06-24', 'lakiya', '2017-06-24', 'lakiya'),
-(2, '939548745V', '1993-01-24', '12123333-233', 'Muthu Devendra', 'muthu', '', 'Devendra', 4, 3, '1993-07-05', 1, 200, 'Developer', NULL, 1, '2017-07-01', 'lakiya', '2017-07-01', 'lakiya');
+(1, '933582965V', '2017-10-10', '85454111', 'Lakshitha Ranasinghe', 'Lakshitha', '', 'Ranasinghe', 1, 2, '1994-11-12', 1, 120000, 'Software Engineer', 1, 1, '2017-06-24', 'lakiya', '2017-07-02', 'lakiya'),
+(2, '939548745V', '1993-01-24', '12123333-233', 'Muthu Devendra', 'muthu', '', 'Devendra', 4, 3, '1993-07-05', 1, 30000, 'Developer', NULL, 1, '2017-07-01', 'lakiya', '2017-07-02', 'lakiya');
 
 -- --------------------------------------------------------
 
@@ -297,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
   PRIMARY KEY (`CUSTOMER_ACCOUNT_ID`),
   KEY `FKq2875cwa4anm45j8yf49stjkv` (`ACCOUNT_ID`),
   KEY `FK7cqiu8phqi0bygrlaqtm01fsj` (`CUSTOMER_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `customer_account`
@@ -305,7 +315,8 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
 
 INSERT INTO `customer_account` (`CUSTOMER_ACCOUNT_ID`, `ACCOUNT_ID`, `ACCOUNT_NO`, `START_DATE`, `END_DATE`, `AVAILABLE_BALANCE`, `CURRENCY_ID`, `CUSTOMER_ID`, `STATUS`, `VERSION`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
 (1, 2, '20170628000001', '2017-06-07', '2017-06-30', 13000, 0, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-02'),
-(2, 4, '20170628000002', '2017-06-02', '2017-06-30', 11900, 0, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-02');
+(2, 10, '20170628000002', '2017-06-01', '2017-06-30', 11900, 0, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-02'),
+(3, 12, '2017072000002', '2017-07-01', '2017-07-31', 50000, 0, 2, 0, 0, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
 
 -- --------------------------------------------------------
 
@@ -481,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `user_login_audit` (
   `LOGOUT_DATE` datetime DEFAULT NULL,
   `REMOTE_ADDRESS` varchar(100) NOT NULL,
   PRIMARY KEY (`USER_LOGIN_AUDIT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
 
 --
 -- Dumping data for table `user_login_audit`
@@ -550,7 +561,25 @@ INSERT INTO `user_login_audit` (`USER_LOGIN_AUDIT_ID`, `USERNAME`, `LOGIN_DATE`,
 (61, 'lakiya', '2017-07-02 17:13:01', '2017-07-02 17:14:19', '0:0:0:0:0:0:0:1'),
 (62, 'lakiya', '2017-07-02 17:14:22', '2017-07-02 17:35:12', '0:0:0:0:0:0:0:1'),
 (63, 'lakiya', '2017-07-02 17:36:22', '2017-07-02 17:37:25', '0:0:0:0:0:0:0:1'),
-(64, 'lakiya', '2017-07-02 17:37:27', NULL, '0:0:0:0:0:0:0:1');
+(64, 'lakiya', '2017-07-02 17:37:27', '2017-07-02 17:52:57', '0:0:0:0:0:0:0:1'),
+(65, 'lakiya', '2017-07-02 17:53:02', NULL, '0:0:0:0:0:0:0:1'),
+(66, 'lakiya', '2017-07-02 18:24:28', NULL, '0:0:0:0:0:0:0:1'),
+(67, 'lakiya', '2017-07-02 18:26:48', NULL, '0:0:0:0:0:0:0:1'),
+(68, 'lakiya', '2017-07-02 18:42:49', NULL, '0:0:0:0:0:0:0:1'),
+(69, 'lakiya', '2017-07-02 19:57:30', '2017-07-02 20:22:04', '0:0:0:0:0:0:0:1'),
+(70, 'lakiya', '2017-07-02 20:22:07', NULL, '0:0:0:0:0:0:0:1'),
+(71, 'lakiya', '2017-07-02 20:42:57', NULL, '0:0:0:0:0:0:0:1'),
+(72, 'lakiya', '2017-07-02 20:45:40', NULL, '0:0:0:0:0:0:0:1'),
+(73, 'lakiya', '2017-07-02 20:50:19', NULL, '0:0:0:0:0:0:0:1'),
+(74, 'lakiya', '2017-07-02 20:50:29', NULL, '0:0:0:0:0:0:0:1'),
+(75, 'lakiya', '2017-07-02 21:00:09', NULL, '0:0:0:0:0:0:0:1'),
+(76, 'lakiya', '2017-07-02 21:02:42', NULL, '0:0:0:0:0:0:0:1'),
+(77, 'lakiya', '2017-07-02 21:11:50', NULL, '0:0:0:0:0:0:0:1'),
+(78, 'lakiya', '2017-07-02 21:19:18', NULL, '0:0:0:0:0:0:0:1'),
+(79, 'lakiya', '2017-07-02 21:28:59', NULL, '0:0:0:0:0:0:0:1'),
+(80, 'lakiya', '2017-07-02 21:33:15', NULL, '0:0:0:0:0:0:0:1'),
+(81, 'lakiya', '2017-07-02 23:01:34', NULL, '0:0:0:0:0:0:0:1'),
+(82, 'lakiya', '2017-07-02 23:06:19', NULL, '0:0:0:0:0:0:0:1');
 
 -- --------------------------------------------------------
 
@@ -575,7 +604,7 @@ CREATE TABLE IF NOT EXISTS `user_type` (
 --
 
 INSERT INTO `user_type` (`USER_TYPE_ID`, `USER_TYPE`, `DESCRIPTION`, `STATUS`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
-(1, 'Admin', 'ADMIN', 1, 'SYSTEM', '2017-06-20 00:00:00', 'SYSTEM', '2017-06-20 00:00:00'),
+(1, 'Admin', 'Admin', 1, 'SYSTEM', '2017-06-20 00:00:00', 'lakiya', '2017-07-02 21:12:41'),
 (2, 'Customer', 'Normal Savings Account', 1, 'lakiya', '2017-07-01 00:00:00', 'lakiya', '2017-07-01 00:00:00'),
 (3, 'Test', 'Test User', 0, 'lakiya', '2017-07-02 00:00:00', 'lakiya', '2017-07-02 16:49:40'),
 (4, 'Test', 'Test', 0, 'lakiya', '2017-07-02 16:11:30', 'lakiya', '2017-07-02 16:49:31'),
@@ -597,8 +626,10 @@ CREATE TABLE IF NOT EXISTS `user_type_authority` (
   `CREATED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
   `LAST_MODIFIED_DATE` date NOT NULL,
-  PRIMARY KEY (`USER_TYPE_AUTHORITY_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+  PRIMARY KEY (`USER_TYPE_AUTHORITY_ID`),
+  KEY `FKa5enl93k9ci5y03vcaurfufgc` (`AUTHORITY_ID`),
+  KEY `FKbnp1svkriyrfdt6pq69bxqr09` (`USER_TYPE_ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `user_type_authority`
@@ -644,7 +675,12 @@ INSERT INTO `user_type_authority` (`USER_TYPE_AUTHORITY_ID`, `USER_TYPE_ID`, `AU
 (37, 1, 39, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
 (38, 1, 40, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
 (39, 1, 41, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(40, 1, 42, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
+(40, 1, 42, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(41, 1, 43, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(42, 1, 44, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(43, 1, 45, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(44, 1, 46, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(45, 1, 47, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
 
 --
 -- Constraints for dumped tables
