@@ -3,6 +3,7 @@ package com.banksys.admin.presentationlayer;
 import com.banksys.admin.businesslayer.manager.UserTypeAuthorityManagementControllerManager;
 import com.banksys.admin.datalayer.entity.UserTypeAuthority;
 import com.banksys.admin.datalayer.service.AuthorityService;
+import com.banksys.admin.datalayer.service.UserTypeAuthorityService;
 import com.banksys.admin.datalayer.service.UserTypeService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Muthu Devendra on 6/28/2017.
@@ -25,14 +27,17 @@ public class UserTypeAuthorityManagementController {
     private final UserTypeAuthorityManagementControllerManager userTypeAuthorityManagementControllerManager;
     private final AuthorityService authorityService;
     private final UserTypeService userTypeService;
+    private final UserTypeAuthorityService userTypeAuthorityService;
 
     @Autowired
     public UserTypeAuthorityManagementController(UserTypeAuthorityManagementControllerManager userTypeAuthorityManagementControllerManager,
                                                  AuthorityService authorityService,
-                                                 UserTypeService userTypeService) {
+                                                 UserTypeService userTypeService,
+                                                 UserTypeAuthorityService userTypeAuthorityService) {
         this.userTypeAuthorityManagementControllerManager = userTypeAuthorityManagementControllerManager;
         this.authorityService = authorityService;
         this.userTypeService = userTypeService;
+        this.userTypeAuthorityService = userTypeAuthorityService;
     }
 
     @GetMapping
@@ -40,6 +45,14 @@ public class UserTypeAuthorityManagementController {
     public String getPage(Model model) {
         model = this.getPageData(model);
         model.addAttribute("userTypeAuthority", new UserTypeAuthority());
+        return "userTypeAuthorityManagement";
+    }
+
+    @RequestMapping(params = "userTypeAuthorityId", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('admin@userTypeAuthorityManagement_VIEW')")
+    public String loadPage(@RequestParam("userTypeAuthorityId") Integer userTypeAuthorityId, Model model){
+        model.addAttribute("userTypeAuthority", this.userTypeAuthorityService.findOne(userTypeAuthorityId));
+        this.getPageData(model);
         return "userTypeAuthorityManagement";
     }
 

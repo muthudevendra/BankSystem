@@ -14,5 +14,5 @@ $(function () {
 });
 
 function load_user_type_authority(userTypeAuthorityId) {
-    window.open('/admin/config/userTypeAuthoritySearch?userTypeAuthorityId=' + userTypeAuthorityId, '_blank');
+    window.open('/admin/config/userTypeAuthorityManagement?userTypeAuthorityId=' + userTypeAuthorityId, '_blank');
 }

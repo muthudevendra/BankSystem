@@ -122,7 +122,7 @@
                         </button>
                     </div>
                     <div class="pull-right">
-                        <button onclick="form_validate('userTypeAuthorityForm')" type="submit" class="btn btn-default updateOperation" style="display: none"
+                        <button onclick="form_validate('userTypeAuthorityForm')" type="submit" class="btn btn-success updateOperation" style="display: none"
                                 <sec:authorize
                                         access="!hasAuthority('admin@userTypeAuthorityManagement_UPDATE')">
                                     disabled="disabled"
