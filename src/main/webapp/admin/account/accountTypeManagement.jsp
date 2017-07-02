@@ -18,8 +18,9 @@
             <div>
                 <legend>Account Type Management</legend>
             </div>
-            <form action="/admin/account/accountTypeManagement/saveAccountType" role="form" method="post"
-                  id="accountTypeForm">
+            <form action="/admin/account/accountTypeManagement/saveAccountType" role="form" method="post" id="accountTypeForm">
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status" />
                 <input type="hidden" name="accountTypeId" value="${accountType.accountTypeId}" id="accountTypeId"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
@@ -84,7 +85,7 @@
                         <label for="status">Status</label>
                     </div>
                     <div class="col-lg-3">
-                        <select name="status" class="form-control" id="status">
+                        <select name="status" class="form-control" id="masterDataStatus">
                             <c:forEach items="${statusList}" var="status">
                                 <option ${status.statusSeq eq accountType.status ? 'selected' : ''}
                                         value="${status.statusSeq}">
@@ -147,7 +148,7 @@
                             </button>
                         </div>
                         <div class="pull-right updateOperation" style="display: none">
-                            <button type="submit" class="btn btn-default"
+                            <button type="submit" class="btn btn-success"
                                     <sec:authorize
                                             access="!hasAuthority('admin@accountTypeManagement_UPDATE')">
                                         disabled="disabled"

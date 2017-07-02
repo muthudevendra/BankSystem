@@ -12,4 +12,5 @@ $(function () {
         transform_form('accountTypeForm', '/admin/account/accountTypeManagement/updateAccountType')
         transformToUpdate();
     }
+    display_messages();
 });

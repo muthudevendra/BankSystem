@@ -14,5 +14,5 @@ $(function () {
 });
 
 function load_module(authorityId) {
-    window.open('/admin/customer/authorityManagement?authorityId=' + authorityId, '_blank');
+    window.open('/admin/config/authorityManagement?authorityId=' + authorityId, '_blank');
 }

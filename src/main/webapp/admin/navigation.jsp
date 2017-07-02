@@ -28,6 +28,7 @@
                                 <ul class="nav nav-list">
                                     <li class="navUrl" id="moduleManagement"><a href="/admin/config/moduleManagement">Module</a></li>
                                     <li class="navUrl" id="moduleSearch"><a href="/admin/config/moduleSearch">Module Search</a></li>
+                                </ul>
                             </div>
                         </li>
                         <li>
@@ -36,7 +37,7 @@
                             </a>
                             <div class="collapse" id="authority">
                                 <ul class="nav nav-list">
-                                    <li class="navUrl" id="authorityManagement" ><a href="/admin/customer/authorityManagement">Authority</a></li>
+                                    <li class="navUrl" id="authorityManagement" ><a href="/admin/config/authorityManagement">Authority</a></li>
                                     <li class="navUrl" id="authoritySearch"><a href="/admin/config/authoritySearch">Authority Search</a></li>
                                 </ul>
                             </div>

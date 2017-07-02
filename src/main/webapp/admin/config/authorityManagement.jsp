@@ -17,7 +17,7 @@
             <div>
                 <legend>Authority Management</legend>
             </div>
-            <form role="form" action="/admin/customer/authorityManagement/saveAuthority" id="authorityForm"
+            <form role="form" action="/admin/config/authorityManagement/saveAuthority" id="authorityForm"
                   method="post">
                 <input type="hidden" value="${message}" id="message"/>
                 <input type="hidden" value="${status}" id="status" />

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @Controller
-@RequestMapping("/admin/customer/authorityManagement")
+@RequestMapping("/admin/config/authorityManagement")
 public class AuthorityManagementController {
 
     private final AuthorityManagementControllerManager authorityManagementControllerManager;
