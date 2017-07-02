@@ -77,8 +77,8 @@
     <definition name="accountTypeSearch" extends="admin_base">
         <put-attribute name="body" value="/admin/account/accountTypeSearch.jsp"/>
     </definition>
-    <definition name="accountSearch" extends="admin_base">
-        <put-attribute name="body" value="/admin/account/accountSearch.jsp"/>
+    <definition name="customerAccountSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/account/customerAccountSearch.jsp"/>
     </definition>
 
     <!--Ebank-->

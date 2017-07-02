@@ -3,6 +3,7 @@ package com.banksys.ebank.datalayer.service;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +13,6 @@ import java.util.List;
  *
  */
 @Repository
-public interface CustomerAccountService extends JpaRepository<CustomerAccount, Integer> {
+public interface CustomerAccountService extends JpaRepository<CustomerAccount, Integer> , QueryDslPredicateExecutor<CustomerAccount> {
     List<CustomerAccount> findByCustomerUserIdAndStatusNot(Integer userId, Integer status);
 }

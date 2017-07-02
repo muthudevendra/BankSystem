@@ -15,4 +15,5 @@ $(function () {
         transform_form('customerAccountForm', '/admin/account/customerAccountManagement/updateCustomerAccount')
         transformToUpdate();
     }
+    display_messages();
 });

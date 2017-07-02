@@ -3,6 +3,7 @@ package com.banksys.admin.presentationlayer;
 import com.banksys.admin.businesslayer.manager.CustomerSearchControllerManager;
 import com.banksys.admin.datalayer.entity.auxilary.CustomerAux;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +24,14 @@ public class CustomerSearchController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('admin@customerSearch_VIEW')")
     public String getPage(Model model){
         model.addAttribute("customerAux", new CustomerAux());
         return "customerSearch";
     }
 
     @RequestMapping(value = "/searchCustomers", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('admin@customerSearch_VIEW')")
     public String findCustomers(@ModelAttribute CustomerAux customerAux, Model model){
         model.addAttribute("customerList", this.customerSearchControllerManager.findCustomers(customerAux));
         return "customerSearch";

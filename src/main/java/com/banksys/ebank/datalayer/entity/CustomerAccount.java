@@ -62,7 +62,7 @@ public class CustomerAccount {
     }
 
     @Basic
-    @Column(name = "ACCOUNT_NO")
+    @Column(name = "ACCOUNT_NO", updatable = false)
     public String getAccountNo() {
         return accountNo;
     }
@@ -200,7 +200,7 @@ public class CustomerAccount {
         this.account = account;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CUSTOMER_ID", insertable = false, updatable = false)
     public Customer getCustomer() {
         return customer;

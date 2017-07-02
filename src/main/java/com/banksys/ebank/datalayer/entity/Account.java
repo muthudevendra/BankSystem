@@ -1,5 +1,6 @@
 package com.banksys.ebank.datalayer.entity;
 
+import com.banksys.util.enums.InterestMethod;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,6 +33,8 @@ public class Account {
 
     private AccountType accountType;
 
+    private String interestCalMethodDescription;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ACCOUNT_ID")
@@ -61,6 +64,9 @@ public class Account {
 
     public void setInterestCalMethod(Integer interestCalMethod) {
         this.interestCalMethod = interestCalMethod;
+        if(interestCalMethod != null){
+            this.setInterestCalMethodDescription(InterestMethod.findOne(interestCalMethod).getInterestMethod());
+        }
     }
 
     @Basic
@@ -157,6 +163,15 @@ public class Account {
 
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
+    }
+
+    @Transient
+    public String getInterestCalMethodDescription() {
+        return interestCalMethodDescription;
+    }
+
+    public void setInterestCalMethodDescription(String interestCalMethodDescription) {
+        this.interestCalMethodDescription = interestCalMethodDescription;
     }
 
     @Override

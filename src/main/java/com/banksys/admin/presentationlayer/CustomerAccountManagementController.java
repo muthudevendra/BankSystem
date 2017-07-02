@@ -6,6 +6,7 @@ import com.banksys.ebank.datalayer.service.AccountTypeService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.ResponseObject;
+import com.banksys.util.enums.Currency;
 import com.banksys.util.enums.InterestMethod;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,10 +79,11 @@ public class CustomerAccountManagementController {
 
     private Model getPageData(Model model) {
         model.addAttribute("statusList", MasterDataStatus.values());
-        model.addAttribute("accountTypeList", this.accountTypeService.findAll());
+        model.addAttribute("accountTypeList", this.accountTypeService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("interestMethodList", InterestMethod.values());
-        model.addAttribute("customerList", customerService.findAll());
+        model.addAttribute("customerList", customerService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("statusList", MasterDataStatus.values());
+        model.addAttribute("currencyList", Currency.values());
         return model;
     }
 

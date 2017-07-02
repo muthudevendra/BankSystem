@@ -18,16 +18,19 @@
             <div>
                 <legend>Account Management</legend>
             </div>
-            <form action="/admin/account/customerAccountManagement/saveCustomerAccount" id="customerAccountForm"
-                  method="post" role="form">
-                <input type="hidden" name="customerAccountId" id="customerAccountId"
-                       value="${customerAccount.customerAccountId eq null ? '' : customerAccount.customerAccountId}"/>
+            <form action="/admin/account/customerAccountManagement/saveCustomerAccount" id="customerAccountForm" method="post" role="form">
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status" />
+                <input type="hidden" name="customerAccountId" id="customerAccountId" value="${customerAccount.customerAccountId eq null ? '' : customerAccount.customerAccountId}"/>
+                <input type="hidden" name="account.status" value="${customerAccount.account.status}" id="accountStatus"/>
+                <input type="hidden" name="version" value="${customerAccount.version}"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="accountType">Account Type</label>
                     </div>
                     <div class="col-lg-8">
                         <select required name="account.accountTypeId" class="form-control" id="accountType">
+                            <option></option>
                             <c:forEach items="${accountTypeList}" var="accountType">
                                 <option ${accountType.accountTypeId eq customerAccount.account.accountTypeId ? 'selected' : ''}
                                         value="${accountType.accountTypeId}">
@@ -44,10 +47,27 @@
                     </div>
                     <div class="col-lg-8">
                         <select required name="account.interestCalMethod" class="form-control" id="interestMethod">
+                            <option></option>
                             <c:forEach items="${interestMethodList}" var="interestMethod">
                                 <option ${interestMethod.interestMethodSeq eq customerAccount.account.interestCalMethod ? 'selected' : ''}
                                         value="${interestMethod.interestMethodSeq}">
                                         ${interestMethod.interestMethod}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-3 col-md-offset-1">
+                        <label for="currency">Currency</label>
+                    </div>
+                    <div class="col-lg-8">
+                        <select required name="currencyId" class="form-control" id="currency">
+                            <option></option>
+                            <c:forEach items="${currencyList}" var="currency">
+                                <option ${currency.currencySeq eq customerAccount.currencyId ? 'selected' : ''}
+                                        value="${currency.currencySeq}">
+                                        ${currency.currency}
                                 </option>
                             </c:forEach>
                         </select>
@@ -60,19 +80,22 @@
                         <label for="mobileBank">Mobile Bank</label>
                     </div>
                     <div class="col-lg-1" style="border-right: solid 1px;">
-                        <input value="1" type="checkbox" name="account.mobileBankAvailability" id="mobileBank">
+                        <input ${customerAccount.account eq null ? 'a' : (customerAccount.account.mobileBankAvailability eq 1 ? 'checked' : 'b')}
+                                value="1" type="checkbox" name="account.mobileBankAvailability" id="mobileBank">
                     </div>
                     <div class="col-md-2  col-md-offset-1">
                         <label for="onlineBank">Online Bank</label>
                     </div>
                     <div class="col-lg-1" style="border-right: solid 1px;">
-                        <input value="1" type="checkbox" name="account.onlineBankAvailability" id="onlineBank">
+                        <input ${customerAccount.account eq null ? 'a' : (customerAccount.account.onlineBankAvailability eq 1 ? 'checked' : 'b') }
+                                value="1" type="checkbox" name="account.onlineBankAvailability" id="onlineBank">
                     </div>
                     <div class="col-md-2  col-md-offset-1">
                         <label value="1" for="passbook">Passbook</label>
                     </div>
                     <div class="col-lg-1">
-                        <input value="1" type="checkbox" name="account.passbookAvailability" id="passbook">
+                        <input ${customerAccount.account eq null ? 'a' : (customerAccount.account.passbookAvailability eq 1 ? 'checked' : 'b')}
+                                value="1" type="checkbox" name="account.passbookAvailability" id="passbook">
                     </div>
                 </div>
 
@@ -86,6 +109,7 @@
                     </div>
                     <div class="col-lg-8">
                         <select required name="customerId" class="form-control" id="customerId">
+                            <option></option>
                             <c:forEach items="${customerList}" var="customer">
                                 <option ${customer.customerId eq customerAccount.customerId ? 'selected' : ''}
                                         value="${customer.customerId}">
@@ -127,10 +151,10 @@
 
                 <div class="row form-group updateOperation" style="display: none">
                     <div class="col-lg-3 col-lg-offset-1">
-                        <label for="status">Status</label>
+                        <label for="masterDataStatus">Status</label>
                     </div>
                     <div class="col-lg-8">
-                        <select name="accountTypeId" class="form-control" id="status">
+                        <select name="status" class="form-control" id="masterDataStatus">
                             <c:forEach items="${statusList}" var="status">
                                 <option ${status.statusSeq eq customerAccount.status ? 'selected' : ''}
                                         value="${status.statusSeq}">
@@ -191,7 +215,7 @@
                         </button>
                     </div>
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none"
+                        <button onclick="form_validate('customerAccountForm')" type="submit" class="btn btn-success updateOperation" style="display: none"
                                 <sec:authorize
                                         access="!hasAuthority('admin@customerAccountManagement_UPDATE')">
                                     disabled="disabled"

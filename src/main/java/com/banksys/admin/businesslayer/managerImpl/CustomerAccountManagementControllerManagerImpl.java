@@ -10,6 +10,8 @@ import com.banksys.util.AccountNoGeneratorUtil;
 import com.banksys.util.enums.Currency;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -54,12 +56,30 @@ public class CustomerAccountManagementControllerManagerImpl implements CustomerA
     public ResponseObject updateCustomerAccount(CustomerAccount customerAccount) {
         CustomerAccount dbCustomerAccount = this.customerAccountService.findOne(customerAccount.getCustomerId());
         ResponseObject responseObject;
+        Boolean isUpdatable;
         if(dbCustomerAccount.equals(customerAccount)){
             responseObject = new ResponseObject("No changes found", false);
+            isUpdatable = false;
         }
         else{
+            if (customerAccount.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@customerAccountManagement_DELETE"));
+                if (isAuthorityFound) {
+                    responseObject = new ResponseObject("Customer Account Deleted Successfully", true);
+                    isUpdatable = true;
+                } else {
+                    responseObject = new ResponseObject("No delete permission, please contact System Admin", false);
+                    isUpdatable = false;
+                }
+            }
+            else {
+                responseObject = new ResponseObject("Customer Account updated Successfully", true);
+                isUpdatable = true;
+            }
+        }
+        if(isUpdatable) {
             customerAccount = this.customerAccountService.save(customerAccount);
-            responseObject = new ResponseObject("Customer Account updated Successfully", true);
         }
         responseObject.setObject(customerAccount);
         return responseObject;
