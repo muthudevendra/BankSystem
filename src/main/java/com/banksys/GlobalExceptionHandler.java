@@ -1,14 +1,11 @@
 package com.banksys;
 
-import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.http.HttpStatus;
+import org.springframework.dao.DataAccessException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by lakshithar on 7/1/2017.
@@ -16,10 +13,25 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
-//    @ExceptionHandler(RuntimeException.class)
-//    public ModelAndView handleException(RuntimeException t) {
-//        ModelAndView mnv = new ModelAndView("error", "errorMessage", t.getMessage());
-//        System.out.println("Message : " + t.getStackTrace());
-//        return mnv;
-//    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ModelAndView handleException(AccessDeniedException ex) {
+        ModelAndView mnv = new ModelAndView("accessDenied", "errorMessage", ex.getCause());
+        System.out.println(ex);
+        return mnv;
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    public ModelAndView handleException(DataAccessException ex) {
+        ModelAndView mnv = new ModelAndView("error", "errorMessage", ex.getCause());
+        System.out.println(ex);
+        return mnv;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleException(Exception ex) {
+        ModelAndView mnv = new ModelAndView("error", "errorMessage", ex.getCause());
+        System.out.println(ex);
+        return mnv;
+    }
 }

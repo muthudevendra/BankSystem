@@ -17,22 +17,23 @@
             <div>
                 <legend>User Type Authority Management</legend>
             </div>
-            <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post"
-                  id="userTypeAuthorityForm">
+            <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post" id="userTypeAuthorityForm">
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status" />
                 <input type="hidden" name="userTypeAuthorityId"
                        value="${userTypeAuthority.userTypeAuthorityId eq null ? '' : userTypeAuthority.userTypeAuthorityId}"
                        id="userTypeAuthorityId"/>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="userTypeId">User Type</label>
                     </div>
                     <div class="col-lg-8">
                         <select required name="userTypeId" class="form-control" id="userTypeId">
+                            <option></option>
                             <c:forEach items="${userTypeList}" var="userType">
                                 <option ${userType.userTypeId eq userTypeAuthority.userTypeId ? 'selected' : ''}
                                         value="${userType.userTypeId}">
-                                        ${userType.description}
+                                        ${userType.userType}
                                 </option>
                             </c:forEach>
                         </select>
@@ -44,6 +45,7 @@
                     </div>
                     <div class="col-lg-8">
                         <select required name="authorityId" class="form-control select-picker" id="authorityId">
+                            <option></option>
                             <c:forEach items="${authorityList}" var="authority">
                                 <option ${authority.authorityId eq userTypeAuthority.authorityId ? 'selected' : ''}
                                         value="${authority.authorityId}">
@@ -60,7 +62,7 @@
                         <label for="status">Status</label>
                     </div>
                     <div class="col-lg-8">
-                        <select name="status" class="form-control" id="status">
+                        <select name="status" class="form-control" id="masterDataStatus">
                             <c:forEach items="${statusList}" var="status">
                                 <option ${status.statusSeq eq userTypeAuthority.status ? 'selected' : ''}
                                         value="${status.statusSeq}">
@@ -109,15 +111,22 @@
                     </div>
                 </div>
                 <br/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
                     <div class="pull-right">
-                        <button onclick="form_validate('userTypeAuthorityForm')" type="submit"
-                                class="btn btn-success createOperation">Save
+                        <button onclick="form_validate('userTypeAuthorityForm')" type="submit" class="btn btn-success createOperation"
+                                <sec:authorize
+                                        access="!hasAuthority('admin@userTypeAuthorityManagement_CREATE')">
+                                    disabled="disabled"
+                                </sec:authorize>>Save
                         </button>
                     </div>
                     <div class="pull-right">
-                        <button onclick="form_validate('userTypeAuthorityForm')"
-                                type="submit" class="btn btn-default updateOperation" style="display: none">Update
+                        <button onclick="form_validate('userTypeAuthorityForm')" type="submit" class="btn btn-default updateOperation" style="display: none"
+                                <sec:authorize
+                                        access="!hasAuthority('admin@userTypeAuthorityManagement_UPDATE')">
+                                    disabled="disabled"
+                                </sec:authorize>>Update
                         </button>
                     </div>
                 </div>

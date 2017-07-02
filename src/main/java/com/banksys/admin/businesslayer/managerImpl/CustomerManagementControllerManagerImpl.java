@@ -8,6 +8,8 @@ import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -42,19 +44,32 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
     @Override
     public ResponseObject updateCustomer(Customer customer) {
         Customer dbCustomer = this.customerService.findOne(customer.getCustomerId());
-        ResponseObject responseObject = new ResponseObject();
-        responseObject.setObject(customer);
+        ResponseObject responseObject;
+        Boolean isUpdatable;
         if(dbCustomer.equals(customer)){
             responseObject = new ResponseObject("No changes found", false);
+            isUpdatable = false;
         }
         else{
-            if(customer.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())){
-                customer.getAddressBook().setStatus(MasterDataStatus.DELETED.getStatusSeq());
+            if (customer.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@customerManagement_DELETE"));
+                if (isAuthorityFound) {
+                    responseObject = new ResponseObject("Customer Deleted Successfully", true);
+                    isUpdatable = true;
+                } else {
+                    responseObject = new ResponseObject("No delete permission, please contact System Admin", false);
+                    isUpdatable = false;
+                }
+            } else {
+                responseObject = new ResponseObject("Customer updated Successfully", true);
+                isUpdatable = true;
             }
-            customer = this.customerService.save(customer);
-            responseObject = new ResponseObject("Customer updated Successfully", true);
-            responseObject.setObject(customer);
         }
+        if(isUpdatable){
+            customer = this.customerService.save(customer);
+        }
+        responseObject.setObject(customer);
         return responseObject;
     }
 }

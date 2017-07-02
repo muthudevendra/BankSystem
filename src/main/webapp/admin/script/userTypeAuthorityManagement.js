@@ -10,4 +10,5 @@ $(function () {
         transform_form('userTypeAuthorityForm', '/admin/config/userTypeAuthorityManagement/updateUserTypeAuthority');
         transformToUpdate();
     }
+    display_messages();
 });

@@ -81,6 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                 "WHERE U.USER_TYPE_ID = UT.USER_TYPE_ID " +
                                 "AND UA.USER_TYPE_ID = UT.USER_TYPE_ID " +
                                 "AND UA.AUTHORITY_ID = A.AUTHORITY_ID " +
+                                "AND UA.STATUS != 0 AND UT.STATUS != 0 " +
                                 "AND U.USERNAME=?");
     }
 }

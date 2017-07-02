@@ -34,7 +34,7 @@ public class Customer {
     private Integer gender;
     private Double monthlyIncome;
     private String occupation;
-    private Byte incomeTaxPayStatus;
+    private Integer incomeTaxPayStatus;
     private Integer status;
     private Date createdDate;
     private String createdBy;
@@ -187,11 +187,11 @@ public class Customer {
 
     @Basic
     @Column(name = "INCOME_TAX_PAY_STATUS")
-    public Byte getIncomeTaxPayStatus() {
+    public Integer getIncomeTaxPayStatus() {
         return incomeTaxPayStatus;
     }
 
-    public void setIncomeTaxPayStatus(Byte incomeTaxPayStatus) {
+    public void setIncomeTaxPayStatus(Integer incomeTaxPayStatus) {
         this.incomeTaxPayStatus = incomeTaxPayStatus;
     }
 
@@ -276,11 +276,7 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return customerId == customer.customerId &&
-                addressBookId == customer.addressBookId &&
-                userId == customer.userId &&
-                gender == customer.gender &&
-                status == customer.status &&
+        return Objects.equals(customerId, customer.customerId) &&
                 Objects.equals(nic, customer.nic) &&
                 Objects.equals(nicIssueDate, customer.nicIssueDate) &&
                 Objects.equals(passportNo, customer.passportNo) &&
@@ -288,15 +284,20 @@ public class Customer {
                 Objects.equals(firstName, customer.firstName) &&
                 Objects.equals(middleName, customer.middleName) &&
                 Objects.equals(lastName, customer.lastName) &&
+                Objects.equals(addressBookId, customer.addressBookId) &&
+                Objects.equals(userId, customer.userId) &&
                 Objects.equals(dateOfBirth, customer.dateOfBirth) &&
+                Objects.equals(gender, customer.gender) &&
                 Objects.equals(monthlyIncome, customer.monthlyIncome) &&
                 Objects.equals(occupation, customer.occupation) &&
                 Objects.equals(incomeTaxPayStatus, customer.incomeTaxPayStatus) &&
-                Objects.equals(addressBook, customer.addressBook);
+                Objects.equals(status, customer.status) &&
+                Objects.equals(addressBook, customer.addressBook) &&
+                Objects.equals(user, customer.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customerId, nic, nicIssueDate, passportNo, fullName, firstName, middleName, lastName, addressBookId, userId, dateOfBirth, gender, monthlyIncome, occupation, incomeTaxPayStatus, status, addressBook);
+        return Objects.hash(customerId, nic, nicIssueDate, passportNo, fullName, firstName, middleName, lastName, addressBookId, userId, dateOfBirth, gender, monthlyIncome, occupation, incomeTaxPayStatus, status, addressBook, user);
     }
 }

@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * Created by lakshithar on 6/21/2017.
  *
@@ -26,7 +24,8 @@ public class ModuleManagementController {
     private final ModuleService moduleService;
 
     @Autowired
-    public ModuleManagementController(ModuleManagementControllerManager moduleManagementControllerManager,ModuleService moduleService) {
+    public ModuleManagementController(ModuleManagementControllerManager moduleManagementControllerManager,
+                                      ModuleService moduleService) {
         this.moduleManagementControllerManager = moduleManagementControllerManager;
         this.moduleService = moduleService;
     }
@@ -48,8 +47,7 @@ public class ModuleManagementController {
 
     @RequestMapping(value = "/saveModule", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@moduleManagement_CREATE')")
-    public String saveModule(@ModelAttribute Module module,
-                             HttpServletRequest request, Model model) {
+    public String saveModule(@ModelAttribute Module module, Model model) {
         ResponseObject responseObject = this.moduleManagementControllerManager.saveModule(module);
         this.getPageData(model);
         this.getResponseData(responseObject, model);
@@ -58,8 +56,7 @@ public class ModuleManagementController {
 
     @RequestMapping(value = "/updateModule", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('admin@moduleManagement_UPDATE')")
-    public String updateModule(@ModelAttribute Module module,
-                             HttpServletRequest request, Model model) {
+    public String updateModule(@ModelAttribute Module module, Model model) {
         ResponseObject responseObject = this.moduleManagementControllerManager.updateModule(module);
         this.getPageData(model);
         this.getResponseData(responseObject, model);

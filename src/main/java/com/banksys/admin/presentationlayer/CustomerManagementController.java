@@ -64,7 +64,7 @@ public class CustomerManagementController {
     @PreAuthorize("hasAuthority('admin@customerManagement_UPDATE')")
     public String updateCustomer(@ModelAttribute Customer customer, Model model){
         ResponseObject responseObject = this.customerManagementControllerManager.updateCustomer(customer);
-        model = getPageData(model);
+        this.getPageData(model);
         this.getResponseData(responseObject, model);
         return "customerManagement";
     }

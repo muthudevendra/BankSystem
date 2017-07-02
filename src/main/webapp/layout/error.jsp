@@ -8,10 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Alpha Alliance PLC.</title>
 </head>
 <body>
-    <h1>Error Occurred</h1>
     <p class="text-center">${errorMessage}</p>
     <a class="btn btn-info" href="/">GO BACK TO THE HOMEPAGE</a>
 </body>

@@ -5,6 +5,7 @@ import com.banksys.admin.datalayer.entity.auxilary.CustomerAux;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.entity.QCustomer;
 import com.banksys.ebank.datalayer.service.CustomerService;
+import com.banksys.util.enums.MasterDataStatus;
 import com.querydsl.core.BooleanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,7 @@ public class CustomerSearchControllerManagerImpl implements CustomerSearchContro
         if(customerAux.getLastName() != null && !customerAux.getLastName().isEmpty()){
             booleanBuilder.and(customer.lastName.eq(customerAux.getLastName()));
         }
+        booleanBuilder.and(customer.status.ne(MasterDataStatus.DELETED.getStatusSeq()));
         return (List<Customer>)this.customerService.findAll(booleanBuilder);
     }
 }

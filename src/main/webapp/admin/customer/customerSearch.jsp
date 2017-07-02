@@ -76,8 +76,6 @@
                         <th>Address</th>
                         <th>Created User</th>
                         <th>Created Date</th>
-                        <th>Last Modified User</th>
-                        <th>Last Modified Date</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -90,8 +88,6 @@
                             <td>${customer.addressBook.addressLine1}</td>
                             <td>${customer.createdBy}</td>
                             <td><fmt:formatDate value="${customer.createdDate}" pattern="dd-MM-yyyy HH:ss"/></td>
-                            <td>${customer.lastModifiedBy}</td>
-                            <td><fmt:formatDate value="${customer.lastModifiedDate}" pattern="dd-MM-yyyy HH:ss"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>

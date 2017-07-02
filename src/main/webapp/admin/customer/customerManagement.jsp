@@ -23,6 +23,8 @@
                 <input type="hidden" name="customerId" id="customerId" value="${customer.customerId eq null ? '' : customer.customerId}">
                 <input type="hidden" name="addressBook.addressBookId" id="addressBookId" value="${customer.addressBook.addressBookId}">
                 <input type="hidden" name="addressBook.status" id="addressBookStatus" value="${customer.addressBook.status}">
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status" />
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="nic">NIC Number<span class="require">*</span></label>
@@ -192,7 +194,7 @@
                             <label for="status">Status</label>
                         </div>
                         <div class="col-lg-3">
-                            <select name="status" class="form-control" id="status">
+                            <select name="status" class="form-control" id="masterDataStatus">
                                 <c:forEach items="${statusList}" var="status">
                                     <option ${status.statusSeq eq customer.status ? 'selected' : ''} value="${status.statusSeq}">
                                             ${status.status}
@@ -205,7 +207,7 @@
                         <label for="tax">Pay Tax</label>
                     </div>
                     <div class="col-lg-offset-0">
-                        <input type="checkbox" name="tax" id="tax">
+                        <input ${customer.incomeTaxPayStatus eq 1 ? 'checked' : ''} value="1" type="checkbox" name="incomeTaxPayStatus" id="tax">
                     </div>
                 </div>
                 <br/>
@@ -260,7 +262,7 @@
                                 </sec:authorize>>Save</button>
                     </div>
                     <div class="pull-right updateOperation" style="display: none">
-                        <button type="submit" class="btn btn-default"
+                        <button type="submit" class="btn btn-success"
                                 <sec:authorize
                                         access="!hasAuthority('admin@customerManagement_UPDATE')">
                                     disabled="disabled"
