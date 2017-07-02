@@ -112,15 +112,15 @@
                                           access="!hasAuthority('ebank@ownAccountTransfer_TRANSFER')">
                                       disabled="disabled"
                                   </sec:authorize>>Transfer</button>
-                          <button class="btn btn-primary updateOperation" style="display: none"
-                                  <sec:authorize
-                                          access="!hasAuthority('ebank@ownAccountTransfer_TRANSFER')">
-                                      disabled="disabled"
-                                  </sec:authorize>>View Slip</button>
                       </span>
                     </div>
                 </div>
             </form>
+            <button onclick="view_slip()" class="btn btn-primary updateOperation" id="viewSlip" style="display: none"
+                    <sec:authorize
+                            access="!hasAuthority('ebank@ownAccountTransfer_TRANSFER')">
+                        disabled="disabled"
+                    </sec:authorize>>View Slip</button>
         </div>
     </div>
 </div>

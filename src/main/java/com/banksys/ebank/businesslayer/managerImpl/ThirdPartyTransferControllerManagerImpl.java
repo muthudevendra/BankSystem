@@ -54,11 +54,13 @@ public class ThirdPartyTransferControllerManagerImpl implements ThirdPartyTransf
             }
             else {
                 if (thirdPartyTransfer.getTransferDate().equals(today)) {
+                    thirdPartyTransfer.setTransferDate(new Date());
                     dbFromAccount.setAvailableBalance(availableBalance - thirdPartyTransfer.getAmount());
                     thirdPartyTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
                     thirdPartyTransfer.setTransferStatus(TransferStatus.SENT.getTransferStatusSeq());
                     responseObject = new ResponseObject("Transfer Successful", true);
                 } else {
+                    thirdPartyTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
                     thirdPartyTransfer.setTransferStatus(TransferStatus.SCHEDULED.getTransferStatusSeq());
                     responseObject = new ResponseObject("Transfer Scheduled", true);
                 }

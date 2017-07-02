@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/paymentHistory.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -25,7 +26,7 @@
 
         <div class="content-page">
             <div class="col-md-8 col-md-offset-1 table-striped table-responsive">
-                <table class="table">
+                <table class="table datatable">
                     <thead>
                     <tr>
                         <th>Account Number</th>

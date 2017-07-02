@@ -33,3 +33,14 @@ function view_slip(){
     var thirdPartyAccountTransferId = $('#thirdPartyAccountTransferId').val();
     window.open('/ebank/transfer/thirdPartyTransfer?thirdPartyAccountTransferId=' + thirdPartyAccountTransferId, '_blank');
 }
+
+function check_transfer_date() {
+    var transferDate = $('#transferDate').val();
+    var today = new Date();
+    if(new Date(transferDate) > today) {
+        $('#transferDateDetail').html("Transaction will be scheduled");
+    }
+    else{
+        $('#transferDateDetail').html(null);
+    }
+}

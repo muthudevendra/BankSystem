@@ -31,7 +31,10 @@
                 <legend>Pay Bill</legend>
             </div>
         </div>
-        <form method="post" role="form" action="/ebank/payment/billPayment/doPay">
+        <form method="post" id="billPaymentForm" role="form" action="/ebank/payment/billPayment/doPay">
+            <input type="hidden" value="${message}" id="message"/>
+            <input type="hidden" value="${status}" id="status"/>
+            <input type="hidden" value="${billPayment.billPaymentId eq null ? '' : billPayment.billPaymentId}" id="billPaymentId"/>
             <div class="content-page col-md-8 col-md-offset-3">
                 <div class="row form-group">
                     <div class="col-md-2">
@@ -40,6 +43,7 @@
                     <div class="col-md-6">
                         <select onchange="get_account_balance()" required name="fromAccountId" class="form-control"
                                 id="fromAccount">
+                            <option></option>
                             <c:forEach items="${customerAccountList}" var="customerAccount">
                                 <option ${customerAccount.customerAccountId eq billPayment.fromAccountId ? 'selected' : ''}
                                         value="${customerAccount.customerAccountId}">
@@ -49,7 +53,7 @@
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <p id="amountInHande" class="align-left"></p>
+                        <p id="amountInHand" class="align-left"></p>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -57,7 +61,8 @@
                         <label class="control-label" for="payment">Pay To </label>
                     </div>
                     <div class="col-md-4">
-                        <select name="paymentType" class="form-control" id="payment">
+                        <select name="paymentType" required class="form-control" id="payment">
+                            <option></option>
                             <c:forEach items="${paymentTypeList}" var="paymentType">
                                 <option ${paymentType.paymentTypeSeq eq billPayment.paymentType ? 'selected' : ''}
                                         value="${paymentType.paymentTypeSeq}">
@@ -67,7 +72,7 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <input name="referenceNo" value="${billPayment.referenceNo}"
+                        <input required name="referenceNo" value="${billPayment.referenceNo}"
                                type="text" class="form-control" id="referenceNo">
                     </div>
                 </div>
@@ -78,8 +83,7 @@
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon">Rs</span>
-                            <input name="amount" value="${billPayment.amount}" type="text" class="form-control"
-                                   id="amount">
+                            <input required name="amount" value="${billPayment.amount}" type="text" class="form-control" id="amount">
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
@@ -89,24 +93,30 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2">
-                        <label class="control-label" for="date">Payment Date</label>
+                        <label class="control-label" for="paymentDate">Payment Date</label>
                     </div>
                     <div class="col-md-6">
                         <div class="input-group">
-                            <input name="paymentDate"
+                            <input required onchange="check_transfer_date()" name="paymentDate"
                                    value="<fmt:formatDate value="${billPayment.paymentDate}" pattern="dd-MM-yyyy"/>"
-                                           type="text" class="form-control datepicker" id="date">
+                                           type="text" class="form-control datepicker" id="paymentDate">
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <p class="align-left"></p>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <p id="paymentDateDetail" class="align-left"></p>
                     </div>
                 </div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row form-group">
                     <div class="col-md-3 col-md-offset-7">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">Pay</button>
+                        <button onclick="form_validate('billPaymentForm')" class="btn btn-primary" type="submit"
+                                <sec:authorize
+                                        access="!hasAuthority('ebank@billPayment_PAY')">
+                                    disabled="disabled"
+                                </sec:authorize>>Pay</button>
                     </span>
                     </div>
                 </div>

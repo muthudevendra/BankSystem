@@ -4,6 +4,7 @@ import com.banksys.ebank.businesslayer.manager.BillPaymentControllerManager;
 import com.banksys.ebank.datalayer.entity.BillPayment;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import com.banksys.util.enums.PaymentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,9 @@ public class BillPaymentController {
     @RequestMapping(value = "/doPay", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ebank@billPayment_PAY')")
     public String doTransfer(@ModelAttribute BillPayment billPayment, Model model, HttpServletRequest request){
-        this.billPaymentControllerManager.doPay(billPayment);
-        model = this.getData(model, request);
+        ResponseObject responseObject = this.billPaymentControllerManager.doPay(billPayment);
+        this.getData(model, request);
+        this.getResponseData(responseObject, model);
         return "billPayment";
     }
 
@@ -77,6 +79,14 @@ public class BillPaymentController {
         model.addAttribute("paymentTypeList", PaymentType.values());
         return model;
     }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("billPayment", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
+        return model;
+    }
+
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {

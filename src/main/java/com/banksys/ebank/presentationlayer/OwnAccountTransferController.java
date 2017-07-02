@@ -4,6 +4,7 @@ import com.banksys.ebank.businesslayer.manager.OwnAccountTransferControllerManag
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
+import com.banksys.ebank.datalayer.service.OwnAccountTransferService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,15 @@ public class OwnAccountTransferController {
 
     private final OwnAccountTransferControllerManager ownAccountTransferControllerManager;
     private final CustomerAccountService customerAccountService;
+    private final OwnAccountTransferService ownAccountTransferService;
 
     @Autowired
     public OwnAccountTransferController(OwnAccountTransferControllerManager ownAccountTransferControllerManager,
-                                        CustomerAccountService customerAccountService) {
+                                        CustomerAccountService customerAccountService,
+                                        OwnAccountTransferService ownAccountTransferService) {
         this.ownAccountTransferControllerManager = ownAccountTransferControllerManager;
         this.customerAccountService = customerAccountService;
+        this.ownAccountTransferService = ownAccountTransferService;
     }
 
     @GetMapping
@@ -38,6 +42,13 @@ public class OwnAccountTransferController {
         model = this.getPageData(model, request);
         model.addAttribute("ownAccountTransfer", new OwnAccountTransfer());
         return "ownAccount";
+    }
+
+    @RequestMapping(params = "ownAccountTransferId", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_VIEW')")
+    public String loadPage(@RequestParam("ownAccountTransferId") Integer ownAccountTransferId, Model model){
+        model.addAttribute("ownAccountTransfer", this.ownAccountTransferService.findOne(ownAccountTransferId));
+        return "ownAccountTransferConfirmation";
     }
 
     @RequestMapping(value = "/doTransfer", method = RequestMethod.POST)

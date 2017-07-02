@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/ownAccountTransfer.js"></script>
 <div class="main">
     <div class="container">
         <div class="panel panel-success col-md-offset-1">
@@ -17,7 +16,7 @@
                         <label class="control-label" for="senderAccount">Sending Account </label>
                     </div>
                     <div class="col-md-6">
-                        <input name="senderAccount" type="text" class="form-control" id="senderAccount" disabled>
+                        <input value="${ownAccountTransfer.fromAccount.accountNo}" name="senderAccount" type="text" class="form-control" id="senderAccount" disabled>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -53,7 +52,7 @@
                         <label class="control-label" for="date">Date </label>
                     </div>
                     <div class="col-md-6">
-                        <input <fmt:formatDate value="${ownAccountTransfer.transferDate}" pattern="dd-MM-yyyy"/>
+                        <input value="<fmt:formatDate value="${ownAccountTransfer.transferDate}" pattern="dd-MM-yyyy"/>"
                                 type="text" class="form-control" id="Date" disabled>
                     </div>
                 </div>

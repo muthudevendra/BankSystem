@@ -9,6 +9,7 @@ import com.banksys.util.enums.TransferStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -31,7 +32,8 @@ public class AccountTransferScheduler {
         this.thirdPartyTransferService = thirdPartyTransferService;
     }
 
-    @Scheduled(fixedRate = 60000 * 50)
+    @Scheduled(fixedRate = 60000 * 60)
+    @Transactional
     public void doTransfer(){
         Date today = java.sql.Date.valueOf(LocalDate.now());
         List<ThirdPartyTransfer> thirdPartyTransferList = this.thirdPartyTransferService.findByTransferDateAndTransferStatusAndStatusNot(

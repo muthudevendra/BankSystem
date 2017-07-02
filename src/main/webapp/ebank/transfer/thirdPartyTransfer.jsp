@@ -31,8 +31,7 @@
                   method="post">
                 <input type="hidden" value="${message}" id="message"/>
                 <input type="hidden" value="${status}" id="status"/>
-                <input type="hidden"
-                       value="${thirdPartyAccountTransfer.thirdPartyAccountTransferId eq null ? '' : thirdPartyAccountTransfer.thirdPartyAccountTransferId}"
+                <input type="hidden" value="${thirdPartyAccountTransfer.thirdPartyAccountTransferId eq null ? '' : thirdPartyAccountTransfer.thirdPartyAccountTransferId}"
                        id="thirdPartyAccountTransferId"/>
                 <br/>
                 <div class="row form-group">
@@ -127,14 +126,19 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
-                        <label class="control-label" for="date">Date </label>
+                        <label class="control-label" for="transferDate">Date </label>
                     </div>
                     <div class="col-md-5">
                         <div class="input-group">
-                            <input name="transferDate"
+                            <input onchange="check_transfer_date()" name="transferDate"
                                    value="<fmt:formatDate value="${thirdPartyAccountTransfer.transferDate}" pattern="dd-MM-yyyy"/>"
-                                   required type="text" class="form-control datepicker" id="date">
+                                   required type="text" class="form-control datepicker" id="transferDate">
                         </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <p id="transferDateDetail" class="align-left"></p>
                     </div>
                 </div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
