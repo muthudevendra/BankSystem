@@ -38,6 +38,7 @@ public class ThirdPartyTransfer {
     private Date lastModifiedDate;
 
     private CustomerAccount fromAccount;
+    private Bank targetBank;
 
     private String statusDescription;
 
@@ -221,6 +222,16 @@ public class ThirdPartyTransfer {
         this.fromAccount = fromAccount;
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BANK", insertable = false, updatable = false)
+    public Bank getTargetBank() {
+        return targetBank;
+    }
+
+    public void setTargetBank(Bank targetBank) {
+        this.targetBank = targetBank;
+    }
+
     @Transient
     public String getStatusDescription() {
         return statusDescription;
@@ -235,25 +246,25 @@ public class ThirdPartyTransfer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ThirdPartyTransfer that = (ThirdPartyTransfer) o;
-        return thirdPartyAccountTransferId == that.thirdPartyAccountTransferId &&
-                fromAccountId == that.fromAccountId &&
-                Double.compare(that.amount, amount) == 0 &&
-                Double.compare(that.accountBalance, accountBalance) == 0 &&
-                status == that.status &&
-                receiverName == that.receiverName &&
-                bank == that.bank &&
-                branch == that.branch &&
-                accountNo == that.accountNo &&
+        return Objects.equals(thirdPartyAccountTransferId, that.thirdPartyAccountTransferId) &&
+                Objects.equals(fromAccountId, that.fromAccountId) &&
+                Objects.equals(amount, that.amount) &&
+                Objects.equals(accountBalance, that.accountBalance) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(transferDate, that.transferDate) &&
-                Objects.equals(createdBy, that.createdBy) &&
-                Objects.equals(createdDate, that.createdDate) &&
-                Objects.equals(lastModifiedBy, that.lastModifiedBy) &&
-                Objects.equals(lastModifiedDate, that.lastModifiedDate);
+                Objects.equals(status, that.status) &&
+                Objects.equals(transferStatus, that.transferStatus) &&
+                Objects.equals(receiverName, that.receiverName) &&
+                Objects.equals(bank, that.bank) &&
+                Objects.equals(branch, that.branch) &&
+                Objects.equals(accountNo, that.accountNo) &&
+                Objects.equals(fromAccount, that.fromAccount) &&
+                Objects.equals(targetBank, that.targetBank) &&
+                Objects.equals(statusDescription, that.statusDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(thirdPartyAccountTransferId, fromAccountId, amount, accountBalance, description, transferDate, status, receiverName, bank, branch, accountNo, createdBy, createdDate, lastModifiedBy, lastModifiedDate);
+        return Objects.hash(thirdPartyAccountTransferId, fromAccountId, amount, accountBalance, description, transferDate, status, transferStatus, receiverName, bank, branch, accountNo, fromAccount, targetBank, statusDescription);
     }
 }

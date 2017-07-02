@@ -9,7 +9,6 @@
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <%@ include file="/layout/include.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/thirdPartyTransfer.js"></script>
-
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -28,17 +27,25 @@
         </ul>
 
         <div class="content-page col-md-9">
-            <form action="/ebank/transfer/thirdPartyTransfer/doTransfer" id="thirdPartyTransferForm" role="form" method="post">
+            <form action="/ebank/transfer/thirdPartyTransfer/doTransfer" id="thirdPartyTransferForm" role="form"
+                  method="post">
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status"/>
+                <input type="hidden"
+                       value="${thirdPartyAccountTransfer.thirdPartyAccountTransferId eq null ? '' : thirdPartyAccountTransfer.thirdPartyAccountTransferId}"
+                       id="thirdPartyAccountTransferId"/>
                 <br/>
                 <div class="row form-group">
                     <div class="col-sm-2 col-md-offset-1">
                         <label class="control-label" for="fromAccount">Select Account </label>
                     </div>
                     <div class="col-md-6">
-                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control" id="fromAccount">
+                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control"
+                                id="fromAccount">
                             <option></option>
                             <c:forEach items="${customerAccountList}" var="customerAccount">
-                                <option value="${customerAccount.customerAccountId}">
+                                <option ${customerAccount.customerAccountId eq thirdPartyAccountTransfer.fromAccountId ? 'selected' : ''}
+                                        value="${customerAccount.customerAccountId}">
                                         ${customerAccount.accountNo}
                                 </option>
                             </c:forEach>
@@ -60,7 +67,8 @@
                         <label class="control-label" for="receiverName">Receiver's Name </label>
                     </div>
                     <div class="col-md-5">
-                        <input required name="receiverName" type="text" class="form-control" id="receiverName">
+                        <input required name="receiverName" value="${thirdPartyAccountTransfer.receiverName}"
+                               type="text" class="form-control" id="receiverName">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -69,9 +77,10 @@
                     </div>
                     <div class="col-md-5">
                         <select name="bank" required name="fromAccountId" class="form-control" id="bank">
+                            <option></option>
                             <c:forEach items="${bankList}" var="bank">
-                                <option></option>
-                                <option value="${bank.bankId}">
+                                <option ${bank.bankId eq thirdPartyAccountTransfer.bank ? 'selected' : ''}
+                                        value="${bank.bankId}">
                                         ${bank.bankName}
                                 </option>
                             </c:forEach>
@@ -83,7 +92,8 @@
                         <label class="control-label" for="branch">Branch </label>
                     </div>
                     <div class="col-md-5">
-                        <input name="branch" required type="text" class="form-control" id="branch">
+                        <input name="branch" value="${thirdPartyAccountTransfer.branch}" required type="text"
+                               class="form-control" id="branch">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -91,10 +101,11 @@
                         <label class="control-label" for="accountNumber">Receiver's AC Number </label>
                     </div>
                     <div class="col-md-5">
-                        <input name="accountNo" required type="text" class="form-control" id="accountNumber">
+                        <input name="accountNo" value="${thirdPartyAccountTransfer.accountNo}" required type="text"
+                               class="form-control" id="accountNumber">
                     </div>
                 </div>
-                <div class="row form-group">
+                <div class="row form-group createOperation">
                     <div class="col-md-2 col-md-offset-2">
                         <label class="control-label" for="reAccountNumber">Re-Enter Account Number </label>
                     </div>
@@ -109,7 +120,8 @@
                     <div class="col-md-5">
                         <div class="input-group">
                             <span class="input-group-addon">LKR</span>
-                            <input name="amount" required type="text" class="form-control" id="amount"/>
+                            <input name="amount" value="${thirdPartyAccountTransfer.amount}" required type="text"
+                                   class="form-control" id="amount"/>
                         </div>
                     </div>
                 </div>
@@ -119,7 +131,9 @@
                     </div>
                     <div class="col-md-5">
                         <div class="input-group">
-                            <input name="transferDate" required type="text" class="form-control datepicker" id="date">
+                            <input name="transferDate"
+                                   value="<fmt:formatDate value="${thirdPartyAccountTransfer.transferDate}" pattern="dd-MM-yyyy"/>"
+                                   required type="text" class="form-control datepicker" id="date">
                         </div>
                     </div>
                 </div>
@@ -127,11 +141,22 @@
                 <div class="row form-group">
                     <div class="col-md-3 col-md-offset-7">
                         <span class="input-group-btn">
-                            <button onclick="form_validate('thirdPartyTransferForm')" class="btn btn-primary" type="submit">Transfer</button>
+                            <button onclick="form_validate('thirdPartyTransferForm')"
+                                    class="btn btn-primary createOperation" type="submit"
+                                    <sec:authorize
+                                            access="!hasAuthority('ebank@thirdPartyAccountTransfer_TRANSFER')">
+                                        disabled="disabled"
+                                    </sec:authorize>>Transfer</button>
                         </span>
                     </div>
                 </div>
             </form>
+            <button onclick="view_slip()" class="btn btn-success updateOperation" id="viewSlip" style="display: none"
+                    <sec:authorize
+                            access="!hasAuthority('ebank@thirdPartyAccountTransfer_TRANSFER')">
+                        disabled="disabled"
+                    </sec:authorize>>View Slip
+            </button>
         </div>
     </div>
 </div>

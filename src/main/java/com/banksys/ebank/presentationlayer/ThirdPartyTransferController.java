@@ -5,6 +5,8 @@ import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.ThirdPartyTransfer;
 import com.banksys.ebank.datalayer.service.BankService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
+import com.banksys.ebank.datalayer.service.ThirdPartyTransferService;
+import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -27,13 +29,17 @@ import java.util.Date;
 public class ThirdPartyTransferController {
 
     private final ThirdPartyTransferControllerManager thirdPartyTransferControllerManager;
+    private final ThirdPartyTransferService thirdPartyTransferService;
     private final CustomerAccountService customerAccountService;
     private final BankService bankService;
 
     @Autowired
-    public ThirdPartyTransferController(ThirdPartyTransferControllerManager thirdPartyTransferControllerManager, CustomerAccountService customerAccountService,
+    public ThirdPartyTransferController(ThirdPartyTransferControllerManager thirdPartyTransferControllerManager,
+                                        ThirdPartyTransferService thirdPartyTransferService,
+                                        CustomerAccountService customerAccountService,
                                         BankService bankService) {
         this.thirdPartyTransferControllerManager = thirdPartyTransferControllerManager;
+        this.thirdPartyTransferService = thirdPartyTransferService;
         this.customerAccountService = customerAccountService;
         this.bankService = bankService;
     }
@@ -46,12 +52,19 @@ public class ThirdPartyTransferController {
         return "thirdPartyTransfer";
     }
 
+    @RequestMapping(params = "thirdPartyAccountTransferId", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@thirdPartyAccountTransfer_VIEW')")
+    public String loadPage(@RequestParam("thirdPartyAccountTransferId") Integer thirdPartyAccountTransferId, Model model){
+        model.addAttribute("thirdPartyAccountTransfer", this.thirdPartyTransferService.findOne(thirdPartyAccountTransferId));
+        return "thirdPartyTransferConfirmation";
+    }
+
     @RequestMapping(value = "/doTransfer", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ebank@thirdPartyAccountTransfer_TRANSFER')")
     public String transfer(@ModelAttribute ThirdPartyTransfer thirdPartyTransfer, Model model, HttpServletRequest request) {
-        this.thirdPartyTransferControllerManager.transfer(thirdPartyTransfer);
-        model = getPageData(model, request);
-        model.addAttribute("thirdPartyAccountTransfer", thirdPartyTransfer);
+        ResponseObject responseObject = this.thirdPartyTransferControllerManager.transfer(thirdPartyTransfer);
+        this.getPageData(model, request);
+        this.getResponseData(responseObject, model);
         return "thirdPartyTransfer";
     }
 
@@ -78,6 +91,13 @@ public class ThirdPartyTransferController {
         }
         model.addAttribute("customerAccountList", this.customerAccountService.findByCustomerUserIdAndStatusNot(userId, MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("bankList", this.bankService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
+        return model;
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("thirdPartyAccountTransfer", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
         return model;
     }
 

@@ -7,6 +7,13 @@ $(function () {
    $(".datepicker").datepicker({
       format: 'yyyy-mm-dd'
    });
+    var thirdPartyAccountTransferId = $('#thirdPartyAccountTransferId').val();
+    if(thirdPartyAccountTransferId != ''){
+        transformToUpdate();
+        $("#thirdPartyTransferForm :input").prop("disabled", true);
+        $('#viewSlip').prop('disabled', false);
+    }
+    display_messages();
 });
 
 function get_account_balance() {
@@ -20,4 +27,9 @@ function get_account_balance() {
    else{
        $('#amountInHand').html(null);
    }
+}
+
+function view_slip(){
+    var thirdPartyAccountTransferId = $('#thirdPartyAccountTransferId').val();
+    window.open('/ebank/transfer/thirdPartyTransfer?thirdPartyAccountTransferId=' + thirdPartyAccountTransferId, '_blank');
 }

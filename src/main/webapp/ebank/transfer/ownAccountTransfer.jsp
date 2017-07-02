@@ -114,7 +114,7 @@
                                   </sec:authorize>>Transfer</button>
                           <button class="btn btn-primary updateOperation" style="display: none"
                                   <sec:authorize
-                                          access="!hasAuthority('ebank@ownAccountTransfer_VIEWSLIP')">
+                                          access="!hasAuthority('ebank@ownAccountTransfer_TRANSFER')">
                                       disabled="disabled"
                                   </sec:authorize>>View Slip</button>
                       </span>
