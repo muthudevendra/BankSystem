@@ -5,6 +5,8 @@
   Time: 5:57 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/userTypeSearch.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -13,21 +15,23 @@
         </ul>
         <div class="content-page col-lg-10">
             <div>
-                <legend>User Types & Authoritiy Search</legend>
+                <legend>User Types Search</legend>
             </div>
             <div class="col-md-12">
-                <table class="table table-striped table-responsive">
+                <table class="table table-striped table-responsive datatable">
                     <thead>
                     <tr>
                         <th>User Type</th>
-                        <th>Authority Type</th>
                         <th>Description</th>
-                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                    </tr>
+                    <c:forEach items="${userTypeList}" var="userType">
+                        <tr onclick="load_user_type(${userType.userTypeId})">
+                            <td>${userType.userType}</td>
+                            <td>${userType.description}</td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

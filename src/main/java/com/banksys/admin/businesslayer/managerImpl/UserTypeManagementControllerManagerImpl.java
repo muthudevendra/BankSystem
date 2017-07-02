@@ -44,7 +44,7 @@ public class UserTypeManagementControllerManagerImpl implements UserTypeManageme
         } else {
             if (userType.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())) {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@authorityManagement_DELETE"));
+                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@userTypeManagement_DELETE"));
                 if (isAuthorityFound) {
                     responseObject = new ResponseObject("User Type deleted Successfully", true);
                     isUpdatable = true;

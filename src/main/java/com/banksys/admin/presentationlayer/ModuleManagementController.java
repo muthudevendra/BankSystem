@@ -40,8 +40,8 @@ public class ModuleManagementController {
 
     @RequestMapping(params = "moduleId", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('admin@moduleManagement_VIEW')")
-    public String loadPage(@RequestParam("moduleId") Integer modulId, Model model){
-        model.addAttribute("module", this.moduleService.findOne(modulId));
+    public String loadPage(@RequestParam("moduleId") Integer moduleId, Model model){
+        model.addAttribute("module", this.moduleService.findOne(moduleId));
         this.getPageData(model);
         return "moduleManagement";
     }

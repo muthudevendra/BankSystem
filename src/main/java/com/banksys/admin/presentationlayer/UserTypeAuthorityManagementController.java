@@ -7,6 +7,7 @@ import com.banksys.admin.datalayer.service.UserTypeService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,7 @@ public class UserTypeAuthorityManagementController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('admin@userTypeAuthorityManagement_VIEW')")
     public String getPage(Model model) {
         model = this.getPageData(model);
         model.addAttribute("userTypeAuthority", new UserTypeAuthority());
@@ -42,6 +44,7 @@ public class UserTypeAuthorityManagementController {
     }
 
     @RequestMapping(value = "/saveUserTypeAuthority", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('admin@userTypeAuthorityManagement_CREATE')")
     public String saveUserTypeAuthority(UserTypeAuthority userTypeAuthority, Model model) {
         ResponseObject responseObject = this.userTypeAuthorityManagementControllerManager.saveUserTypeAuthority(userTypeAuthority);
         this.getPageData(model);
@@ -50,6 +53,7 @@ public class UserTypeAuthorityManagementController {
     }
 
     @RequestMapping(value = "/updateUserTypeAuthority", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('admin@userTypeAuthorityManagement_UPDATE')")
     public String updateUserTypeAuthority(UserTypeAuthority userTypeAuthority, Model model) {
         ResponseObject responseObject = this.userTypeAuthorityManagementControllerManager.updateUserTypeAuthority(userTypeAuthority);
         this.getPageData(model);

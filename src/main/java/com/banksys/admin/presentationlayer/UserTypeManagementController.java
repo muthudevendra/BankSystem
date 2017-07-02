@@ -2,16 +2,14 @@ package com.banksys.admin.presentationlayer;
 
 import com.banksys.admin.businesslayer.manager.UserTypeManagementControllerManager;
 import com.banksys.admin.datalayer.entity.UserType;
+import com.banksys.admin.datalayer.service.UserTypeService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Oshada on 6/27/2017.
@@ -22,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserTypeManagementController {
 
     private final UserTypeManagementControllerManager userTypeManagementControllerManager;
+    private final UserTypeService userTypeService;
 
     @Autowired
-    public UserTypeManagementController(UserTypeManagementControllerManager userTypeManagementControllerManager) {
+    public UserTypeManagementController(UserTypeManagementControllerManager userTypeManagementControllerManager,
+                                        UserTypeService userTypeService) {
         this.userTypeManagementControllerManager = userTypeManagementControllerManager;
+        this.userTypeService = userTypeService;
     }
 
     @GetMapping
@@ -33,6 +34,14 @@ public class UserTypeManagementController {
     public String getPage(Model model) {
         model = this.getPageData(model);
         model.addAttribute("userType", new UserType());
+        return "userTypeManagement";
+    }
+
+    @RequestMapping(params = "userTypeId", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('admin@userTypeManagement_VIEW')")
+    public String loadPage(@RequestParam("userTypeId") Integer userTypeId, Model model){
+        model.addAttribute("userType", this.userTypeService.findOne(userTypeId));
+        this.getPageData(model);
         return "userTypeManagement";
     }
 

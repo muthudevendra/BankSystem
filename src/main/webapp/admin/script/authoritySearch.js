@@ -1,8 +1,9 @@
 /**
  * Created by shehan on 7/1/2017.
+ *
  */
 $(function () {
-    $('.navUrl').removeClass('active')
+    $('.navUrl').removeClass('active');
     $('#authoritySearch').addClass('active');
     $('.datatable').dataTable( {
         order: [[ 3, "desc" ]],
