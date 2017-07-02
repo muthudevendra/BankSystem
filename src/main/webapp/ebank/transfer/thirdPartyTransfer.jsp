@@ -36,8 +36,8 @@
                     </div>
                     <div class="col-md-6">
                         <select onchange="get_account_balance()" required name="fromAccountId" class="form-control" id="fromAccount">
+                            <option></option>
                             <c:forEach items="${customerAccountList}" var="customerAccount">
-                                <option></option>
                                 <option value="${customerAccount.customerAccountId}">
                                         ${customerAccount.accountNo}
                                 </option>

@@ -35,16 +35,23 @@
 
         <div class="content-page col-md-9">
             <form action="/ebank/transfer/ownAccount/doTransfer" id="ownAccountTransferForm" method="post" role="form">
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status"/>
+                <input type="hidden"
+                       value="${ownAccountTransfer.ownAccountTransferId eq null ? '' : ownAccountTransfer.ownAccountTransferId}"
+                       id="ownAccountTransferId"/>
                 <br/>
                 <div class="row form-group">
                     <div class="col-md-2 col-md-offset-2">
                         <label class="control-label" for="fromAccount">From Account </label>
                     </div>
                     <div class="col-md-5">
-                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control" id="fromAccount">
+                        <select onchange="get_account_balance()" required name="fromAccountId" class="form-control"
+                                id="fromAccount">
                             <option></option>
                             <c:forEach items="${customerAccountList}" var="customerAccount">
-                                <option value="${customerAccount.customerAccountId}">
+                                <option ${customerAccount.customerAccountId eq ownAccountTransfer.fromAccountId ? 'selected' : ''}
+                                        value="${customerAccount.customerAccountId}">
                                         ${customerAccount.accountNo}
                                 </option>
                             </c:forEach>
@@ -62,7 +69,8 @@
                         <select required name="toAccountId" class="form-control" id="toAccount">
                             <option></option>
                             <c:forEach items="${customerAccountList}" var="customerAccount">
-                                <option value="${customerAccount.customerAccountId}">
+                                <option ${customerAccount.customerAccountId eq ownAccountTransfer.toAccountId ? 'selected' : ''}
+                                        value="${customerAccount.customerAccountId}">
                                         ${customerAccount.accountNo}
                                 </option>
                             </c:forEach>
@@ -88,7 +96,8 @@
                     </div>
                     <div class="col-sm-5">
                         <div class="input-group">
-                            <textarea name="description" id="description" cols="30" rows="5"></textarea>
+                            <textarea name="description"
+                                      id="description" cols="30" rows="5">${ownAccountTransfer.description}</textarea>
                         </div>
                     </div>
                 </div>
@@ -97,11 +106,17 @@
                 <div class="row form-group">
                     <div class="col-md-3 col-md-offset-9">
                       <span class="input-group-btn">
-                          <button onclick="form_validate('ownAccountTransferForm')" class="btn btn-primary" type="submit"
+                          <button onclick="form_validate('ownAccountTransferForm')"
+                                  class="btn btn-primary createOperation" type="submit"
                                   <sec:authorize
                                           access="!hasAuthority('ebank@ownAccountTransfer_TRANSFER')">
                                       disabled="disabled"
                                   </sec:authorize>>Transfer</button>
+                          <button class="btn btn-primary updateOperation" style="display: none"
+                                  <sec:authorize
+                                          access="!hasAuthority('ebank@ownAccountTransfer_VIEWSLIP')">
+                                      disabled="disabled"
+                                  </sec:authorize>>View Slip</button>
                       </span>
                     </div>
                 </div>

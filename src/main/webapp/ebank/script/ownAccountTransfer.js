@@ -2,6 +2,15 @@
  * Created by lakshithar on 6/29/2017.
  *
  */
+
+$(function () {
+   var ownAccountTransferId = $('#ownAccountTransferId').val();
+   if(ownAccountTransferId != ''){
+        transformToUpdate();
+   }
+   display_messages();
+});
+
 function get_account_balance() {
     var customerAccountId = $('#fromAccount').val();
     if (customerAccountId != '') {

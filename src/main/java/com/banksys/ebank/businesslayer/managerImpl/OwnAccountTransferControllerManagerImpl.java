@@ -54,7 +54,7 @@ public class OwnAccountTransferControllerManagerImpl implements OwnAccountTransf
             ownAccountTransfer.setFromAccountBalance(dbFromAccount.getAvailableBalance());
             ownAccountTransfer.setToAccountBalance(dbToAccount.getAvailableBalance());
 
-            this.ownAccountTransferService.save(ownAccountTransfer);
+            ownAccountTransfer = this.ownAccountTransferService.save(ownAccountTransfer);
             responseObject = new ResponseObject("Transfer Successful", true);
             responseObject.setObject(ownAccountTransfer);
         }

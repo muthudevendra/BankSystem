@@ -44,9 +44,9 @@ public class OwnAccountTransferController {
     @PreAuthorize("hasAuthority('ebank@ownAccountTransfer_TRANSFER')")
     public String transfer(@ModelAttribute OwnAccountTransfer ownAccountTransfer, Model model, HttpServletRequest request) {
         ResponseObject responseObject = this.ownAccountTransferControllerManager.transfer(ownAccountTransfer);
-        model = getPageData(model, request);
-        model.addAttribute("ownAccountTransfer", responseObject.getObject());
-        return "ownAccountTransferConfirmation";
+        this.getPageData(model, request);
+        this.getResponseData(responseObject, model);
+        return "ownAccount";
     }
 
     @RequestMapping(value = "/findAccountBalance", method = RequestMethod.GET)
@@ -71,6 +71,13 @@ public class OwnAccountTransferController {
             throw new RuntimeException("User not found");
         }
         model.addAttribute("customerAccountList", this.customerAccountService.findByCustomerUserIdAndStatusNot(userId, MasterDataStatus.DELETED.getStatusSeq()));
+        return model;
+    }
+
+    private Model getResponseData(ResponseObject responseObject, Model model){
+        model.addAttribute("ownAccountTransfer", responseObject.getObject());
+        model.addAttribute("message", responseObject.getMessage());
+        model.addAttribute("status", responseObject.getStatus());
         return model;
     }
 }

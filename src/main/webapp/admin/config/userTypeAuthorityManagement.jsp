@@ -6,8 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/admin/script/userTypeAuthorityManagement.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/userTypeAuthorityManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -19,7 +18,7 @@
                 <legend>User Type Authority Management</legend>
             </div>
             <form role="form" action="/admin/config/userTypeAuthorityManagement/saveUserTypeAuthority" method="post"
-                  id="userTypeAuthorityform">
+                  id="userTypeAuthorityForm">
                 <input type="hidden" name="userTypeAuthorityId"
                        value="${userTypeAuthority.userTypeAuthorityId eq null ? '' : userTypeAuthority.userTypeAuthorityId}"
                        id="userTypeAuthorityId"/>
@@ -56,7 +55,7 @@
                         <ul class="list-group" id="result"></ul>
                     </div>
                 </div>
-                <div class="row form-group">
+                <div class="row form-group updateOperation" style="display: none">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="status">Status</label>
                     </div>
@@ -88,7 +87,7 @@
                                 <label for="modifiedDate">Last Modified Date</label>
                             </div>
                             <div class="col-md-7">
-                                <label id="modifiedDate">${userTypeAuthority.lastModifiedDate}</label>
+                                <label id="modifiedDate"><fmt:formatDate value="${userTypeAuthority.lastModifiedDate}" pattern="dd-MM-yyyy HH:ss"/></label>
                             </div>
                         </div>
                         <div class="row">
@@ -96,8 +95,7 @@
                                 <label for="createdBy">Created By</label>
                             </div>
                             <div class="col-md-7">
-                                <label id="createdBy"><fmt:formatDate value="${userTypeAuthority.createdBy}"
-                                                                      pattern="dd-MM-yyyy HH:mm:ss"/></label>
+                                <label id="createdBy">${userTypeAuthority.createdBy}</label>
                             </div>
                         </div>
                         <div class="row">
@@ -105,8 +103,7 @@
                                 <label for="createdDate">Created Date</label>
                             </div>
                             <div class="col-md-7">
-                                <label id="createdDate"><fmt:formatDate value="${userTypeAuthority.createdDate}"
-                                                                        pattern="dd-MM-yyyy HH:mm:ss"/></label>
+                                <label id="createdDate"><fmt:formatDate value="${userTypeAuthority.createdDate}" pattern="dd-MM-yyyy HH:mm:ss"/></label>
                             </div>
                         </div>
                     </div>
@@ -114,17 +111,15 @@
                 <br/>
                 <div class="row">
                     <div class="pull-right">
-                        <button onclick="form_validate('userTypeAuthorityform')" type="submit"
+                        <button onclick="form_validate('userTypeAuthorityForm')" type="submit"
                                 class="btn btn-success createOperation">Save
                         </button>
                     </div>
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none">Update
+                        <button onclick="form_validate('userTypeAuthorityForm')"
+                                type="submit" class="btn btn-default updateOperation" style="display: none">Update
                         </button>
                     </div>
-                    <%--<div class="col-md-1">--%>
-                    <%--<button type="submit" class="btn btn-danger">Delete</button>--%>
-                    <%--</div>--%>
                 </div>
             </form>
         </div>

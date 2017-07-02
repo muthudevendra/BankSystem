@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/ownAccountTransfer.js"></script>
 <div class="main">
     <div class="container">
         <div class="panel panel-success col-md-offset-1">
