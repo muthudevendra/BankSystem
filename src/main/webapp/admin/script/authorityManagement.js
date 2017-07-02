@@ -12,4 +12,5 @@ $(function () {
         transform_form('authorityForm', '/admin/customer/authorityManagement/updateAuthority')
         transformToUpdate();
     }
+    display_messages();
 });

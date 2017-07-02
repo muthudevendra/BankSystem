@@ -68,7 +68,7 @@ public class AuthorityManagementController {
     }
 
     private Model getPageData(Model model) {
-        model.addAttribute("moduleList", this.moduleService.findAll());
+        model.addAttribute("moduleList", this.moduleService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("statusList", MasterDataStatus.values());
         return model;
     }

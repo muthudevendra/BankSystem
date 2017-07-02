@@ -6,6 +6,7 @@ import com.banksys.admin.datalayer.entity.UserType;
 import com.banksys.admin.datalayer.service.UserLoginAuditService;
 import com.banksys.admin.datalayer.service.UserService;
 import com.banksys.admin.datalayer.service.UserTypeService;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -49,7 +50,7 @@ public class BankSysAuthSuccessHandler implements AuthenticationSuccessHandler {
         User user = this.userService.findByUsername(authentication.getName());
         request.getSession().setAttribute("userId", user.getUserId());
 
-        UserType userType = this.userTypeService.findByUserType("Admin");
+        UserType userType = this.userTypeService.findByUserTypeAndStatusNot("Admin", MasterDataStatus.DELETED.getStatusSeq());
         if(userType != null && user.getUserTypeId().equals(userType.getUserTypeId())){
             response.sendRedirect("/admin");
         }

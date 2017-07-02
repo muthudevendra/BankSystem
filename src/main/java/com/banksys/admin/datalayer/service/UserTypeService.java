@@ -10,5 +10,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserTypeService extends JpaRepository<UserType, Integer> {
-    UserType findByUserType(String userType);
+    UserType findByUserTypeAndStatusNot(String userType, Integer status);
+
+
 }

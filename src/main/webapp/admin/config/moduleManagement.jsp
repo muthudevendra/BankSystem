@@ -20,8 +20,8 @@
             </div>
             <form role="form" action="/admin/config/moduleManagement/saveModule" id="moduleForm" method="post">
                 <input type="hidden" name="moduleId" value="${module.moduleId eq null ? '' : module.moduleId}" id="moduleId"/>
-                <input type="hidden" name="message" value="${message}" id="message"/>
-                <input type="hidden" name="status" value="${status}" id="status" />
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status" />
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="moduleName">Module Name</label>
@@ -36,6 +36,23 @@
                     </div>
                     <div class="col-lg-8">
                         <input required type="text" name="description" class="form-control" id="description" value="${module.description}">
+                    </div>
+                </div>
+                <div class="row form-group ">
+                    <div class="updateOperation" style="display: none">
+                        <div class="col-lg-3 col-md-offset-1">
+                            <label for="status">Status</label>
+                        </div>
+                        <div class="col-lg-8">
+                            <select name="status" class="form-control" id="masterDataStatus">
+                                <c:forEach items="${statusList}" var="status">
+                                    <option ${status.statusSeq eq module.status ? 'selected' : ''}
+                                            value="${status.statusSeq}">
+                                            ${status.status}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -78,9 +95,7 @@
                         </div>
                     </div>
                 </div>
-
                 <br/>
-
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="row">
                     <div class="pull-right">
@@ -91,7 +106,7 @@
                                 </sec:authorize>>Save</button>
                     </div>
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none"
+                        <button onclick="form_validate('moduleForm')" type="submit" class="btn btn-success updateOperation" style="display: none"
                                 <sec:authorize
                                         access="!hasAuthority('admin@moduleManagement_UPDATE')">
                                     disabled="disabled"

@@ -1,6 +1,7 @@
 package com.banksys.admin.presentationlayer;
 
-import com.banksys.admin.businesslayer.manager.AuthoritySearchControllerManager;
+import com.banksys.admin.datalayer.service.AuthorityService;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,16 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin/config/authoritySearch")
 public class AuthoritySearchController {
 
-    private AuthoritySearchControllerManager authoritySearchControllerManager;
+    private final AuthorityService authorityService;
 
     @Autowired
-    public AuthoritySearchController(AuthoritySearchControllerManager authoritySearchControllerManager) {
-        this.authoritySearchControllerManager = authoritySearchControllerManager;
+    public AuthoritySearchController(AuthorityService authorityService) {
+        this.authorityService = authorityService;
     }
 
     @GetMapping
     public String getPage(Model model){
-        model.addAttribute("authorityList", this.authoritySearchControllerManager.findAuthories());
+        model.addAttribute("authorityList", this.authorityService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         return "authoritySearch";
     }
 }

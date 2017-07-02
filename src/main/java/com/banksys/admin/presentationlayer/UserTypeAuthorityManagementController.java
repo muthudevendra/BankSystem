@@ -59,7 +59,7 @@ public class UserTypeAuthorityManagementController {
 
     private Model getPageData(Model model) {
         model.addAttribute("statusList", MasterDataStatus.values());
-        model.addAttribute("authorityList", this.authorityService.findAll());
+        model.addAttribute("authorityList", this.authorityService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("userTypeList", this.userTypeService.findAll());
         return model;
     }

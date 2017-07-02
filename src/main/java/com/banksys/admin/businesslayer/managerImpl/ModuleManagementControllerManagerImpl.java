@@ -6,6 +6,8 @@ import com.banksys.admin.datalayer.service.ModuleService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,12 +37,28 @@ public class ModuleManagementControllerManagerImpl implements ModuleManagementCo
     public ResponseObject updateModule(Module module) {
         Module dbModule = this.moduleService.findOne(module.getModuleId());
         ResponseObject responseObject;
-        if(dbModule.equals(module)){
+        Boolean isUpdatable;
+        if (dbModule.equals(module)) {
             responseObject = new ResponseObject("No changes found", false);
+            isUpdatable = false;
+        } else {
+            if (module.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@moduleManagement_DELETE"));
+                if (isAuthorityFound) {
+                    responseObject = new ResponseObject("Module Deleted Successfully", true);
+                    isUpdatable = true;
+                } else {
+                    responseObject = new ResponseObject("No delete permission, please contact System Admin", false);
+                    isUpdatable = false;
+                }
+            } else {
+                responseObject = new ResponseObject("Module updated Successfully", true);
+                isUpdatable = true;
+            }
         }
-        else{
+        if (isUpdatable) {
             module = this.moduleService.save(module);
-            responseObject = new ResponseObject("Module updated Successfully", true);
         }
         responseObject.setObject(module);
         return responseObject;

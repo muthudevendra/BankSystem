@@ -10,6 +10,6 @@ $(function () {
     if (moduleId != '') {
         transform_form('moduleForm', '/admin/config/moduleManagement/updateModule');
         transformToUpdate();
-        display_messages();
     }
+    display_messages();
 });

@@ -4,6 +4,7 @@ import com.banksys.admin.businesslayer.manager.ModuleManagementControllerManager
 import com.banksys.admin.datalayer.entity.Module;
 import com.banksys.admin.datalayer.service.ModuleService;
 import com.banksys.util.ResponseObject;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,8 @@ public class ModuleManagementController {
 
     @GetMapping
     @PreAuthorize("hasAuthority('admin@moduleManagement_VIEW')")
-    public String getPage(){
+    public String getPage(Model model){
+        this.getPageData(model);
         return "moduleManagement";
     }
 
@@ -40,6 +42,7 @@ public class ModuleManagementController {
     @PreAuthorize("hasAuthority('admin@moduleManagement_VIEW')")
     public String loadPage(@RequestParam("moduleId") Integer modulId, Model model){
         model.addAttribute("module", this.moduleService.findOne(modulId));
+        this.getPageData(model);
         return "moduleManagement";
     }
 
@@ -48,6 +51,7 @@ public class ModuleManagementController {
     public String saveModule(@ModelAttribute Module module,
                              HttpServletRequest request, Model model) {
         ResponseObject responseObject = this.moduleManagementControllerManager.saveModule(module);
+        this.getPageData(model);
         this.getResponseData(responseObject, model);
         return "moduleManagement";
     }
@@ -57,8 +61,14 @@ public class ModuleManagementController {
     public String updateModule(@ModelAttribute Module module,
                              HttpServletRequest request, Model model) {
         ResponseObject responseObject = this.moduleManagementControllerManager.updateModule(module);
+        this.getPageData(model);
         this.getResponseData(responseObject, model);
         return "moduleManagement";
+    }
+
+    private Model getPageData(Model model){
+        model.addAttribute("statusList", MasterDataStatus.values());
+        return model;
     }
 
     private Model getResponseData(ResponseObject responseObject, Model model){

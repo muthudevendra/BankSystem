@@ -10,8 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface UserTypeManagementControllerManager {
-    ResponseObject saveUserTypeManagement(UserType userType);
+    ResponseObject saveUserType(UserType userType);
 
-    ResponseObject updateUserTypeManagement(UserType userType);
-
+    ResponseObject updateUserType(UserType userType);
 }

@@ -6,6 +6,8 @@ import com.banksys.admin.datalayer.service.UserTypeService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,23 +25,41 @@ public class UserTypeManagementControllerManagerImpl implements UserTypeManageme
     }
 
     @Override
-    public ResponseObject saveUserTypeManagement(UserType userType) {
+    public ResponseObject saveUserType(UserType userType) {
         userType.setStatus(MasterDataStatus.OPEN.getStatusSeq());
         this.userTypeService.save(userType);
         ResponseObject responseObject = new ResponseObject(userType, true);
-        responseObject.setMessage("UserType Saved Successfully");
+        responseObject.setMessage("User Type Saved Successfully");
         return responseObject;
     }
 
     @Override
-    public ResponseObject updateUserTypeManagement(UserType userType) {
+    public ResponseObject updateUserType(UserType userType) {
         UserType dbUserType = this.userTypeService.findOne(userType.getUserTypeId());
+        Boolean isUpdatable;
         ResponseObject responseObject;
         if (dbUserType.equals(userType)) {
             responseObject = new ResponseObject("No changes found", false);
+            isUpdatable = false;
         } else {
+            if (userType.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@authorityManagement_DELETE"));
+                if (isAuthorityFound) {
+                    responseObject = new ResponseObject("User Type deleted Successfully", true);
+                    isUpdatable = true;
+                } else {
+                    responseObject = new ResponseObject("No delete permission, please contact System Admin", false);
+                    isUpdatable = false;
+                }
+            }
+            else {
+                responseObject = new ResponseObject("User Type updated Successfully", true);
+                isUpdatable = true;
+            }
+        }
+        if(isUpdatable){
             userType = this.userTypeService.save(userType);
-            responseObject = new ResponseObject("UserType updated Successfully", true);
         }
         responseObject.setObject(userType);
         return responseObject;

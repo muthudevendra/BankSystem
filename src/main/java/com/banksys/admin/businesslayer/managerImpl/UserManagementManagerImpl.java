@@ -4,6 +4,7 @@ import com.banksys.admin.businesslayer.manager.UserManagementManager;
 import com.banksys.admin.datalayer.entity.User;
 import com.banksys.admin.datalayer.entity.UserType;
 import com.banksys.admin.datalayer.service.UserTypeService;
+import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class UserManagementManagerImpl implements UserManagementManager {
     @Override
     public User getDefaultUser(String username) {
         User user = new User();
-        UserType userType = this.userTypeService.findByUserType("Customer");
+        UserType userType = this.userTypeService.findByUserTypeAndStatusNot("Customer", MasterDataStatus.DELETED.getStatusSeq());
         user.setUserTypeId(userType.getUserTypeId());
         user.setUsername(username);
         user.setEnabled(0);

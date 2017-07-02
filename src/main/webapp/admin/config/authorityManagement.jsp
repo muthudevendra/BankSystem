@@ -19,9 +19,9 @@
             </div>
             <form role="form" action="/admin/customer/authorityManagement/saveAuthority" id="authorityForm"
                   method="post">
-                <input type="hidden" name="authorityId" id="authorityId"
-                       value="${authority.authorityId eq null ? '' : authority.authorityId}">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status" />
+                <input type="hidden" name="authorityId" id="authorityId" value="${authority.authorityId eq null ? '' : authority.authorityId}">
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="authorityName">Authority Name</label>
@@ -38,6 +38,7 @@
                     </div>
                     <div class="col-lg-8">
                         <select required name="moduleId" class="form-control" id="moduleId">
+                            <option></option>
                             <c:forEach items="${moduleList}" var="module">
                                 <option ${module.moduleId eq authority.moduleId ? 'selected' : ''}
                                         value="${module.moduleId}">${module.moduleName}</option>
@@ -51,7 +52,7 @@
                             <label for="status">Status</label>
                         </div>
                         <div class="col-lg-8">
-                            <select name="status" class="form-control" id="status">
+                            <select name="status" class="form-control" id="masterDataStatus">
                                 <c:forEach items="${statusList}" var="status">
                                     <option ${status.statusSeq eq authority.status ? 'selected' : ''}
                                             value="${status.statusSeq}">
@@ -104,9 +105,8 @@
                         </div>
                     </div>
                 </div>
-
                 <br/>
-
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
                     <div class="pull-right">
                         <button onclick="form_validate('authorityForm')" type="submit" class="btn btn-success createOperation"
@@ -117,7 +117,7 @@
                         </button>
                     </div>
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-default updateOperation" style="display: none"
+                        <button onclick="form_validate('authorityForm')" type="submit" class="btn btn-success updateOperation" style="display: none"
                                 <sec:authorize
                                         access="!hasAuthority('admin@customerManagement_UPDATE')">
                                     disabled="disabled"

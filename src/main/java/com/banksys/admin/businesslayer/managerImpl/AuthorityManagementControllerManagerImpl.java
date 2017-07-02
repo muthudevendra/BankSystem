@@ -5,7 +5,10 @@ import com.banksys.admin.datalayer.entity.Authority;
 import com.banksys.admin.datalayer.service.AuthorityService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,11 +38,29 @@ public class AuthorityManagementControllerManagerImpl implements AuthorityManage
     public ResponseObject updateAuthority(Authority authority) {
         Authority dbAuthority = this.authorityService.findOne(authority.getAuthorityId());
         ResponseObject responseObject;
+        Boolean isUpdatable;
         if (dbAuthority.equals(authority)) {
+            isUpdatable = false;
             responseObject = new ResponseObject("No changes found", false);
         } else {
+            if (authority.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@authorityManagement_DELETE"));
+                if (isAuthorityFound) {
+                    responseObject = new ResponseObject("Authority Deleted Successfully", true);
+                    isUpdatable = true;
+                } else {
+                    responseObject = new ResponseObject("No delete permission, please contact System Admin", false);
+                    isUpdatable = false;
+                }
+            }
+            else {
+                isUpdatable = true;
+                responseObject = new ResponseObject("Authority updated Successfully", true);
+            }
+        }
+        if(isUpdatable){
             authority = this.authorityService.save(authority);
-            responseObject = new ResponseObject("Authority updated Suucessfully", true);
         }
         responseObject.setObject(authority);
         return responseObject;
