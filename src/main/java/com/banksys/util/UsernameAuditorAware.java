@@ -14,7 +14,7 @@ public class UsernameAuditorAware implements AuditorAware<String> {
     public String getCurrentAuditor() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
-            return null;
+            return "SYSTEM";
         }
         return ((User) authentication.getPrincipal()).getUsername();
     }
