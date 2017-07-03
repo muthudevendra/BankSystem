@@ -59,6 +59,7 @@ public class BillPaymentControllerManagerImpl implements BillPaymentControllerMa
                     billPayment.setTransferStatus(TransferStatus.SENT.getTransferStatusSeq());
                     responseObject = new ResponseObject("Payment Successful", true);
                 } else {
+                    billPayment.setAccountBalance(dbFromAccount.getAvailableBalance());
                     billPayment.setTransferStatus(TransferStatus.SCHEDULED.getTransferStatusSeq());
                     responseObject = new ResponseObject("Payment Scheduled", true);
                 }

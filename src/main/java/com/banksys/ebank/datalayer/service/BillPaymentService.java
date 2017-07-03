@@ -4,6 +4,7 @@ import com.banksys.ebank.datalayer.entity.BillPayment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,4 +16,6 @@ public interface BillPaymentService extends JpaRepository<BillPayment, Integer> 
     List<BillPayment> findByFromAccountIdInAndTransferStatusAndStatusNot(List<Integer> customerAccountIds, Integer transferStatus, Integer status);
 
     List<BillPayment> findByFromAccountIdAndTransferStatusAndStatusNot(Integer customerAccountId, Integer transferStatus, Integer status);
+
+    List<BillPayment> findByPaymentDateAndTransferStatusAndStatusNot(Date paymentDate, Integer transferStatus, Integer status);
 }
