@@ -23,32 +23,32 @@
             <li>Bill Payment</li>
             <li class="active">Schedule Payment</li>
         </ul>
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="col-lg-10">
             <div id="legend">
                 <legend>Schedule Payment</legend>
             </div>
-        </div>
-        <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
-            <table class="table datatable">
-                <thead>
-                <tr>
-                    <th>From Account</th>
-                    <th>To</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${schedulePaymentList}" var="schedulePayment">
+            <div class="col-md-12">
+                <table class="table datatable table-striped table-responsive">
+                    <thead>
                     <tr>
-                        <td>${schedulePayment.fromAccount.accountNo}</td>
-                        <td>${schedulePayment.referenceNo}</td>
-                        <td>${schedulePayment.amount}</td>
-                        <td><fmt:formatDate value="${schedulePayment.paymentDate}" pattern="dd-MM-yyyy"/></td>
+                        <th>From Account</th>
+                        <th>To</th>
+                        <th>Amount</th>
+                        <th>Date</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${schedulePaymentList}" var="schedulePayment">
+                        <tr>
+                            <td>${schedulePayment.fromAccount.accountNo}</td>
+                            <td>${schedulePayment.referenceNo}</td>
+                            <td>${schedulePayment.amount}</td>
+                            <td><fmt:formatDate value="${schedulePayment.paymentDate}" pattern="dd-MM-yyyy"/></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
