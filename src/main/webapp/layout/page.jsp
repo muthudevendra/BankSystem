@@ -54,7 +54,6 @@
     <script type='text/javascript' src='${pageContext.request.contextPath}/layout/assets/plugins/noty/jquery.noty.js'></script>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 </head>
 <body>
