@@ -21,12 +21,10 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private CustomerAccountService customerAccountService;
     private AdminControllerManager adminControllerManager;
 
     @Autowired
-    public AdminController(CustomerAccountService customerAccountService, AdminControllerManager adminControllerManager) {
-        this.customerAccountService = customerAccountService;
+    public AdminController(AdminControllerManager adminControllerManager) {
         this.adminControllerManager = adminControllerManager;
     }
 
@@ -39,16 +37,8 @@ public class AdminController {
     @RequestMapping(value = "/chart", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('admin@admin_VIEW')")
     @ResponseBody
-    public int getChartData(){
-
+    public Integer getChartData(){
         this.adminControllerManager.findCustomerAccountCount();
-
-//        List<CustomerAccount> accountsTypeCount = customerAccountService.findAllByStatusNot(0);
-//        for(CustomerAccount acc : accountsTypeCount){
-//            System.out.println(">>>>");
-//            System.out.println(acc);
-//            System.out.println(">>>><<<<<");
-//        }
         int a=2;
         return a;
     }
