@@ -15,4 +15,5 @@ import java.util.List;
 @Repository
 public interface CustomerAccountService extends JpaRepository<CustomerAccount, Integer> , QueryDslPredicateExecutor<CustomerAccount> {
     List<CustomerAccount> findByCustomerUserIdAndStatusNot(Integer userId, Integer status);
+    List<CustomerAccount> findAllByStatusNot(Integer status);
 }

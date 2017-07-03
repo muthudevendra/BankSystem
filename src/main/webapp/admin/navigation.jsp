@@ -20,6 +20,7 @@
                 </div>
                 <div class="navbar-collapse collapse sidebar-navbar-collapse">
                     <ul class="nav navbar-nav" id="sidenav">
+                        <li class="navUrl"><a href="/admin">Home</a></li>
                         <li>
                             <a href="#" data-toggle="collapse" data-target="#module" data-parent="#sidenav01" class="collapsed">
                                 Module <span class="caret pull-right"></span>
