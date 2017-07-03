@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: lakshithar
@@ -19,9 +20,13 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="/ebank">E-Bank</a></li>
-                    <li><a href="/login">Log In</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <sec:authorize access="!isAuthenticated()">
+                        <li><a href="/login">Log In</a></li>
+                    </sec:authorize>
+                    <sec:authorize access="isAuthenticated()">
+                        <li><a href="/ebank">E-Bank</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </sec:authorize>
                 </ul>
             </div>
             <!-- END TOP BAR MENU -->
