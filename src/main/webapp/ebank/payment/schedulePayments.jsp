@@ -21,50 +21,53 @@
             <li>Bill Payment</li>
             <li class="active">Schedule Payment</li>
         </ul>
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="content-page col-lg-10">
             <div id="legend">
                 <legend>Schedule Payment</legend>
             </div>
-        </div>
-        <div class="content-page col-md-9">
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-3 col-md-offset-8">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+
+            <div class="col-md-12">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-offset-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-1">
+                        <div class="col-md-1">
                         <span class="input-group-btn">
                             <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
                         </span>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
-            <table class="table">
-                <thead>
+                </form>
+            </div>
+            <div class="col-md-12 table-striped table-responsive">
+                <table class="table">
+                    <thead>
                     <tr>
                         <th>From Account</th>
-                        <th>To </th>
+                        <th>To</th>
                         <th>Amount</th>
                         <th>Date</th>
                         <th class="text-right">Status</th>
                         <th class="text-right">Action</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><span class="input-group-btn text-right"><button class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Discard Transaction"><i class="fa fa-minus"></i></button></span></td>
+                        <td><span class="input-group-btn text-right"><button class="btn btn-default btn-xs"
+                                                                             data-toggle="tooltip" data-placement="top"
+                                                                             title="Discard Transaction"><i
+                                class="fa fa-minus"></i></button></span></td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>

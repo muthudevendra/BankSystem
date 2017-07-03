@@ -25,43 +25,44 @@
             <li>Fund Transfer</li>
             <li class="active">Schedule Transfer</li>
         </ul>
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="content-page col-lg-10">
             <div id="legend">
                 <legend>Schedule Transfer</legend>
             </div>
-        </div>
-        <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
-            <table class="table datatable">
-                <thead>
-                <tr>
-                    <th>From Account</th>
-                    <th>To Account</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Schedule Date</th>
-                    <th>Due Date</th>
-                    <th>Status</th>
-                    <th class="text-right">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${scheduledTransferList}" var="transaction">
+            <div class="col-md-12">
+                <table class="table datatable table-striped table-responsive">
+                    <thead>
                     <tr>
-                        <td>${transaction.fromAccount.accountNo}</td>
-                        <td>${transaction.accountNo}</td>
-                        <td>${transaction.description}</td>
-                        <td>${transaction.amount}</td>
-                        <td><fmt:formatDate value="${transaction.createdDate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                        <td><fmt:formatDate value="${transaction.transferDate}" pattern="yyyy-MM-dd HH:mm"/></td>
-                        <td>${transaction.statusDescription}</td>
-                        <td><span class="input-group-btn text-right"><button class="btn btn-default btn-xs"
-                                                                             data-toggle="tooltip" data-placement="top"
-                                                                             title="Discard Transaction"><i
-                                class="fa fa-minus"></i></button></span></td>
+                        <th>From Account</th>
+                        <th>To Account</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Schedule Date</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th class="text-right">Action</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${scheduledTransferList}" var="transaction">
+                        <tr>
+                            <td>${transaction.fromAccount.accountNo}</td>
+                            <td>${transaction.accountNo}</td>
+                            <td>${transaction.description}</td>
+                            <td>${transaction.amount}</td>
+                            <td><fmt:formatDate value="${transaction.createdDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                            <td><fmt:formatDate value="${transaction.transferDate}" pattern="yyyy-MM-dd HH:mm"/></td>
+                            <td>${transaction.statusDescription}</td>
+                            <td><span class="input-group-btn text-right"><button class="btn btn-default btn-xs"
+                                                                                 data-toggle="tooltip"
+                                                                                 data-placement="top"
+                                                                                 title="Discard Transaction"><i
+                                    class="fa fa-minus"></i></button></span></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

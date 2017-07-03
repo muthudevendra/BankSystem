@@ -12,8 +12,8 @@
             <!-- BEGIN TOP BAR LEFT PART -->
             <div class="col-md-6 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
-                    <li><i class="fa fa-phone"></i><span>055678678</span></li>
-                    <li><i class="fa fa-envelope-o"></i><span>info@alphallaince.com</span></li>
+                    <li>Login As</li>
+                    <li><label>lakiya</label></li>
                 </ul>
             </div>
             <!-- END TOP BAR LEFT PART -->

@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: lakshithar
@@ -22,36 +21,34 @@
             <li><a href="#">My Profile</a></li>
             <li class="active">Login History</li>
         </ul>
-        <div class="col-lg-8 col-lg-offset-1">
+        <div class="content-page col-lg-10">
             <div id="legend">
                 <legend>Log Details</legend>
             </div>
-        </div>
-
-        <br>
-        <div class="col-md-9 col-md-offset-1 table-striped table-responsive">
-            <table class="table datatable">
-                <thead>
-                <tr>
-                    <th>Logged In Date</th>
-                    <th>Logged In Time</th>
-                    <th>Logged Out Date</th>
-                    <th>Logged Out Time</th>
-                    <th>Computer IP</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${userLoginHistoryList}" var="userLoginHistory">
+            <div class="col-md-12">
+                <table class="table datatable table-striped table-responsive">
+                    <thead>
                     <tr>
-                        <td><fmt:formatDate value="${userLoginHistory.loginDate}" pattern="dd-MM-yyyy"/></td>
-                        <td><fmt:formatDate value="${userLoginHistory.loginDate}" pattern="HH:mm:ss"/></td>
-                        <td><fmt:formatDate value="${userLoginHistory.logoutDate}" pattern="dd-MM-yyyy"/></td>
-                        <td><fmt:formatDate value="${userLoginHistory.logoutDate}" pattern="HH:mm:ss"/></td>
-                        <td>${userLoginHistory.remoteAddress}</td>
+                        <th>Logged In Date</th>
+                        <th>Logged In Time</th>
+                        <th>Logged Out Date</th>
+                        <th>Logged Out Time</th>
+                        <th>Computer IP</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${userLoginHistoryList}" var="userLoginHistory">
+                        <tr>
+                            <td><fmt:formatDate value="${userLoginHistory.loginDate}" pattern="dd-MM-yyyy"/></td>
+                            <td><fmt:formatDate value="${userLoginHistory.loginDate}" pattern="HH:mm:ss"/></td>
+                            <td><fmt:formatDate value="${userLoginHistory.logoutDate}" pattern="dd-MM-yyyy"/></td>
+                            <td><fmt:formatDate value="${userLoginHistory.logoutDate}" pattern="HH:mm:ss"/></td>
+                            <td>${userLoginHistory.remoteAddress}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -24,9 +24,13 @@
             <li class="active">Payment History</li>
         </ul>
 
-        <div class="content-page">
-            <div class="col-md-8 col-md-offset-1 table-striped table-responsive">
-                <table class="table datatable">
+        <div class="content-page col-lg-10">
+            <div>
+                <legend>Payment History</legend>
+            </div>
+
+            <div class="col-md-12">
+                <table class="table datatable table-striped table-responsive">
                     <thead>
                     <tr>
                         <th>Account Number</th>

@@ -23,33 +23,38 @@
             <li class="active">Inquiry</li>
         </ul>
 
-        <div class="col-md-12 col-md-offset-1 table-striped table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Account Type</th>
-                    <th>Account Number</th>
-                    <th>Open Date</th>
-                    <th>Currency</th>
-                    <th class="text-right">Effective Available Balance</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${customerAccountList}" var="customerAccount">
-                    <tr onclick="load_account_statement(${customerAccount.customerAccountId})">
-                        <td>${customerAccount.account.accountType.accountTypeName}</td>
-                        <td>${customerAccount.accountNo}</td>
-                        <td><fmt:formatDate value="${customerAccount.startDate}"
-                                            pattern="dd-MM-yyyy"/></td>
-                        <td>${customerAccount.currencyDescription}</td>
-                        <td align="right">${customerAccount.availableBalance}</td>
+        <div class="content-page col-lg-10">
+            <div>
+                <legend>Account Inquiry</legend>
+            </div>
+            <br/>
+            <div class="col-md-12">
+                <table class="table table-striped table-hover table-responsive datatable">
+                    <thead>
+                    <tr>
+                        <th>Account Type</th>
+                        <th>Account Number</th>
+                        <th>Open Date</th>
+                        <th>Currency</th>
+                        <th class="text-right">Effective Available Balance</th>
                     </tr>
-                </c:forEach>
-                <tr>
-                </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${customerAccountList}" var="customerAccount">
+                        <tr onclick="load_account_statement(${customerAccount.customerAccountId})">
+                            <td>${customerAccount.account.accountType.accountTypeName}</td>
+                            <td>${customerAccount.accountNo}</td>
+                            <td><fmt:formatDate value="${customerAccount.startDate}"
+                                                pattern="dd-MM-yyyy"/></td>
+                            <td>${customerAccount.currencyDescription}</td>
+                            <td align="right">${customerAccount.availableBalance}</td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
     </div>
 </div>
