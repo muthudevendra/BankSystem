@@ -14,7 +14,7 @@
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
                 <li>
-                    <a href="#"><i class="fa fa-home"></i></a>
+                    <a href="/ebank"><i class="fa fa-home"></i></a>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">

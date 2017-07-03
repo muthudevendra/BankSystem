@@ -5,6 +5,8 @@
   Time: 11:37 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/schedulePayment.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -26,43 +28,25 @@
                 <legend>Schedule Payment</legend>
             </div>
         </div>
-        <div class="content-page col-md-9">
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-3 col-md-offset-8">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
-                        </span>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="col-md-9 col-md-offset-2 table-striped table-responsive">
-            <table class="table">
+            <table class="table datatable">
                 <thead>
-                    <tr>
-                        <th>From Account</th>
-                        <th>To </th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th class="text-right">Status</th>
-                        <th class="text-right">Action</th>
-                    </tr>
+                <tr>
+                    <th>From Account</th>
+                    <th>To</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${schedulePaymentList}" var="schedulePayment">
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><span class="input-group-btn text-right"><button class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Discard Transaction"><i class="fa fa-minus"></i></button></span></td>
+                        <td>${schedulePayment.fromAccount.accountNo}</td>
+                        <td>${schedulePayment.referenceNo}</td>
+                        <td>${schedulePayment.amount}</td>
+                        <td><fmt:formatDate value="${schedulePayment.paymentDate}" pattern="dd-MM-yyyy"/></td>
                     </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
