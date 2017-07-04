@@ -7,6 +7,7 @@
     <groupId>com.banksys</groupId>
     <artifactId>banksys</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -158,7 +159,12 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>ROOT</finalName>
         <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
