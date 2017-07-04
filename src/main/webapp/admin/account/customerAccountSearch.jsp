@@ -77,8 +77,22 @@
                     </div>
             </form>
             <br/>
+            <div class="btn-group pull-right">
+                <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>
+                    Export Data
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="divider"></li>
+                    <li><a href="#" onClick="$('#customerAccountData').tableExport({type:'excel',escape:'false'});"><img
+                            src='${pageContext.request.contextPath}/layout/assets/corporate/img/icons/xls.png' width="24"/> XLS</a></li>
+                    <li><a href="#" onClick="$('#customerAccountData').tableExport({type:'doc',escape:'false'});"><img
+                            src='${pageContext.request.contextPath}/layout/assets/corporate/img/icons/word.png' width="24"/> Word</a></li>
+                    <li><a href="#" onClick="$('#customerAccountData').tableExport({type:'pdf',escape:'false'});"><img
+                            src='${pageContext.request.contextPath}/layout/assets/corporate/img/icons/pdf.png' width="24"/> PDF</a></li>
+                </ul>
+            </div>
             <div class="col-md-12">
-                <table class="table table-striped table-responsive">
+                <table id="customerAccountData" class="table table-striped table-responsive">
                     <thead>
                     <tr>
                         <th>Account Type</th>
