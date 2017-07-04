@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/dashboard/script/childrenSavingsAccount.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,7 +19,8 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
-                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/frontend-slider/bg9.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/Children'sSavings.jpg"
+                         style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -34,25 +37,27 @@
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h4>What’s the best gift you can offer to a child?</h4>
+                            <h4><i>Afraid of your child's future</i></h4>
                             <br>
                             <p>Every child undertakes a long journey to adulthood, and along the way, he or she needs
                                 financial resources for his/her education, and for important landmarks in life. <br><br>That’s
-                                why a “Alpha” Savings Certificate from the Alpha Alliance
+                                why Alpha Savings Certificate from the Alpha Alliance
                                 Bank will come in handy for a smooth, financially secure transition to maturity.
-                                “Alpha Nerds” Savings Certificates enable you to build a fund for your child’s future for a
+                                <br><br>
+                                Alpha Childrens Savings Certificates enable you to build a fund for your childs future
+                                for a
                                 relatively small sum of money.
                             </p>
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
-                            <h5>Benefits</h5>
+                            <h4><i>Benefits</i></h4>
                             <ul>
                                 <li>Initial deposit of Rs10K or USD100 (or any currency equivalent)</li>
                                 <li>Birthday suprises</li>
                                 <li>Bonus interest of 25% on the month of the childs birthday</li>
                                 <li>Grade 5 scholarship achievers will be reward as follows.</li>
-                                <p>
+                                <br>
                                 <table class="table table-striped table-hover table-responsive">
                                     <thead>
                                     <tr>
@@ -78,7 +83,6 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                </p>
                             </ul>
                             <br/>
                             <h5>If your child wishes to travel abroad for educational purposes, we can arrange for the
@@ -99,39 +103,35 @@
                                 <li>ree annual Personal Accident Insurance of Rs.100,000/- for a parent and the child.
                                 </li>
                             </ul>
-                            <a href="#">For Interset Rates</a><br/>
-                            <p>*Conditions Apply;<br> For more details contact Alpha Call Center- (+94 11 2123123) 24
-                                Hour Service</p>
-                            </p>
+                            <a href="${pageContext.request.contextPath}/layout/assets/corporate/AccountRates.pdf"
+                               download>For Interset Rates</a><br/>
+                            <p class="pull-right">*Conditions Apply; </p><br>
+                            <p class="text-center">For more details contact Alpha Call Center- (+94 11 2123123) 24Hour
+                                Service</p>
                         </div>
                         <div class="tab-pane fade" id="to">
-                            <p>
-                            <h5>“Save for your much loved son or daughter by opening a Hapan Saving Account.”</h5>
                             <ul>
                                 <li>Alpha Savings is happy to introduce a Saving Account that will also encourage your
                                     children to save and build themselves a secure future
                                 </li>
-                                <li>"Punchi Alpha” is a savings account meant for little ones up to the age of 7 years.
+                                <li>Punchi Alpha is a savings account meant for little ones up to the age of 7 years.
                                     The account can be opened and operated by a parent or guardian on behalf of the
                                     child.
                                 </li>
-                                <li>“Alpha Nerds” Savings Accounts are for children between the ages of 7 to 16 years.
+                                <li>Alpha Nerds Savings Accounts are for children between the ages of 7 to 16 years.
                                     What makes it unique is that it can be opened and operated by a child over 7 years
                                     of age.
                                     <br>It can also be opened and operated by a parent or in their absence, by a
                                     grandparent or guardian. All what you need is a minimum deposit of Rs. 5/= to open a
-                                    Hapan Account.
+                                    Account.
                                 </li>
-                                <li></li>
                             </ul>
-                            <h4>What you need to bring
-                            </h4>
+                            <h4><i>What you need to bring</i></h4>
                             <ul>
                                 <li>Original birth certificate of the child together with a photocopy</li>
                                 <li>National Identity Card, Driving License or Passport of the parent or the guardian
                                 </li>
                             </ul>
-                            </p>
                         </div>
                     </div>
                 </div>

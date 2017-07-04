@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/dashboard/script/generalCurrentAccount.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -15,9 +17,10 @@
         </ul>
         <h1>GENERAL CURRRENT ACCOUNTS</h1>
         <div class="row">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 center-pill">
                 <div class="content-page">
-                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/frontend-slider/bg9.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/general.jpg"
+                         style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -34,7 +37,7 @@
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h5>What is It</h5>
+                            <h4><i>What is It</i></h4>
                             <br>
                             <p>Alpha general current account enables you to easily issue or deposit cheques with
                                 complete freedom and while enjoying the full convenience of modern-day banking. You need
@@ -46,7 +49,9 @@
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
-                            <h5>Benefits</h5>
+                            <h4>
+                                <i>Benefits</i>
+                            </h4>
                             <ul>
                                 <li>Credit within one day from any bank for Alpha current account cheques.</li>
                                 <li>Immediate encashment of cheques from any one of our branches located island wide,
@@ -64,15 +69,20 @@
                             </ul>
                             <br><br>
 
-                            <a href="#">For Interset Rates</a><br/>
-                            <p>*Conditions Apply;<br> For more details contact Alpha Call Center- (+94 11 2123123) 24
-                                Hour Service</p>
+                            <a href="${pageContext.request.contextPath}/layout/assets/corporate/AccountRates.pdf"
+                               download>For Interset Rates</a><br/>
+                            <p class="pull-right">*Conditions Apply; </p><br>
+                            <p class="text-center">For more details contact Alpha Call Center- (+94 11 2123123) 24Hour
+                                Service</p>
                         </div>
                         <div class="tab-pane fade" id="to">
                             <p>
-                            <h5>“Select a plan of your choice and receive interests monthly, quarterly, biannually,
-                                annually or at maturity....
-                                The best way to earn a higher interest rate for your funds”</h5>
+                            <h5>
+                                <i>Select a plan of your choice and receive interests monthly, quarterly, biannually,
+                                    annually or at maturity....
+                                    The best way to earn a higher interest rate for your funds
+                                </i>
+                            </h5>
                             <ul>
                                 <li>Any Sri Lankan citizen over 18 years of age</li>
                                 <li>Screening clients for competency of maintaining current account of high esteem</li>

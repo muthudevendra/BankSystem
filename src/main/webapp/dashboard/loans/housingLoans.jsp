@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dashboard/script/housingLoans.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,7 +18,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
-                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/house.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/Housingloan.jpg" style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -34,7 +35,7 @@
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h5>What is It</h5>
+                            <h4><i>What is It</i></h4>
                             <br>
                             <p>Having your own home is one of the greatest achivements one would like to have in life.
                                 Alpha housing loans offers affordable and flexible housing loans schemas that can turn
@@ -47,7 +48,7 @@
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
-                            <h5>Benefits</h5>
+                            <h4><i>Benefits</i></h4>
                             <ul>
                                 <li>Are payment period of up to 25 years</li>
                                 <li>Flexible terms and conditions</li>
@@ -58,19 +59,18 @@
                             <br><br>
 
                             <a href="#">For Interset Rates</a><br/>
-                            <p>*Conditions Apply;<br> For more details contact Alpha Call Center- (+94 11 2123123) 24
-                                Hour Service</p>
-                            </p>
+                            <p class="pull-right">*Conditions Apply; </p><br>
+                            <p class="text-center">For more details contact Alpha Call Center- (+94 11 2123123) 24Hour Service</p>
                         </div>
                         <div class="tab-pane fade" id="essentals">
                             <p>
-                            <h5>Who can apply for a Alpha Housing Loan?</h5>
+                            <h4><i>Who can apply for a Alpha Housing Loan?</i></h4>
                             <ul>
                                 <li>Sri Lankan citizens</li>
                                 <li>Who have a regular Net Individual Monthly Income exceeding Rs. 60,000/-</li>
                             </ul>
                             <br>
-                            <h5>ow Much?</h5>
+                            <h5><i>How Much?</i></h5>
                             <ul>
                                 <li>The maximum loan amount is determined considering the repayment capacity & the
                                     Forced Sale Value (FSV) of the property as stipulated by the Bank.
@@ -80,7 +80,7 @@
                                 </li>
                             </ul>
                             <br>
-                            <h5>Security / Insurance:</h5>
+                            <h5><i>Security / Insurance:</i></h5>
                             <ul>
                                 <li>Mortgage over the same property or another immovable property, which is acceptable
                                     to the Bank
@@ -90,7 +90,7 @@
                                 </li>
                             </ul>
                             <br>
-                            <h5>Repayment:</h5>
+                            <h5><i>Repayment:</i></h5>
                             <ul>
                                 <li>Maximum period of 25 years or until the borrower reaches the age of 60</li>
                                 <li>Monthly installment of the loan should not exceed 40% & the total deduction should
@@ -101,7 +101,7 @@
                                 </li>
                             </ul>
                             <br>
-                            <h5>Documents to be submitted :</h5>
+                            <h5><i>Documents to be submitted :</i></h5>
                             <ul>If employed
                                 <li>Confirmation letter covering designation, salary, allowances , period of service .
                                 </li>
