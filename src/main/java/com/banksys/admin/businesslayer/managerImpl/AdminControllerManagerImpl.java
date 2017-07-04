@@ -28,10 +28,12 @@ public class AdminControllerManagerImpl implements AdminControllerManager {
     }
 
     @Override
-    public Map<String, Long> findCustomerAccountCount() {
+    public String findCustomerAccountCount() {
         List<CustomerAccount> customerAccountList = this.customerAccountService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq());
         List<AccountType> accountTypeList = customerAccountList.stream().map(CustomerAccount::getAccount).map(Account::getAccountType).collect(Collectors.toList());
         Map<String, Long> customerAccountGroup = accountTypeList.stream().collect(Collectors.groupingBy(AccountType::getAccountTypeName, Collectors.counting()));
-        return customerAccountGroup;
+        String accountGroup = "{"+customerAccountGroup.entrySet().stream().map(e -> "\""+ e.getKey() + "\"" + ":\"" + String.valueOf(e.getValue()) + "\"")
+                .collect(Collectors.joining(", "))+ "}";
+        return accountGroup;
     }
 }

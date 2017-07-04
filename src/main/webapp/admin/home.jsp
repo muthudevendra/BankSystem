@@ -23,10 +23,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6">
-                        <div id="donut-example"></div>
+                        <canvas id="doughnutChart" width="400" height="400"></canvas>
                     </div>
                     <div class="col-md-6">
-                        <div id="donut-example1"></div>
+                        <canvas id="#" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
