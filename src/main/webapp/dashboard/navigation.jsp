@@ -14,12 +14,12 @@
         <!-- BEGIN NAVIGATION -->
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a class="dropdown-toggle" href="#">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li class="dropdown dropdown-megamenu">
+                <li class="dropdown dropdown-megamenu navUrl" id="savings">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         SAVINGS & INVEST
                     </a>
@@ -30,25 +30,23 @@
                                     <div class="col-md-4 header-navigation-col">
                                         <h4>SAVINGS ACCOUNTS</h4>
                                         <ul>
-                                            <li><a href="#">Regular Savings</a></li>
-                                            <li><a href="#">Children's Savings</a></li>
-                                            <li><a href="#">Women's Savings</a></li>
-                                            <li><a href="#">Senior Savings</a></li>
+                                            <li class="navUrl" id="regularSavingsAccount"><a href="/dashboard/savings/regularSavingsAccount">Regular Savings</a></li>
+                                            <li class="navUrl" id="childrenSavingsAccount"><a href="/dashboard/savings/childrenSavingsAccount">Children's Savings</a></li>
+                                            <li class="navUrl" id="womenSavingsAccount"><a href="/dashboard/savings/womenSavingsAccount">Women's Savings</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-4 header-navigation-col">
                                         <h4>TERM DEPOSITS</h4>
                                         <ul>
-                                            <li><a href="#">Regular Deposits</a></li>
-                                            <li><a href="#">Flexible Deposits</a></li>
-                                            <li><a href="#">Senior Citizen Deposits</a></li>
+                                            <li class="navUrl" id="regularDeposits"><a href="/dashboard/deposits/regularDeposits">Regular Deposits</a></li>
+                                            <li class="navUrl" id="fexibleDeposits"><a href="/dashboard/deposits/flexibleDeposits">Flexible Deposits</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-4 header-navigation-col">
                                         <h4>CURRENT ACCOUNTS</h4>
                                         <ul>
-                                            <li><a href="#">General Current Account</a></li>
-                                            <li><a href="#">Supreme Current Account</a></li>
+                                            <li class="navUrl" id="generalCurrentAccount"><a href="/dashboard/current/generalCurrentAccount">General Current Account</a></li>
+                                            <li class="navUrl" id="supremeCurrentAccount"><a href="/dashboard/current/supremeCurrentAccount">Supreme Current Account</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -56,18 +54,17 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl" id="loans">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         LOANS
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Housing Loans</a></li>
-                        <li><a href="#">Business Loans</a></li>
-                        <li><a href="#">Educational Loans</a></li>
-                        <li><a href="#">Personal Loans</a></li>
+                        <li class="navUrl" id="housingLoans"><a href="/dashboard/loans/housingLoans">Housing Loans</a></li>
+                        <li class="navUrl" id="educationalLoans"><a href="/dashboard/loans/educationalLoans">Educational Loans</a></li>
+                        <li class="navUrl" id="personalLoans"><a href="/dashboard/loans/personalLoans">Personal Loans</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl" id="insurance">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         INSURANCE
                     </a>
@@ -78,7 +75,7 @@
                         <li><a href="#">Buildings & Contents</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         CARDS & CREDITS
                     </a>
@@ -87,7 +84,7 @@
                         <li><a href="#">Alpha Debit Cards</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         DAILY BANKING
                     </a>

@@ -9,7 +9,7 @@
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li><a href="javascript:">Savings & Invest</a></li>
             <li class="active">Children's Savings</li>
         </ul>
@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
-                    <img src="assets/pages/img/frontend-slider/bg9.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/frontend-slider/bg9.jpg" style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -39,9 +39,9 @@
                             <p>Every child undertakes a long journey to adulthood, and along the way, he or she needs
                                 financial resources for his/her education, and for important landmarks in life. <br><br>That’s
                                 why a “Alpha” Savings Certificate from the Alpha Alliance
-                                Bank will come in handy for a smooth, financially secure transition to maturity. Alpha
-                                “Nerds” Savings Certificates enable you to build a fund for your child’s future for a
-                                relatively small sum of money.</p>
+                                Bank will come in handy for a smooth, financially secure transition to maturity.
+                                “Alpha Nerds” Savings Certificates enable you to build a fund for your child’s future for a
+                                relatively small sum of money.
                             </p>
                         </div>
                         <div class="tab-pane row fade" id="benefits">
