@@ -1,23 +1,23 @@
 <%--
   Created by IntelliJ IDEA.
   User: Muthu Devendra
-  Date: 6/18/2017
-  Time: 12:19 PM
+  Date: 7/4/2017
+  Time: 8:24 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="javascript:;">Savings & Invest</a></li>
-            <li class="active">Regular Savings</li>
+            <li><a href="#">Home</a></li>
+            <li><a href="javascript:">Savings & Invest</a></li>
+            <li class="active">Flexible Deposits</li>
         </ul>
-        <h1>REGULAR SAVINGS ACCOUNTS</h1>
+        <h1>FLEXIBLE DEPOSITS ACCOUNTS</h1>
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
-                    <img src="assets/pages/img/frontend-slider/bg1T.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/frontend-slider/bg9.jpg" style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -34,30 +34,22 @@
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h5>What’s the best gift you can offer to a yourself</h5>
+                            <h5>FLEXI ALPHA</h5>
                             <br>
-                            <p>It is a good habit to save a fraction of your hard earned money. <br><br>We at Alpha
-                                Alliance promise you to safeguard your money and appreciate the value of your savings
-                                through our dedication to customer service. Alpha Alliance offers you a wide variety of
-                                savings accounts to choose whatever suits for your lifestyle.</p>
-                            </p>
+                            <p>Have you been planning to own the latest gadgets or doing a lot of fun things for months,
+                                but find it difficult to save for it regularly? It's time you tried iWish - A fun and
+                                flexible way of saving online to fulfill your wishes. It is a flexible Recurring Deposit
+                                that lets you save for your goals as and when you have the funds and earn better
+                                interest rates just like a Fixed Deposit </p>
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
                             <h5>Benefits</h5>
                             <ul>
-                                <li>Interest for a minimum balance of Rs. 100/-</li>
-                                <li>Loans against deposits at a lesser interest rate.</li>
-                                <li>ATM Master Card/Visa Debit Card/Shopping card facility.</li>
-                                <li>100% government guarantee on all your savings and interest earned thereon.</li>
-                                <li>Standing order facility.</li>
-                                <li>Interest will be calculated daily and credited to the account monthly.</li>
-                            </ul>
-                            <br/>
-                            <h5>What are the Special Benefits?</h5>
-                            <ul>
-                                <li>We offers 100% Government Guarantee on all your deposits</li>
-                                <li>Account holders are entitled to nomination facility.</li>
+                                <li>Yearly statement to help keep track of your account activities</li>
+                                <li>Interest accrued on a daily basis and paid yearly</li>
+                                <li>Enjoy higher interest rate than standard accounts</li>
+                                <li>Flexibility to withdraw your funds once a year to meet those unexpected needs</li>
                             </ul>
                             <br><br>
 
@@ -72,8 +64,7 @@
                                 transactions with ease and convenience while earning interest on your daily
                                 balance.”</h5>
                             <ul>
-                                <li>Any Sri Lankan citizen over 18 years of age</li>
-
+                                <li>Any Sri Lankan citizen over 15 years of age</li>
                             </ul>
                             </p>
                         </div>
@@ -82,6 +73,4 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>

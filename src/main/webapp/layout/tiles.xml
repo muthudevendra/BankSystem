@@ -34,6 +34,39 @@
         <put-attribute name="body" value="/admin/home.jsp"/>
     </definition>
 
+    <!--Dashboard-->
+    <definition name="regularSavingsAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/savings/regularSavingsAccount.jsp"/>
+    </definition>
+    <definition name="childrenSavingsAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/savings/childrenSavingsAccount.jsp"/>
+    </definition>
+    <definition name="womenSavingsAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/savings/womenSavingsAccount.jsp"/>
+    </definition>
+    <definition name="generalCurrentAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/current/generalCurrentAccount.jsp"/>
+    </definition>
+    <definition name="supremeCurrentAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/current/supremeCurrentAccount.jsp"/>
+    </definition>
+    <definition name="flexibleDeposits" extends="base">
+        <put-attribute name="body" value="/dashboard/deposits/flexibleDeposits.jsp"/>
+    </definition>
+    <definition name="regularDeposits" extends="base">
+        <put-attribute name="body" value="/dashboard/deposits/regularDeposits.jsp"/>
+    </definition>
+    <definition name="personalLoans" extends="base">
+        <put-attribute name="body" value="/dashboard/loans/personalLoans.jsp"/>
+    </definition>
+    <definition name="educationalLoans" extends="base">
+        <put-attribute name="body" value="/dashboard/loans/educationalLoans.jsp"/>
+    </definition>
+    <definition name="housingLoans" extends="base">
+        <put-attribute name="body" value="/dashboard/loans/housingLoans.jsp"/>
+    </definition>
+
+
     <!--Admin-->
     <definition name="moduleManagement" extends="admin_base">
         <put-attribute name="body" value="/admin/config/moduleManagement.jsp"/>
