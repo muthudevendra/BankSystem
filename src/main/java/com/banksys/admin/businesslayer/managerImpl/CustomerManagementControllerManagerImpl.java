@@ -3,14 +3,23 @@ package com.banksys.admin.businesslayer.managerImpl;
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
 import com.banksys.admin.businesslayer.manager.UserManagementManager;
 import com.banksys.admin.datalayer.entity.User;
+import com.banksys.util.EmailObject;
+import com.banksys.util.EmailSender;
 import com.banksys.util.ResponseObject;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.enums.MasterDataStatus;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.velocity.VelocityEngineUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -21,12 +30,18 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
 
     private final CustomerService customerService;
     private final UserManagementManager userManagementManager;
+    private final VelocityEngine velocityEngine;
+    private final EmailSender emailSender;
 
     @Autowired
     public CustomerManagementControllerManagerImpl(CustomerService customerService,
-                                                   UserManagementManager userManagementManager) {
+                                                   UserManagementManager userManagementManager,
+                                                   VelocityEngine velocityEngine,
+                                                   EmailSender emailSender) {
         this.customerService = customerService;
         this.userManagementManager = userManagementManager;
+        this.velocityEngine = velocityEngine;
+        this.emailSender = emailSender;
     }
 
     @Override
@@ -36,6 +51,7 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
         User defaultUser = this.userManagementManager.getDefaultUser(customer.getFirstName());
         customer.setUser(defaultUser);
         this.customerService.save(customer);
+        this.notifyUserCreation(defaultUser, customer.getAddressBook().getEmail());
         ResponseObject responseObject = new ResponseObject(customer, true);
         responseObject.setMessage("Customer Saved Successfully");
         return responseObject;
@@ -71,5 +87,24 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
         }
         responseObject.setObject(customer);
         return responseObject;
+    }
+
+    private void notifyUserCreation(User defaultUser, String to){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("username", defaultUser.getUsername());
+        model.put("password", defaultUser.getUnhashedPassword());
+        model.put("date", dateFormat.format(new Date()));
+        model.put("title", "Auto Generated Email");
+        String emailBody = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "/emailTemplates/NewUserTemplate.vm", "UTF-8", model);
+        EmailObject emailObject = new EmailObject();
+        emailObject.setBcc("ranasinghe5@gmail.com");
+        emailObject.setCc("muthupriyadarshani@gmail.com");
+        emailObject.setFrom("alphaalliancebank@gmail.com");
+        emailObject.setSubject("System Generated Email");
+        emailObject.setTo(to);
+        emailObject.setBody(emailBody);
+        this.emailSender.sendMail(emailObject);
     }
 }

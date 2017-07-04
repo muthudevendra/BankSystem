@@ -32,6 +32,7 @@ public class UserManagementManagerImpl implements UserManagementManager {
         user.setUsername(username);
         user.setEnabled(0);
         user.setPassword(SHA1(username));
+        user.setUnhashedPassword(username);
         return user;
     }
 

@@ -28,6 +28,8 @@ public class User {
     private String lastModifiedBy;
     private Date lastModifiedDate;
 
+    private String unhashedPassword;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "USER_ID")
@@ -123,6 +125,15 @@ public class User {
 
     public void setLastModifiedDate(java.util.Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    @Transient
+    public String getUnhashedPassword() {
+        return unhashedPassword;
+    }
+
+    public void setUnhashedPassword(String unhashedPassword) {
+        this.unhashedPassword = unhashedPassword;
     }
 
     @Override
