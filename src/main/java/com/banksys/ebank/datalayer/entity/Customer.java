@@ -44,6 +44,8 @@ public class Customer {
     private AddressBook addressBook;
     private User user;
 
+    private Integer userTypeId;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "CUSTOMER_ID")
@@ -269,6 +271,15 @@ public class Customer {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Transient
+    public Integer getUserTypeId() {
+        return userTypeId;
+    }
+
+    public void setUserTypeId(Integer userTypeId) {
+        this.userTypeId = userTypeId;
     }
 
     @Override

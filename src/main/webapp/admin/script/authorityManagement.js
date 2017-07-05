@@ -5,11 +5,11 @@
 
 
 $(function () {
-    $('.navUrl').removeClass('active')
+    $('.navUrl').removeClass('active');
     $('#authorityManagement').addClass('active');
     var authorityId = $('#authorityId').val();
     if (authorityId != '') {
-        transform_form('authorityForm', '/admin/config/authorityManagement/updateAuthority')
+        transform_form('authorityForm', '/admin/config/authorityManagement/updateAuthority');
         transformToUpdate();
     }
     display_messages();

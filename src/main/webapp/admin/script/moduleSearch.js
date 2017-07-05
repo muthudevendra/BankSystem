@@ -3,7 +3,7 @@
  *
  */
 $(function () {
-    $('.navUrl').removeClass('active')
+    $('.navUrl').removeClass('active');
     $('#moduleSearch').addClass('active');
     $('.datatable').dataTable({
         order: [[ 3, "desc" ]],

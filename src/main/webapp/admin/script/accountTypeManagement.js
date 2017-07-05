@@ -4,12 +4,12 @@
  */
 
 $(function () {
-    $('.navUrl').removeClass('active')
+    $('.navUrl').removeClass('active');
     $('#accountTypeManagement').addClass('active');
 
     var accountTypeId = $('#accountTypeId').val();
     if(accountTypeId != ''){
-        transform_form('accountTypeForm', '/admin/account/accountTypeManagement/updateAccountType')
+        transform_form('accountTypeForm', '/admin/account/accountTypeManagement/updateAccountType');
         transformToUpdate();
     }
     display_messages();

@@ -43,9 +43,6 @@ public class CustomerAccountManagementControllerManagerImpl implements CustomerA
         noGenerator.setPreviousNo(noGenerator.getNextNo());
         noGenerator.setNextNo(noGenerator.getNextNo() + 1);
 
-        //Remove Hardcoded Values
-        customerAccount.setCurrencyId(Currency.LKR.getCurrencySeq());
-
         this.customerAccountService.save(customerAccount);
         ResponseObject responseObject = new ResponseObject(customerAccount, true);
         responseObject.setMessage("Customer Account Saved Successfully");

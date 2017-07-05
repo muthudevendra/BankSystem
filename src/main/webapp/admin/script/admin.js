@@ -1,5 +1,6 @@
 /**
  * Created by shehan on 7/2/2017.
+ *
  */
 $(document).ready(function () {
     var val =[],key =[], backgColor=[];

@@ -4,7 +4,7 @@
  */
 
 $(function () {
-    $('.navUrl').removeClass('active')
+    $('.navUrl').removeClass('active');
     $('#accountManagement').addClass('active');
 
     $(".datepicker").datepicker({
@@ -12,7 +12,7 @@ $(function () {
     });
     var customerAccountId = $('#customerAccountId').val();
     if(customerAccountId != ''){
-        transform_form('customerAccountForm', '/admin/account/customerAccountManagement/updateCustomerAccount')
+        transform_form('customerAccountForm', '/admin/account/customerAccountManagement/updateCustomerAccount');
         transformToUpdate();
     }
     display_messages();

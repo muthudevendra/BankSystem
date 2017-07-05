@@ -20,11 +20,14 @@
             </div>
 
             <form role="form" action="/admin/customer/customerManagement/saveCustomer" id="customerForm" method="post">
-                <input type="hidden" name="customerId" id="customerId" value="${customer.customerId eq null ? '' : customer.customerId}">
-                <input type="hidden" name="addressBook.addressBookId" id="addressBookId" value="${customer.addressBook.addressBookId}">
-                <input type="hidden" name="addressBook.status" id="addressBookStatus" value="${customer.addressBook.status}">
+                <input type="hidden" name="customerId" id="customerId"
+                       value="${customer.customerId eq null ? '' : customer.customerId}">
+                <input type="hidden" name="addressBook.addressBookId" id="addressBookId"
+                       value="${customer.addressBook.addressBookId}">
+                <input type="hidden" name="addressBook.status" id="addressBookStatus"
+                       value="${customer.addressBook.status}">
                 <input type="hidden" value="${message}" id="message"/>
-                <input type="hidden" value="${status}" id="status" />
+                <input type="hidden" value="${status}" id="status"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="nic">NIC Number<span class="require">*</span></label>
@@ -37,7 +40,7 @@
                     </div>
                     <div class="col-lg-3">
                         <input type="text" name="nicIssueDate"
-                        value="<fmt:formatDate value="${customer.nicIssueDate}" pattern="yyyy-MM-dd"/>"
+                               value="<fmt:formatDate value="${customer.nicIssueDate}" pattern="yyyy-MM-dd"/>"
                                class="form-control datepicker" id="nicIssueDate">
                     </div>
                 </div>
@@ -95,7 +98,7 @@
                     </div>
                     <div class="col-lg-3">
                         <input required type="text" name="dateOfBirth"
-                        value="<fmt:formatDate value="${customer.dateOfBirth}" pattern="yyyy-MM-dd"/>"
+                               value="<fmt:formatDate value="${customer.dateOfBirth}" pattern="yyyy-MM-dd"/>"
                                class="form-control datepicker" id="birthday">
                     </div>
                     <div class="col-lg-2">
@@ -104,7 +107,8 @@
                     <div class="col-lg-3">
                         <select required name="gender" class="form-control" id="gender">
                             <c:forEach items="${genderList}" var="gender">
-                                <option ${gender.genderSeq eq customer.gender ? 'selected' : ''} value="${gender.genderSeq}">
+                                <option ${gender.genderSeq eq customer.gender ? 'selected' : ''}
+                                        value="${gender.genderSeq}">
                                         ${gender.gender}
                                 </option>
                             </c:forEach>
@@ -125,7 +129,8 @@
                         <label for="addressLine1">Address Line1<span class="require">*</span></label>
                     </div>
                     <div class="col-lg-3">
-                        <input required type="text" name="addressBook.addressLine1" value="${customer.addressBook.addressLine1}"
+                        <input required type="text" name="addressBook.addressLine1"
+                               value="${customer.addressBook.addressLine1}"
                                class="form-control" id="addressLine1">
                     </div>
                     <div class="col-lg-2">
@@ -160,7 +165,8 @@
                         <label for="homeContact">Home Contact<span class="require">*</span></label>
                     </div>
                     <div class="col-lg-3">
-                        <input required type="text" name="addressBook.telephone" value="${customer.addressBook.telephone}"
+                        <input required type="text" name="addressBook.telephone"
+                               value="${customer.addressBook.telephone}"
                                class="form-control" id="homeContact">
                     </div>
                     <div class="col-lg-2">
@@ -188,6 +194,7 @@
                                id="income">
                     </div>
                 </div>
+
                 <div class="row form-group">
                     <div class="updateOperation" style="display: none">
                         <div class="col-lg-3 col-md-offset-1">
@@ -196,7 +203,8 @@
                         <div class="col-lg-3">
                             <select name="status" class="form-control" id="masterDataStatus">
                                 <c:forEach items="${statusList}" var="status">
-                                    <option ${status.statusSeq eq customer.status ? 'selected' : ''} value="${status.statusSeq}">
+                                    <option ${status.statusSeq eq customer.status ? 'selected' : ''}
+                                            value="${status.statusSeq}">
                                             ${status.status}
                                     </option>
                                 </c:forEach>
@@ -207,9 +215,33 @@
                         <label for="tax">Pay Tax</label>
                     </div>
                     <div class="col-lg-offset-0">
-                        <input ${customer.incomeTaxPayStatus eq 1 ? 'checked' : ''} value="1" type="checkbox" name="incomeTaxPayStatus" id="tax">
+                        <input ${customer.incomeTaxPayStatus eq 1 ? 'checked' : ''} value="1" type="checkbox"
+                                                                                    name="incomeTaxPayStatus" id="tax">
                     </div>
                 </div>
+
+                <hr style="width:75%"/>
+                <div class="row form-group">
+                    <div class="col-lg-6 col-md-offset-1">
+                        <label style="color: red">User account will be automatically created and emailed to the customer.
+                            Authorization is based on selected User Type</label>
+                    </div>
+                    <div class="col-lg-3 col-md-offset-1">
+                        <label for="userType">User Type</label>
+                        <br>
+                    </div>
+                    <div class="col-lg-3">
+                        <select required name="userTypeSeq" class="form-control" id="userType">
+                            <c:forEach items="${userTypeList}" var="userType">
+                                <option ${userType.userTypeId eq customer.userTypeId ? 'selected' : ''}
+                                        value="${userType.userTypeId}">
+                                        ${userType.userType}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
+
                 <br/>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row form-group updateOperation" style="display: none">
@@ -259,14 +291,16 @@
                                 <sec:authorize
                                         access="!hasAuthority('admin@customerManagement_CREATE')">
                                     disabled="disabled"
-                                </sec:authorize>>Save</button>
+                                </sec:authorize>>Save
+                        </button>
                     </div>
                     <div class="pull-right updateOperation" style="display: none">
                         <button type="submit" class="btn btn-success"
                                 <sec:authorize
                                         access="!hasAuthority('admin@customerManagement_UPDATE')">
                                     disabled="disabled"
-                                </sec:authorize>>Update</button>
+                                </sec:authorize>>Update
+                        </button>
                     </div>
                 </div>
             </form>

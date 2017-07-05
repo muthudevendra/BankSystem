@@ -1,6 +1,8 @@
 package com.banksys.admin.presentationlayer;
 
 import com.banksys.admin.businesslayer.manager.CustomerManagementControllerManager;
+import com.banksys.admin.datalayer.entity.UserType;
+import com.banksys.admin.datalayer.service.UserTypeService;
 import com.banksys.ebank.datalayer.entity.Customer;
 import com.banksys.ebank.datalayer.service.CustomerService;
 import com.banksys.util.ResponseObject;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Lakshitha on 24-Jun-17.
@@ -27,12 +30,15 @@ public class CustomerManagementController {
 
     private final CustomerManagementControllerManager customerManagementControllerManager;
     private final CustomerService customerService;
+    private final UserTypeService userTypeService;
 
     @Autowired
     public CustomerManagementController(CustomerManagementControllerManager customerManagementControllerManager,
-                                        CustomerService customerService) {
+                                        CustomerService customerService,
+                                        UserTypeService userTypeService) {
         this.customerManagementControllerManager = customerManagementControllerManager;
         this.customerService = customerService;
+        this.userTypeService = userTypeService;
     }
 
     @GetMapping
@@ -72,6 +78,9 @@ public class CustomerManagementController {
     private Model getPageData(Model model){
         model.addAttribute("genderList", Gender.values());
         model.addAttribute("statusList", MasterDataStatus.values());
+        List<UserType> userTypeList = this.userTypeService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq());
+        userTypeList.sort((o1, o2) -> o2.getUserType().compareTo(o1.getUserType()));
+        model.addAttribute("userTypeList", userTypeList);
         return model;
     }
 
