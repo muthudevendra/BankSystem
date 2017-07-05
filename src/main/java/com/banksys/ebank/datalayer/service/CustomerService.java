@@ -14,4 +14,5 @@ import java.util.List;
 @Repository
 public interface CustomerService extends JpaRepository<Customer, Integer>, QueryDslPredicateExecutor<Customer> {
     List<Customer> findByStatusNot(Integer status);
+    Long countCustomersByStatusNot(Integer status);
 }

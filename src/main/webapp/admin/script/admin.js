@@ -3,9 +3,29 @@
  *
  */
 $(document).ready(function () {
-    var val =[],key =[], backgColor=[];
+
     $(window).load(function () {
-        var operationData = load_object_data('/admin/chart','GET','');
+        var accountTypeOperationData = load_object_data('/admin/chart','GET','');
+        var accountChart = document.getElementById("doughnutChart").getContext('2d');
+        createChart(accountTypeOperationData,accountChart);
+
+        var transferOperationData = load_object_data('/admin/transferChart','GET','');
+        var transferChart = document.getElementById("doughnutTransferChart").getContext('2d');
+        createChart(transferOperationData,transferChart);
+
+        var customerAccountCount = load_object_data('/admin/customerAccountCount','GET','');
+        document.getElementById('activeAccount').innerHTML = customerAccountCount;
+
+        var customerCount = load_object_data('/admin/customerCount','GET','');
+        document.getElementById('activeCustomers').innerHTML = customerCount;
+
+        var transferCount = load_object_data('/admin/transferCount','GET','');
+        document.getElementById('transfreCount').innerHTML = transferCount;
+    });
+
+    function createChart(operationData,ctx) {
+        var val =[],key =[], backgColor=[];
+
         var json = $.parseJSON(operationData);
         for(var obj in json){
             var keyV , valV, color;
@@ -16,8 +36,8 @@ $(document).ready(function () {
             color = rgbaColorGenerator();
             backgColor.push(color);
         }
-        var ctx1 = document.getElementById("doughnutChart").getContext('2d');
-        var accountDoughnut = new Chart(ctx1, {
+
+        var doughnutChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: key,
@@ -34,9 +54,9 @@ $(document).ready(function () {
                 }
             }
         });
-        accountDoughnut.data.labels = key;
-        accountDoughnut.data.datasets.data = val;
-    });
+        doughnutChart.data.labels = key;
+        doughnutChart.data.datasets.data = val;
+    }
     
     function rgbaColorGenerator() {
         var letters = '0123456789ABCDEF';
