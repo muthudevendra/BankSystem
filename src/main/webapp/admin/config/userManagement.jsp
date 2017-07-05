@@ -16,13 +16,14 @@
             <div>
                 <legend>User Management</legend>
             </div>
-            <form role="form" id="userForm">
+            <form role="form" id="userForm" action="/admin/config/userManagement/saveUser" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="userName">User Name<span class="require">*</span></label>
                     </div>
                     <div class="col-lg-8">
-                        <input required type="text" name="userName" class="form-control" id="userName">
+                        <input required type="text" name="username" class="form-control" id="userName">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -38,7 +39,7 @@
                         <label for="confirmPassword">Confirm Password<span class="require">*</span></label>
                     </div>
                     <div class="col-lg-8">
-                        <input required type="password" name="confirmPassword" class="form-control"
+                        <input required type="password"  class="form-control"
                                id="confirmPassword">
                     </div>
                 </div>
