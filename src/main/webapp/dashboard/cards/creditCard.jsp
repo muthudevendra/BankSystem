@@ -34,19 +34,38 @@
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h5></h5>
+                            <h4><i>What is it</i></h4>
                             <br>
                             <p>
+                                Alpha Alliance solid and stable tradition along with our ties with Cirrus and Visa have made our cards one of the most widely used in Sri Lanka and abroad.
                             </p>
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
-
+                            <h4><i>Benefits</i></h4>
+                            <ul>
+                                <li>Enjoy lower interest rates</li>
+                                <li>Interest free installment schemes</li>
+                                <li>Year round COMDEALS discounts at selected outlets</li>
+                                <li>06 convenient settlement cycles</li>
+                                <li>Facility of settling credit card payments at over 240 branches island wide</li>
+                            </ul>
+                            <p class="pull-right">*Conditions Apply; </p><br>
+                            <p class="text-center">For more details contact Alpha Call Center- (+94 11 2123123) 24Hour
+                                Service
                             </p>
                         </div>
                         <div class="tab-pane fade" id="essential">
                             <p>
-
+                            <h4><i>Essentials</i></h4>
+                            <br><br/>
+                            <ul>
+                                <li>
+                                    Your cash is safe
+                            </li>
+                                <li>Quick and convenient</li>
+                                <li>Tied with Cirrus and Visa, accepted worldwide</li>
+                            </ul>
                             </p>
                         </div>
                     </div>

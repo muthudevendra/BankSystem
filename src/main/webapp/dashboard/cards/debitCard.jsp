@@ -18,7 +18,8 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
-                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/debitcard.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/debitcard.jpg"
+                         style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -28,24 +29,32 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
                         <li><a href="#benefits" data-toggle="tab">Key Benefits</a></li>
-                        <li><a href="#essential" data-toggle="tab">Essential</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h5></h5>
+                            <h4><i>What..</i></h4>
                             <br>
+                            Present your master and Visa Shopping Debit Card at the time of transaction. The merchant
+                            will swipe it through the authorization terminal and enter the purchase information
+                            The terminal processes the transaction and confirms availability of funds. A sales receipt
+                            will be issued and the transaction amount is automatically deducted from your account.
+                            Verify the amount on the sales receipt and place your signature on it
                             <p>
                             </p>
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
-
-                            </p>
-                        </div>
-                        <div class="tab-pane fade" id="essential">
-                            <p>
-
+                            <h4><i>Benefits</i></h4>
+                            <ul>
+                                <li>
+                                    Awide range of deals and promotions
+                                </li>
+                                <li>Entitled for exclusive at clothing outlets, Hotels, jewellery & Health and many
+                                    more
+                                </li>
+                                <li>can withdraw up to Rs.250,000/-</li>
+                            </ul>
                             </p>
                         </div>
                     </div>
