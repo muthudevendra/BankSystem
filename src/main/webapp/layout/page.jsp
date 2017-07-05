@@ -55,6 +55,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/tableexport/tableExport.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/tableexport/jquery.base64.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/tableexport/html2canvas.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/tableexport/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/tableexport/jspdf/libs/base64.js"></script>
 </head>
 <body>
     <div id="header">

@@ -36,6 +36,15 @@ public class RootConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+
+        //OPENSHIFT MYSQL
+//        String databaseURL = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+//        String databasePort = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+//        dataSource.setUrl("jdbc:mysql://" + databaseURL + ":" + databasePort + "/banksys");
+//        dataSource.setUsername("adminptmBQyu");
+//        dataSource.setPassword("gHU1pRlfjUhj");
+
+        //LOCAL MYSQL CONFIG
         dataSource.setUrl("jdbc:mysql://localhost/banksys");
         dataSource.setUsername("root");
         dataSource.setPassword("");

@@ -6,6 +6,8 @@ import com.banksys.admin.datalayer.service.UserTypeAuthorityService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,11 +37,29 @@ public class UserTypeAuthorityManagementControllerManagerImpl implements UserTyp
     public ResponseObject updateUserTypeAuthority(UserTypeAuthority userTypeAuthority) {
         UserTypeAuthority dbUserTypeAuthority = this.userTypeAuthorityService.findOne(userTypeAuthority.getAuthorityId());
         ResponseObject responseObject;
+        Boolean isUpdatable;
         if (dbUserTypeAuthority.equals(userTypeAuthority)) {
             responseObject = new ResponseObject("No change found", false);
+            isUpdatable = false;
         } else {
+            if (userTypeAuthority.getStatus().equals(MasterDataStatus.DELETED.getStatusSeq())) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                Boolean isAuthorityFound = authentication.getAuthorities().stream().anyMatch(i -> i.getAuthority().equals("admin@userTypeAuthorityManagement_DELETE"));
+                if (isAuthorityFound) {
+                    responseObject = new ResponseObject("User Type Authority deleted Successfully", true);
+                    isUpdatable = true;
+                } else {
+                    responseObject = new ResponseObject("No delete permission, please contact System Admin", false);
+                    isUpdatable = false;
+                }
+            }
+            else {
+                responseObject = new ResponseObject("User Type Authority updated Successfully", true);
+                isUpdatable = true;
+            }
+        }
+        if(isUpdatable) {
             userTypeAuthority = this.userTypeAuthorityService.save(userTypeAuthority);
-            responseObject = new ResponseObject("User Type Authority Successfully", true);
         }
         responseObject.setObject(userTypeAuthority);
         return responseObject;

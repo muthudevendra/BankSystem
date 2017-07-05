@@ -21,7 +21,14 @@
                         <li><a href="/login">Log In</a></li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <li><a href="/ebank">E-Bank</a></li>
+                        <sec:authorize
+                                access="hasAuthority('ebank@ebank_VIEW')">
+                            <li><a href="/ebank">E-Bank</a></li>
+                        </sec:authorize>
+                        <sec:authorize
+                                access="hasAuthority('admin@admin_VIEW')">
+                            <li><a href="/ebank">Admin</a></li>
+                        </sec:authorize>
                         <li><a href="/logout">Logout</a></li>
                     </sec:authorize>
                 </ul>
