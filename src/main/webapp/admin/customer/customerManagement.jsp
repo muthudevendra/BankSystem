@@ -116,11 +116,16 @@
                     </div>
                 </div>
                 <div class="row form-group">
+                    <div class="col-lg-8 col-md-offset-1">
+                        <label style="color: red">Username and password for EBank login will be send to this email</label>
+                    </div>
+                </div>
+                <div class="row form-group">
                     <div class="col-lg-3 col-md-offset-1">
                         <label for="email">E-mail Address</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" name="addressBook.email" value="${customer.addressBook.email}"
+                        <input required type="email" name="addressBook.email" value="${customer.addressBook.email}"
                                class="form-control" id="email">
                     </div>
                 </div>
@@ -231,7 +236,7 @@
                         <br>
                     </div>
                     <div class="col-lg-3">
-                        <select required name="userTypeSeq" class="form-control" id="userType">
+                        <select required name="userTypeId" class="form-control" id="userType">
                             <c:forEach items="${userTypeList}" var="userType">
                                 <option ${userType.userTypeId eq customer.userTypeId ? 'selected' : ''}
                                         value="${userType.userTypeId}">

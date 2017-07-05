@@ -49,6 +49,7 @@ public class CustomerManagementControllerManagerImpl implements CustomerManageme
         customer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
         customer.getAddressBook().setStatus(MasterDataStatus.OPEN.getStatusSeq());
         User defaultUser = this.userManagementManager.getDefaultUser(customer.getFirstName());
+        defaultUser.setUserTypeId(customer.getUserTypeId());
         customer.setUser(defaultUser);
         this.customerService.save(customer);
         this.notifyUserCreation(defaultUser, customer.getAddressBook().getEmail());

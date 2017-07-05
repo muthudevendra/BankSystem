@@ -13,6 +13,6 @@ import javax.jws.soap.SOAPBinding;
 @Component
 public interface UserManagementManager {
     User getDefaultUser(String firstName);
-    ResponseObject saveUser(User user);
 
+    ResponseObject saveUser(User user);
 }
