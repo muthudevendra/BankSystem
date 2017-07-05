@@ -103,13 +103,13 @@
 }
 
 .carousel-slider .carousel-item-nine {
-    background: url(../../../assets/pages/img/frontend-slider/bg1.jpg);
+    background: url(../../../assets/pages/img/frontend-slider/bg1T.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-ten {
-    background: url(../../../assets/pages/img/frontend-slider/bg2.jpg);
+    background: url(../../../assets/pages/img/frontend-slider/bg2T.jpg);
     background-size: cover;
     background-position: center center;
 }
