@@ -24,6 +24,9 @@
         <div class="content-page col-lg-10">
             <div id="legend">
                 <legend>Log Details</legend>
+                <c:if test="${lastFailedLogin ne null}">
+                    <label style="color: red"> Last failed Login attempt at ${lastFailedLogin.attemptedDate} </label>
+                </c:if>
             </div>
             <div class="btn-group pull-right">
                 <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>

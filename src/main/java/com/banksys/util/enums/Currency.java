@@ -8,7 +8,8 @@ import java.util.Arrays;
  */
 public enum Currency {
     LKR(0, "LKR"),
-    USD(1, "USD");
+    USD(1, "USD"),
+    EURO(2, "EURO");
 
     private final Integer currencySeq;
     private final String currency;

@@ -29,7 +29,7 @@
                         </sec:authorize>
                         <sec:authorize
                                 access="hasAuthority('admin@admin_VIEW')">
-                            <li><a href="/ebank">Admin</a></li>
+                            <li><a href="/admin">Admin</a></li>
                         </sec:authorize>
                         <li><a href="/logout">Logout</a></li>
                     </sec:authorize>

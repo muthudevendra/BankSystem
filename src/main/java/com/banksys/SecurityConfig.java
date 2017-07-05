@@ -23,14 +23,17 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final BankSysAuthLogoutHandler bankSysAuthLogoutHandler;
     private final BankSysAuthSuccessHandler bankSysAuthSuccessHandler;
+    private final BankSysAuthFailureHandler bankSysAuthFailureHandler;
     private final DataSource dataSource;
 
     @Autowired
     public SecurityConfig(BankSysAuthLogoutHandler bankSysAuthLogoutHandler,
                           BankSysAuthSuccessHandler bankSysAuthSuccessHandler,
+                          BankSysAuthFailureHandler bankSysAuthFailureHandler,
                           DataSource dataSource) {
         this.bankSysAuthLogoutHandler = bankSysAuthLogoutHandler;
         this.bankSysAuthSuccessHandler = bankSysAuthSuccessHandler;
+        this.bankSysAuthFailureHandler = bankSysAuthFailureHandler;
         this.dataSource = dataSource;
     }
 
@@ -46,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .requestCache().requestCache(new NullRequestCache()).and()
                 .formLogin().loginPage("/login")
-                .usernameParameter("username").passwordParameter("password").successHandler(bankSysAuthSuccessHandler)
+                .usernameParameter("username").passwordParameter("password").successHandler(bankSysAuthSuccessHandler).failureHandler(bankSysAuthFailureHandler)
                 .and().rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("my-remember-me").tokenValiditySeconds(86400)
                 .and()
                 .logout().invalidateHttpSession(true).deleteCookies("JSESSIONID")
