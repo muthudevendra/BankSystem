@@ -4,5 +4,7 @@
  */
 
 $(function () {
-    $('.datatable').DataTable();
+    $('.datatable').DataTable({
+        order: [[0, "desc"]],
+    });
 });

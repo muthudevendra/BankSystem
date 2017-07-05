@@ -35,6 +35,9 @@
     </definition>
 
     <!--Dashboard-->
+    <definition name="home" extends="base">
+        <put-attribute name="body" value="/dashboard/home.jsp"/>
+    </definition>
     <definition name="regularSavingsAccount" extends="base">
         <put-attribute name="body" value="/dashboard/savings/regularSavingsAccount.jsp"/>
     </definition>
@@ -64,6 +67,21 @@
     </definition>
     <definition name="housingLoans" extends="base">
         <put-attribute name="body" value="/dashboard/loans/housingLoans.jsp"/>
+    </definition>
+    <definition name="lifeInsurance" extends="base">
+        <put-attribute name="body" value="/dashboard/insurance/lifeInsurance.jsp"/>
+    </definition>
+    <definition name="carInsurance" extends="base">
+        <put-attribute name="body" value="/dashboard/insurance/carInsurance.jsp"/>
+    </definition>
+    <definition name="buildingInsurance" extends="base">
+        <put-attribute name="body" value="/dashboard/insurance/buildingInsurance.jsp"/>
+    </definition>
+    <definition name="creditCard" extends="base">
+        <put-attribute name="body" value="/dashboard/cards/creditCard.jsp"/>
+    </definition>
+    <definition name="debitCard" extends="base">
+        <put-attribute name="body" value="/dashboard/cards/debitCard.jsp"/>
     </definition>
 
 

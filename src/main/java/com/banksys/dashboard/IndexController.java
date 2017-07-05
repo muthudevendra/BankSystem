@@ -17,4 +17,9 @@ public class IndexController {
     public String getPage(){
         return "dashboard";
     }
+
+    @GetMapping("dashboard/home")
+    public String getHomePage(){
+        return "home";
+    }
 }

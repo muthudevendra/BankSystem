@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
-                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/frontend-slider/bg1T.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/Regularsavin.jpg" style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -35,9 +35,11 @@
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h5>What’s the best gift you can offer to a yourself</h5>
+                            <h4><i>What is the best gift you can offer to a yourself</i></h4>
                             <br>
-                            <p>It is a good habit to save a fraction of your hard earned money. <br><br>We at Alpha
+                            <p class="text-center">It is a good habit to save a fraction of your hard earned money.</p>
+                            <br>
+                            <p>We at Alpha
                                 Alliance promise you to safeguard your money and appreciate the value of your savings
                                 through our dedication to customer service. Alpha Alliance offers you a wide variety of
                                 savings accounts to choose whatever suits for your lifestyle.
@@ -45,7 +47,7 @@
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
-                            <h5>Benefits</h5>
+                            <h4><i>Benefits</i></h4>
                             <ul>
                                 <li>Interest for a minimum balance of Rs. 100/-</li>
                                 <li>Loans against deposits at a lesser interest rate.</li>
@@ -55,34 +57,29 @@
                                 <li>Interest will be calculated daily and credited to the account monthly.</li>
                             </ul>
                             <br/>
-                            <h5>What are the Special Benefits?</h5>
+                            <h5><i>What are the Special Benefits?</i></h5>
                             <ul>
                                 <li>We offers 100% Government Guarantee on all your deposits</li>
                                 <li>Account holders are entitled to nomination facility.</li>
                             </ul>
                             <br><br>
 
-                            <a href="#">For Interset Rates</a><br/>
-                            <p>*Conditions Apply;<br> For more details contact Alpha Call Center- (+94 11 2123123) 24
-                                Hour Service</p>
-                            </p>
+                            <a href="${pageContext.request.contextPath}/layout/assets/corporate/AccountRates.pdf" download>For Interset Rates</a><br/><br>
+                            <p class="pull-right">*Conditions Apply; </p><br>
+                            <p class="text-center">For more details contact Alpha Call Center- (+94 11 2123123) 24Hour Service</p>
                         </div>
                         <div class="tab-pane fade" id="to">
-                            <p>
-                            <h5>“Begin your savings journey with an Alpha Savings Account and manage your day-to-day
+                            <h5>Begin your savings journey with an Alpha Savings Account and manage your day-to-day
                                 transactions with ease and convenience while earning interest on your daily
-                                balance.”</h5>
+                                balance.
+                            </h5><br>
                             <ul>
                                 <li>Any Sri Lankan citizen over 18 years of age</li>
-
                             </ul>
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>

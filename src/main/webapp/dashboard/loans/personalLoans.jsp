@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dashboard/script/personalLoans.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,7 +18,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="content-page">
-                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/frontend-slider/bg9.jpg" style="width:100%; height:100%;">
+                    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/top-images/personalloan.jpg" style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
@@ -34,7 +35,7 @@
                     <div class="tab-content">
                         <div class="tab-pane row fade in active" id="overview">
                             <p class="margin-bottom-10">
-                            <h5>What is It</h5>
+                            <h4><i>What is It</i></h4>
                             <br>
                             <p>To have that perfect wedding, a vacation, your chid's education or much desired budget,
                                 you no longer need to wait to fulfill your aspirations , with Alpha Personal Loans.
@@ -45,7 +46,7 @@
                         </div>
                         <div class="tab-pane row fade" id="benefits">
                             <p>
-                            <h5>Benefits</h5>
+                            <h4><i>Benefits</i></h4>
                             <ul>
                                 <li>Suits for any purpose</li>
                                 <li>Available for slaried individuals</li>
@@ -57,13 +58,12 @@
                             <br><br>
 
                             <a href="#">For Interset Rates</a><br/>
-                            <p>*Conditions Apply;<br> For more details contact Alpha Call Center- (+94 11 2123123) 24
-                                Hour Service</p>
-                            </p>
+                            <p class="pull-right">*Conditions Apply; </p><br>
+                            <p class="text-center">For more details contact Alpha Call Center- (+94 11 2123123) 24Hour Service</p>
                         </div>
                         <div class="tab-pane fade" id="essentals">
                             <p>
-                            <h5>Who can apply for a Alpha Housing Loan?</h5>
+                            <h4><i>Who can apply</i></h4>
                             <ul>
                                 <li>Sri Lankan citizens who age between 20-60 years (Loan to be settled within the
                                     retirement age)
@@ -71,7 +71,7 @@
                                 <li>Minimum monthly fixed income of LKR. 50,000/-</li>
                             </ul>
                             <br>
-                            <h5>Documents to be submitted :</h5>
+                            <h5><i>Documents to be submitted :</i></h5>
                             <ul>
                                 <li>Valid National identity card/ Driving License or Passport</li>
                                 <li>Letter of confirmation from employer regarding employment</li>
