@@ -1,8 +1,6 @@
 package com.banksys.admin.presentationlayer;
 
 import com.banksys.admin.businesslayer.manager.AdminControllerManager;
-import com.banksys.ebank.datalayer.entity.CustomerAccount;
-import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -37,9 +35,7 @@ public class AdminController {
     @RequestMapping(value = "/chart", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('admin@admin_VIEW')")
     @ResponseBody
-    public Integer getChartData(){
-        this.adminControllerManager.findCustomerAccountCount();
-        int a=2;
-        return a;
+    public String getChartData(){
+        return  this.adminControllerManager.findCustomerAccountCount();
     }
 }

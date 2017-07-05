@@ -10,5 +10,5 @@ import java.util.Map;
  */
 @Component
 public interface AdminControllerManager {
-    Map<String , Long> findCustomerAccountCount();
+    String findCustomerAccountCount();
 }
