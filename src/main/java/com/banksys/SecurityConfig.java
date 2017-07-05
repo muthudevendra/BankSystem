@@ -70,14 +70,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "SELECT USERNAME, PASSWORD, TRUE FROM USER WHERE USERNAME=?")
+                        "SELECT USERNAME, PASSWORD, TRUE FROM user WHERE USERNAME=?")
                 .passwordEncoder(new ShaPasswordEncoder(1))
                 .authoritiesByUsernameQuery(
                         "SELECT USERNAME AS username, AUTHORITY_NAME AS authority " +
-                                "FROM USER U, " +
-                                "USER_TYPE UT, " +
-                                "USER_TYPE_AUTHORITY UA, " +
-                                "AUTHORITY A " +
+                                "FROM user U, " +
+                                "user_type UT, " +
+                                "user_type_authority UA, " +
+                                "authority A " +
                                 "WHERE U.USER_TYPE_ID = UT.USER_TYPE_ID " +
                                 "AND UA.USER_TYPE_ID = UT.USER_TYPE_ID " +
                                 "AND UA.AUTHORITY_ID = A.AUTHORITY_ID " +

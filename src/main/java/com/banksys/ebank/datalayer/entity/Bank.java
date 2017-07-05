@@ -8,6 +8,7 @@ import java.util.Objects;
  *
  */
 @Entity
+@Table(name = "bank")
 public class Bank {
     private Integer bankId;
     private String bankName;

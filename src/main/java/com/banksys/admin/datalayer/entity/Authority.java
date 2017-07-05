@@ -13,9 +13,9 @@ import java.util.Objects;
 
 /**
  * Created by lakshithar on 6/20/2017.
- *
  */
 @Entity
+@Table(name = "authority")
 @EntityListeners(AuditingEntityListener.class)
 public class Authority {
     private Integer authorityId;
@@ -30,7 +30,7 @@ public class Authority {
     private Module module;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "AUTHORITY_ID")
     public Integer getAuthorityId() {
         return authorityId;
@@ -72,7 +72,7 @@ public class Authority {
 
     @Basic
     @CreatedBy
-    @Column(name = "CREATED_BY" ,nullable = false, updatable = false)
+    @Column(name = "CREATED_BY", nullable = false, updatable = false)
     public String getCreatedBy() {
         return createdBy;
     }
@@ -83,7 +83,7 @@ public class Authority {
 
     @Basic
     @CreatedDate
-    @Column(name = "CREATED_DATE" ,nullable = false, updatable = false)
+    @Column(name = "CREATED_DATE", nullable = false, updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
     public Date getCreatedDate() {
         return createdDate;
@@ -95,7 +95,7 @@ public class Authority {
 
     @Basic
     @LastModifiedBy
-    @Column(name = "LAST_MODIFIED_BY" ,nullable = false)
+    @Column(name = "LAST_MODIFIED_BY", nullable = false)
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -106,7 +106,7 @@ public class Authority {
 
     @Basic
     @LastModifiedDate
-    @Column(name = "LAST_MODIFIED_DATE" ,nullable = false )
+    @Column(name = "LAST_MODIFIED_DATE", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
     public Date getLastModifiedDate() {
         return lastModifiedDate;

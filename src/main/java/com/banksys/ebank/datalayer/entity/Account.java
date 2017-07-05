@@ -17,6 +17,7 @@ import java.util.Objects;
  *
  */
 @Entity
+@Table(name = "account")
 @EntityListeners(AuditingEntityListener.class)
 public class Account {
     private Integer accountId;
