@@ -49,8 +49,8 @@
                             </a>
                             <div class="collapse" id="user">
                                 <ul class="nav nav-list">
-                                    <li class="navUrl" id="newUser"><a href="/admin/config/userManagement"> New User</a></li>
                                     <li class="navUrl" id="userType"><a href="/admin/config/userTypeManagement">User Type</a></li>
+                                    <li class="navUrl" id="newUser"><a href="/admin/config/userManagement"> New User</a></li>
                                     <li class="navUrl" id="userTypeAuthority"><a href="/admin/config/userTypeAuthorityManagement">User Type Authority</a></li>
                                     <li class="navUrl" id="userTypeSearch"><a href="/admin/config/userTypeSearch">User Type Search</a></li>
                                     <li class="navUrl" id="userTypeAuthoritySearch"><a href="/admin/config/userTypeAuthoritySearch">User Type Authority Search</a></li>

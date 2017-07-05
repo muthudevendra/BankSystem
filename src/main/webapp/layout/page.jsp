@@ -29,7 +29,6 @@
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/style-responsive.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/themes/green.css" rel="stylesheet" id="style-color">
-    <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/custom.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
     <link href="${pageContext.request.contextPath}/layout/assets/plugins/fullcalendar.min.css" rel="stylesheet">

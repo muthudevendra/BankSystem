@@ -5,6 +5,7 @@
   Time: 2:08 PM
   To change this template use File | Settings | File Templates.
 --%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/script/userManagement.js"></script>
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
