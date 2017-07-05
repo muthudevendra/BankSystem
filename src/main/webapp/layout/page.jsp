@@ -32,6 +32,7 @@
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/custom.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/layout/assets/plugins/fullcalendar.min.css" rel="stylesheet">
 
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/jquery-ui.min.js" type="text/javascript"></script>
@@ -47,7 +48,8 @@
 
     <script src="${pageContext.request.contextPath}/layout/assets/plugins/operations.js" type="text/javascript"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.dataTables.min.js"></script>
-
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/moment.min.js"></script>
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/layout/assets/plugins/jquery-validation/validator.min.js"></script>
 
