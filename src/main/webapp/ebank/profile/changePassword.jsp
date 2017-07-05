@@ -5,6 +5,7 @@
   Time: 10:45 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/layout/include.jsp" %>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -28,7 +29,8 @@
                 <div class="content-form-page">
                     <div class="row">
                         <div class="col-md-7 col-sm-7">
-                            <form class="form-horizontal form-without-legend" role="form">
+                            <form id="changePasswordForm" action="/ebank/profile/changePassword/changePassword"
+                                  method="post" class="form-horizontal form-without-legend" role="form">
                                 <div class="form-group">
                                     <label for="userName" class="col-lg-4 control-label">User Name <span
                                             class="require">*</span></label>
@@ -40,14 +42,15 @@
                                     <label for="currentPassword" class="col-lg-4 control-label">Current Password <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="Password" class="form-control" id="currentPassword">
+                                        <input name="oldPassword" type="Password" class="form-control"
+                                               id="currentPassword">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="newPassword" class="col-lg-4 control-label">New Password <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="Password" class="form-control" id="newPassword">
+                                        <input name="password" type="Password" class="form-control" id="newPassword">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -60,7 +63,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button onchange="form_validate('changePasswordForm')"
+                                                type="submit" class="btn btn-primary"
+                                                <sec:authorize
+                                                        access="!hasAuthority('ebank@changePassword_CHANGE')">
+                                                    disabled="disabled"
+                                                </sec:authorize>>Save
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -70,3 +79,4 @@
             </div>
         </div>
     </div>
+</div>

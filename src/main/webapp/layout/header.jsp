@@ -11,8 +11,10 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 additional-shop-info">
                 <ul class="list-unstyled list-inline">
-                    <li>Login As</li>
-                    <li><label>lakiya</label></li>
+                    <sec:authorize access="isAuthenticated()">
+                        <li>Login As</li>
+                        <li><label><sec:authentication property="name"/></label></li>
+                    </sec:authorize>
                 </ul>
             </div>
             <div class="col-md-6 col-sm-6 additional-nav">

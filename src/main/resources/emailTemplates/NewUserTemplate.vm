@@ -133,6 +133,7 @@
                                                 This can be changed after the first login.
                                                 <br>
                                                 Username : ${username}
+                                                <br>
                                                 Password : ${password}
                                                 <br>
                                             </td>

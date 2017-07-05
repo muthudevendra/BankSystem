@@ -30,6 +30,7 @@ public class User {
     private Date lastModifiedDate;
 
     private String unhashedPassword;
+    private String oldPassword;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -135,6 +136,15 @@ public class User {
 
     public void setUnhashedPassword(String unhashedPassword) {
         this.unhashedPassword = unhashedPassword;
+    }
+
+    @Transient
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
     @Override
