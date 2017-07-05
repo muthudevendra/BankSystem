@@ -1,6 +1,7 @@
 package com.banksys.ebank.datalayer.entity;
 
 import com.banksys.admin.datalayer.entity.User;
+import com.banksys.util.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -45,6 +46,7 @@ public class Customer {
     private User user;
 
     private Integer userTypeId;
+    private String genderDescription;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -165,6 +167,9 @@ public class Customer {
 
     public void setGender(Integer gender) {
         this.gender = gender;
+        if(gender != null){
+            this.setGenderDescription(Gender.findOne(gender).getGender());
+        }
     }
 
     @Basic
@@ -280,6 +285,15 @@ public class Customer {
 
     public void setUserTypeId(Integer userTypeId) {
         this.userTypeId = userTypeId;
+    }
+
+    @Transient
+    public String getGenderDescription() {
+        return genderDescription;
+    }
+
+    public void setGenderDescription(String genderDescription) {
+        this.genderDescription = genderDescription;
     }
 
     @Override

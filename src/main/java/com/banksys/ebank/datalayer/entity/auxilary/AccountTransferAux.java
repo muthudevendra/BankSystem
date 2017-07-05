@@ -16,6 +16,7 @@ public class AccountTransferAux {
     private Double withdrawAmount;
     private Double depositAmount;
     private Double availableBalance;
+    private String currencyCode;
 
     public Date getTransferDate() {
         return transferDate;
@@ -74,5 +75,13 @@ public class AccountTransferAux {
 
     public void setAvailableBalance(Double availableBalance) {
         this.availableBalance = availableBalance;
+    }
+
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
     }
 }

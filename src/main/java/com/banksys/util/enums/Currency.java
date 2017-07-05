@@ -7,16 +7,18 @@ import java.util.Arrays;
  *
  */
 public enum Currency {
-    LKR(0, "LKR"),
-    USD(1, "USD"),
-    EURO(2, "EURO");
+    LKR(0, "LKR", 1.0),
+    USD(1, "USD", 154.3),
+    EURO(2, "EURO", 174.27);
 
     private final Integer currencySeq;
     private final String currency;
+    private final Double rate;
 
-    Currency(Integer currencySeq, String currency) {
+    Currency(Integer currencySeq, String currency, Double rate) {
         this.currencySeq = currencySeq;
         this.currency = currency;
+        this.rate = rate;
     }
 
     public Integer getCurrencySeq() {
@@ -25,6 +27,10 @@ public enum Currency {
 
     public String getCurrency() {
         return currency;
+    }
+
+    public Double getRate() {
+        return rate;
     }
 
     public static Currency findOne(Integer currencySeq){

@@ -1,5 +1,7 @@
 package com.banksys.util.enums;
 
+import java.util.Arrays;
+
 /**
  * Created by Lakshitha on 24-Jun-17.
  *
@@ -22,5 +24,12 @@ public enum Gender {
 
     public String getGender() {
         return gender;
+    }
+
+    public static Gender findOne(Integer genderSeq){
+        return Arrays.stream(Gender.values())
+                .filter(i -> i.getGenderSeq().equals(genderSeq))
+                .findFirst()
+                .orElse(null);
     }
 }

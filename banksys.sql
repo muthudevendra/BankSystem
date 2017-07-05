@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 05, 2017 at 03:20 PM
+-- Generation Time: Jul 05, 2017 at 05:21 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `LAST_MODIFIED_DATE` date NOT NULL,
   PRIMARY KEY (`ACCOUNT_ID`),
   KEY `FKq9dxl66qvrrtu7rrgchjh5vej` (`ACCOUNT_TYPE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `account`
@@ -54,7 +54,9 @@ INSERT INTO `account` (`ACCOUNT_ID`, `ACCOUNT_TYPE_ID`, `INTEREST_CAL_METHOD`, `
 (9, 1, 1, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
 (10, 1, 1, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
 (11, 1, 0, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(12, 1, 0, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
+(12, 1, 0, 1, 1, NULL, 1, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(13, 1, 0, NULL, NULL, NULL, 1, 'lakiya', '2017-07-05', 'lakiya', '2017-07-05'),
+(14, 1, 0, NULL, NULL, NULL, 1, 'lakiya', '2017-07-05', 'lakiya', '2017-07-05');
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `address_book` (
 --
 
 INSERT INTO `address_book` (`ADDRESS_BOOK_ID`, `ADDRESS_LINE1`, `ADDRESS_LINE2`, `ADDRESS_LINE3`, `CITY`, `COUNTRY`, `TELEPHONE`, `MOBILE`, `EMAIL`, `STATUS`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
-(1, '186, Aluthgama', 'Bandaragama', NULL, 'Bandaragama', 'Sri Lanka', '0382290674', '0772250808', 'ranasinghe5@gmail.com', 0, 'lakiya', '2017-06-24', 'lakiya', '2017-07-02'),
+(1, '186, Aluthgama', 'Bandaragama', NULL, 'Bandaragama', 'Sri Lanka', '0382290674', '0772250808', 'ranasinghe5@gmail.com', 0, 'lakiya', '2017-06-24', 'lakiya', '2017-07-05'),
 (4, '158', 'Colombo', NULL, 'Colombo', 'Sri Lanka', '0335565555', '0772250828', 'muthumin@gmail.com', 1, 'lakiya', '2017-07-01', 'lakiya', '2017-07-02'),
 (5, '123', '12', NULL, 'Piliyandala', 'Colombo', '0382295444', '0718712487', 'ranasinghe5@gmail.com', 1, 'lakiya', '2017-07-04', 'lakiya', '2017-07-04'),
 (6, '123', '12', NULL, 'Piliyandala', 'Colombo', '0382295444', '0718712487', 'ranasinghe5@gmail.com', 1, 'lakiya', '2017-07-04', 'lakiya', '2017-07-04'),
@@ -255,6 +257,32 @@ INSERT INTO `bill_payment` (`BILL_PAYMENT_ID`, `FROM_ACCOUNT_ID`, `PAYMENT_TYPE`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `currency`
+--
+
+CREATE TABLE IF NOT EXISTS `currency` (
+  `CURRENCY_SEQ` int(11) NOT NULL AUTO_INCREMENT,
+  `CURRENCY_CODE` varchar(100) NOT NULL,
+  `RATE` double NOT NULL,
+  `STATUS` int(11) NOT NULL,
+  `CREATED_BY` varchar(100) NOT NULL,
+  `CREATED_DATE` datetime NOT NULL,
+  `LAST_MODIFIED_BY` varchar(100) NOT NULL,
+  `LAST_MODIFIED_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CURRENCY_SEQ`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `currency`
+--
+
+INSERT INTO `currency` (`CURRENCY_SEQ`, `CURRENCY_CODE`, `RATE`, `STATUS`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
+(1, 'LKR', 1, 1, 'SYSTEM', '2017-07-05 00:00:00', 'SYSTEM', '2017-07-05 00:00:00'),
+(2, 'USD', 154.23, 1, 'SYSTEM', '2017-07-05 00:00:00', 'SYSTEM', '2017-07-05 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customer`
 --
 
@@ -288,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
 --
 
 INSERT INTO `customer` (`CUSTOMER_ID`, `NIC`, `NIC_ISSUE_DATE`, `PASSPORT_NO`, `FULL_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `LAST_NAME`, `ADDRESS_BOOK_ID`, `USER_ID`, `DATE_OF_BIRTH`, `GENDER`, `MONTHLY_INCOME`, `OCCUPATION`, `INCOME_TAX_PAY_STATUS`, `STATUS`, `CREATED_DATE`, `CREATED_BY`, `LAST_MODIFIED_DATE`, `LAST_MODIFIED_BY`) VALUES
-(1, '933582965V', '2017-10-10', '85454111', 'Lakshitha Ranasinghe', 'Lakshitha', '', 'Ranasinghe', 1, 2, '1994-11-12', 1, 120000, 'Software Engineer', 1, 1, '2017-06-24', 'lakiya', '2017-07-02', 'lakiya'),
+(1, '933582965V', '2017-10-10', '85454111', 'Lakshitha Ranasinghe', 'Lakshitha', '', 'Ranasinghe', 1, 2, '1994-11-12', 0, 120000, 'Software Engineer', 1, 1, '2017-06-24', 'lakiya', '2017-07-05', 'lakiya'),
 (2, '939548745V', '1993-01-24', '12123333-233', 'Muthu Devendra', 'muthu', '', 'Devendra', 4, 3, '1993-07-05', 1, 30000, 'Developer', NULL, 1, '2017-07-01', 'lakiya', '2017-07-02', 'lakiya'),
 (3, '935542965V', '1993-07-05', '85454111', 'Oshada Viraj', 'Oshada', 'Viraj', 'Viraj', 10, 9, '1993-07-19', 0, 80000, 'Software Engineer', NULL, 1, '2017-07-04', 'lakiya', '2017-07-04', 'lakiya'),
 (4, '935542965V', '1993-07-05', '85454111', 'Oshada Viraj', 'Lakshitha', 'Viraj', 'Viraj', 11, 10, '1993-07-19', 0, 80000, 'Software Engineer', NULL, 1, '2017-07-04', 'lakiya', '2017-07-04', 'lakiya');
@@ -316,7 +344,8 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
   `LAST_MODIFIED_DATE` date NOT NULL,
   PRIMARY KEY (`CUSTOMER_ACCOUNT_ID`),
   KEY `FKq2875cwa4anm45j8yf49stjkv` (`ACCOUNT_ID`),
-  KEY `FK7cqiu8phqi0bygrlaqtm01fsj` (`CUSTOMER_ID`)
+  KEY `FK7cqiu8phqi0bygrlaqtm01fsj` (`CUSTOMER_ID`),
+  KEY `FKjk6amqiupdn1b9cjhvae8ym1i` (`CURRENCY_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -324,9 +353,9 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
 --
 
 INSERT INTO `customer_account` (`CUSTOMER_ACCOUNT_ID`, `ACCOUNT_ID`, `ACCOUNT_NO`, `START_DATE`, `END_DATE`, `AVAILABLE_BALANCE`, `CURRENCY_ID`, `CUSTOMER_ID`, `STATUS`, `VERSION`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
-(1, 2, '20170628000001', '2017-06-07', '2017-06-30', 13000, 0, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-02'),
-(2, 10, '20170628000002', '2017-06-01', '2017-06-30', 11700, 0, 1, 1, 0, 'lakiya', '2017-06-28', 'SYSTEM', '2017-07-03'),
-(3, 12, '2017072000002', '2017-07-01', '2017-07-31', 50000, 0, 2, 0, 0, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
+(1, 14, '20170628000001', '2017-06-07', '2017-06-30', 12997.990014912793, 2, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-05'),
+(2, 10, '20170628000002', '2017-06-01', '2017-06-30', 11700, 1, 1, 1, 0, 'lakiya', '2017-06-28', 'SYSTEM', '2017-07-03'),
+(3, 12, '2017072000002', '2017-07-01', '2017-07-31', 50000, 1, 2, 0, 0, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
 
 -- --------------------------------------------------------
 
@@ -425,6 +454,7 @@ CREATE TABLE IF NOT EXISTS `third_party_transfer` (
   `THIRD_PARTY_ACCOUNT_TRANSFER_ID` int(11) NOT NULL AUTO_INCREMENT,
   `FROM_ACCOUNT_ID` int(11) NOT NULL,
   `AMOUNT` double NOT NULL,
+  `CURRENCY_SEQ` int(11) NOT NULL,
   `ACCOUNT_BALANCE` double NOT NULL,
   `DESCRIPTION` varchar(100) DEFAULT NULL,
   `TRANSFER_DATE` datetime NOT NULL,
@@ -439,28 +469,30 @@ CREATE TABLE IF NOT EXISTS `third_party_transfer` (
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
   `LAST_MODIFIED_DATE` date NOT NULL,
   PRIMARY KEY (`THIRD_PARTY_ACCOUNT_TRANSFER_ID`),
-  KEY `FKtjhpengc5upa0i37wybdv1v97` (`FROM_ACCOUNT_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+  KEY `FKtjhpengc5upa0i37wybdv1v97` (`FROM_ACCOUNT_ID`),
+  KEY `FKrq1cij96098org12kdxfhgqxg` (`CURRENCY_SEQ`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `third_party_transfer`
 --
 
-INSERT INTO `third_party_transfer` (`THIRD_PARTY_ACCOUNT_TRANSFER_ID`, `FROM_ACCOUNT_ID`, `AMOUNT`, `ACCOUNT_BALANCE`, `DESCRIPTION`, `TRANSFER_DATE`, `STATUS`, `TRANSFER_STATUS`, `RECEIVER_NAME`, `BANK`, `BRANCH`, `ACCOUNT_NO`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
-(7, 1, 400, 12800, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(8, 1, 250, 12550, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(9, 1, 300, 12250, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(10, 1, 300, 11950, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(11, 1, 300, 11650, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(12, 1, 400, 11250, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(13, 1, 400, 10850, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(14, 1, 350, 10500, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(15, 1, 350, 10150, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(16, 1, 350, 9800, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(17, 1, 300, 9500, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(18, 1, 400, 9100, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(19, 1, 300, 8800, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '12323999-00000', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
-(20, 2, 200, 11900, NULL, '2017-07-03 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'SYSTEM', '2017-07-03');
+INSERT INTO `third_party_transfer` (`THIRD_PARTY_ACCOUNT_TRANSFER_ID`, `FROM_ACCOUNT_ID`, `AMOUNT`, `CURRENCY_SEQ`, `ACCOUNT_BALANCE`, `DESCRIPTION`, `TRANSFER_DATE`, `STATUS`, `TRANSFER_STATUS`, `RECEIVER_NAME`, `BANK`, `BRANCH`, `ACCOUNT_NO`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
+(7, 1, 400, 1, 12800, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(8, 1, 250, 1, 12550, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(9, 1, 300, 1, 12250, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(10, 1, 300, 1, 11950, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(11, 1, 300, 1, 11650, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(12, 1, 400, 1, 11250, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(13, 1, 400, 1, 10850, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(14, 1, 350, 1, 10500, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(15, 1, 350, 1, 10150, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(16, 1, 350, 1, 9800, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(17, 1, 300, 1, 9500, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(18, 1, 400, 1, 9100, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(19, 1, 300, 1, 8800, NULL, '2017-07-02 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '1', 'Colombo', '12323999-00000', 'lakiya', '2017-07-02', 'lakiya', '2017-07-02'),
+(20, 2, 200, 1, 11900, NULL, '2017-07-03 00:00:00', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '1821000000001', 'lakiya', '2017-07-02', 'SYSTEM', '2017-07-03'),
+(21, 1, 310, 1, 12997.990014912793, NULL, '2017-07-05 22:39:28', 1, 0, 'Lakshitha Ranasinghe', '2', 'Colombo', '12323999-00000', 'lakiya', '2017-07-05', 'lakiya', '2017-07-05');
 
 -- --------------------------------------------------------
 
@@ -509,7 +541,7 @@ CREATE TABLE IF NOT EXISTS `user_login_audit` (
   `LOGOUT_DATE` datetime DEFAULT NULL,
   `REMOTE_ADDRESS` varchar(100) NOT NULL,
   PRIMARY KEY (`USER_LOGIN_AUDIT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=109 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=112 ;
 
 --
 -- Dumping data for table `user_login_audit`
@@ -622,7 +654,10 @@ INSERT INTO `user_login_audit` (`USER_LOGIN_AUDIT_ID`, `USERNAME`, `LOGIN_DATE`,
 (105, 'lakiya', '2017-07-05 09:22:31', NULL, '0:0:0:0:0:0:0:1'),
 (106, 'lakiya', '2017-07-05 11:05:19', '2017-07-05 11:06:18', '0:0:0:0:0:0:0:1'),
 (107, 'lakiya', '2017-07-05 11:06:27', NULL, '0:0:0:0:0:0:0:1'),
-(108, 'lakiya', '2017-07-05 11:19:04', NULL, '0:0:0:0:0:0:0:1');
+(108, 'lakiya', '2017-07-05 11:19:04', NULL, '0:0:0:0:0:0:0:1'),
+(109, 'lakiya', '2017-07-05 21:33:15', NULL, '0:0:0:0:0:0:0:1'),
+(110, 'lakiya', '2017-07-05 22:18:08', NULL, '0:0:0:0:0:0:0:1'),
+(111, 'lakiya', '2017-07-05 22:33:17', NULL, '0:0:0:0:0:0:0:1');
 
 -- --------------------------------------------------------
 
@@ -637,7 +672,8 @@ CREATE TABLE IF NOT EXISTS `user_login_failure_audit` (
   `NUMBER_OF_ATTEMPTS` int(11) NOT NULL,
   `LOCKED_STATUS` int(11) NOT NULL,
   `UNLOCKED_AT` datetime DEFAULT NULL,
-  PRIMARY KEY (`USER_LOGIN_FAILURE_AUDIT_ID`)
+  PRIMARY KEY (`USER_LOGIN_FAILURE_AUDIT_ID`),
+  UNIQUE KEY `USER_ID` (`USER_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -765,6 +801,7 @@ ALTER TABLE `customer`
 -- Constraints for table `customer_account`
 --
 ALTER TABLE `customer_account`
+  ADD CONSTRAINT `FKjk6amqiupdn1b9cjhvae8ym1i` FOREIGN KEY (`CURRENCY_ID`) REFERENCES `currency` (`CURRENCY_SEQ`),
   ADD CONSTRAINT `FK7cqiu8phqi0bygrlaqtm01fsj` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customer` (`CUSTOMER_ID`),
   ADD CONSTRAINT `FKg8ovfg8qqvp4ax0k1bqmg8gh3` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account` (`ACCOUNT_ID`),
   ADD CONSTRAINT `FKq2875cwa4anm45j8yf49stjkv` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account` (`ACCOUNT_ID`);
@@ -773,6 +810,7 @@ ALTER TABLE `customer_account`
 -- Constraints for table `third_party_transfer`
 --
 ALTER TABLE `third_party_transfer`
+  ADD CONSTRAINT `FKrq1cij96098org12kdxfhgqxg` FOREIGN KEY (`CURRENCY_SEQ`) REFERENCES `currency` (`CURRENCY_SEQ`),
   ADD CONSTRAINT `FKtjhpengc5upa0i37wybdv1v97` FOREIGN KEY (`FROM_ACCOUNT_ID`) REFERENCES `customer_account` (`CUSTOMER_ACCOUNT_ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

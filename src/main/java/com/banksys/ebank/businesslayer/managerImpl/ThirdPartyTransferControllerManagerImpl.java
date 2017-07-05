@@ -1,5 +1,7 @@
 package com.banksys.ebank.businesslayer.managerImpl;
 
+import com.banksys.admin.datalayer.entity.Currency;
+import com.banksys.admin.datalayer.service.CurrencyService;
 import com.banksys.util.ResponseObject;
 import com.banksys.ebank.businesslayer.manager.ThirdPartyTransferControllerManager;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
@@ -24,12 +26,15 @@ public class ThirdPartyTransferControllerManagerImpl implements ThirdPartyTransf
 
     private final CustomerAccountService customerAccountService;
     private final ThirdPartyTransferService thirdPartyTransferService;
+    private final CurrencyService currencyService;
 
     @Autowired
     public ThirdPartyTransferControllerManagerImpl(CustomerAccountService customerAccountService,
-                                                   ThirdPartyTransferService thirdPartyTransferService) {
+                                                   ThirdPartyTransferService thirdPartyTransferService,
+                                                   CurrencyService currencyService) {
         this.customerAccountService = customerAccountService;
         this.thirdPartyTransferService = thirdPartyTransferService;
+        this.currencyService = currencyService;
     }
 
     @Override
@@ -55,7 +60,9 @@ public class ThirdPartyTransferControllerManagerImpl implements ThirdPartyTransf
             else {
                 if (thirdPartyTransfer.getTransferDate().equals(today)) {
                     thirdPartyTransfer.setTransferDate(new Date());
-                    dbFromAccount.setAvailableBalance(availableBalance - thirdPartyTransfer.getAmount());
+                    Currency payingCurrency = this.currencyService.findOne(thirdPartyTransfer.getCurrencySeq());
+                    Double convertedAmount = (thirdPartyTransfer.getAmount() * payingCurrency.getRate()) / dbFromAccount.getCurrency().getRate();
+                    dbFromAccount.setAvailableBalance(availableBalance - convertedAmount);
                     thirdPartyTransfer.setAccountBalance(dbFromAccount.getAvailableBalance());
                     thirdPartyTransfer.setTransferStatus(TransferStatus.SENT.getTransferStatusSeq());
                     responseObject = new ResponseObject("Transfer Successful", true);

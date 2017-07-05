@@ -73,7 +73,7 @@ public class OwnAccountTransferController {
     @ResponseBody
     public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
         CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
-        return customerAccount.getCurrencyDescription();
+        return customerAccount.getCurrency().getCurrencyCode();
     }
 
     private Model getPageData(Model model, HttpServletRequest request) {

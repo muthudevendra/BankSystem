@@ -97,7 +97,7 @@
                             <td>${customer.nic}</td>
                             <td>${customer.passportNo}</td>
                             <td>${customer.fullName}</td>
-                            <td>${customer.gender}</td>
+                            <td>${customer.genderDescription}</td>
                             <td>${customer.addressBook.addressLine1}</td>
                             <td>${customer.createdBy}</td>
                             <td><fmt:formatDate value="${customer.createdDate}" pattern="dd-MM-yyyy HH:ss"/></td>

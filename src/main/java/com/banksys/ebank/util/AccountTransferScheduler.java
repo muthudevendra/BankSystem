@@ -1,5 +1,7 @@
 package com.banksys.ebank.util;
 
+import com.banksys.admin.datalayer.entity.Currency;
+import com.banksys.admin.datalayer.service.CurrencyService;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.ThirdPartyTransfer;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
@@ -23,12 +25,15 @@ public class AccountTransferScheduler {
 
     private final ThirdPartyTransferService thirdPartyTransferService;
     private final CustomerAccountService customerAccountService;
+    private final CurrencyService currencyService;
 
     @Autowired
     public AccountTransferScheduler(ThirdPartyTransferService thirdPartyTransferService,
-                                    CustomerAccountService customerAccountService) {
+                                    CustomerAccountService customerAccountService,
+                                    CurrencyService currencyService) {
         this.thirdPartyTransferService = thirdPartyTransferService;
         this.customerAccountService = customerAccountService;
+        this.currencyService = currencyService;
     }
 
     @Scheduled(fixedRate = 60000 * 60)
@@ -40,7 +45,10 @@ public class AccountTransferScheduler {
         try {
             for (ThirdPartyTransfer thirdPartyTransfer : thirdPartyTransferList) {
                 CustomerAccount dbCustomerAccount = this.customerAccountService.findOne(thirdPartyTransfer.getFromAccountId());
-                dbCustomerAccount.setAvailableBalance(dbCustomerAccount.getAvailableBalance() - thirdPartyTransfer.getAmount());
+                Currency customerAccountCurrency = this.currencyService.findOne(dbCustomerAccount.getCurrencyId());
+                Currency transferCurrency = this.currencyService.findOne(thirdPartyTransfer.getCurrencySeq());
+                Double convertedAmount = (thirdPartyTransfer.getAmount() * transferCurrency.getRate()) / customerAccountCurrency.getRate();
+                dbCustomerAccount.setAvailableBalance(dbCustomerAccount.getAvailableBalance() - convertedAmount);
                 thirdPartyTransfer.setTransferStatus(TransferStatus.SENT.getTransferStatusSeq());
                 this.customerAccountService.save(dbCustomerAccount);
                 this.thirdPartyTransferService.save(thirdPartyTransfer);

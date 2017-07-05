@@ -60,7 +60,7 @@
                             <td>${paymentHistory.paymentTypeDescription}</td>
                             <td>${paymentHistory.referenceNo}</td>
                             <td><fmt:formatDate value="${paymentHistory.paymentDate}" pattern="dd-MM-yyyy"/></td>
-                            <td>${paymentHistory.amount}</td>
+                            <td><fmt:formatNumber value="${paymentHistory.amount}" maxFractionDigits="2" minFractionDigits="2"/> </td>
                         </tr>
                     </c:forEach>
                     </tbody>

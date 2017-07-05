@@ -1,5 +1,6 @@
 package com.banksys.ebank.presentationlayer;
 
+import com.banksys.admin.datalayer.service.CurrencyService;
 import com.banksys.ebank.businesslayer.manager.ThirdPartyTransferControllerManager;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.ThirdPartyTransfer;
@@ -7,6 +8,7 @@ import com.banksys.ebank.datalayer.service.BankService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.ebank.datalayer.service.ThirdPartyTransferService;
 import com.banksys.util.ResponseObject;
+import com.banksys.util.enums.Currency;
 import com.banksys.util.enums.MasterDataStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -32,16 +34,19 @@ public class ThirdPartyTransferController {
     private final ThirdPartyTransferService thirdPartyTransferService;
     private final CustomerAccountService customerAccountService;
     private final BankService bankService;
+    private final CurrencyService currencyService;
 
     @Autowired
     public ThirdPartyTransferController(ThirdPartyTransferControllerManager thirdPartyTransferControllerManager,
                                         ThirdPartyTransferService thirdPartyTransferService,
                                         CustomerAccountService customerAccountService,
-                                        BankService bankService) {
+                                        BankService bankService,
+                                        CurrencyService currencyService) {
         this.thirdPartyTransferControllerManager = thirdPartyTransferControllerManager;
         this.thirdPartyTransferService = thirdPartyTransferService;
         this.customerAccountService = customerAccountService;
         this.bankService = bankService;
+        this.currencyService = currencyService;
     }
 
     @GetMapping
@@ -81,7 +86,7 @@ public class ThirdPartyTransferController {
     @ResponseBody
     public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
         CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
-        return customerAccount.getCurrencyDescription();
+        return customerAccount.getCurrency().getCurrencyCode();
     }
 
     private Model getPageData(Model model, HttpServletRequest request) {
@@ -91,6 +96,7 @@ public class ThirdPartyTransferController {
         }
         model.addAttribute("customerAccountList", this.customerAccountService.findByCustomerUserIdAndStatusNot(userId, MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("bankList", this.bankService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
+        model.addAttribute("currencyList", this.currencyService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         return model;
     }
 

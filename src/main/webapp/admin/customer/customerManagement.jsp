@@ -221,7 +221,7 @@
                 </div>
 
                 <hr style="width:75%"/>
-                <div class="row form-group">
+                <div class="row form-group createOperation">
                     <div class="col-lg-6 col-md-offset-1">
                         <label style="color: red">User account will be automatically created and emailed to the customer.
                             Authorization is based on selected User Type</label>

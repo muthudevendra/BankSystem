@@ -86,6 +86,7 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
         accountTransferAux.setTransferDate(ownAccountTransfer.getTransferDate());
         accountTransferAux.setDescription(ownAccountTransfer.getDescription());
         accountTransferAux.setTransferType(TransferType.OWN.getTransferTypeSeq());
+        accountTransferAux.setCurrencyCode("LKR");
         return accountTransferAux;
     }
 
@@ -96,6 +97,7 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
         accountTransferAux.setDescription(thirdPartyTransfer.getDescription());
         accountTransferAux.setWithdrawAmount(thirdPartyTransfer.getAmount());
         accountTransferAux.setTransferType(TransferType.THIRD_PARTY.getTransferTypeSeq());
+        accountTransferAux.setCurrencyCode(thirdPartyTransfer.getCurrency().getCurrencyCode());
         return accountTransferAux;
     }
 
@@ -106,6 +108,7 @@ public class AccountStatementControllerManagerImpl implements AccountStatementCo
         accountTransferAux.setDescription(billPayment.getPaymentTypeDescription());
         accountTransferAux.setWithdrawAmount(billPayment.getAmount());
         accountTransferAux.setTransferType(TransferType.PAYMENT.getTransferTypeSeq());
+        accountTransferAux.setCurrencyCode("LKR");
         return accountTransferAux;
     }
 }
