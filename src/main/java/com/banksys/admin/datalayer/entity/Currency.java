@@ -8,57 +8,55 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
 /**
- * Created by lakshithar on 6/20/2017.
+ * Created by Lakshitha on 05-Jul-17.
  *
  */
 @Entity
-@Table(name = "authority")
 @EntityListeners(AuditingEntityListener.class)
-public class Authority {
-    private Integer authorityId;
-    private String authorityName;
-    private Integer moduleId;
+public class Currency {
+    private Integer currencySeq;
+    private String currencyCode;
+    private Double rate;
     private Integer status;
     private String createdBy;
     private Date createdDate;
     private String lastModifiedBy;
     private Date lastModifiedDate;
 
-    private Module module;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AUTHORITY_ID")
-    public Integer getAuthorityId() {
-        return authorityId;
+    @Column(name = "CURRENCY_SEQ")
+    public Integer getCurrencySeq() {
+        return currencySeq;
     }
 
-    public void setAuthorityId(Integer authorityId) {
-        this.authorityId = authorityId;
-    }
-
-    @Basic
-    @Column(name = "AUTHORITY_NAME")
-    public String getAuthorityName() {
-        return authorityName;
-    }
-
-    public void setAuthorityName(String authorityName) {
-        this.authorityName = authorityName;
+    public void setCurrencySeq(Integer currencySeq) {
+        this.currencySeq = currencySeq;
     }
 
     @Basic
-    @Column(name = "MODULE_ID")
-    public Integer getModuleId() {
-        return moduleId;
+    @Column(name = "CURRENCY_CODE")
+    public String getCurrencyCode() {
+        return currencyCode;
     }
 
-    public void setModuleId(Integer moduleId) {
-        this.moduleId = moduleId;
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
+
+    @Basic
+    @Column(name = "RATE")
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
     }
 
     @Basic
@@ -117,29 +115,19 @@ public class Authority {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MODULE_ID", insertable = false, updatable = false)
-    public Module getModule() {
-        return module;
-    }
-
-    public void setModule(Module module) {
-        this.module = module;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Authority authority = (Authority) o;
-        return Objects.equals(authorityId, authority.authorityId) &&
-                Objects.equals(authorityName, authority.authorityName) &&
-                Objects.equals(moduleId, authority.moduleId) &&
-                Objects.equals(status, authority.status);
+        Currency currency = (Currency) o;
+        return Objects.equals(currencySeq, currency.currencySeq) &&
+                Objects.equals(currencyCode, currency.currencyCode) &&
+                Objects.equals(rate, currency.rate) &&
+                Objects.equals(status, currency.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(authorityId, authorityName, moduleId, status);
+        return Objects.hash(currencySeq, currencyCode, rate, status);
     }
 }

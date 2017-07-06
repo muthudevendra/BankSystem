@@ -67,7 +67,7 @@ public class BillPaymentController {
     @ResponseBody
     public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
         CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
-        return customerAccount.getCurrencyDescription();
+        return customerAccount.getCurrency().getCurrencyCode();
     }
 
     private Model getData(Model model, HttpServletRequest request){

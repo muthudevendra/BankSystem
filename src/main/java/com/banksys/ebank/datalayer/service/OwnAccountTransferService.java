@@ -15,4 +15,6 @@ public interface OwnAccountTransferService extends JpaRepository<OwnAccountTrans
     List<OwnAccountTransfer> findByFromAccountIdAndStatusNot(Integer accountId, Integer status);
 
     List<OwnAccountTransfer> findByToAccountIdAndStatusNot(Integer accountId, Integer status);
+
+    Long countByStatusNot(Integer status);
 }

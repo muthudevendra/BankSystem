@@ -1,6 +1,7 @@
 package com.banksys.admin.presentationlayer;
 
 import com.banksys.admin.businesslayer.manager.CustomerAccountManagementControllerManager;
+import com.banksys.admin.datalayer.service.CurrencyService;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.service.AccountTypeService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
@@ -33,15 +34,17 @@ public class CustomerAccountManagementController {
     private final CustomerAccountService customerAccountService;
     private final AccountTypeService accountTypeService;
     private final CustomerService customerService;
+    private final CurrencyService currencyService;
 
     @Autowired
     public CustomerAccountManagementController(CustomerAccountManagementControllerManager customerAccountManagementControllerManager,
                                                CustomerAccountService customerAccountService,
-                                               AccountTypeService accountTypeService, CustomerService customerService) {
+                                               AccountTypeService accountTypeService, CustomerService customerService, CurrencyService currencyService) {
         this.customerAccountManagementControllerManager = customerAccountManagementControllerManager;
         this.customerAccountService = customerAccountService;
         this.accountTypeService = accountTypeService;
         this.customerService = customerService;
+        this.currencyService = currencyService;
     }
 
     @GetMapping
@@ -83,7 +86,7 @@ public class CustomerAccountManagementController {
         model.addAttribute("interestMethodList", InterestMethod.values());
         model.addAttribute("customerList", customerService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("statusList", MasterDataStatus.values());
-        model.addAttribute("currencyList", Currency.values());
+        model.addAttribute("currencyList", this.currencyService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         return model;
     }
 

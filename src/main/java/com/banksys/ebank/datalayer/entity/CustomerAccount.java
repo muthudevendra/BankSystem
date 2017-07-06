@@ -1,6 +1,6 @@
 package com.banksys.ebank.datalayer.entity;
 
-import com.banksys.util.enums.Currency;
+import com.banksys.admin.datalayer.entity.Currency;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.*;
 import org.springframework.data.annotation.Version;
@@ -8,7 +8,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 import java.util.Date;
 import java.util.Objects;
 
@@ -37,8 +36,7 @@ public class CustomerAccount {
 
     private Account account;
     private Customer customer;
-
-    private String currencyDescription;
+    private Currency currency;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,9 +107,6 @@ public class CustomerAccount {
 
     public void setCurrencyId(Integer currencyId) {
         this.currencyId = currencyId;
-        if (currencyId != null) {
-            this.setCurrencyDescription(Currency.findOne(currencyId).getCurrency());
-        }
     }
 
     @Basic
@@ -210,13 +205,14 @@ public class CustomerAccount {
         this.customer = customer;
     }
 
-    @Transient
-    public String getCurrencyDescription() {
-        return currencyDescription;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CURRENCY_ID", insertable = false, updatable = false)
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public void setCurrencyDescription(String currencyDescription) {
-        this.currencyDescription = currencyDescription;
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     @Override

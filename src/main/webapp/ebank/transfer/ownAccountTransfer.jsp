@@ -92,6 +92,21 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-sm-2 col-md-offset-2">
+                            <label class="control-label" for="fromAccount">Currency </label>
+                        </div>
+                        <div class="col-md-6">
+                            <select required name="currencyId" class="form-control" id="currencyId">
+                                <c:forEach items="${currencyList}" var="currency">
+                                    <option ${currency.currencySeq eq thirdPartyAccountTransfer.currencyId ? 'selected' : ''}
+                                            value="${currency.currencySeq}">
+                                            ${currency.currencyCode} - ${currency.rate}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-2 col-md-offset-2">
                             <label class="control-label" for="description">Description </label>
                         </div>
                         <div class="col-sm-5">

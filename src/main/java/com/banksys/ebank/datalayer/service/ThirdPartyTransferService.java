@@ -18,4 +18,6 @@ public interface ThirdPartyTransferService extends JpaRepository<ThirdPartyTrans
     List<ThirdPartyTransfer> findByFromAccountCustomerUserIdAndTransferStatusAndStatusNot(Integer userId, Integer transferStatus, Integer status);
 
     List<ThirdPartyTransfer> findByTransferDateAndTransferStatusAndStatusNot(Date transactionDate, Integer transferStatus, Integer status);
+
+    Long countByTransferStatusAndStatusNot(Integer transferStatus, Integer status);
 }

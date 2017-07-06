@@ -1,5 +1,6 @@
 package com.banksys.ebank.presentationlayer;
 
+import com.banksys.admin.datalayer.service.CurrencyService;
 import com.banksys.ebank.businesslayer.manager.OwnAccountTransferControllerManager;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.OwnAccountTransfer;
@@ -26,14 +27,16 @@ public class OwnAccountTransferController {
     private final OwnAccountTransferControllerManager ownAccountTransferControllerManager;
     private final CustomerAccountService customerAccountService;
     private final OwnAccountTransferService ownAccountTransferService;
+    private final CurrencyService currencyService;
 
     @Autowired
     public OwnAccountTransferController(OwnAccountTransferControllerManager ownAccountTransferControllerManager,
                                         CustomerAccountService customerAccountService,
-                                        OwnAccountTransferService ownAccountTransferService) {
+                                        OwnAccountTransferService ownAccountTransferService, CurrencyService currencyService) {
         this.ownAccountTransferControllerManager = ownAccountTransferControllerManager;
         this.customerAccountService = customerAccountService;
         this.ownAccountTransferService = ownAccountTransferService;
+        this.currencyService = currencyService;
     }
 
     @GetMapping
@@ -73,7 +76,7 @@ public class OwnAccountTransferController {
     @ResponseBody
     public String findCurrency(@RequestParam("customerAccountId") Integer customerAccountId) {
         CustomerAccount customerAccount = this.customerAccountService.findOne(customerAccountId);
-        return customerAccount.getCurrencyDescription();
+        return customerAccount.getCurrency().getCurrencyCode();
     }
 
     private Model getPageData(Model model, HttpServletRequest request) {
@@ -82,6 +85,7 @@ public class OwnAccountTransferController {
             throw new RuntimeException("User not found");
         }
         model.addAttribute("customerAccountList", this.customerAccountService.findByCustomerUserIdAndStatusNot(userId, MasterDataStatus.DELETED.getStatusSeq()));
+        model.addAttribute("currencyList", this.currencyService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         return model;
     }
 

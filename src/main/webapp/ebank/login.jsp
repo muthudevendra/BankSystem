@@ -29,7 +29,6 @@
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/style-responsive.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/themes/green.css" rel="stylesheet" id="style-color">
-    <link href="${pageContext.request.contextPath}/layout/assets/corporate/css/custom.css" rel="stylesheet">
 </head>
 <!-- Head END -->
 

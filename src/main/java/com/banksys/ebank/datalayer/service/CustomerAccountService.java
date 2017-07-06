@@ -16,4 +16,6 @@ public interface CustomerAccountService extends JpaRepository<CustomerAccount, I
     List<CustomerAccount> findByCustomerUserIdAndStatusNot(Integer userId, Integer status);
 
     List<CustomerAccount> findByStatusNot(Integer status);
+
+    Long countByStatusNot(Integer status);
 }

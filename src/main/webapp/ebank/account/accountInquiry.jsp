@@ -60,8 +60,8 @@
                             <td>${customerAccount.accountNo}</td>
                             <td><fmt:formatDate value="${customerAccount.startDate}"
                                                 pattern="dd-MM-yyyy"/></td>
-                            <td>${customerAccount.currencyDescription}</td>
-                            <td align="right">${customerAccount.availableBalance}</td>
+                            <td>${customerAccount.currency.currencyCode}</td>
+                            <td align="right"> <fmt:formatNumber value="${customerAccount.availableBalance}" maxFractionDigits="2" minFractionDigits="2"/> </td>
                         </tr>
                     </c:forEach>
                     <tr>

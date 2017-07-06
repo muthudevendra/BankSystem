@@ -15,9 +15,11 @@ import org.springframework.stereotype.Service;
 
 import javax.xml.transform.sax.SAXSource;
 import java.security.MessageDigest;
+import java.util.Random;
 
 /**
  * Created by lakshithar on 7/1/2017.
+ *
  */
 @Service
 public class UserManagementManagerImpl implements UserManagementManager {
@@ -79,6 +81,11 @@ public class UserManagementManagerImpl implements UserManagementManager {
     @Override
     public User getDefaultUser(String username) {
         User user = new User();
+        User dbUser = this.userService.findByUsername(username);
+        if(dbUser != null){
+            Random random = new Random(12345);
+            username = username + random.nextInt();
+        }
         UserType userType = this.userTypeService.findByUserTypeAndStatusNot("Customer", MasterDataStatus.DELETED.getStatusSeq());
         user.setUserTypeId(userType.getUserTypeId());
         user.setUsername(username);
@@ -87,6 +94,4 @@ public class UserManagementManagerImpl implements UserManagementManager {
         user.setUnhashedPassword(username);
         return user;
     }
-
-
 }

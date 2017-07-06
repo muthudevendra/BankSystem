@@ -61,6 +61,21 @@
                             <p id="amountInHand" class="align-left"></p>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col-sm-2 col-md-offset-1">
+                            <label class="control-label" for="fromAccount">Select Currency </label>
+                        </div>
+                        <div class="col-md-6">
+                            <select required name="currencySeq" class="form-control" id="currencyId">
+                                <c:forEach items="${currencyList}" var="currency">
+                                    <option ${currency.currencySeq eq thirdPartyAccountTransfer.currencySeq ? 'selected' : ''}
+                                            value="${currency.currencySeq}">
+                                            ${currency.currencyCode} - ${currency.rate}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-lg-8 col-lg-offset-1">
                         <div>
                             <legend>Transfer Details</legend>

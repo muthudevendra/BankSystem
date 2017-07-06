@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Muthu Devendra on 6/28/2017.
  *
@@ -35,10 +37,10 @@ public class ChangePasswordController {
 
     @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('ebank@changePassword_CHANGE')")
-    public String changePassword(@ModelAttribute User user, Model model){
-        ResponseObject responseObject = this.changePasswordControllerManager.changePassword(user);
+    public String changePassword(@ModelAttribute User user, Model model, HttpServletRequest request){
+        ResponseObject responseObject = this.changePasswordControllerManager.changePassword(user, request);
         this.getResponseData(responseObject, model);
-        return "/changePassword";
+        return "changePassword";
     }
 
     private Model getResponseData(ResponseObject responseObject, Model model){

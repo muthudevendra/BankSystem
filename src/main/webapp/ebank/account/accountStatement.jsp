@@ -91,9 +91,9 @@
                                                 pattern="yyyy-MM-dd HH:mm"/></td>
                             <td>${accountTransaction.description}</td>
                             <td>${accountTransaction.transferTypeDescription}</td>
-                            <td align="right">${accountTransaction.withdrawAmount}</td>
-                            <td align="right">${accountTransaction.depositAmount}</td>
-                            <td align="right">${accountTransaction.availableBalance}</td>
+                            <td align="right"> <fmt:formatNumber value="${accountTransaction.withdrawAmount}" maxFractionDigits="2" minFractionDigits="2"/> ${accountTransaction.currencyCode} </td>
+                            <td align="right"> <fmt:formatNumber value="${accountTransaction.depositAmount}" maxFractionDigits="2" minFractionDigits="2"/> ${accountTransaction.currencyCode}</td>
+                            <td align="right"> <fmt:formatNumber value="${accountTransaction.availableBalance}" maxFractionDigits="2" minFractionDigits="2"/> ${accountTransaction.currencyCode}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

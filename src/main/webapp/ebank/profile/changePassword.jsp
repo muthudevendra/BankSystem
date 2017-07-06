@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="/layout/include.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/ebank/script/changePassword.js"></script>
 <div class="main">
     <div class="col-md-2 col-sm-2">
         <ul class="tabbable faq-tabbable">
@@ -31,11 +32,13 @@
                         <div class="col-md-7 col-sm-7">
                             <form id="changePasswordForm" action="/ebank/profile/changePassword/changePassword"
                                   method="post" class="form-horizontal form-without-legend" role="form">
+                                <input type="hidden" value="${message}" id="message"/>
+                                <input type="hidden" value="${status}" id="status"/>
                                 <div class="form-group">
                                     <label for="userName" class="col-lg-4 control-label">User Name <span
                                             class="require">*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="userName">
+                                        <input readonly type="text" value="<sec:authentication property="name"/>" class="form-control" id="userName">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -61,6 +64,7 @@
                                         <input type="Password" class="form-control" id="confirmPassword">
                                     </div>
                                 </div>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <div class="row">
                                     <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
                                         <button onchange="form_validate('changePasswordForm')"

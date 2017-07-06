@@ -67,7 +67,7 @@
                             <c:forEach items="${currencyList}" var="currency">
                                 <option ${currency.currencySeq eq customerAccount.currencyId ? 'selected' : ''}
                                         value="${currency.currencySeq}">
-                                        ${currency.currency}
+                                        ${currency.currencyCode}
                                 </option>
                             </c:forEach>
                         </select>

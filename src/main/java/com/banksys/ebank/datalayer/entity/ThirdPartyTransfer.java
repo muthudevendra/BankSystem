@@ -1,5 +1,6 @@
 package com.banksys.ebank.datalayer.entity;
 
+import com.banksys.admin.datalayer.entity.Currency;
 import com.banksys.util.enums.MasterDataStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedBy;
@@ -23,6 +24,7 @@ public class ThirdPartyTransfer {
     private Integer thirdPartyAccountTransferId;
     private Integer fromAccountId;
     private Double amount;
+    private Integer currencySeq;
     private Double accountBalance;
     private String description;
     private Date transferDate;
@@ -39,6 +41,7 @@ public class ThirdPartyTransfer {
 
     private CustomerAccount fromAccount;
     private Bank targetBank;
+    private Currency currency;
 
     private String statusDescription;
 
@@ -71,6 +74,16 @@ public class ThirdPartyTransfer {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    @Basic
+    @Column(name = "CURRENCY_SEQ")
+    public Integer getCurrencySeq() {
+        return currencySeq;
+    }
+
+    public void setCurrencySeq(Integer currencySeq) {
+        this.currencySeq = currencySeq;
     }
 
     @Basic
@@ -230,6 +243,16 @@ public class ThirdPartyTransfer {
 
     public void setTargetBank(Bank targetBank) {
         this.targetBank = targetBank;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CURRENCY_SEQ", insertable = false, updatable = false)
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     @Transient
