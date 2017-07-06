@@ -19,6 +19,8 @@ public class UserLoginFailureAudit {
     private Integer lockedStatus;
     private Date unlockedAt;
 
+    private User user;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "USER_LOGIN_FAILURE_AUDIT_ID")
@@ -78,6 +80,16 @@ public class UserLoginFailureAudit {
 
     public void setUnlockedAt(Date unlockedAt) {
         this.unlockedAt = unlockedAt;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", insertable = false, updatable = false)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
