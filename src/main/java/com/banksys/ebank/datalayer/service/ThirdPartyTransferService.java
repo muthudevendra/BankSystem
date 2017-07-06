@@ -13,6 +13,7 @@ import java.util.Date;
  */
 @Repository
 public interface ThirdPartyTransferService extends JpaRepository<ThirdPartyTransfer, Integer>{
+
     List<ThirdPartyTransfer> findByFromAccountIdAndTransferStatusAndStatusNot(Integer fromAccountId, Integer transferStatus, Integer status);
 
     List<ThirdPartyTransfer> findByFromAccountCustomerUserIdAndTransferStatusAndStatusNot(Integer userId, Integer transferStatus, Integer status);
@@ -20,4 +21,6 @@ public interface ThirdPartyTransferService extends JpaRepository<ThirdPartyTrans
     List<ThirdPartyTransfer> findByTransferDateAndTransferStatusAndStatusNot(Date transactionDate, Integer transferStatus, Integer status);
 
     Long countByTransferStatusAndStatusNot(Integer transferStatus, Integer status);
+
+    List<ThirdPartyTransfer> findTop10ByFromAccountCustomerUserIdAndTransferStatusAndStatusNotOrderByTransferDate(Integer userId, Integer transferStatus, Integer status);
 }

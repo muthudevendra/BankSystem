@@ -33,6 +33,7 @@ public class UserManagementController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('admin@userManagement_VIEW')")
     public String getPage(Model model) {
         this.getPageData(model);
         model.addAttribute("user", new User());
@@ -59,7 +60,7 @@ public class UserManagementController {
     }
 
     private Model getPageData(Model model) {
-        model.addAttribute("userTypeList", userTypeService.findAll());
+        model.addAttribute("userTypeList", userTypeService.findByStatusNot(MasterDataStatus.DELETED.getStatusSeq()));
         model.addAttribute("statusList",MasterDataStatus.values());
         return model;
     }

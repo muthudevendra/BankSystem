@@ -29,7 +29,7 @@ public class UserTypeAuthorityManagementControllerManagerImpl implements UserTyp
         userTypeAuthority.setStatus(MasterDataStatus.OPEN.getStatusSeq());
         this.userTypeAuthorityService.save(userTypeAuthority);
         ResponseObject responseObject = new ResponseObject(userTypeAuthority, true);
-        responseObject.setMessage("UserTypeAuthority Saved Successfully");
+        responseObject.setMessage("User Type Authority Saved Successfully");
         return responseObject;
     }
 

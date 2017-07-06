@@ -19,7 +19,7 @@
         <div class="content-page col-md-10">
             <div>
                 <legend>Admin Dashboard
-                    <span class="fail-button" onclick="load_module()">Failed logins</span>
+                    <span class="fail-button" onclick="load_module()">Failed Logins</span>
                 </legend>
             </div>
             <div class="row">

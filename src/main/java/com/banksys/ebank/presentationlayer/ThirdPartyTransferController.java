@@ -2,6 +2,7 @@ package com.banksys.ebank.presentationlayer;
 
 import com.banksys.admin.datalayer.service.CurrencyService;
 import com.banksys.ebank.businesslayer.manager.ThirdPartyTransferControllerManager;
+import com.banksys.ebank.datalayer.entity.BillPayment;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
 import com.banksys.ebank.datalayer.entity.ThirdPartyTransfer;
 import com.banksys.ebank.datalayer.service.BankService;

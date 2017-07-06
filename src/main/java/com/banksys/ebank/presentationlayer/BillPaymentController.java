@@ -3,6 +3,7 @@ package com.banksys.ebank.presentationlayer;
 import com.banksys.ebank.businesslayer.manager.BillPaymentControllerManager;
 import com.banksys.ebank.datalayer.entity.BillPayment;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
+import com.banksys.ebank.datalayer.service.BillPaymentService;
 import com.banksys.ebank.datalayer.service.CustomerAccountService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
@@ -29,19 +30,30 @@ public class BillPaymentController {
 
     private final CustomerAccountService customerAccountService;
     private final BillPaymentControllerManager billPaymentControllerManager;
+    private final BillPaymentService billPaymentService;
 
     @Autowired
     public BillPaymentController(CustomerAccountService customerAccountService,
-                                 BillPaymentControllerManager billPaymentControllerManager) {
+                                 BillPaymentControllerManager billPaymentControllerManager,
+                                 BillPaymentService billPaymentService) {
         this.customerAccountService = customerAccountService;
         this.billPaymentControllerManager = billPaymentControllerManager;
+        this.billPaymentService = billPaymentService;
     }
 
     @GetMapping
     @PreAuthorize("hasAuthority('ebank@billPayment_VIEW')")
-    public String getPage(Model model, HttpServletRequest request){
+    public String loadPage(Model model, HttpServletRequest request){
         model = this.getData(model, request);
         model.addAttribute("billPayment", new BillPayment());
+        return "billPayment";
+    }
+
+    @RequestMapping(params = "billPaymentId", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ebank@billPayment_VIEW')")
+    public String loadPage(@RequestParam("billPaymentId") Integer billPaymentId, Model model, HttpServletRequest request){
+        model.addAttribute("billPayment", this.billPaymentService.findOne(billPaymentId));
+        this.getData(model, request);
         return "billPayment";
     }
 
