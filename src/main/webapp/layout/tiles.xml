@@ -24,6 +24,8 @@
     <definition name="login" template="/ebank/login.jsp"/>
     <definition name="accessDenied" template="/layout/accessDenied.jsp"/>
     <definition name="error" template="/layout/error.jsp"/>
+    <definition name="accountLocked" template="/layout/accountLocked.jsp"/>
+    <definition name="loginFailure" template="/layout/loginFailure.jsp"/>
     <definition name="ebank" extends="ebank_base">
         <put-attribute name="body" value="/ebank/dashboard.jsp"/>
     </definition>

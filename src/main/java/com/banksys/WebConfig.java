@@ -35,6 +35,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/accessDenied").setViewName("accessDenied");
+        registry.addViewController("/loginFailure").setViewName("loginFailure");
+        registry.addViewController("/accountLocked").setViewName("accountLocked");
     }
 
     @Bean

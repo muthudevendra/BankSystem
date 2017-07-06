@@ -20,7 +20,6 @@ import java.util.Date;
 
 /**
  * Created by Lakshitha on 05-Jul-17.
- *
  */
 @Service
 public class BankSysAuthFailureHandler implements AuthenticationFailureHandler {
@@ -39,27 +38,27 @@ public class BankSysAuthFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         String username = httpServletRequest.getParameter("username");
-        if(username != null){
+        String responseUrl = "/login";
+        if (username != null) {
             User user = this.userService.findByUsername(username);
-            if(user != null){
+            if (user != null) {
                 Integer attempts;
                 UserLoginFailureAudit dbUserLoginFailureAudit = this.userLoginFailureAuditService.findByUserId(user.getUserId());
-                if(dbUserLoginFailureAudit != null){
+                if (dbUserLoginFailureAudit != null) {
                     attempts = dbUserLoginFailureAudit.getNumberOfAttempts();
                     dbUserLoginFailureAudit.setAttemptedDate(new Date());
                     dbUserLoginFailureAudit.setNumberOfAttempts(++attempts);
-                    if(attempts >= MAX_ATTEMPTS){
+                    if (attempts >= MAX_ATTEMPTS) {
                         Calendar now = Calendar.getInstance();
                         now.add(Calendar.MINUTE, 10);
                         dbUserLoginFailureAudit.setLockedStatus(AccountLockStatus.LOCKED.getAccountLockStatusSeq());
                         dbUserLoginFailureAudit.setUnlockedAt(now.getTime());
                         this.userLoginFailureAuditService.save(dbUserLoginFailureAudit);
-                        throw new AccessDeniedException("Unsuccessful Login attempts limit exceeds. Account is Locked and will be available back in 10 minutes");
+                        responseUrl = "/accountLocked";
                     }
                     this.userLoginFailureAuditService.save(dbUserLoginFailureAudit);
-                    throw new AccessDeniedException("Unsuccessful Login attempt. " + (MAX_ATTEMPTS - attempts) + " remaining");
-                }
-                else{
+                    responseUrl = "/loginFailure";
+                } else {
                     attempts = 1;
                     dbUserLoginFailureAudit = new UserLoginFailureAudit();
                     dbUserLoginFailureAudit.setLockedStatus(AccountLockStatus.UNLOCKED.getAccountLockStatusSeq());
@@ -67,9 +66,10 @@ public class BankSysAuthFailureHandler implements AuthenticationFailureHandler {
                     dbUserLoginFailureAudit.setAttemptedDate(new Date());
                     dbUserLoginFailureAudit.setUserId(user.getUserId());
                     this.userLoginFailureAuditService.save(dbUserLoginFailureAudit);
-                    throw new AccessDeniedException("Unsuccessful Login attempt. " + (MAX_ATTEMPTS - attempts) + " remaining");
+                    responseUrl = "/loginFailure";
                 }
             }
         }
+        httpServletResponse.sendRedirect(responseUrl);
     }
 }
