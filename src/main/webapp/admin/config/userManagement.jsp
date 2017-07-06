@@ -44,8 +44,7 @@
                         <label for="confirmPassword">Confirm Password<span class="require">*</span></label>
                     </div>
                     <div class="col-lg-8">
-                        <input required type="password"  class="form-control"
-                               id="confirmPassword">
+                        <input required type="password" name="confirmPassword" class="form-control" id="confirmPassword">
                     </div>
                 </div>
                 <div class="row form-group">

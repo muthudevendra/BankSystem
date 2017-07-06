@@ -35,11 +35,18 @@ public class UserManagementManagerImpl implements UserManagementManager {
 
     @Override
     public ResponseObject saveUser(User user) {
-        user.setPassword(SHAEncoder.SHA1(user.getPassword()));
-        user.setEnabled(MasterDataStatus.OPEN.getStatusSeq());
-        this.userService.save(user);
-        ResponseObject responseObject = new ResponseObject(user, true);
-        responseObject.setMessage("User Saved Successfully");
+        ResponseObject responseObject;
+        if(user.getPassword().equals(user.getConfirmPassword())) {
+            user.setPassword(SHAEncoder.SHA1(user.getPassword()));
+            user.setEnabled(MasterDataStatus.OPEN.getStatusSeq());
+            this.userService.save(user);
+            responseObject = new ResponseObject(user, true);
+            responseObject.setMessage("User Saved Successfully");
+        }
+        else{
+            responseObject = new ResponseObject(user, false);
+            responseObject.setMessage("Passwords do not match");
+        }
         return responseObject;
     }
 

@@ -31,15 +31,21 @@ public class ChangePasswordControllerManagerImpl implements ChangePasswordContro
             throw new RuntimeException("User not found");
         }
         ResponseObject responseObject;
-        User dbUser = this.userService.findOne(userId);
-        String oldSHAPassword = dbUser.getPassword();
-        String userTypedOldSHAPassword = SHAEncoder.SHA1(user.getOldPassword());
-        if (oldSHAPassword.equals(userTypedOldSHAPassword)) {
-            dbUser.setPassword(SHAEncoder.SHA1(user.getPassword()));
-            this.userService.save(dbUser);
-            responseObject = new ResponseObject("Password Changed Successfull", false);
-        } else {
-            responseObject = new ResponseObject("Old Password doesn't match", false);
+        if(user.getPassword().equals(user.getConfirmPassword())) {
+
+            User dbUser = this.userService.findOne(userId);
+            String oldSHAPassword = dbUser.getPassword();
+            String userTypedOldSHAPassword = SHAEncoder.SHA1(user.getOldPassword());
+            if (oldSHAPassword.equals(userTypedOldSHAPassword)) {
+                dbUser.setPassword(SHAEncoder.SHA1(user.getPassword()));
+                this.userService.save(dbUser);
+                responseObject = new ResponseObject("Password Changed Successfully", false);
+            } else {
+                responseObject = new ResponseObject("Old Password doesn't match", false);
+            }
+        }
+        else{
+            responseObject = new ResponseObject("Passwords do not match", false);
         }
         responseObject.setObject(user);
         return responseObject;

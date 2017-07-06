@@ -29,8 +29,9 @@ public class User {
     private String lastModifiedBy;
     private Date lastModifiedDate;
 
-    private String unhashedPassword;
+    private String unhashedPassword; //For Data Binding Purpose
     private String oldPassword;
+    private String confirmPassword; //For Data Binding Purpose
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -145,6 +146,15 @@ public class User {
 
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
+    }
+
+    @Transient
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     @Override

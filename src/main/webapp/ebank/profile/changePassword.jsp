@@ -57,7 +57,7 @@
                                     <label for="confirmPassword" class="col-lg-4 control-label">Confirm New Password
                                         <span>*</span></label>
                                     <div class="col-lg-8">
-                                        <input required type="Password" class="form-control" id="confirmPassword">
+                                        <input required name="confirmPassword" type="Password" class="form-control" id="confirmPassword">
                                     </div>
                                 </div>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
