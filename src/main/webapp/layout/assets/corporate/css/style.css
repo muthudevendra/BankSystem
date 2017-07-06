@@ -3603,9 +3603,9 @@ Styler Panel
     width: 130px;
     text-align: center;
     line-height: 24px;
-    background-color: #d20000;
-    border: 1px solid #d20000;
-    border-radius: 5px !important;
+    background-color: #e22f2f;
+    border: 1px solid #b10303;
+    /*border-radius: 5px !important;*/
 }
 
 /* info box*/

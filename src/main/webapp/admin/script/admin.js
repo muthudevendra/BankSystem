@@ -68,3 +68,7 @@ $(document).ready(function () {
     }
     
 });
+
+function load_module() {
+    window.open('/admin/failedLoginSearch', '_blank');
+}

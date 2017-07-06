@@ -131,6 +131,9 @@
     <definition name="customerAccountSearch" extends="admin_base">
         <put-attribute name="body" value="/admin/account/customerAccountSearch.jsp"/>
     </definition>
+    <definition name="failedLoginSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/failedLogin.jsp"/>
+    </definition>
 
     <!--Ebank-->
     <definition name="accountInquiry" extends="ebank_base">

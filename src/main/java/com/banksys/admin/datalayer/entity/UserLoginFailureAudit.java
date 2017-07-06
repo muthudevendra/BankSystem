@@ -1,5 +1,7 @@
 package com.banksys.admin.datalayer.entity;
 
+import com.banksys.util.enums.AccountLockStatus;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -20,6 +22,8 @@ public class UserLoginFailureAudit {
     private Date unlockedAt;
 
     private User user;
+
+    private String lockDescription;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -70,6 +74,9 @@ public class UserLoginFailureAudit {
 
     public void setLockedStatus(Integer lockedStatus) {
         this.lockedStatus = lockedStatus;
+        if(lockedStatus != null){
+            this.setLockDescription(AccountLockStatus.findOne(lockedStatus).getAccountLockStatus());
+        }
     }
 
     @Basic
@@ -90,6 +97,15 @@ public class UserLoginFailureAudit {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Transient
+    public String getLockDescription() {
+        return lockDescription;
+    }
+
+    public void setLockDescription(String lockDescription) {
+        this.lockDescription = lockDescription;
     }
 
     @Override

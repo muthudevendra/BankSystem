@@ -25,4 +25,11 @@ public enum AccountLockStatus {
     public String getAccountLockStatus() {
         return accountLockStatus;
     }
+
+    public static AccountLockStatus findOne(Integer lockSeq){
+        return Arrays.stream(AccountLockStatus.values())
+                .filter(i -> i.getAccountLockStatusSeq().equals(lockSeq))
+                .findFirst()
+                .orElse(null);
+    }
 }
