@@ -2,6 +2,9 @@
  * Created by lakshithar on 6/30/2017.
  *
  */
+$('.navUrl').removeClass('active');
+$('#thirdParty').addClass('active');
+$('#transfer').addClass('active');
 
 $(function () {
    $(".datepicker").datepicker({

@@ -2,7 +2,10 @@
  * Created by lakshithar on 7/1/2017.
  *
  */
-
 $(function () {
-   $('.datatable').dataTable();
+    $('.navUrl').removeClass('active');
+    $('#profile').addClass('active');
+    $('#loginHistory').addClass('active');
+
+    $('.datatable').dataTable();
 });

@@ -4,6 +4,9 @@
  */
 
 $(function () {
+    $('.navUrl').removeClass('active')
+    $('#newUser').addClass('active');
+
     var userId = $('#userId').val();
     if (userId != '') {
         transform_form('userForm', '/admin/config/userManagement/updateUser');

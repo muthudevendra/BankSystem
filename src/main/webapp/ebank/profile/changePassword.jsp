@@ -35,39 +35,35 @@
                                 <input type="hidden" value="${message}" id="message"/>
                                 <input type="hidden" value="${status}" id="status"/>
                                 <div class="form-group">
-                                    <label for="userName" class="col-lg-4 control-label">User Name <span
-                                            class="require">*</span></label>
+                                    <label for="userName" class="col-lg-4 control-label">User Name <span>*</span></label>
                                     <div class="col-lg-8">
                                         <input readonly type="text" value="<sec:authentication property="name"/>" class="form-control" id="userName">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="currentPassword" class="col-lg-4 control-label">Current Password <span
-                                            class="require">*</span></label>
+                                    <label for="currentPassword" class="col-lg-4 control-label">Current Password <span>*</span></label>
                                     <div class="col-lg-8">
-                                        <input name="oldPassword" type="Password" class="form-control"
+                                        <input required name="oldPassword" type="Password" class="form-control"
                                                id="currentPassword">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="newPassword" class="col-lg-4 control-label">New Password <span
-                                            class="require">*</span></label>
+                                    <label for="newPassword" class="col-lg-4 control-label">New Password <span>*</span></label>
                                     <div class="col-lg-8">
-                                        <input name="password" type="Password" class="form-control" id="newPassword">
+                                        <input required name="password" type="Password" class="form-control" id="newPassword">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="confirmPassword" class="col-lg-4 control-label">Confirm New Password
-                                        <span
-                                                class="require">*</span></label>
+                                        <span>*</span></label>
                                     <div class="col-lg-8">
-                                        <input type="Password" class="form-control" id="confirmPassword">
+                                        <input required type="Password" class="form-control" id="confirmPassword">
                                     </div>
                                 </div>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 <div class="row">
                                     <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
-                                        <button onchange="form_validate('changePasswordForm')"
+                                        <button onClick="form_validate('changePasswordForm')"
                                                 type="submit" class="btn btn-primary"
                                                 <sec:authorize
                                                         access="!hasAuthority('ebank@changePassword_CHANGE')">

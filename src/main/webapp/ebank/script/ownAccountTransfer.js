@@ -2,6 +2,9 @@
  * Created by lakshithar on 6/29/2017.
  *
  */
+$('.navUrl').removeClass('active');
+$('#transfer').addClass('active');
+$('#ownAccount').addClass('active');
 
 $(function () {
    var ownAccountTransferId = $('#ownAccountTransferId').val();

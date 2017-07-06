@@ -100,15 +100,15 @@
     </div>
 </div>
 
-<div class="footer navbar-fixed-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-4 padding-top-10">
-                2017 © AlphaAlliance. ALL Rights Reserved. <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<div class="footer navbar-fixed-bottom">--%>
+    <%--<div class="container">--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-md-4 col-sm-4 padding-top-10">--%>
+                <%--2017 © AlphaAlliance. ALL Rights Reserved. <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 <script src="${pageContext.request.contextPath}/layout/assets/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/layout/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>

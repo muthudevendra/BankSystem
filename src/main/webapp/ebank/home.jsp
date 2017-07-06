@@ -13,45 +13,45 @@
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
-                <li>
+                <li class="navUrl" id="dashboard">
                     <a href="/ebank"><i class="fa fa-home"></i></a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl" id="account">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         My Account
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/ebank/account/accountInquiry">Account Inquery</a></li>
-                        <li><a href="/ebank/account/accountStatement">Account Statement</a></li>
+                        <li class="navUrl" id="accountInquiry"><a href="/ebank/account/accountInquiry">Account Inquery</a></li>
+                        <li class="navUrl" id="accountStatement"><a href="/ebank/account/accountStatement">Account Statement</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl" id="transfer">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         Fund Transfer
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/ebank/transfer/ownAccount">Own Account</a></li>
-                        <li><a href="/ebank/transfer/thirdPartyTransfer">Third-Party Transfer</a></li>
-                        <li><a href="/ebank/transfer/scheduleTransfer">Scheduled Transfer</a></li>
+                        <li class="navUrl" id="ownAccount"><a href="/ebank/transfer/ownAccount">Own Account</a></li>
+                        <li class="navUrl" id="thirdParty"><a href="/ebank/transfer/thirdPartyTransfer">Third-Party Transfer</a></li>
+                        <li class="navUrl" id="scheduleTransfer"><a href="/ebank/transfer/scheduleTransfer">Scheduled Transfer</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl" id="payment">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         Bill Payments
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/ebank/payment/billPayment">Pay Bills</a></li>
-                        <li><a href="/ebank/payment/schedulePayment">Schedule Payment</a></li>
-                        <li><a href="/ebank/payment/paymentHistory">Payment History</a></li>
+                        <li class="navUrl" id="payBill"><a href="/ebank/payment/billPayment">Pay Bills</a></li>
+                        <li class="navUrl" id="schedulePayment"><a href="/ebank/payment/schedulePayment">Schedule Payment</a></li>
+                        <li class="navUrl" id="paymentHistory"><a href="/ebank/payment/paymentHistory">Payment History</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown navUrl" id="profile">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
                         My Profile
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/ebank/profile/changePassword">Change Password</a></li>
-                        <li><a href="/ebank/profile/loginHistory">Login History</a></li>
+                        <li class="navUrl" id="changePassword"><a href="/ebank/profile/changePassword">Change Password</a></li>
+                        <li class="navUrl" id="loginHistory"><a href="/ebank/profile/loginHistory">Login History</a></li>
                     </ul>
                 </li>
             </ul>
