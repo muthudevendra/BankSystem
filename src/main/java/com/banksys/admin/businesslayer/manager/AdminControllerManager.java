@@ -10,8 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public interface AdminControllerManager {
     String findCustomerAccountCount();
+
     Long findDailyOwnTransferCount();
+
     Long findDailyThirdPartyTransferCount();
+
     Long findDailyTransferCount();
+
     String findDailyTransferCountChart();
 }

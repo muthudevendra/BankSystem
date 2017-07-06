@@ -5,7 +5,6 @@ import com.banksys.admin.datalayer.entity.User;
 import com.banksys.admin.datalayer.service.UserTypeService;
 import com.banksys.util.ResponseObject;
 import com.banksys.util.enums.MasterDataStatus;
-import org.hibernate.usertype.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -13,10 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Muthu Devendra on 7/1/2017.
+ *
  */
 @Controller
 @RequestMapping("/admin/config/userManagement")
@@ -33,7 +32,6 @@ public class UserManagementController {
 
     }
 
-
     @GetMapping
     public String getPage(Model model) {
         this.getPageData(model);
@@ -46,6 +44,7 @@ public class UserManagementController {
     public String saveUser(User user, Model model) {
         ResponseObject responseObject = this.userManagementManager.saveUser(user);
         this.getPageData(model);
+        this.getResponseData(responseObject, model);
         model.addAttribute("user", user);
         return "userManagement";
     }
@@ -56,7 +55,6 @@ public class UserManagementController {
         ResponseObject responseObject=this.userManagementManager.updateUser(user);
         this.getPageData(model);
         this.getResponseData(responseObject,model);
-
         return "userManagement";
     }
 
@@ -72,6 +70,4 @@ public class UserManagementController {
         model.addAttribute("status", responseObject.getStatus());
         return model;
     }
-
-
 }

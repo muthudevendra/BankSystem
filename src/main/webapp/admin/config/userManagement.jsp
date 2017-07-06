@@ -19,6 +19,8 @@
                 <legend>User Management</legend>
             </div>
             <form role="form" id="userForm" action="/admin/config/userManagement/saveUser" method="post">
+                <input type="hidden" value="${message}" id="message"/>
+                <input type="hidden" value="${status}" id="status"/>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <input type="hidden" name="userId" value="${user.userId eq null ? '' : user.userId}" id="userId"/>
                 <div class="row form-group">

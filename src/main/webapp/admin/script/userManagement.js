@@ -1,7 +1,7 @@
 /**
  * Created by Oshada on 7/5/2017.
+ *
  */
-
 
 $(function () {
     var userId = $('#userId').val();

@@ -50,7 +50,7 @@ public class UserManagementManagerImpl implements UserManagementManager {
         ResponseObject responseObject;
         Boolean isUpdatable;
         if (dbUser.equals(user)) {
-            responseObject = new ResponseObject("No change found", false);
+            responseObject = new ResponseObject("No changes found", false);
             isUpdatable = false;
 
         } else {
@@ -68,7 +68,6 @@ public class UserManagementManagerImpl implements UserManagementManager {
                 responseObject = new ResponseObject("User updated Successfully", true);
                 isUpdatable = true;
             }
-
         }
 
         if (isUpdatable) {
