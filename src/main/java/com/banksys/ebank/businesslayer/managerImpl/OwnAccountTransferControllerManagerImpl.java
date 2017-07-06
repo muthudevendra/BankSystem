@@ -1,5 +1,7 @@
 package com.banksys.ebank.businesslayer.managerImpl;
 
+import com.banksys.admin.datalayer.entity.Currency;
+import com.banksys.admin.datalayer.service.CurrencyService;
 import com.banksys.util.ResponseObject;
 import com.banksys.ebank.businesslayer.manager.OwnAccountTransferControllerManager;
 import com.banksys.ebank.datalayer.entity.CustomerAccount;
@@ -22,11 +24,15 @@ public class OwnAccountTransferControllerManagerImpl implements OwnAccountTransf
 
     private final CustomerAccountService customerAccountService;
     private final OwnAccountTransferService ownAccountTransferService;
+    private final CurrencyService currencyService;
 
     @Autowired
-    public OwnAccountTransferControllerManagerImpl(CustomerAccountService customerAccountService, OwnAccountTransferService ownAccountTransferService) {
+    public OwnAccountTransferControllerManagerImpl(CustomerAccountService customerAccountService,
+                                                   OwnAccountTransferService ownAccountTransferService,
+                                                   CurrencyService currencyService) {
         this.customerAccountService = customerAccountService;
         this.ownAccountTransferService = ownAccountTransferService;
+        this.currencyService = currencyService;
     }
 
     @Override
@@ -47,8 +53,9 @@ public class OwnAccountTransferControllerManagerImpl implements OwnAccountTransf
             responseObject.setObject(ownAccountTransfer);
         }
         else {
-            dbFromAccount.setAvailableBalance(availableBalance - ownAccountTransfer.getAmount());
-            dbToAccount.setAvailableBalance(dbToAccount.getAvailableBalance() + ownAccountTransfer.getAmount());
+            Currency payingCurrency = this.currencyService.findOne(ownAccountTransfer.getCurrencyId());
+            dbFromAccount.setAvailableBalance(availableBalance - (ownAccountTransfer.getAmount() * payingCurrency.getRate() / dbFromAccount.getCurrency().getRate()));
+            dbToAccount.setAvailableBalance(dbToAccount.getAvailableBalance() + (ownAccountTransfer.getAmount() * payingCurrency.getRate() / dbToAccount.getCurrency().getRate()));
             ownAccountTransfer.setTransferDate(new Date());
             ownAccountTransfer.setStatus(MasterDataStatus.OPEN.getStatusSeq());
             ownAccountTransfer.setFromAccountBalance(dbFromAccount.getAvailableBalance());

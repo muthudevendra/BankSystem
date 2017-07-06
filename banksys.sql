@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 05, 2017 at 06:54 PM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Host: 127.0.0.1
+-- Generation Time: Jul 06, 2017 at 04:51 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,13 +14,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `banksys`
 --
-CREATE DATABASE IF NOT EXISTS `banksys` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `banksys`;
 
 -- --------------------------------------------------------
 
@@ -28,8 +26,8 @@ USE `banksys`;
 -- Table structure for table `account`
 --
 
-CREATE TABLE IF NOT EXISTS `account` (
-  `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `account` (
+  `ACCOUNT_ID` int(11) NOT NULL,
   `ACCOUNT_TYPE_ID` int(11) NOT NULL,
   `INTEREST_CAL_METHOD` int(11) NOT NULL,
   `MOBILE_BANK_AVAILABILITY` int(1) DEFAULT NULL,
@@ -39,10 +37,8 @@ CREATE TABLE IF NOT EXISTS `account` (
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` date NOT NULL,
-  PRIMARY KEY (`ACCOUNT_ID`),
-  KEY `FKq9dxl66qvrrtu7rrgchjh5vej` (`ACCOUNT_TYPE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `LAST_MODIFIED_DATE` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `account`
@@ -64,8 +60,8 @@ INSERT INTO `account` (`ACCOUNT_ID`, `ACCOUNT_TYPE_ID`, `INTEREST_CAL_METHOD`, `
 -- Table structure for table `account_type`
 --
 
-CREATE TABLE IF NOT EXISTS `account_type` (
-  `ACCOUNT_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `account_type` (
+  `ACCOUNT_TYPE_ID` int(11) NOT NULL,
   `ACCOUNT_TYPE_NAME` varchar(256) NOT NULL,
   `DESCRIPTION` varchar(512) NOT NULL,
   `MIN_DEPOSIT` double DEFAULT NULL,
@@ -76,9 +72,8 @@ CREATE TABLE IF NOT EXISTS `account_type` (
   `CREATED_DATE` date NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `LAST_MODIFIED_DATE` date NOT NULL,
-  `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  PRIMARY KEY (`ACCOUNT_TYPE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `LAST_MODIFIED_BY` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `account_type`
@@ -94,8 +89,8 @@ INSERT INTO `account_type` (`ACCOUNT_TYPE_ID`, `ACCOUNT_TYPE_NAME`, `DESCRIPTION
 -- Table structure for table `address_book`
 --
 
-CREATE TABLE IF NOT EXISTS `address_book` (
-  `ADDRESS_BOOK_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `address_book` (
+  `ADDRESS_BOOK_ID` int(11) NOT NULL,
   `ADDRESS_LINE1` varchar(256) NOT NULL,
   `ADDRESS_LINE2` varchar(256) DEFAULT NULL,
   `ADDRESS_LINE3` varchar(256) DEFAULT NULL,
@@ -108,9 +103,8 @@ CREATE TABLE IF NOT EXISTS `address_book` (
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` date NOT NULL,
-  PRIMARY KEY (`ADDRESS_BOOK_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+  `LAST_MODIFIED_DATE` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `address_book`
@@ -136,19 +130,16 @@ INSERT INTO `address_book` (`ADDRESS_BOOK_ID`, `ADDRESS_LINE1`, `ADDRESS_LINE2`,
 -- Table structure for table `authority`
 --
 
-CREATE TABLE IF NOT EXISTS `authority` (
-  `AUTHORITY_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `authority` (
+  `AUTHORITY_ID` int(11) NOT NULL,
   `AUTHORITY_NAME` varchar(100) NOT NULL,
   `MODULE_ID` int(11) NOT NULL,
   `STATUS` int(11) NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` datetime NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` datetime NOT NULL,
-  PRIMARY KEY (`AUTHORITY_ID`),
-  UNIQUE KEY `AUTHORITY_NAME` (`AUTHORITY_NAME`),
-  KEY `FK14kg8hwua63ec3dqkek2u9li7` (`MODULE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+  `LAST_MODIFIED_DATE` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `authority`
@@ -202,7 +193,9 @@ INSERT INTO `authority` (`AUTHORITY_ID`, `AUTHORITY_NAME`, `MODULE_ID`, `STATUS`
 (45, 'admin@customerAccountManagement_DELETE', 2, 1, 'lakiya', '2017-07-02 20:21:44', 'lakiya', '2017-07-02 20:21:44'),
 (46, 'admin@customerSearch_VIEW', 2, 1, 'lakiya', '2017-07-02 20:45:52', 'lakiya', '2017-07-02 20:45:52'),
 (47, 'admin@userTypeAuthoritySearch_VIEW', 2, 1, 'lakiya', '2017-07-02 23:06:01', 'lakiya', '2017-07-02 23:06:01'),
-(48, 'admin@userTypeAuthorityManagement_DELETE', 2, 1, 'lakiya', '2017-07-05 09:20:51', 'lakiya', '2017-07-05 09:20:51');
+(48, 'admin@userTypeAuthorityManagement_DELETE', 2, 1, 'lakiya', '2017-07-05 09:20:51', 'lakiya', '2017-07-05 09:20:51'),
+(49, 'ebank@changePassword_VIEW', 1, 1, 'lakiya', '2017-07-06 08:34:37', 'lakiya', '2017-07-06 08:34:37'),
+(50, 'ebank@changePassword_CHANGE', 1, 1, 'lakiya', '2017-07-06 08:35:00', 'lakiya', '2017-07-06 08:35:00');
 
 -- --------------------------------------------------------
 
@@ -210,12 +203,11 @@ INSERT INTO `authority` (`AUTHORITY_ID`, `AUTHORITY_NAME`, `MODULE_ID`, `STATUS`
 -- Table structure for table `bank`
 --
 
-CREATE TABLE IF NOT EXISTS `bank` (
-  `BANK_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bank` (
+  `BANK_ID` int(11) NOT NULL,
   `BANK_NAME` varchar(100) NOT NULL,
-  `STATUS` int(11) NOT NULL,
-  PRIMARY KEY (`BANK_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `STATUS` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bank`
@@ -231,8 +223,8 @@ INSERT INTO `bank` (`BANK_ID`, `BANK_NAME`, `STATUS`) VALUES
 -- Table structure for table `bill_payment`
 --
 
-CREATE TABLE IF NOT EXISTS `bill_payment` (
-  `BILL_PAYMENT_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bill_payment` (
+  `BILL_PAYMENT_ID` int(11) NOT NULL,
   `FROM_ACCOUNT_ID` int(11) NOT NULL,
   `PAYMENT_TYPE` int(11) NOT NULL,
   `REFERENCE_NO` varchar(100) NOT NULL,
@@ -244,10 +236,8 @@ CREATE TABLE IF NOT EXISTS `bill_payment` (
   `CREATED_DATE` datetime NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `LAST_MODIFIED_DATE` datetime NOT NULL,
-  `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  PRIMARY KEY (`BILL_PAYMENT_ID`),
-  KEY `FKr4xriewyem6ccebck5buaeu87` (`FROM_ACCOUNT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `LAST_MODIFIED_BY` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bill_payment`
@@ -263,17 +253,16 @@ INSERT INTO `bill_payment` (`BILL_PAYMENT_ID`, `FROM_ACCOUNT_ID`, `PAYMENT_TYPE`
 -- Table structure for table `currency`
 --
 
-CREATE TABLE IF NOT EXISTS `currency` (
-  `CURRENCY_SEQ` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `currency` (
+  `CURRENCY_SEQ` int(11) NOT NULL,
   `CURRENCY_CODE` varchar(100) NOT NULL,
   `RATE` double NOT NULL,
   `STATUS` int(11) NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` datetime NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CURRENCY_SEQ`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `LAST_MODIFIED_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `currency`
@@ -289,8 +278,8 @@ INSERT INTO `currency` (`CURRENCY_SEQ`, `CURRENCY_CODE`, `RATE`, `STATUS`, `CREA
 -- Table structure for table `customer`
 --
 
-CREATE TABLE IF NOT EXISTS `customer` (
-  `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer` (
+  `CUSTOMER_ID` int(11) NOT NULL,
   `NIC` varchar(15) NOT NULL,
   `NIC_ISSUE_DATE` date DEFAULT NULL,
   `PASSPORT_NO` varchar(50) DEFAULT NULL,
@@ -309,10 +298,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `CREATED_DATE` date NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `LAST_MODIFIED_DATE` date NOT NULL,
-  `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  PRIMARY KEY (`CUSTOMER_ID`),
-  KEY `FK8ws3y30jy96un88k0n9bv9h2m` (`ADDRESS_BOOK_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `LAST_MODIFIED_BY` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
@@ -332,8 +319,8 @@ INSERT INTO `customer` (`CUSTOMER_ID`, `NIC`, `NIC_ISSUE_DATE`, `PASSPORT_NO`, `
 -- Table structure for table `customer_account`
 --
 
-CREATE TABLE IF NOT EXISTS `customer_account` (
-  `CUSTOMER_ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer_account` (
+  `CUSTOMER_ACCOUNT_ID` int(11) NOT NULL,
   `ACCOUNT_ID` int(11) NOT NULL,
   `ACCOUNT_NO` varchar(20) NOT NULL,
   `START_DATE` date NOT NULL,
@@ -346,20 +333,16 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` date NOT NULL,
-  PRIMARY KEY (`CUSTOMER_ACCOUNT_ID`),
-  KEY `FKq2875cwa4anm45j8yf49stjkv` (`ACCOUNT_ID`),
-  KEY `FK7cqiu8phqi0bygrlaqtm01fsj` (`CUSTOMER_ID`),
-  KEY `FKjk6amqiupdn1b9cjhvae8ym1i` (`CURRENCY_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `LAST_MODIFIED_DATE` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer_account`
 --
 
 INSERT INTO `customer_account` (`CUSTOMER_ACCOUNT_ID`, `ACCOUNT_ID`, `ACCOUNT_NO`, `START_DATE`, `END_DATE`, `AVAILABLE_BALANCE`, `CURRENCY_ID`, `CUSTOMER_ID`, `STATUS`, `VERSION`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
-(1, 14, '20170628000001', '2017-06-07', '2017-06-30', 12997.990014912793, 2, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-05'),
-(2, 10, '20170628000002', '2017-06-01', '2017-06-30', 11700, 1, 1, 1, 0, 'lakiya', '2017-06-28', 'SYSTEM', '2017-07-03'),
+(1, 14, '20170628000001', '2017-06-07', '2017-06-30', 12995.980029825587, 2, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-06'),
+(2, 10, '20170628000002', '2017-06-01', '2017-06-30', 12010, 1, 1, 1, 0, 'lakiya', '2017-06-28', 'lakiya', '2017-07-06'),
 (3, 12, '2017072000002', '2017-07-01', '2017-07-31', 50000, 1, 2, 0, 0, 'lakiya', '2017-07-02', 'lakiya', '2017-07-02');
 
 -- --------------------------------------------------------
@@ -368,17 +351,16 @@ INSERT INTO `customer_account` (`CUSTOMER_ACCOUNT_ID`, `ACCOUNT_ID`, `ACCOUNT_NO
 -- Table structure for table `module`
 --
 
-CREATE TABLE IF NOT EXISTS `module` (
-  `MODULE_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `module` (
+  `MODULE_ID` int(11) NOT NULL,
   `MODULE_NAME` varchar(100) NOT NULL,
   `DESCRIPTION` varchar(100) DEFAULT NULL,
   `STATUS` int(11) NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` datetime NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` datetime NOT NULL,
-  PRIMARY KEY (`MODULE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `LAST_MODIFIED_DATE` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `module`
@@ -394,13 +376,12 @@ INSERT INTO `module` (`MODULE_ID`, `MODULE_NAME`, `DESCRIPTION`, `STATUS`, `CREA
 -- Table structure for table `no_generator`
 --
 
-CREATE TABLE IF NOT EXISTS `no_generator` (
-  `NO_GEN_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `no_generator` (
+  `NO_GEN_ID` int(11) NOT NULL,
   `NAME` varchar(100) NOT NULL,
   `PREVIOUS_NO` int(11) NOT NULL,
-  `NEXT_NO` int(11) NOT NULL,
-  PRIMARY KEY (`NO_GEN_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `NEXT_NO` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `no_generator`
@@ -415,11 +396,12 @@ INSERT INTO `no_generator` (`NO_GEN_ID`, `NAME`, `PREVIOUS_NO`, `NEXT_NO`) VALUE
 -- Table structure for table `own_account_transfer`
 --
 
-CREATE TABLE IF NOT EXISTS `own_account_transfer` (
-  `OWN_ACCOUNT_TRANSFER_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `own_account_transfer` (
+  `OWN_ACCOUNT_TRANSFER_ID` int(11) NOT NULL,
   `FROM_ACCOUNT_ID` int(11) NOT NULL,
   `TO_ACCOUNT_ID` int(100) NOT NULL,
   `AMOUNT` double NOT NULL,
+  `CURRENCY_ID` int(11) NOT NULL,
   `FROM_ACCOUNT_BALANCE` double NOT NULL,
   `TO_ACCOUNT_BALANCE` double NOT NULL,
   `DESCRIPTION` varchar(512) NOT NULL,
@@ -428,26 +410,24 @@ CREATE TABLE IF NOT EXISTS `own_account_transfer` (
   `CREATED_DATE` date NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `LAST_MODIFIED_DATE` date NOT NULL,
-  `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  PRIMARY KEY (`OWN_ACCOUNT_TRANSFER_ID`),
-  KEY `FKhcyb8nrx4kwtv06okxffrg6yn` (`FROM_ACCOUNT_ID`),
-  KEY `FKem9nlo66lf07yrgyhgknqh22f` (`TO_ACCOUNT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `LAST_MODIFIED_BY` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `own_account_transfer`
 --
 
-INSERT INTO `own_account_transfer` (`OWN_ACCOUNT_TRANSFER_ID`, `FROM_ACCOUNT_ID`, `TO_ACCOUNT_ID`, `AMOUNT`, `FROM_ACCOUNT_BALANCE`, `TO_ACCOUNT_BALANCE`, `DESCRIPTION`, `TRANSFER_DATE`, `STATUS`, `CREATED_DATE`, `CREATED_BY`, `LAST_MODIFIED_DATE`, `LAST_MODIFIED_BY`) VALUES
-(1, 2, 1, 700, 16000, 13700, 'Fund Transfer', '2017-07-02 10:01:30', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(2, 1, 2, 300, 13400, 16300, 'ReTransfer', '2017-07-02 10:01:54', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(3, 2, 1, 200, 15800, 13600, 'Fund Transfer', '2017-07-02 10:22:44', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(4, 1, 2, 400, 13200, 16200, 'Fund Retransfer', '2017-07-02 10:26:39', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(5, 1, 2, 200, 13000, 16400, 'Fund Transfer', '2017-07-02 10:35:27', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(6, 2, 1, 400, 16000, 13400, 'Fund Transfer', '2017-07-02 10:35:55', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(7, 1, 2, 200, 13200, 16200, 'Fund Transfer', '2017-07-02 11:00:34', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(8, 2, 1, 4000, 12200, 12800, 'Fund Transfer', '2017-07-02 13:01:03', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
-(9, 2, 1, 300, 11900, 13100, 'Fund Transfer', '2017-07-02 13:03:00', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya');
+INSERT INTO `own_account_transfer` (`OWN_ACCOUNT_TRANSFER_ID`, `FROM_ACCOUNT_ID`, `TO_ACCOUNT_ID`, `AMOUNT`, `CURRENCY_ID`, `FROM_ACCOUNT_BALANCE`, `TO_ACCOUNT_BALANCE`, `DESCRIPTION`, `TRANSFER_DATE`, `STATUS`, `CREATED_DATE`, `CREATED_BY`, `LAST_MODIFIED_DATE`, `LAST_MODIFIED_BY`) VALUES
+(1, 2, 1, 700, 0, 16000, 13700, 'Fund Transfer', '2017-07-02 10:01:30', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(2, 1, 2, 300, 0, 13400, 16300, 'ReTransfer', '2017-07-02 10:01:54', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(3, 2, 1, 200, 0, 15800, 13600, 'Fund Transfer', '2017-07-02 10:22:44', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(4, 1, 2, 400, 0, 13200, 16200, 'Fund Retransfer', '2017-07-02 10:26:39', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(5, 1, 2, 200, 0, 13000, 16400, 'Fund Transfer', '2017-07-02 10:35:27', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(6, 2, 1, 400, 0, 16000, 13400, 'Fund Transfer', '2017-07-02 10:35:55', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(7, 1, 2, 200, 0, 13200, 16200, 'Fund Transfer', '2017-07-02 11:00:34', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(8, 2, 1, 4000, 0, 12200, 12800, 'Fund Transfer', '2017-07-02 13:01:03', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(9, 2, 1, 300, 0, 11900, 13100, 'Fund Transfer', '2017-07-02 13:03:00', 1, '2017-07-02', 'lakiya', '2017-07-02', 'lakiya'),
+(10, 1, 2, 310, 1, 12995.980029825587, 12010, 'Transfer', '2017-07-06 10:20:39', 1, '2017-07-06', 'lakiya', '2017-07-06', 'lakiya');
 
 -- --------------------------------------------------------
 
@@ -455,8 +435,8 @@ INSERT INTO `own_account_transfer` (`OWN_ACCOUNT_TRANSFER_ID`, `FROM_ACCOUNT_ID`
 -- Table structure for table `third_party_transfer`
 --
 
-CREATE TABLE IF NOT EXISTS `third_party_transfer` (
-  `THIRD_PARTY_ACCOUNT_TRANSFER_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `third_party_transfer` (
+  `THIRD_PARTY_ACCOUNT_TRANSFER_ID` int(11) NOT NULL,
   `FROM_ACCOUNT_ID` int(11) NOT NULL,
   `AMOUNT` double NOT NULL,
   `CURRENCY_SEQ` int(11) NOT NULL,
@@ -472,11 +452,8 @@ CREATE TABLE IF NOT EXISTS `third_party_transfer` (
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` date NOT NULL,
-  PRIMARY KEY (`THIRD_PARTY_ACCOUNT_TRANSFER_ID`),
-  KEY `FKtjhpengc5upa0i37wybdv1v97` (`FROM_ACCOUNT_ID`),
-  KEY `FKrq1cij96098org12kdxfhgqxg` (`CURRENCY_SEQ`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+  `LAST_MODIFIED_DATE` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `third_party_transfer`
@@ -505,8 +482,8 @@ INSERT INTO `third_party_transfer` (`THIRD_PARTY_ACCOUNT_TRANSFER_ID`, `FROM_ACC
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `USER_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `USER_ID` int(11) NOT NULL,
   `USERNAME` varchar(100) NOT NULL,
   `PASSWORD` varchar(100) NOT NULL,
   `ENABLED` int(1) NOT NULL,
@@ -514,17 +491,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `CREATED_BY` varchar(256) NOT NULL,
   `CREATED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(256) NOT NULL,
-  `LAST_MODIFIED_DATE` date NOT NULL,
-  PRIMARY KEY (`USER_ID`),
-  UNIQUE KEY `USERNAME` (`USERNAME`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `LAST_MODIFIED_DATE` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`USER_ID`, `USERNAME`, `PASSWORD`, `ENABLED`, `USER_TYPE_ID`, `CREATED_BY`, `CREATED_DATE`, `LAST_MODIFIED_BY`, `LAST_MODIFIED_DATE`) VALUES
-(2, 'lakiya', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1, 1, 'SYSTEM', '2017-06-20', 'SYSTEM', '2017-06-20'),
+(2, 'lakiya', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1, 1, 'SYSTEM', '2017-06-20', 'lakiya', '2017-07-06'),
 (3, 'muthu', 'f685036afa7be0292157a4a0a59614032c32d14a', 1, 1, 'lakiya', '2017-07-01', 'lakiya', '2017-07-01'),
 (9, 'Oshada', '5f7168ba441a70619d6587b4bea6943db26111ed', 0, 2, 'lakiya', '2017-07-04', 'lakiya', '2017-07-04'),
 (10, 'Lakshitha', '06ce90cffe31dee2d774f5259a4fc6f2e410187e', 0, 2, 'lakiya', '2017-07-04', 'lakiya', '2017-07-04'),
@@ -537,14 +512,13 @@ INSERT INTO `user` (`USER_ID`, `USERNAME`, `PASSWORD`, `ENABLED`, `USER_TYPE_ID`
 -- Table structure for table `user_login_audit`
 --
 
-CREATE TABLE IF NOT EXISTS `user_login_audit` (
-  `USER_LOGIN_AUDIT_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_login_audit` (
+  `USER_LOGIN_AUDIT_ID` int(11) NOT NULL,
   `USERNAME` varchar(256) NOT NULL,
   `LOGIN_DATE` datetime NOT NULL,
   `LOGOUT_DATE` datetime DEFAULT NULL,
-  `REMOTE_ADDRESS` varchar(100) NOT NULL,
-  PRIMARY KEY (`USER_LOGIN_AUDIT_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=121 ;
+  `REMOTE_ADDRESS` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_login_audit`
@@ -669,7 +643,11 @@ INSERT INTO `user_login_audit` (`USER_LOGIN_AUDIT_ID`, `USERNAME`, `LOGIN_DATE`,
 (117, 'lakiya', '2017-07-05 23:37:39', '2017-07-05 23:42:30', '0:0:0:0:0:0:0:1'),
 (118, 'Shehan1553932502', '2017-07-05 23:42:34', '2017-07-05 23:44:13', '0:0:0:0:0:0:0:1'),
 (119, 'lakiya', '2017-07-05 23:44:15', NULL, '0:0:0:0:0:0:0:1'),
-(120, 'lakiya', '2017-07-06 00:03:46', NULL, '0:0:0:0:0:0:0:1');
+(120, 'lakiya', '2017-07-06 00:03:46', NULL, '0:0:0:0:0:0:0:1'),
+(121, 'lakiya', '2017-07-06 08:33:56', '2017-07-06 08:35:30', '0:0:0:0:0:0:0:1'),
+(122, 'lakiya', '2017-07-06 08:35:32', NULL, '0:0:0:0:0:0:0:1'),
+(123, 'lakiya', '2017-07-06 08:45:23', '2017-07-06 08:45:28', '0:0:0:0:0:0:0:1'),
+(124, 'lakiya', '2017-07-06 10:15:52', NULL, '0:0:0:0:0:0:0:1');
 
 -- --------------------------------------------------------
 
@@ -677,16 +655,21 @@ INSERT INTO `user_login_audit` (`USER_LOGIN_AUDIT_ID`, `USERNAME`, `LOGIN_DATE`,
 -- Table structure for table `user_login_failure_audit`
 --
 
-CREATE TABLE IF NOT EXISTS `user_login_failure_audit` (
-  `USER_LOGIN_FAILURE_AUDIT_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_login_failure_audit` (
+  `USER_LOGIN_FAILURE_AUDIT_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
   `ATTEMPTED_DATE` datetime NOT NULL,
   `NUMBER_OF_ATTEMPTS` int(11) NOT NULL,
   `LOCKED_STATUS` int(11) NOT NULL,
-  `UNLOCKED_AT` datetime DEFAULT NULL,
-  PRIMARY KEY (`USER_LOGIN_FAILURE_AUDIT_ID`),
-  UNIQUE KEY `USER_ID` (`USER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `UNLOCKED_AT` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_login_failure_audit`
+--
+
+INSERT INTO `user_login_failure_audit` (`USER_LOGIN_FAILURE_AUDIT_ID`, `USER_ID`, `ATTEMPTED_DATE`, `NUMBER_OF_ATTEMPTS`, `LOCKED_STATUS`, `UNLOCKED_AT`) VALUES
+(1, 2, '2017-07-06 08:45:36', 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -694,17 +677,16 @@ CREATE TABLE IF NOT EXISTS `user_login_failure_audit` (
 -- Table structure for table `user_type`
 --
 
-CREATE TABLE IF NOT EXISTS `user_type` (
-  `USER_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_type` (
+  `USER_TYPE_ID` int(11) NOT NULL,
   `USER_TYPE` varchar(100) NOT NULL,
   `DESCRIPTION` varchar(256) DEFAULT NULL,
   `STATUS` int(11) NOT NULL,
   `CREATED_BY` varchar(256) NOT NULL,
   `CREATED_DATE` datetime NOT NULL,
   `LAST_MODIFIED_BY` varchar(256) NOT NULL,
-  `LAST_MODIFIED_DATE` datetime NOT NULL,
-  PRIMARY KEY (`USER_TYPE_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `LAST_MODIFIED_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_type`
@@ -725,19 +707,16 @@ INSERT INTO `user_type` (`USER_TYPE_ID`, `USER_TYPE`, `DESCRIPTION`, `STATUS`, `
 -- Table structure for table `user_type_authority`
 --
 
-CREATE TABLE IF NOT EXISTS `user_type_authority` (
-  `USER_TYPE_AUTHORITY_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_type_authority` (
+  `USER_TYPE_AUTHORITY_ID` int(11) NOT NULL,
   `USER_TYPE_ID` int(11) NOT NULL,
   `AUTHORITY_ID` int(11) NOT NULL,
   `STATUS` int(11) NOT NULL,
   `CREATED_BY` varchar(100) NOT NULL,
   `CREATED_DATE` date NOT NULL,
   `LAST_MODIFIED_BY` varchar(100) NOT NULL,
-  `LAST_MODIFIED_DATE` date NOT NULL,
-  PRIMARY KEY (`USER_TYPE_AUTHORITY_ID`),
-  KEY `FKa5enl93k9ci5y03vcaurfufgc` (`AUTHORITY_ID`),
-  KEY `FKbnp1svkriyrfdt6pq69bxqr09` (`USER_TYPE_ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
+  `LAST_MODIFIED_DATE` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_type_authority`
@@ -793,8 +772,232 @@ INSERT INTO `user_type_authority` (`USER_TYPE_AUTHORITY_ID`, `USER_TYPE_ID`, `AU
 (47, 2, 1, 1, 'lakiya', '2017-07-05', 'lakiya', '2017-07-05'),
 (48, 1, 32, 1, 'lakiya', '2017-07-05', 'lakiya', '2017-07-05'),
 (49, 7, 1, 1, 'lakiya', '2017-07-05', 'lakiya', '2017-07-05'),
-(50, 7, 23, 1, 'lakiya', '2017-07-05', 'lakiya', '2017-07-05');
+(50, 7, 23, 1, 'lakiya', '2017-07-05', 'lakiya', '2017-07-05'),
+(51, 1, 49, 1, 'lakiya', '2017-07-06', 'lakiya', '2017-07-06'),
+(52, 1, 50, 1, 'lakiya', '2017-07-06', 'lakiya', '2017-07-06');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`ACCOUNT_ID`),
+  ADD KEY `FKq9dxl66qvrrtu7rrgchjh5vej` (`ACCOUNT_TYPE_ID`);
+
+--
+-- Indexes for table `account_type`
+--
+ALTER TABLE `account_type`
+  ADD PRIMARY KEY (`ACCOUNT_TYPE_ID`);
+
+--
+-- Indexes for table `address_book`
+--
+ALTER TABLE `address_book`
+  ADD PRIMARY KEY (`ADDRESS_BOOK_ID`);
+
+--
+-- Indexes for table `authority`
+--
+ALTER TABLE `authority`
+  ADD PRIMARY KEY (`AUTHORITY_ID`),
+  ADD UNIQUE KEY `AUTHORITY_NAME` (`AUTHORITY_NAME`),
+  ADD KEY `FK14kg8hwua63ec3dqkek2u9li7` (`MODULE_ID`);
+
+--
+-- Indexes for table `bank`
+--
+ALTER TABLE `bank`
+  ADD PRIMARY KEY (`BANK_ID`);
+
+--
+-- Indexes for table `bill_payment`
+--
+ALTER TABLE `bill_payment`
+  ADD PRIMARY KEY (`BILL_PAYMENT_ID`),
+  ADD KEY `FKr4xriewyem6ccebck5buaeu87` (`FROM_ACCOUNT_ID`);
+
+--
+-- Indexes for table `currency`
+--
+ALTER TABLE `currency`
+  ADD PRIMARY KEY (`CURRENCY_SEQ`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`CUSTOMER_ID`),
+  ADD KEY `FK8ws3y30jy96un88k0n9bv9h2m` (`ADDRESS_BOOK_ID`);
+
+--
+-- Indexes for table `customer_account`
+--
+ALTER TABLE `customer_account`
+  ADD PRIMARY KEY (`CUSTOMER_ACCOUNT_ID`),
+  ADD KEY `FKq2875cwa4anm45j8yf49stjkv` (`ACCOUNT_ID`),
+  ADD KEY `FK7cqiu8phqi0bygrlaqtm01fsj` (`CUSTOMER_ID`),
+  ADD KEY `FKjk6amqiupdn1b9cjhvae8ym1i` (`CURRENCY_ID`);
+
+--
+-- Indexes for table `module`
+--
+ALTER TABLE `module`
+  ADD PRIMARY KEY (`MODULE_ID`);
+
+--
+-- Indexes for table `no_generator`
+--
+ALTER TABLE `no_generator`
+  ADD PRIMARY KEY (`NO_GEN_ID`);
+
+--
+-- Indexes for table `own_account_transfer`
+--
+ALTER TABLE `own_account_transfer`
+  ADD PRIMARY KEY (`OWN_ACCOUNT_TRANSFER_ID`),
+  ADD KEY `FKhcyb8nrx4kwtv06okxffrg6yn` (`FROM_ACCOUNT_ID`),
+  ADD KEY `FKem9nlo66lf07yrgyhgknqh22f` (`TO_ACCOUNT_ID`);
+
+--
+-- Indexes for table `third_party_transfer`
+--
+ALTER TABLE `third_party_transfer`
+  ADD PRIMARY KEY (`THIRD_PARTY_ACCOUNT_TRANSFER_ID`),
+  ADD KEY `FKtjhpengc5upa0i37wybdv1v97` (`FROM_ACCOUNT_ID`),
+  ADD KEY `FKrq1cij96098org12kdxfhgqxg` (`CURRENCY_SEQ`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`USER_ID`),
+  ADD UNIQUE KEY `USERNAME` (`USERNAME`);
+
+--
+-- Indexes for table `user_login_audit`
+--
+ALTER TABLE `user_login_audit`
+  ADD PRIMARY KEY (`USER_LOGIN_AUDIT_ID`);
+
+--
+-- Indexes for table `user_login_failure_audit`
+--
+ALTER TABLE `user_login_failure_audit`
+  ADD PRIMARY KEY (`USER_LOGIN_FAILURE_AUDIT_ID`),
+  ADD UNIQUE KEY `USER_ID` (`USER_ID`);
+
+--
+-- Indexes for table `user_type`
+--
+ALTER TABLE `user_type`
+  ADD PRIMARY KEY (`USER_TYPE_ID`);
+
+--
+-- Indexes for table `user_type_authority`
+--
+ALTER TABLE `user_type_authority`
+  ADD PRIMARY KEY (`USER_TYPE_AUTHORITY_ID`),
+  ADD KEY `FKa5enl93k9ci5y03vcaurfufgc` (`AUTHORITY_ID`),
+  ADD KEY `FKbnp1svkriyrfdt6pq69bxqr09` (`USER_TYPE_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
+  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `account_type`
+--
+ALTER TABLE `account_type`
+  MODIFY `ACCOUNT_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `address_book`
+--
+ALTER TABLE `address_book`
+  MODIFY `ADDRESS_BOOK_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `authority`
+--
+ALTER TABLE `authority`
+  MODIFY `AUTHORITY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+--
+-- AUTO_INCREMENT for table `bank`
+--
+ALTER TABLE `bank`
+  MODIFY `BANK_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `bill_payment`
+--
+ALTER TABLE `bill_payment`
+  MODIFY `BILL_PAYMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `currency`
+--
+ALTER TABLE `currency`
+  MODIFY `CURRENCY_SEQ` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `customer_account`
+--
+ALTER TABLE `customer_account`
+  MODIFY `CUSTOMER_ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `module`
+--
+ALTER TABLE `module`
+  MODIFY `MODULE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `no_generator`
+--
+ALTER TABLE `no_generator`
+  MODIFY `NO_GEN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `own_account_transfer`
+--
+ALTER TABLE `own_account_transfer`
+  MODIFY `OWN_ACCOUNT_TRANSFER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `third_party_transfer`
+--
+ALTER TABLE `third_party_transfer`
+  MODIFY `THIRD_PARTY_ACCOUNT_TRANSFER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `user_login_audit`
+--
+ALTER TABLE `user_login_audit`
+  MODIFY `USER_LOGIN_AUDIT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+--
+-- AUTO_INCREMENT for table `user_login_failure_audit`
+--
+ALTER TABLE `user_login_failure_audit`
+  MODIFY `USER_LOGIN_FAILURE_AUDIT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `user_type`
+--
+ALTER TABLE `user_type`
+  MODIFY `USER_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `user_type_authority`
+--
+ALTER TABLE `user_type_authority`
+  MODIFY `USER_TYPE_AUTHORITY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- Constraints for dumped tables
 --
@@ -817,9 +1020,9 @@ ALTER TABLE `customer`
 -- Constraints for table `customer_account`
 --
 ALTER TABLE `customer_account`
-  ADD CONSTRAINT `FKjk6amqiupdn1b9cjhvae8ym1i` FOREIGN KEY (`CURRENCY_ID`) REFERENCES `currency` (`CURRENCY_SEQ`),
   ADD CONSTRAINT `FK7cqiu8phqi0bygrlaqtm01fsj` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customer` (`CUSTOMER_ID`),
   ADD CONSTRAINT `FKg8ovfg8qqvp4ax0k1bqmg8gh3` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account` (`ACCOUNT_ID`),
+  ADD CONSTRAINT `FKjk6amqiupdn1b9cjhvae8ym1i` FOREIGN KEY (`CURRENCY_ID`) REFERENCES `currency` (`CURRENCY_SEQ`),
   ADD CONSTRAINT `FKq2875cwa4anm45j8yf49stjkv` FOREIGN KEY (`ACCOUNT_ID`) REFERENCES `account` (`ACCOUNT_ID`);
 
 --

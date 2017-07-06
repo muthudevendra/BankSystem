@@ -23,6 +23,7 @@ public class OwnAccountTransfer {
     private Integer fromAccountId;
     private Integer toAccountId;
     private Double amount;
+    private Integer currencyId;
     private Double fromAccountBalance;
     private Double toAccountBalance;
     private String description;
@@ -75,6 +76,16 @@ public class OwnAccountTransfer {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    @Basic
+    @Column(name = "CURRENCY_ID")
+    public Integer getCurrencyId() {
+        return currencyId;
+    }
+
+    public void setCurrencyId(Integer currencyId) {
+        this.currencyId = currencyId;
     }
 
     @Basic
