@@ -18,6 +18,13 @@
             <div>
                 <legend>Module Management</legend>
             </div>
+            <form role="form" action="/admin/config/moduleManagement" id="newUserTypeAuthority">
+                <div class="row">
+                    <div class="pull-left">
+                        <button type="submit" class="btn btn-primary">New</button>
+                    </div>
+                </div>
+            </form>
             <form role="form" action="/admin/config/moduleManagement/saveModule" id="moduleForm" method="post">
                 <input type="hidden" name="moduleId" value="${module.moduleId eq null ? '' : module.moduleId}" id="moduleId"/>
                 <input type="hidden" value="${message}" id="message"/>

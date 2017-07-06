@@ -17,7 +17,7 @@
             <div>
                 <legend>User Type Authority Management</legend>
             </div>
-            <form role="form" id="newUserTypeAuthority">
+            <form role="form" action="/admin/config/userTypeAuthorityManagement" id="newUserTypeAuthority">
                 <div class="row">
                     <div class="pull-left">
                         <button type="submit" class="btn btn-primary">New</button>

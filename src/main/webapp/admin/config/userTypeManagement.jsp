@@ -17,6 +17,13 @@
             <div id="legend">
                 <legend>User Type Management</legend>
             </div>
+            <form role="form" action="/admin/config/userTypeManagement" id="newUserTypeAuthority">
+                <div class="row">
+                    <div class="pull-left">
+                        <button type="submit" class="btn btn-primary">New</button>
+                    </div>
+                </div>
+            </form>
             <form role="form" method="post" id="userTypeForm" action="/admin/config/userTypeManagement/saveUserTypeManagement">
                 <input type="hidden" value="${message}" id="message"/>
                 <input type="hidden" value="${status}" id="status" />

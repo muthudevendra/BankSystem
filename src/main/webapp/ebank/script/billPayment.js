@@ -24,6 +24,7 @@ function get_account_balance() {
         var data =
             {'customerAccountId': customerAccountId}
         var accountBalance = load_object_data('/ebank/payment/billPayment/findAccountBalance', 'GET', data);
+        accountBalance =parseFloat(accountBalance).toFixed(2);
         var currency = load_object_data('/ebank/payment/billPayment/findCurrency', 'GET', data);
         $('#amountInHand').html(accountBalance + " " + currency);
     }

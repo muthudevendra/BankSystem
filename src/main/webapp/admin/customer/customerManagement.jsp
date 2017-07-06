@@ -18,7 +18,13 @@
             <div>
                 <legend>Customer Details</legend>
             </div>
-
+            <form role="form" action="/admin/customer/customerManagement" id="newUserTypeAuthority">
+                <div class="row">
+                    <div class="pull-left">
+                        <button type="submit" class="btn btn-primary">New</button>
+                    </div>
+                </div>
+            </form>
             <form role="form" action="/admin/customer/customerManagement/saveCustomer" id="customerForm" method="post">
                 <input type="hidden" name="customerId" id="customerId"
                        value="${customer.customerId eq null ? '' : customer.customerId}">

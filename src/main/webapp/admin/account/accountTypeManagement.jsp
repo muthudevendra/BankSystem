@@ -18,6 +18,13 @@
             <div>
                 <legend>Account Type Management</legend>
             </div>
+            <form role="form" action="/admin/account/accountTypeManagement" id="newUserTypeAuthority">
+                <div class="row">
+                    <div class="pull-left">
+                        <button type="submit" class="btn btn-primary">New</button>
+                    </div>
+                </div>
+            </form>
             <form action="/admin/account/accountTypeManagement/saveAccountType" role="form" method="post" id="accountTypeForm">
                 <input type="hidden" value="${message}" id="message"/>
                 <input type="hidden" value="${status}" id="status" />
