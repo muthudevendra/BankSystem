@@ -3605,7 +3605,7 @@ Styler Panel
     line-height: 24px;
     background-color: #e22f2f;
     border: 1px solid #b10303;
-    /*border-radius: 5px !important;*/
+    cursor: pointer;
 }
 
 /* info box*/
