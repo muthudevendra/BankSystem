@@ -11,8 +11,7 @@
     <title>Alpha Alliance PLC.</title>
 </head>
 <body>
-    <div class="col-md-12 col-sm-12 text-center">
-        <img src="${pageContext.request.contextPath}/layout/assets/pages/img/pics/error.png" style="width:25%; height:25%;">
+    <div class="col-md-12">
         <p class="text-center">${errorMessage}</p>
         <a class="btn btn-info" href="/">GO BACK TO THE HOMEPAGE</a>
     </div>
