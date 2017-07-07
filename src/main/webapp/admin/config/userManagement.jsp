@@ -18,6 +18,13 @@
             <div>
                 <legend>User Management</legend>
             </div>
+            <form role="form" action="/admin/config/userManagement" id="newUserTypeAuthority">
+                <div class="row">
+                    <div class="pull-left">
+                        <button type="submit" class="btn btn-primary">New</button>
+                    </div>
+                </div>
+            </form>
             <form role="form" id="userForm" action="/admin/config/userManagement/saveUser" method="post">
                 <input type="hidden" value="${message}" id="message"/>
                 <input type="hidden" value="${status}" id="status"/>
