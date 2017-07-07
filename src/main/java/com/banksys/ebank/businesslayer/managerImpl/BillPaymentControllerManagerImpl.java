@@ -54,7 +54,7 @@ public class BillPaymentControllerManagerImpl implements BillPaymentControllerMa
             }
             else {
                 if (billPayment.getPaymentDate().equals(today)) {
-                    dbFromAccount.setAvailableBalance(availableBalance - billPayment.getAmount());
+                    dbFromAccount.setAvailableBalance(availableBalance - (billPayment.getAmount() / dbFromAccount.getCurrency().getRate()));
                     billPayment.setAccountBalance(dbFromAccount.getAvailableBalance());
                     billPayment.setTransferStatus(TransferStatus.SENT.getTransferStatusSeq());
                     responseObject = new ResponseObject("Payment Successful", true);

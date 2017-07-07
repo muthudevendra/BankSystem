@@ -37,11 +37,17 @@ public class UserManagementManagerImpl implements UserManagementManager {
     public ResponseObject saveUser(User user) {
         ResponseObject responseObject;
         if(user.getPassword().equals(user.getConfirmPassword())) {
-            user.setPassword(SHAEncoder.SHA1(user.getPassword()));
-            user.setEnabled(MasterDataStatus.OPEN.getStatusSeq());
-            this.userService.save(user);
-            responseObject = new ResponseObject(user, true);
-            responseObject.setMessage("User Saved Successfully");
+            User dbUser = this.userService.findByUsername(user.getUsername());
+            if(dbUser != null){
+                responseObject = new ResponseObject("Select username already taken", false);
+            }
+            else {
+                user.setPassword(SHAEncoder.SHA1(user.getPassword()));
+                user.setEnabled(MasterDataStatus.OPEN.getStatusSeq());
+                this.userService.save(user);
+                responseObject = new ResponseObject(user, true);
+                responseObject.setMessage("User Saved Successfully");
+            }
         }
         else{
             responseObject = new ResponseObject(user, false);
