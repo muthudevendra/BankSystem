@@ -104,20 +104,20 @@
         <div class="row margin-bottom-40 front-steps-wrapper front-steps-count-3">
             <div class="col-md-4 col-sm-4 front-step-col">
                 <div class="front-step front-step1">
-                    <h2>Goal definition</h2>
-                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
+                    <h2>Create an Account</h2>
+                    <p>Come to us, give your money.. we'll keep it safe</p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 front-step-col">
                 <div class="front-step front-step2">
-                    <h2>Analyse</h2>
-                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
+                    <h2>Register</h2>
+                    <p>One request and your ready to go</p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 front-step-col">
                 <div class="front-step front-step3">
-                    <h2>Implementation</h2>
-                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
+                    <h2>E-Bank</h2>
+                    <p>Do every transaction using e-banking</p>
                 </div>
             </div>
         </div>
