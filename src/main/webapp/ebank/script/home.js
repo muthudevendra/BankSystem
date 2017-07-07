@@ -6,7 +6,7 @@ $('.navUrl').removeClass('active');
 $('#dashboard').addClass('active');
 
 function load_transfer(thirdPartyTransferId) {
-    window.open('/ebank/transfer/thirdPartyTransfer?thirdPartyTransferId=' + thirdPartyTransferId, '_blank');
+    window.open('/ebank/transfer/thirdPartyTransfer?thirdPartyAccountTransferId=' + thirdPartyTransferId, '_blank');
 }
 
 function load_bill(billPaymentId) {

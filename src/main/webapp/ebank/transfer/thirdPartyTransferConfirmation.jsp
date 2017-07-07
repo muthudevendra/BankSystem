@@ -76,13 +76,6 @@
                                    disabled>
                         </div>
                     </div>
-                    <div class="row form-group">
-                        <div class="pull-right">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">Print</button>
-                            </span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </form>

@@ -27,5 +27,10 @@
         <h1 align="center">You Have <%= request.getParameter("attempts") %> Attempts Left</h1>
     </div>
 </div>
+<div class="row">
+    <center>
+        <a class="btn btn-info" href="/">GO BACK</a>
+    </center>
+</div>
 </body>
 </html>
