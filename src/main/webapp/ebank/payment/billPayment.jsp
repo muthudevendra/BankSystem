@@ -85,7 +85,7 @@
                                 <span class="input-group-addon">Rs</span>
                                 <input required name="amount" value="${billPayment.amount}" type="text"
                                        class="form-control" id="amount">
-                                <span class="input-group-addon">.00</span>
+                                <span class="input-group-addon">LKR</span>
                             </div>
                         </div>
                         <div class="col-md-3">
