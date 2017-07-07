@@ -8,12 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Access Denied - AlphaAlliance</title>
+    <title>AlphaAlliance.AccessDenied</title>
 </head>
 <body>
-<div class="col-md-12">
-    <p class="text-center">ACCESS DENIED</p>
-    <a class="btn btn-info" href="/">GO BACK TO THE HOMEPAGE</a>
+<br>
+<div class="row">
+    <center>
+        <img src="${pageContext.request.contextPath}/layout/assets/pages/img/pics/failure-icon.png">
+    </center>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1 align="center">Access Denied</h1>
+    </div>
+</div>
+<div class="row">
+    <center>
+        <a class="btn btn-info" href="/">GO BACK TO THE HOMEPAGE</a>
+    </center>
 </div>
 </body>
 </html>

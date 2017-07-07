@@ -31,7 +31,7 @@
                 <div class="list-group">
                     <div class="service-box-heading">
                         <a href="#" class="list-group-item list-group-item-success">
-                            <em><i class="fa fa-user-secret red"></i></em>
+                            <em><i class="fa fa-check green"></i></em>
                             <span>Recent Payments</span>
                         </a>
                     </div>
@@ -45,8 +45,8 @@
             <div class="col-md-4 col-sm-4">
                 <div class="list-group">
                     <div class="service-box-heading">
-                        <a href="#" class="list-group-item list-group-item-success">
-                            <em><i class="fa fa-user-secret red"></i></em>
+                        <a href="#" class="list-group-item list-group-item-danger">
+                            <em><i class="fa fa-money red"></i></em>
                             <span>Available Balance</span>
                         </a>
                     </div>

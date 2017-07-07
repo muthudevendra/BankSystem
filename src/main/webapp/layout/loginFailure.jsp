@@ -8,9 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>AlphaAlliance.LoginFailed</title>
 </head>
 <body>
-    <h1>Login Failed</h1>
+<br/>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1 align="center">Authentication Failed</h1>
+    </div>
+</div>
+<div class="row">
+    <center>
+    <img src="${pageContext.request.contextPath}/layout/assets/pages/img/pics/sadface.png">
+    </center>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1 align="center">You Have Attempt 5 Times Left</h1>
+    </div>
+</div>
 </body>
 </html>

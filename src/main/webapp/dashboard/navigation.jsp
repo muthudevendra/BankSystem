@@ -10,7 +10,7 @@
         <a class="site-logo" href="/dashboard/home"><img
                 src="${pageContext.request.contextPath}/layout/assets/corporate/img/logos/logo.png" alt=""></a>
 
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+        <a href="nav:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
         <div class="header-navigation pull-right font-transform-inherit">
             <ul>
@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li class="dropdown dropdown-megamenu navUrl" id="savings">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="savings&Invsets:">
                         SAVINGS & INVEST
                     </a>
                     <ul class="dropdown-menu">
@@ -68,7 +68,7 @@
                     </ul>
                 </li>
                 <li class="dropdown navUrl" id="loans">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="loans:">
                         LOANS
                     </a>
                     <ul class="dropdown-menu">
@@ -81,7 +81,7 @@
                     </ul>
                 </li>
                 <li class="dropdown navUrl" id="insurance">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="insurances:">
                         INSURANCE
                     </a>
                     <ul class="dropdown-menu">
@@ -94,7 +94,7 @@
                     </ul>
                 </li>
                 <li class="dropdown navUrl" id="cards">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="creditDebitCards:">
                         CARDS & CREDITS
                     </a>
                     <ul class="dropdown-menu">

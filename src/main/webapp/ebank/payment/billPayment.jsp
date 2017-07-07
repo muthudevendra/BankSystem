@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-md-4">
                             <input required name="referenceNo" value="${billPayment.referenceNo}"
-                                   type="text" class="form-control" id="referenceNo">
+                                   type="text" class="form-control" id="referenceNo" placeholder="Account Number">
                         </div>
                     </div>
                     <div class="row form-group">
