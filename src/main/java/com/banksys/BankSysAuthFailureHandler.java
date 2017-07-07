@@ -20,6 +20,7 @@ import java.util.Date;
 
 /**
  * Created by Lakshitha on 05-Jul-17.
+ *
  */
 @Service
 public class BankSysAuthFailureHandler implements AuthenticationFailureHandler {
@@ -56,8 +57,10 @@ public class BankSysAuthFailureHandler implements AuthenticationFailureHandler {
                         this.userLoginFailureAuditService.save(dbUserLoginFailureAudit);
                         responseUrl = "/accountLocked";
                     }
+                    else{
+                        responseUrl = "/loginFailure?attempts="+ (MAX_ATTEMPTS - attempts);
+                    }
                     this.userLoginFailureAuditService.save(dbUserLoginFailureAudit);
-                    responseUrl = "/loginFailure";
                 } else {
                     attempts = 1;
                     dbUserLoginFailureAudit = new UserLoginFailureAudit();
@@ -66,7 +69,7 @@ public class BankSysAuthFailureHandler implements AuthenticationFailureHandler {
                     dbUserLoginFailureAudit.setAttemptedDate(new Date());
                     dbUserLoginFailureAudit.setUserId(user.getUserId());
                     this.userLoginFailureAuditService.save(dbUserLoginFailureAudit);
-                    responseUrl = "/loginFailure";
+                    responseUrl = "/loginFailure?attempts="+(MAX_ATTEMPTS - attempts);
                 }
             }
         }

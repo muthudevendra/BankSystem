@@ -24,7 +24,7 @@
 </div>
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        <h1 align="center">You Have Attempt 5 Times Left</h1>
+        <h1 align="center">You Have <%= request.getParameter("attempts") %> Attempts Left</h1>
     </div>
 </div>
 </body>
