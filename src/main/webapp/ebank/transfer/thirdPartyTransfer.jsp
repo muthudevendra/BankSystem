@@ -28,7 +28,7 @@
 
         <div class="content-page col-lg-10">
             <div id="legend">
-                <legend>Schedule Transfer</legend>
+                <legend>Money Transfer</legend>
             </div>
             <div class="col-md-12">
                 <form action="/ebank/transfer/thirdPartyTransfer/doTransfer" id="thirdPartyTransferForm" role="form"
