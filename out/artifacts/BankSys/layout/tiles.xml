@@ -1,0 +1,177 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <!--Base Templates-->
+    <definition name="base" template="/layout/page.jsp">
+        <put-attribute name="header" value="/layout/header.jsp"/>
+        <put-attribute name="navigation" value="/dashboard/navigation.jsp"/>
+        <put-attribute name="footer" value="/layout/footer.jsp"/>
+    </definition>
+    <definition name="ebank_base" template="/layout/page.jsp">
+        <put-attribute name="header" value="/layout/header.jsp"/>
+        <put-attribute name="navigation" value="/ebank/home.jsp"/>
+        <put-attribute name="footer" value="/layout/footer.jsp"/>
+    </definition>
+    <definition name="admin_base" template="/layout/page.jsp">
+        <put-attribute name="header" value="/layout/header.jsp"/>
+        <put-attribute name="navigation" value="/admin/navigation.jsp"/>
+        <put-attribute name="footer" value=""/>
+    </definition>
+
+    <!--Home-->
+    <definition name="login" template="/ebank/login.jsp"/>
+    <definition name="accessDenied" template="/layout/accessDenied.jsp"/>
+    <definition name="error" template="/layout/error.jsp"/>
+    <definition name="accountLocked" template="/layout/accountLocked.jsp"/>
+    <definition name="loginFailure" template="/layout/loginFailure.jsp"/>
+    <definition name="ebank" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/dashboard.jsp"/>
+    </definition>
+    <definition name="dashboard" extends="base">
+        <put-attribute name="body" value="/dashboard/home.jsp"/>
+    </definition>
+    <definition name="admin" extends="admin_base">
+        <put-attribute name="body" value="/admin/home.jsp"/>
+    </definition>
+
+    <!--Dashboard-->
+    <definition name="home" extends="base">
+        <put-attribute name="body" value="/dashboard/home.jsp"/>
+    </definition>
+    <definition name="regularSavingsAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/savings/regularSavingsAccount.jsp"/>
+    </definition>
+    <definition name="childrenSavingsAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/savings/childrenSavingsAccount.jsp"/>
+    </definition>
+    <definition name="womenSavingsAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/savings/womenSavingsAccount.jsp"/>
+    </definition>
+    <definition name="generalCurrentAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/current/generalCurrentAccount.jsp"/>
+    </definition>
+    <definition name="supremeCurrentAccount" extends="base">
+        <put-attribute name="body" value="/dashboard/current/supremeCurrentAccount.jsp"/>
+    </definition>
+    <definition name="flexibleDeposits" extends="base">
+        <put-attribute name="body" value="/dashboard/deposits/flexibleDeposits.jsp"/>
+    </definition>
+    <definition name="regularDeposits" extends="base">
+        <put-attribute name="body" value="/dashboard/deposits/regularDeposits.jsp"/>
+    </definition>
+    <definition name="personalLoans" extends="base">
+        <put-attribute name="body" value="/dashboard/loans/personalLoans.jsp"/>
+    </definition>
+    <definition name="educationalLoans" extends="base">
+        <put-attribute name="body" value="/dashboard/loans/educationalLoans.jsp"/>
+    </definition>
+    <definition name="housingLoans" extends="base">
+        <put-attribute name="body" value="/dashboard/loans/housingLoans.jsp"/>
+    </definition>
+    <definition name="lifeInsurance" extends="base">
+        <put-attribute name="body" value="/dashboard/insurance/lifeInsurance.jsp"/>
+    </definition>
+    <definition name="carInsurance" extends="base">
+        <put-attribute name="body" value="/dashboard/insurance/carInsurance.jsp"/>
+    </definition>
+    <definition name="buildingInsurance" extends="base">
+        <put-attribute name="body" value="/dashboard/insurance/buildingInsurance.jsp"/>
+    </definition>
+    <definition name="creditCard" extends="base">
+        <put-attribute name="body" value="/dashboard/cards/creditCard.jsp"/>
+    </definition>
+    <definition name="debitCard" extends="base">
+        <put-attribute name="body" value="/dashboard/cards/debitCard.jsp"/>
+    </definition>
+
+
+    <!--Admin-->
+    <definition name="moduleManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/moduleManagement.jsp"/>
+    </definition>
+    <definition name="moduleSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/moduleSearch.jsp"/>
+    </definition>
+    <definition name="customerManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/customer/customerManagement.jsp"/>
+    </definition>
+    <definition name="customerSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/customer/customerSearch.jsp"/>
+    </definition>
+    <definition name="authorityManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/authorityManagement.jsp"/>
+    </definition>
+    <definition name="authoritySearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/authoritySearch.jsp"/>
+    </definition>
+    <definition name="accountTypeManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/account/accountTypeManagement.jsp"/>
+    </definition>
+    <definition name="customerAccountManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/account/customerAccountManagement.jsp"/>
+    </definition>
+    <definition name="userManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userManagement.jsp"/>
+    </definition>
+    <definition name="userTypeManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userTypeManagement.jsp"/>
+    </definition>
+    <definition name="userTypeSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userTypeSearch.jsp"/>
+    </definition>
+    <definition name="userTypeAuthorityManagement" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userTypeAuthorityManagement.jsp"/>
+    </definition>
+    <definition name="userTypeAuthoritySearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/userTypeAuthoritySearch.jsp"/>
+    </definition>
+    <definition name="accountTypeSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/account/accountTypeSearch.jsp"/>
+    </definition>
+    <definition name="customerAccountSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/account/customerAccountSearch.jsp"/>
+    </definition>
+    <definition name="failedLoginSearch" extends="admin_base">
+        <put-attribute name="body" value="/admin/config/failedLogin.jsp"/>
+    </definition>
+
+    <!--Ebank-->
+    <definition name="accountInquiry" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/account/accountInquiry.jsp"/>
+    </definition>
+    <definition name="accountStatement" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/account/accountStatement.jsp"/>
+    </definition>
+    <definition name="billPayment" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/payment/billPayment.jsp"/>
+    </definition>
+    <definition name="paymentHistory" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/payment/paymentHistory.jsp"/>
+    </definition>
+    <definition name="schedulePayment" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/payment/schedulePayments.jsp"/>
+    </definition>
+    <definition name="ownAccount" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/ownAccountTransfer.jsp"/>
+    </definition>
+    <definition name="thirdPartyTransfer" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/thirdPartyTransfer.jsp"/>
+    </definition>
+    <definition name="scheduleTransfer" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/scheduleTransfer.jsp"/>
+    </definition>
+    <definition name="loginHistory" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/profile/loginHistory.jsp"/>
+    </definition>
+    <definition name="changePassword" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/profile/changePassword.jsp"/>
+    </definition>
+    <definition name="ownAccountTransferConfirmation" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/ownAccountTransferConfirmation.jsp"/>
+    </definition>
+    <definition name="thirdPartyTransferConfirmation" extends="ebank_base">
+        <put-attribute name="body" value="/ebank/transfer/thirdPartyTransferConfirmation.jsp"/>
+    </definition>
+</tiles-definitions>
